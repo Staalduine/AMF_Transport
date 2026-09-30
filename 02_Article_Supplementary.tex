@@ -1,0 +1,174 @@
+%  CONFIGURE SUPPLEMENTARY FORMAT
+
+\onecolumn % go back to one column
+\fancyhead{} % make sure we get no headers
+\renewcommand{\floatpagefraction}{0.1}
+\lfoot[\bSupInf]{\dAuthor}
+\rfoot[\dAuthor]{\cSupInf}
+\newpage
+
+\captionsetup*{format=largeformat} % make figure legend slightly larger than in the paper
+\setcounter{figure}{0} % reset figure counter for Supplementary Figures
+\makeatletter
+\renewcommand{\thefigure}{S\@arabic\c@figure} % figures numbered S1, S2, ...
+\makeatother
+
+%  MAIN TEXT
+
+\newpage
+\section*{Supplementary Information}
+
+% -----------------------------------------------------------------------
+% FIGURE S1
+% Actively referenced in main text (line 48):
+%   "method, SI Fig. \ref{fig:speed_flux_extraction_real_data}"
+% Content: pipeline for extracting directional (tip-ward / root-ward)
+%          speeds from bright-field kymographs.
+% -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigS1.pdf} % TODO: verify file
+\caption{\textbf{Method for extracting directional speeds from kymographs.}
+\textbf{(A)} TODO.
+\textbf{(B)} TODO.
+}
+\label{fig:speed_flux_extraction_real_data}
+\end{figure}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+% FIGURE S2
+% Actively referenced in main text (lines 93, 97, 99, 144, 150):
+%   "Fig. SI\ref{fig:carbonflow}b/d/e/f"
+% Content: hydraulic (growth-induced mass-flow) model predictions vs
+%          measurements; lipid volume-fraction spatial profile.
+% Subfigures mentioned in text: b (predicted motor direction),
+%   c (direction agreement, commented), d (speed comparison),
+%   e (speed histogram), f (lipid volume fraction along hypha).
+% -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigS2.pdf} % TODO: verify file
+\caption{\textbf{Growth-induced mass-flow model cannot explain observed speeds.}
+\textbf{(A)} TODO.
+\textbf{(B)} Predicted lipid flux direction from hydraulic minimisation. Color indicates direction.
+\textbf{(C)} Comparison of estimated and observed flux directions. Percentage of agreement as a function of exclusion radius.
+\textbf{(D)} Measured speed vs hydraulic model speed for all edges. Model does not reproduce observed speeds.
+\textbf{(E)} Histogram of absolute hydraulic speeds across whole network compared to measured bright-field speeds.
+\textbf{(F)} Lipid volume fraction $\theta$ estimated from growth flux, plotted against distance from the hyphal tip.
+}
+\label{fig:carbonflow}
+\end{figure}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+% FIGURE S3
+% Referenced in commented-out text (line 64):
+%   "SI Fig.\ref{fig:replicates}"
+% Content: speed asymmetry dataset from 6 developmental time-points
+%          across 2 plates, ~2000 edges total.
+% Uncomment the section in main text (line 64) when this figure is ready.
+% -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigS3.pdf} % TODO: verify file
+\caption{\textbf{Speed asymmetry replicated across developmental time-points.}
+\textbf{(A)} TODO: overview of all ~2000 measured edges across 6 time-points and 2 plates.
+\textbf{(B)} TODO.
+}
+\label{fig:replicates}
+\end{figure}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+% FIGURE S4
+% Referenced in commented-out text (lines 83, 83):
+%   "Figure \ref{fig:lipid_flows}d"  /  "SI Fig showing all replicates"
+% Content: directional lipid kymographs and Fourier-filtered versions
+%          showing net tipward flux; all replicate panels.
+% Uncomment the section in main text (lines 82-84) when ready.
+% -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigS4.pdf} % TODO: verify file
+\caption{\textbf{Lipid movement is predominantly tipward across all replicates.}
+\textbf{(A)} TODO.
+\textbf{(B)} TODO.
+\textbf{(C)} TODO.
+\textbf{(D)} Aggregate net flux direction in fluorescence (red) and bright-field (black) for all measured trails.
+}
+\label{fig:lipid_flows}
+\end{figure}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+% FIGURE S5
+% Referenced in commented-out text (line 165):
+%   "Fig. \ref{fig:hydraulic_proportionality}b"
+% Content: model prediction of C/P exchange proportionality emerging
+%          from lipid-induced backflow.
+% Uncomment the paragraph in main text (lines 164-167) when ready.
+% -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigS5.pdf} % TODO: verify file
+\caption{\textbf{Lipid-backflow model predicts proportional C/P exchange.}
+\textbf{(A)} TODO.
+\textbf{(B)} Carbon flux from plant vs phosphorus flux from fungal colony under the backflow model, showing proportional scaling.
+}
+\label{fig:hydraulic_proportionality}
+\end{figure}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+% ADDITIONAL FIGURES (not yet labelled in main text)
+% Assign \label and add \ref in main text when ready to use.
+% -----------------------------------------------------------------------
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigS_replicate_4A.pdf}
+\caption{\textbf{TODO: Replicate 4A.} TODO caption.}
+% \label{fig:replicate_4A}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigSradius_speed.pdf}
+\caption{\textbf{TODO: Radius vs speed.} TODO caption.}
+% \label{fig:radius_speed}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigureComparison.pdf}
+\caption{\textbf{TODO: Comparison figure.} TODO caption.}
+% \label{fig:comparison}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{suppfig/FigureSRspeeddrag.pdf}
+\caption{\textbf{TODO: Speed-drag figure.} TODO caption.}
+% \label{fig:speed_drag}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.9\textwidth]{suppfig/symbiotic-hard-comparison.png}
+\caption{\textbf{TODO: Symbiotic hard comparison.} TODO caption.}
+% \label{fig:symbiotic_comparison}
+\end{figure}
