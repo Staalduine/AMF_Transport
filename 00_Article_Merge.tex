@@ -17,6 +17,11 @@
         range-phrase = --} % units setup
 \usepackage{multirow} % allows merging of cells in tables
 
+% An unnumbered subsection that \nameref can point to (titlesec's starred sections do not record their title)
+\makeatletter
+\newcommand{\namedsubsection}[2]{\phantomsection\subsection*{#1}\def\@currentlabelname{#1}\label{#2}}
+\makeatother
+
 \begin{document}
 
 %% comment out any files that you don't want to include as sections
