@@ -1,0 +1,23 @@
+# LaTeX auxiliary files (pdflatex, bibtex, latexmk, VS Code LaTeX Workshop)
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# the compiled manuscript at the repo root (figures/ and suppfig/ PDFs stay tracked)
+/00_Article_Merge.pdf
