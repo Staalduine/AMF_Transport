@@ -1,0 +1,213 @@
+% =======================================================================
+% METHODS
+% Converted from the STAR-Methods draft in Typst:
+%   transport_paper/manuscript/09_star_methods.typ (6 Oct 2026)
+% Every [TODO: ...] in red is an open item; nothing in a TODO is a guessed value.
+% Citations marked MISSING-<key> are not in PhD.bib yet (they exist in
+% transport_paper/manuscript/references.bib).
+% =======================================================================
+%
+% CANDIDATE SECTIONS
+% (status: DRAFTED = converted from the Typst draft and in this file;
+%          STUB = heading or a few lines only, needs text;
+%          TO WRITE = only a candidate, not in this file yet)
+% 1.  Resource availability / data and code availability -- DRAFTED (typst "Resource availability"); missing: repository DOI, Zenodo DOIs.
+% 2.  Key resources table -- DRAFTED (typst "Key resources table"); missing: Nile Red and Phytagel supplier/cat. no., Petri dish cat. no., dataset DOI.
+% 3.  Fungal strains, root organ cultures and plates -- DRAFTED (typst "Experimental model and study participant details"); missing: protocol unchanged for all plates?, days after crossing for 4 plates, section-cut plates.
+% 4.  Network time-lapse imaging -- DRAFTED (typst "Network imaging"); missing: which station imaged each plate (Aretha at 1.37 um/px).
+% 5.  Stitching, segmentation, network extraction -- DRAFTED (typst "Stitching, segmentation and network extraction"; amftrack, segmenter, orchestrator); missing: segmenter checkpoint, SI figures (stitching, segmenter, graph repair) have no LaTeX labels.
+% 6.  Dated / growth graph -- DRAFTED (typst "The dated network graph"; STHype); missing: SI section "Motor direction" not in the LaTeX SI.
+% 7.  Flow video acquisition (lid on/off, bright-field 20 fps, Nile Red fluorescence 1-2 fps, ~15 s apart) -- DRAFTED (typst "Flow videos"); missing: objective model, lid on for all sessions?, Nile Red concentration/staining time, who filmed.
+% 8.  Kymograph and streak analysis (PolyFlow, flow_analysis_comps) -- DRAFTED (typst "From video to speeds"); pending: fluorescence minimum streak length being re-run at 5 frames (was 8).
+% 9.  Registration of videos onto the graph (registrator) -- DRAFTED (typst "Videos on the network"); missing: SI registration figure label.
+% 10. To-tip / to-root direction assignment from the growth graph -- DRAFTED (inside "Videos on the network", paragraph "Direction"); could become its own subsection.
+% 11. Direction bias of the lipid signal -- DRAFTED (moved here from 02_Article_Supplementary.tex; lipid_bias_store.py, lipid_bias_modes.py, fig2.py); missing: the value of the signal threshold.
+% 12. Static-flow data selection (no root-cut, section-cut, salt-shock videos; >= 5 streaks per direction) -- CANDIDATE, TO WRITE (only stated in the SI captions of fig:video_positions / fig:speed_iqr); missing: one paragraph with the exact rules and counts.
+% 13. Tree-like (bridge) edge classification and distance to the nearest growing tip -- STUB (two sentences in "The dated network graph"); missing: bins and counts of the Fig 1A inset (<1 mm 40 % ... >8 mm 14 %), script name.
+% 14. Interquartile range and ballistic/diffusive estimates (Peclet) -- CANDIDATE, TO WRITE (SI fig:speed_iqr; Peclet note as a comment in 01_Article_MainText.tex); missing: droplet size and viscosity to check, diffusivity near tips (open issue #5).
+% 15. Root cut, section cut and osmotic-shock (solute droplet) experiments -- DRAFTED (typst "Perturbations"); missing: droplet volume, section-cut plates, whether the droplet camera image is mirrored.
+% 16. Transport model (single hypha, network solve, parametrisation) -- DRAFTED (typst "The transport model"; backflow_model.py, junction_coupling.py, constants.py); missing: lipid density, SI sections "Volume and lipid budget", "Motors as a force", model-steps figure.
+% 17. Quantification and statistics (units of analysis, scores, held-out fits, tests) -- DRAFTED (typst "Quantification and statistical analysis"; registration_census.py); pending: counts after the fluorescence re-run.
+% 18. Software versions -- STUB (in the key resources table only); missing: per-repository commit hashes / Zenodo archives.
+% =======================================================================
+
+\providecommand{\todo}[1]{{\color{red}[TODO: #1]}}
+
+\section*{Methods}
+
+\namedsubsection{Resource availability}{subsec:resource_availability}
+
+\paragraph{Lead contact.} Requests for further information and resources should be directed to and will be fulfilled by the lead contact, Thomas S. Shimizu (shimizu@amolf.nl).
+
+\paragraph{Materials availability.} This study did not generate new unique reagents. The fungal strains are available from the sources listed in the key resources table.
+
+\paragraph{Data and code availability.}
+\begin{itemize}
+  \item The per-hypha dataset is deposited at \todo{repository, DOI} and is publicly available as of the date of publication: per edge and session, the network's properties (length, diameter, age, growth downstream, tree or loop, distance to the root and to the nearest growing tip) with the measured to-tip and to-root speeds, their quartiles and streak counts, and the model's prediction. The raw network images and flow videos are available from the lead contact on request.
+  \item All original code is on GitHub (key resources table) and archived at \todo{Zenodo DOIs} as of the date of publication.
+  \item Any additional information required to reanalyse the data reported in this paper is available from the lead contact upon request.
+\end{itemize}
+
+\namedsubsection{Key resources table}{subsec:key_resources}
+
+{\small
+\begin{tabular}{p{0.42\linewidth}p{0.26\linewidth}p{0.24\linewidth}}
+\hline
+\textbf{REAGENT or RESOURCE} & \textbf{SOURCE} & \textbf{IDENTIFIER} \\
+\hline
+\multicolumn{3}{l}{\textbf{Chemicals, peptides, and recombinant proteins}} \\
+Nile Red & \todo{supplier} & \todo{cat. no.} \\
+Phytagel & \todo{supplier} & \todo{cat. no.} \\
+\multicolumn{3}{l}{\textbf{Deposited data}} \\
+Per-hypha flow and network dataset & This paper & \todo{DOI} \\
+\multicolumn{3}{l}{\textbf{Experimental models: organisms/strains}} \\
+\textit{Rhizophagus irregularis} strain C2 & I. Sanders~\cite{oyarte_galvez_travelling-wave_2025} & DAOM 664346 \\
+\textit{Rhizophagus irregularis} strain A5 & I. Sanders~\cite{oyarte_galvez_travelling-wave_2025} & DAOM 664344 \\
+Ri T-DNA transformed \textit{Daucus carota} root organ culture, clone DC1 & \cite{oyarte_galvez_travelling-wave_2025} & N/A \\
+\multicolumn{3}{l}{\textbf{Software and algorithms}} \\
+Python 3.11; NumPy 2.4, SciPy 1.17, pandas 2.3, NetworkX 3.6, scikit-image 0.25--0.26, PyTorch 2.10--2.13, MONAI 1.6 & python.org and the packages' own releases & N/A \\
+amftrack (stitching, segmentation, graph extraction) & This paper and \cite{oyarte_galvez_travelling-wave_2025} & github.com/mycostreams/ amftrack2024 \\
+STHype (spatio-temporal graph, dating, growth graph) & This paper & github.com/mycostreams/ STHype, rev 6563558 \\
+orchestrator (pipeline runner) & This paper & github.com/mycostreams/ orchestrator \\
+segmenter (hypha and lumen segmentation) & This paper & github.com/Staalduine/ segmenter \\
+PolyFlow (kymographs, streak detection) & This paper & github.com/mycostreams/ flow\_analysis\_comps \\
+registrator (videos onto the graph, trails, roots) & This paper & github.com/mycostreams/ registrator \\
+transport\_paper (transport model, analysis, figures) & This paper & github.com/mycostreams/ transport\_paper \\
+\multicolumn{3}{l}{\textbf{Other}} \\
+Imaging robot for network time-lapses (2$\times$ objective, Basler acA4112-30um) & \cite{oyarte_galvez_travelling-wave_2025} & N/A \\
+Flow-video microscope (50$\times$ objective, Basler acA4112) & \cite{oyarte_galvez_travelling-wave_2025}, this paper & N/A \\
+Two-compartment Petri dishes, 94~mm & Greiner Bio-One & \todo{cat. no.} \\
+Cellophane sheets & Hoefer & TE73 \\
+\hline
+\end{tabular}
+}
+
+\namedsubsection{Fungal strains, root organ cultures and plates}{subsec:strains}
+
+\paragraph{Fungal strains and root organ cultures.} Colonies of \textit{Rhizophagus irregularis} strain C2 (DAOM 664346; four plates) and strain A5 (DAOM 664344; plate STR2307A112) were grown with Ri T-DNA transformed carrot roots (\textit{Daucus carota}, clone DC1) in two-compartment split Petri dishes (94~mm), as described~\cite{oyarte_galvez_travelling-wave_2025}. Briefly, fungal stocks were cultivated on modified Strullu--Romand (MSR) medium with transformed carrot roots for 2--6 months, and a plug of mycelium and spores from a stock was placed on 2--3~cm of fresh root in one compartment. That compartment held MSR with phosphate reduced to 1\%; the other, the fungal compartment, held regular MSR under a sheet of cellophane. Both media carried 10~g\,l$^{-1}$ sucrose and 3~g\,l$^{-1}$ Phytagel. An acrylic frame against the central barrier, covered by a nylon mesh (50~$\mu$m pores), left a 50~mm window through which hyphae, but not roots, crossed into the fungal compartment. Plates were sealed with parafilm and kept in the dark at 25~\textdegree C. The fungus crossed about 5--6 weeks after inoculation, and time-lapse imaging started at the crossing. \todo{confirm that the five plates followed this protocol unchanged}
+
+\paragraph{Plates and sessions.} Five plates were imaged, each in one or more sessions of flow videos at a frame of the time-lapse (the session's frame index, tNN):
+
+\begin{center}
+{\small
+\begin{tabular}{llll}
+\hline
+\textbf{plate} & \textbf{strain} & \textbf{sessions} & \textbf{days after crossing} \\
+\hline
+EPY2412A088 & C2 & t28, t55 & \todo{} \\
+LPD2412A025 & C2 & t25, t36, t50 & 10, 11, 12 \\
+PNF2307A072 & C2 & t37, t49 & \todo{} \\
+PNF2307A080 & C2 & t74, t81, t91 & \todo{} \\
+STR2307A112 & A5 & t25, t38, t49, t60, t73 & \todo{} \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+The perturbation experiments used further plates prepared the same way: the root cut on LPD2412A022 (session t95), the section cut on \todo{plates}, and the droplets on 9 plates (SAL series).
+
+\namedsubsection{Network imaging}{subsec:network_imaging}
+
+Plates were imaged every 2~h on the imaging robot described in~\cite{oyarte_galvez_travelling-wave_2025}: a 2$\times$ objective (Thorlabs TL2X-SAP, NA 0.1) and a 200~mm tube lens on a 12~MP CMOS camera (Basler acA4112-30um), 1.725~$\mu$m per pixel at the sample, under red LED illumination, in a dark enclosure at 25~\textdegree C. At every time point the fungal compartment was recorded as a grid of tiles (about 10~$\times$~15, 20\% overlap). \todo{which station imaged each plate; a second station, Aretha, images at 1.37~$\mu$m per pixel}
+
+\namedsubsection{Stitching, segmentation and network extraction}{subsec:network_extraction}
+
+The pipeline differs from~\cite{oyarte_galvez_travelling-wave_2025} and runs as one workflow (orchestrator) on a compute cluster.
+\begin{itemize}
+  \item \textbf{Stitching.} Neighbouring tiles are registered by phase cross-correlation (scikit-image, 10$\times$ upsampling). The stage's own motion is modelled per station as a prior: a cross-axis shear of 14--17~px per row and a column offset of about 170~px that alternates with row parity (a serpentine; SI \todo{SI figure on stitching, no LaTeX label yet}).
+  \item \textbf{Segmentation.} Hyphae are segmented with a convolutional network (a two-dimensional U-Net, MONAI), which also predicts each hypha's diameter \todo{which checkpoint built the paper graphs; an SI figure (no LaTeX label yet) compares the two}.
+  \item \textbf{Graph extraction.} The mask is thinned to a one-pixel skeleton (Zhang--Suen) and turned into a graph of junction-to-junction edges. Two hyphae that run within 10~px (17~$\mu$m) of each other are fused into one edge, and short dead-end spurs are removed.
+  \item \textbf{Graph repair} (SI \todo{SI figure on graph repair, no LaTeX label yet}). Gaps between pieces of network are bridged only where the raw image shows hyphal signal along the bridge (an evidence gate on candidates proposed by a minimum spanning tree over gap distance), and a fragment is kept only if it recurs in the registered neighbouring frames (a persistence gate).
+\end{itemize}
+
+\namedsubsection{The dated network graph}{subsec:dated_graph}
+
+The frames of a time-lapse are registered onto one another, and the graph of the session's frame (the anchor) is cut into segments of 34.5~$\mu$m. Each segment is dated by the frame in which it first appears (its activation), which gives a spatio-temporal graph: one network in which every segment carries the time it grew (STHype). The edges used throughout are the anchor graph's junction-to-junction runs of segments.
+
+\paragraph{Roots} are the places where the network enters the fungal compartment from the root side. They were annotated by hand on each plate (registrator) and advanced along their hyphae to the session.
+
+\paragraph{The growth graph} orients every segment from the end that appeared first to the end that appeared later, so each hypha points the way it grew. Four rules settle what dates alone cannot (SI \todo{SI section ``Motor direction'' not in the LaTeX SI yet}): a root-free stretch dated older than all its neighbours takes its oldest neighbour's date; a later-dated segment on the best-dated path from a root into such an island is backdated to the island's date; ties are broken by network distance along paths whose dates never decrease; and edges at a root point away from it. With these rules 97.6\% of the network traces its growth back to a root.
+
+\paragraph{Growing tips} are degree-1 nodes of the session's graph, other than roots, from which the network extends within the next four frames (8~h). The distance to the nearest growing tip is measured along the network.
+
+\paragraph{Tree and loop edges.} An edge is a tree edge (tree-like) when removing it disconnects the network (a bridge), and a loop edge when it lies on a cycle. Local loop density is the cycle rank per mm of hypha within 500~$\mu$m of the edge. \todo{bins and script for the share of bridges by distance to the nearest growing tip (Fig.~\ref{fig:hyphal_profiling}A, inset)}
+
+\namedsubsection{Flow videos}{subsec:flow_videos}
+
+Flow videos were recorded on a second microscope with the same imaging path (tube lens and Basler acA4112 camera, 3.45~$\mu$m pixels) behind a 50$\times$ objective \todo{objective model}, at 2~$\times$~2 binning: 0.138~$\mu$m per pixel. Its motorised stage records each video's position on the plate. At each session, positions were chosen on the latest stitched image along hand-picked routes from the root to growing tips (the trails) and on the side hyphae around them, and filmed with the lid on \todo{confirm lid on for all sessions}. Bright-field videos were recorded at 20 frames per second for 20--60~s; fluorescence videos of lipids stained with Nile Red~\cite{MISSING-kleinCytoplasmicFlowDynamics2026}\todo{add kleinCytoplasmicFlowDynamics2026 to PhD.bib} at 1--2 frames per second \todo{Nile Red concentration and staining time; who filmed}. At most positions a bright-field video was followed, about 15~s later, by a Nile Red video of the same position (recorded one after the other, not simultaneously). In total 1,683 videos were recorded over 15 sessions: 839 in bright-field, 704 in Nile Red fluorescence, and 140 without a recorded imaging mode (SI Fig.~\ref{fig:video_positions}).
+
+\namedsubsection{From video to speeds}{subsec:video_to_speeds}
+
+Videos are processed by PolyFlow (\texttt{flow\_analysis\_comps}; SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
+\begin{enumerate}
+  \item \textbf{Hyphae in the video.} A U-Net (MONAI) predicts, per pixel, the distance to the hyphal wall, its orientation and the lumen. Facing wall pixels are paired across the lumen along the wall normal (up to 15~$\mu$m apart), and the midpoints of the pairs give each hypha's centreline and its lumen diameter (median error 0.83~$\mu$m against hand-drawn walls). The centrelines are turned into a small graph, one edge per hypha.
+  \item \textbf{Kymographs.} Each centreline is smoothed and resampled at 1~px spacing. The video is sampled along and across it (bilinear interpolation), normalised (z-score, then contrast-limited adaptive histogram equalisation) and averaged across the hypha, which gives one kymograph per hypha: position along the hypha against time.
+  \item \textbf{Streaks.} An orientation-space filter~\cite{MISSING-kittisopikulAdaptiveMultiorientationResolution2020}\todo{add kittisopikulAdaptiveMultiorientationResolution2020 to PhD.bib} gives, at every kymograph pixel, its response at each orientation. Responses are thinned by non-maximum suppression across orientation, thresholded with hysteresis (bright-field 0.10 and 0.17; fluorescence 0.20 and 0.35), and linked within orientation sectors of 20\textdegree{} into connected streaks. A streak is kept when it spans at least 15 frames (bright-field; 8 in fluorescence \todo{fluorescence minimum streak length being re-run at 5 frames; update this number and the counts that depend on it}) and a straight line fits it to within 1.5~px; its speed is that line's slope.
+  \item \textbf{Per edge and direction.} Streaks slower than 0.3~$\mu$m/s count as static texture (the detector's static flag; SI \todo{SI figure on streaks against pixels and the static-texture alternatives, no LaTeX label yet}), so an edge median below 0.3~$\mu$m/s cannot be measured. The moving streaks are split by direction, and a direction needs at least 5 of them; its speed is their median, with the quartiles as its spread.
+\end{enumerate}
+
+\namedsubsection{Videos on the network}{subsec:videos_on_network}
+
+Each video is registered onto the edge it shows in the session's graph (registrator; SI \todo{SI registration figure, no LaTeX label yet}). A few videos per session are anchored to graph nodes by hand, and a similarity transform fitted to them (rotation, scale and translation, with a reflection check) places every other video from its stage coordinates. The hyphae in each video are then matched to the edges of the surrounding graph by an optimal assignment on their positions, directions and connectivity, and hand pins overrule the match where it is ambiguous.
+
+\paragraph{Direction.} A stream runs to the tip when it runs the way its edge grew in the growth graph. Where a stretch of hypha appeared within one frame, so that its dates tie, it takes the direction its motor stream points to. Where the stream labelled to root is motor-like (within 25\% of 3.06~$\mu$m/s, with a quartile ratio of streak speeds of at most 1.25) and the stream labelled to tip is not, the direction is taken to be reversed and the two are swapped (58 edges).
+
+\paragraph{Trails} were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI \todo{SI mirror-arm figure, no LaTeX label yet}); STR2307A112 t73 LeftMiddle was dropped whole. Along a trail, each measured edge is placed at its distance from the trail's root end.
+
+\namedsubsection{Direction bias}{subsec:direction_bias}
+
+For each video of a hyphal edge, the flow analysis assigns every moving kymograph pixel to a direction of travel from its local orientation, and sums the speeds of the pixels of each direction (the signal $F_{\mathrm{tip}}$ and $F_{\mathrm{root}}$). The two directions are oriented with the growth direction of the network, so that tip and root are defined by the growth graph. The direction bias of an edge in a video is
+\[
+  \mathrm{bias} = \frac{F_{\mathrm{tip}}}{F_{\mathrm{tip}} + F_{\mathrm{root}}},
+\]
+which is 0 when all the signal goes to the root, 0.5 when the two directions are balanced and 1 when all of it goes to the tip. The bias of a video is the median over its edges. Edges with too little directed signal to call a direction were left out: edges with a bias of exactly 0.5, edges with a signal in one direction only (0 or 1), and edges whose summed signal was below a fixed threshold. The same index was computed for the bright-field and for the Nile Red fluorescence videos (Fig.~\ref{fig:asymmetries}D). The index is based on the orientation of all moving pixels, and not on the detected streaks used for the speeds.
+
+\namedsubsection{Perturbations}{subsec:perturbations}
+
+\paragraph{Solute droplets} (SI \todo{SI salt-shock figure, no LaTeX label yet}). Achille Joliot placed a 5~$\mu$l droplet \todo{confirm $\mu$l; one of 10} of NaCl (50--200~mM), sucrose (5--50~mM) or growth medium at the base of the network, by the divider to the root compartment, while filming a hypha near the network's edge in bright-field (July 2025 and March 2026) or with Nile Red (July 2025). The July 2025 movies were recorded on an Andor iXon camera at 50$\times$ (0.32~$\mu$m per pixel), bright-field and Nile Red together through an image splitter \todo{confirm; this applies to the droplet movies only, the static-flow bright-field and Nile Red videos were recorded about 15~s apart}; the March 2026 movies on a Hamamatsu ORCA Flash behind a Nikon LPlan 20$\times$ objective (NA 0.3; 0.325~$\mu$m per pixel before binning), with frame rates taken from the timestamps. A rush is a smeared band of moving material rather than sharp tracks, so these movies were read by the kymograph's motion energy instead of streaks: in each 2~s window, stepped by 0.5~s, each position's mean is removed, the window is sheared at every trial speed up to $\pm$60~$\mu$m/s, and the energy of the time-averaged result peaks at the speed at which the pattern moves coherently. The two stream speeds are the energy ridges above 1~$\mu$m/s followed through time on either side. The droplet's time is the onset of the change, placed on the kymograph and refined on the traces (the first 0.5~s bin after which the mean speed along the motor direction stays more than 3 noise widths from its baseline for 2~s), then moved to the steepest rise of the to-root speed within 8~s of it where that rise is at least 1~$\mu$m/s per s. Each stream's response is its mean speed 4--15~s after the droplet over its mean 10 to 1~s before. The movies are not registered on the network, so the stream at motor speed is taken as the to-tip one. Every kymograph was inspected; 17 bright-field movies on 9 plates and 2 Nile Red movies were kept.
+
+\paragraph{Root cut.} A scalpel was pulled along the divider of LPD2412A022, separating the network from the root compartment, and one trail was filmed 5~min before and 5 and 30~min after the cut. As the three windows film mostly different positions, speeds are compared on the same 2~mm stretches of trail. Four videos whose analysis stopped after the kymograph, so that the registrator never placed them, are put on the trail by their stage position: a similarity transform from stage to network coordinates fitted on the registered videos of the same time window (the plate left the stage for the cut), and the nearest trail segment. Their streams are told apart by the direction rule above (\nameref{subsec:videos_on_network}, Direction). Held out one at a time, the registered videos are placed this way within a median 116~$\mu$m of their registered position, and the rule gives their registered direction on 39 of the 41 hyphae it decides, reversing none.
+
+\paragraph{Section cut.} Cuts round a patch of network isolated it from both its source and its sinks; 4 positions were filmed before and after, in bright-field and with Nile Red.
+
+\namedsubsection{The transport model}{subsec:transport_model}
+
+The model predicts the to-root speed on every edge of a session's graph from the network, its growth and the measured motor speed (\texttt{transport\_paper/compute\_funcs/backflow\_model.py}; step by step in SI \todo{SI model-steps figure, no LaTeX label yet}). Below, $D$ is the hyphal diameter of an edge, $L$ its length and $d$ its distance to the nearest growing tip.
+\begin{enumerate}
+  \item \textbf{Demand.} The hypha added over the next four frames is split into connected pieces. Each piece's volume per unit time, $\pi (D/2)^2 L / \Delta t$ summed over its edges, is shared between the session nodes it grows from, the growing tips. Growth needs $\lambda = 0.26$ volumes of lipid per volume grown (dry-mass fraction 0.21, carbon fraction 0.5, carbon-use efficiency 0.5, density 1.1~g\,cm$^{-3}$, over 0.9 \todo{confirm: lipid density}; \texttt{constants.py}).
+  \item \textbf{Routing.} Each tip's lipid demand is passed back up the growth graph to the roots, split between merging hyphae by cross-sectional area. The result is the lipid current $J$ on every edge.
+  \item \textbf{Motor speed.} Motors run the way each hypha grew, at
+  \[
+    v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
+  \]
+  with $v_\infty = 3.10~\mu$m/s, $v_{\mathrm{tip}} = 2.14~\mu$m/s, $\ell = 1.71$~mm, fitted to the measured to-tip speed (1,054 bright-field edges, 12 sessions; leave-one-session-out ranges 3.08--3.14, 2.08--2.16~$\mu$m/s and 1.44--1.92~mm). Refitted on all 15 sessions (1,495 edges) the fit gives 3.09~$\mu$m/s, 1.85~$\mu$m/s and 1.49~mm (leave-one-session-out 3.06--3.16, 1.74--1.95~$\mu$m/s and 1.34--1.81~mm), but predicts held-out sessions slightly worse (median $|\log$ error$|$ 0.096, against 0.093 for the constants above; \texttt{motor\_speed\_refit.py}), so the constants are kept.
+  \item \textbf{Motor annulus.} In a hypha of lumen radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v$, whose lipid share $\theta = 0.05$ carries $J$: $a^2 = b^2 - J/(\pi v \theta)$, with $a \geq 0.8\, b$.
+  \item \textbf{Motor stream.} The volume carried towards the tip is $q_s = \pi v \left[(1-\theta)(b^2 - a^2) + a^2\right]$: the annulus and the core dragged along at its edge.
+  \item \textbf{Backflow.} The volume returns by a pressure-driven flow in the cores. The pressure is solved on the graph with Poiseuille conductances $g = \pi r^4 / (8 \mu L)$ and the divergence of $q_s$ as sources. Every annotated root is tied to one common reservoir at zero pressure through a conductance equal to about 10~mm of core of radius 4~$\mu$m (\texttt{testing\_new\_model.g\_res}), so volume can pass between roots through the reservoir. The hyphal walls pass no water: volume enters and leaves the network only at the roots. The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (the growth demand routed through an edge is a median 5.2\% of its to-tip flux; SI \todo{SI section ``Volume and lipid budget'' not in the LaTeX SI yet}). At every junction the legs are paired by straightness into through-passes (a pair turning by less than 60\textdegree, directions taken 60~$\mu$m along each leg); flow straight through a pass is free, while flow that switches from one hypha to another crosses a resistance equal to 10~mm of core of radius 4~$\mu$m (\texttt{junction\_coupling.py}). The two limits of this coupling are the global solve~\cite{heaton_growth-induced_2010}, with no cost to switch, and the conveyor, in which every edge carries back its own motor stream.
+  \item \textbf{Read-out.} The backflow is what is measured: the distribution of to-root streak speeds on an edge, summarised by its median where one value is needed. The model's counterpart is the core flux over the area of the return lane, $|q_c| / (\pi r^2)$, with $r^2 = a^2 (11.64~\mu\mathrm{m} / D)^{0.7}$, at most $b^2$. The diameter exponent was fitted on 1,178 bright-field edges (held out 0.68). Runs on physical inputs alone drop it ($r = a$) and are marked where used.
+\end{enumerate}
+It is scored against that median. The variants in the supplement change one of these steps at a time. The force-balance motor model, in which the motors pull against the drag of their lane with a speed that falls with load, is specified in the supplement \todo{SI section ``Motors as a force'' not in the LaTeX SI yet}.
+
+\namedsubsection{Quantification and statistical analysis}{subsec:statistics}
+
+\paragraph{Units of analysis.} An edge is a junction-to-junction run of the session's graph with at least one registered video; a session is one plate at one frame; the five plates are the independent biological replicates. $n$ in the text and captions counts edges unless stated. Of 1,683 videos over 15 sessions, 1,404 were registered onto the graph (279 not, 126 of them on PNF2307A080 t81). They give 7,906 measurements, one per video, hypha and direction (4,400 in bright-field), of which 5,163 keep at least 5 moving streaks. Bright-field streaks give 1,600 edges with a to-root stream and 1,513 with both streams (\texttt{registration\_census.py}). \todo{recount the fluorescence measurements after the re-run at 5 frames}
+
+\paragraph{Scores.} With $m$ the modelled and $x$ the measured speed on an edge:
+\begin{itemize}
+  \item the median fold error, $\exp(\mathrm{median}\,|\ln(m/x)|)$, the typical factor by which a prediction is off in either direction;
+  \item within 2$\times$, the share of edges with $0.5 \leq m/x \leq 2$;
+  \item Spearman's $\rho$ between $m$ and $x$;
+  \item the log RMSE, the root-mean-square of $\ln(m/x)$, and the bias, its median;
+  \item the spread, the standard deviation of $\ln$ speed over edges, compared between model and measurement.
+\end{itemize}
+The baseline is a constant: the median measured speed of the other sessions, held out one session at a time.
+
+\paragraph{Held-out fits.} Every parameter fitted on the measured speeds is scored on data it was not fitted on: the tip slowing and the linear terms on the tree-edge residual leave one session out; the core floor and the force-balance motor parameters leave one plate out.
+
+\paragraph{Tests and intervals.} Groups are compared with two-sided Mann--Whitney U tests and Wilcoxon tests; intervals are 95\% bootstrap intervals, resampled over streaks or edges as stated. Analyses used Python 3.11 with NumPy, SciPy, pandas and NetworkX (key resources table); the script behind each number is named in the supplement next to it.
+
+% chapterbib (loaded by bioRxiv.cls) gives every \include'd file its own reference list,
+% so the Methods need their own; run bibtex on 05_Article_Methods as well.
+\subsection*{Methods references}
+\bibliographystyle{bxv_abbrvnat}
+\bibliography{PhD.bib}
