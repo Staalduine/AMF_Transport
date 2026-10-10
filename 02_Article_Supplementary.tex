@@ -94,6 +94,14 @@ The LPD2412A025 sessions (10--12 Jan 2025) are days 10--12 of Fig.~\ref{fig:hyph
 \label{fig:bc_selection}
 \end{figure}
 
+\namedsubsection{Tree-like edges and distance to the growing tips}{subsec:si_tree_tip}
+% NOTE (10 Oct): section text to be written by Simon; cited from the Fig 1A caption (inset). Facts (transport_paper master, Working_notebooks/manuscript_figures/fig1.py, bridge_share_by_tip(); recomputed 10 Oct):
+% NOTE (1, definition): an edge is tree-like when it is a bridge of the network graph (removing it disconnects the network; networkx bridges on the simple graph, degree-2 nodes dissolved), as in the model tables' `bridge` column; otherwise it lies on a loop. Methods, \nameref{subsec:dated_graph}, paragraph "Tree and loop edges", has the definition and a \todo for these bins.
+% NOTE (2, edges): the filmed edges of the main model tables, 15 sessions (loop_density_curve.prepare_edges): 1,590 edges, 1,579 with a tip distance; tip distance = network distance to the nearest growing tip (d_tip, model_accuracy/features_edges.csv).
+% NOTE (3, numbers, bins by tip distance in mm, n edges / % tree-like): <1: 86 / 39.5 %; 1-2: 201 / 20.4 %; 2-4: 438 / 10.5 %; 4-8: 568 / 10.7 %; >8: 286 / 14.3 % (main text: 40 % within 1 mm vs 11-14 % beyond 2 mm).
+% NOTE (4, context): over all edges of the same networks 36 % are tree-like vs 15 % of the filmed edges (\nameref{subsec:si_video_selection}), so the filmed set under-samples tree-like edges.
+% NOTE (5, open): a figure (share by tip distance, filmed vs all edges) if wanted; per-session spread.
+
 \namedsubsection{Movement at the growing tips}{subsec:si_tips}
 % NOTE (10 Oct): section text to be written by Simon; to be filled with more data later (Simon: does not lead to many conclusions yet). Sources: transport_paper explore/tip-diffusion (f4a8ba7, 37c25b3), manuscript/tip_diffusion_sketch.md; AMF_Transport#5; transport_paper#132 Q1.
 % NOTE (1, streaks vs tip distance, bright-field, 654,711 streaks, 15 sessions): median to-tip streak duration 1.20 s within 0.5 mm of a tip vs 1.40-1.45 s beyond 1 mm; length 2.6 vs 4.2-4.5 um (shorter because slower, not shorter-lived). Per kymograph: median 38 moving streaks within 0.5 mm vs 118-149 beyond 2 mm; no moving streak in 20 % of kymographs within 1 mm vs 5-8 % beyond; static share of streaks 0.31 vs 0.02-0.04. Structure-tensor coherence flat (0.74-0.79). Many near-tip kymographs look clean but low-SNR (Simon). Caveats: detector minimum 15 frames (0.75 s) censors short or irregular movement; tip edges are short and counts are not length-normalised; streaks pooled without bootstrap.
