@@ -104,8 +104,8 @@ We chose runner hyphae, the main routes to the root and the edges of high betwee
 
 In undisturbed hyphae \textcolor{red}{(SI section on lid-on lid-off paradigms)}, the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}D).
 Over the field of view, directed movement exceeds diffusion by more than two orders of magnitude, so the slope of a streak is its speed.
-Each streak gives one speed, and each kymograph was reduced to a set of to-tip and to-root speeds (SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
 % NOTE (6 Oct, answers Coco's 'why is there little diffusive movement?'): Peclet estimate, order of magnitude only. Assumed: lipid droplet 0.5 um diameter, cytoplasm viscosity 10x water (0.01 Pa s), T 295 K: D = kT/(6 pi eta r) = 0.09 um^2/s; over a 10 s kymograph sqrt(2Dt) = 1.3 um against 30 um at 3 um/s; Pe = vL/D with L = 10 um = 350. Check the droplet size and viscosity before submission. Weaker near the tips (Fig 1D kymograph 4): issue #5.
+Each streak gives one speed, and each kymograph was reduced to a set of to-tip and to-root speeds (SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
 In the histogram of the extracted speeds of a video, the to-tip speeds (positive) and the to-root speeds (negative) each form a peak.
 We took the median of each of the two groups as the speed of that direction in that video (Fig.~\ref{fig:hyphal_profiling}E). 
 Speeds to tip slow down close to the tip, but stay close to 3~$\mu m / s$ further away (Fig.~\ref{fig:hyphal_profiling}E).
@@ -162,12 +162,12 @@ In the past, pressure gradients and molecular motors have been suggested to be p
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
 This experiment has been done in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
 Following a similar approach, we added a drop of dissolved NaCl solution (100 to 400 mOsm) (Methods, \nameref{subsec:perturbations}) to the base of the network a few centimeters behind the growing front and imaged near the growth edge (Fig.~\ref{fig:perturbations}A).
+% NOTE (2 Oct, NaCl concentration): droplet series = 14 solute droplets at 100-400 mOsm (mostly NaCl; example movie NaCl 100 mM; one sucrose 50 mOsm) + 3 medium-like controls (transport_paper salt_shock_relax.py, Fig S salt shock). Give the range or the one shown.
 We expected that this would create a low turgor pressure within the hyphae at the location of the drop, shifting the pressure gradient within the network, and therefore changing flows internal to the hyphae.
 We observed that the flow speed in the tip direction was almost unaffected by the addition of the salt solution  (Fig.~\ref{fig:perturbations}A);  fluorescence imaging of the lipids showed that their movement in the tip direction was also unaffected (SI Fig.~\ref{fig:salt_shock}D).
 By contrast, the flow speed in the root direction was approximately raised to 3.5x and relaxed within a minute.
 Control drops had no effect, medium-like drops resulted in light hypo-osmotic shocks. 
 % NOTE (10 Oct, osmotic shock, recomputed from transport_paper figure3/salt_shock_me.load and salt_shock_relax.csv): to-root speed 4-15 s after the drop / before: median 3.18x (range 0.42-6.35, n 14 solute droplets); at the peak 4.51x (0.88-10.9); '3.5x' sits between, say which. To tip 0.94x (0.77-1.15). Relaxation: exponential fit on 10 droplets, median tau 11 s (IQR 7-29, range 1-78 s): 'within a minute' holds for most, not the slowest. Nile Red (2 movies, NaCl 100 mM): to-tip lipids unaffected (0.94x, 1.00x) as stated, but to-root lipids also rise (2.65x, 2.78x): stained cargo is carried in the pressure-driven rush (n 2). 'Control drops had no effect, medium-like drops resulted in light hypo-osmotic shocks': the 3 controls ARE the medium-like drops; their to-root speed went to 0.71x (0.21-1.05), to tip 1.00x.
-% NOTE (2 Oct, NaCl concentration): droplet series = 14 solute droplets at 100-400 mOsm (mostly NaCl; example movie NaCl 100 mM; one sucrose 50 mOsm) + 3 medium-like controls (transport_paper salt_shock_relax.py, Fig S salt shock). Give the range or the one shown.
 
 The difference in flow behavior both within an edge, and along an edge with distance to tip, suggests that each direction could be associated with a different mechanism.
 Past work proposed that plant host transpiration could be the driving force explaining the flow of resources towards the root~\cite{kikuchi_aquaporin-mediated_2016}.
@@ -195,11 +195,11 @@ In summary, we observed that:
 (1) movement in the tip direction was strongly associated with lipid movement (Fig.~\ref{fig:asymmetries}D); 
 (2) the associated speed is narrowly concentrated around $\sim 3 ~\mu m/s$ (Fig. \ref{fig:asymmetries}A), a value compatible with the range for molecular motors~\cite{steinberg_cell_2017}; 
 (3) {\color{blue} i think the text here is a little awkward:} these findings are only weakly affected by temporal and spatial variations (Fig.~\ref{fig:hyphal_profiling}E) and by physical perturbations (Fig.~\ref{fig:perturbations}); 
+% NOTE (8 Oct, points (2) and (3), to-tip speed vs diameter; transport_paper#132 comment 6056041406, model issue #134): the measured to-tip speed rises with U-Net lumen diameter, log-log slope 0.47 [0.39, 0.55] (bright-field streaks, 874 edges, rho 0.49), 0.60 (bright-field pixels), 0.56 [0.40, 0.72] (Nile Red 2 fps pixels, 334 edges, rho 0.47, videos independent of the diameter). Bright-field streak medians by diameter (<=6 / 6-8 / 8-10 / 10-12 / >12 um): 1.90 / 2.31 / 2.90 / 3.08 / 3.14 um/s. Tip distance does not explain it (partial rho 0.43-0.53). So part of the to-tip spread is diameter, against 'narrowly concentrated' and 'only weakly affected by spatial variation'. Caveats: lumen on 58 % (BF) / 43 % (FL) of edges; store widths give a much weaker result (rho 0.09-0.30).
 (4) moving lipids took the form of lipid droplets that followed intracellular tracks. 
 All of the above strongly suggest that molecular motors moving on micro-tubules pulling lipid droplets across the network could be the mechanism responsible for one of the two flow directions.
 In the other direction, the experiments with osmotic perturbations show that pressure gradients could be driving flows (Fig.~\ref{fig:perturbations}A).
 However, those gradients do not require long range pressure sinks and sources to be maintained (Fig.~\ref{fig:perturbations}C) suggesting that every smaller element of the network is able to operate with similar characteristics.
-% NOTE (8 Oct, points (2) and (3), to-tip speed vs diameter; transport_paper#132 comment 6056041406, model issue #134): the measured to-tip speed rises with U-Net lumen diameter, log-log slope 0.47 [0.39, 0.55] (bright-field streaks, 874 edges, rho 0.49), 0.60 (bright-field pixels), 0.56 [0.40, 0.72] (Nile Red 2 fps pixels, 334 edges, rho 0.47, videos independent of the diameter). Bright-field streak medians by diameter (<=6 / 6-8 / 8-10 / 10-12 / >12 um): 1.90 / 2.31 / 2.90 / 3.08 / 3.14 um/s. Tip distance does not explain it (partial rho 0.43-0.53). So part of the to-tip spread is diameter, against 'narrowly concentrated' and 'only weakly affected by spatial variation'. Caveats: lumen on 58 % (BF) / 43 % (FL) of edges; store widths give a much weaker result (rho 0.09-0.30).
 
 % NOTE (5 Oct, Overleaf comments, L89): Simon: Good moment to discuss molecular-motor plausibility from the literature.
 % NOTE (7 Oct, motor literature, full texts checked; transport_paper/manuscript/literature_motors_fulltext_review.md sections 1-2): already in PhD.bib: bago_translocation_2002 (lipid bodies move both ways, mostly with the stream; up to 4 um/s in G. intraradices, 8-11 um/s in Gi. margarita; microtubule role proposed, never tested), uetake_extensive_2002 (particles incl. lipid bodies up to ~5 um/s along unlabelled thread-like tracks), timonen_microtubules_2001 (longitudinal MT bundles, fixed cells only), steinberg_cell_2017 (fungal early endosomes ~2 um/s; Neurospora kinesin cargo 2.1-3.8 um/s). Not in the bib: Astrom 1994 (MTs to the extreme tip, fixed cells), Zhang 2014 (A. nidulans EEs 1.65 um/s), Guimaraes 2015 / Lin 2016 (Ustilago lipid droplets hitchhike on EEs, but only 4-7 % in directed runs of ~5 um), Cargill 2025 and Kokkoris 2026 (mechanism in AMF open). Net: 3 um/s sits at the top of the fungal motor range; no fungal paper shows a mm-long tip-ward lipid stream or maps MT polarity over mm. Not checked whether this is Sander's list.
@@ -256,11 +256,11 @@ This hypothesis is further motivated by the qualitative observation that the mov
 Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
 To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
 We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
+% NOTE (2 Oct, 'why mm?'): means 'over 10 mm', and yes, the lipid volume fraction theta. Old analysis; the current measurement is the moving lipid share, 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94).
 The decrease away from the tip was due to a decrease in flux, which itself was due to the multiplication of alternative paths towards the root when moving closer to it.
 Similar spatial variation on similar length scales has previously been established in \emph{R. irregularis} \cite{bago_carbon_2000}.
 However, in that earlier research the magnitude of the maximum volume fraction was estimated to be $\sim$ 20\%. 
 % NOTE (5 Oct, Overleaf comments, L113): Simon: Replace with the explanation from Filipe's document. | Simon: 'Will put into supplementary figure.' | Coco: 'I think this belongs to discussion.'
-% NOTE (2 Oct, 'why mm?'): means 'over 10 mm', and yes, the lipid volume fraction theta. Old analysis; the current measurement is the moving lipid share, 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94).
 % NOTE (7 Oct, Bago value and key): '~20 %' cites bago_carbon_2000, a review (Plant Physiol 124). The measurement is in bago_translocation_2002 (Plant Physiol 128, Fig. 3): ~24 % of hyphal volume near the root, 0.5 % at the front; the intro (L37) now uses that key and value, so the two disagree. Also: '4 %' here vs '5 %' at the start of L148.
 
 % If carbon movement was only driven by diffusion, its average speed would be of the order of $v_{diff} = \frac{\lambda_{diff}}{L}$ with $\lambda_{diff}$ the diffusion coefficient of carbon in the cytoplasm and $L$ a typical length for the network. Using an upper bound $\lambda_{diff}=10^{-5}cm^2/s$ corresponding to diffusion of small ions and using the typical centimeter scale of the longest hyphae $L = 1cm$, we obtain $v_{diff}=0.1um/s$. Such low speed together with the observed growth would result in lipid volume fraction $\frac{\phi_{i,j}}{v_{diff}\pi R_{i,j}^2}$ larger than 100\% which is physically impossible.
@@ -360,8 +360,8 @@ Could it explain the observed variation of speed in space and time?
 When establishing the speed profile through the pipe, we were also able to derive the pressure gradient along the idealised hyphal pipe.
 For a pipe of length $L$ the expression for the pressure drop was analogous to an electrical voltage drop where a voltage generator and a resistor would be put in parallel (Methods).
 Because fluid movement happens at low Reynolds numbers in our system and the entrance length in each individual hyphal pipe is close to its diameter, the approximation of an infinite length cylinder we used to derive flow profile in a single pipe is still justified in the network context.
-A network of connected pipes is then analogous to a network of these individual circuit elements.
 % NOTE (7 Oct, entrance length): holds. At Re << 1 the entrance length is ~0.6 D; with v ~5 um/s, D ~5 um and water viscosity Re ~2.5e-5.
+A network of connected pipes is then analogous to a network of these individual circuit elements.
 
 Such an electrical circuit equivalent of the network can be solved with linear algebra using Kirchhoff's law at each intersection, and requiring that the sum of pressure drops around loops in the network be zero (Methods).
 As in the case of growth induced mass flow discussed above in \nameref{subsec:lipid_flow}, we set the sink magnitude at each node to correspond to newly created volume $\Delta V_k$ and added a global source node.
@@ -370,17 +370,17 @@ Tree networks aggregate backflow into their central trunk,   increasing flow rat
 This increase in flow rate can increase backflow speeds, if not modulated by a greater flow capacity, which can be done by increasing the diameter (Figure \ref{fig:schematic_model}E, I).
 One feature this model also predicts is circularity in added loops, specifically if these have a width imbalance.
 The pressure difference that has to be serviced by both makes the wide arm flow faster, and the narrow arm far slower than in just a single edge.
+% NOTE (7 Oct, terminology): 'width imbalance', 'wide arm', 'narrow arm' here, and 'Width has a calming effect' in the Fig 4 caption (E, I): diameter wording per the width rule.
 While this increases energy overall in the network, these induced circularities likely facilitate the distribution of nutrients in the backflow throughout the network (Figure \ref{fig:schematic_model}F, J).
 Finally, anastomoses can reduce the load on a tree-like network by routing backflow through multiple edges.
 This way, pressure differences in tree-like sections get reduced, and backflow nutrients can be accessed by more parts of the network.
-% NOTE (7 Oct, terminology): 'width imbalance', 'wide arm', 'narrow arm' here, and 'Width has a calming effect' in the Fig 4 caption (E, I): diameter wording per the width rule.
 
 This allowed us to predict on each edge what the net volumetric rate of fluid movement $q^w$ would be and then the direction and magnitude of the flow speed in the inner tube of each edge of the network (Fig \ref{fig:fig5_plug}).
 We found that our model captures salient features of the bidirectionality of flow observed across all edges.
 The speed was higher in those central hyphae where the lipid density was also higher, which was explained by the larger proportion of the volume of the pipe occupied by the lipid suspension moving in $v_0$ and dragging water with it (\ref{eq:max_speed}).
 In tree-like parts of the network, the net volumetric flow of water through the whole pipe $q^w$ is close to zero because the amplitude of growth induced mass flow is negligible (Fig. \ref{fig:carbonflow}d,e).
-Then, the movement of water in and around the suspension of lipid droplets can only be compensated for by faster speeds in the opposite direction in the inner pipe.
 % NOTE (7 Oct, SI references): Fig. carbonflow f (L174) and d,e (here) are among the wrong SI files (FigS2-S5, transport_paper#129); no figure behind these claims until replaced.
+Then, the movement of water in and around the suspension of lipid droplets can only be compensated for by faster speeds in the opposite direction in the inner pipe.
 
 \subsection*{Lipid generated backflow}
 % \begin{figure}
@@ -470,6 +470,9 @@ Full control would probably require an additional ingredient of radial shrinkage
 
 In our model, we assumed that water could not flow out of the hyphae except at the hyphal-root interface.
 However, it is likely that the ERM hyphae are covered with aquaporins that let water in and out.
+% NOTE (5 Oct, Overleaf comments, L201): Simon: 'Maybe even not': AMF lacks genes associated with passive water-exchange hydroporins.
+% NOTE (7 Oct, aquaporins): R. irregularis (then G. intraradices) has two functional aquaporins, GintAQPF1 and GintAQPF2 (Li et al. 2013, New Phytol 197:617-630, doi:10.1111/nph.12011): expressed in yeast they speed the volume response to osmotic shock. Found by web search, full text not read; not in PhD.bib.
+% NOTE (7 Oct): now in PhD.bib as li_first_2013.
 In that case any kind of water potential gradient between the inside and outside of the hyphae could produce influx or outflux of water at any point of the network.
 The resulting system would be analogous to the xylem-phloem system of plants.
 In that case, the sugar loaded phloem generates an influx of water from the xylem.
@@ -480,9 +483,6 @@ Regardless of the contribution of other mechanisms, our results strongly suggest
 And such backflows must be playing a significant role in the full picture of AM fungal flows.
 The framework developed here can also be flexibly expanded to include the effect of other kinds of carbon demand, such as spore growth or hyphal maintenance.
 By adding current generators at different places in the network to represent the influx or outflow of water due to water potential mediated flow of water through aquaporin, it is also possible to account for additional transport mechanisms.
-% NOTE (5 Oct, Overleaf comments, L201): Simon: 'Maybe even not': AMF lacks genes associated with passive water-exchange hydroporins.
-% NOTE (7 Oct, aquaporins): R. irregularis (then G. intraradices) has two functional aquaporins, GintAQPF1 and GintAQPF2 (Li et al. 2013, New Phytol 197:617-630, doi:10.1111/nph.12011): expressed in yeast they speed the volume response to osmotic shock. Found by web search, full text not read; not in PhD.bib.
-% NOTE (7 Oct): now in PhD.bib as li_first_2013.
 
 \section*{Bibliography}
 \bibliographystyle{bxv_abbrvnat}
