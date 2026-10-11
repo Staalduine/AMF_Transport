@@ -75,6 +75,12 @@ Additionally, a small number of perturbation experiments were performed to chara
 From these data and findings, we construct a minimal model that explains the observed bidirectional transport of resources in the colony and its modulation over space and time.
 
 \section*{Results}
+% NOTE (11 Oct, structure): overview of the main text by the question each part asks (no prose; Simon to restructure).
+%   Intro L67 asks: what mechanisms explain the bidirectional transport and its modulation over space and time? Intro L49 also raises C/P proportionality.
+%   Now: (1) speeds vs topology, cargo (Figs 1-2) -> (2) mechanisms excluded + perturbations (Fig 3) -> hypothesis (L190) -> (3) 'Lipid transport across the network' re-tests growth-induced mass flow with the old dissipation model (L203-246) -> lipid fraction (L248) -> emulsion (L291) -> single-pipe model (L301) -> isolated pipe = section cut again (L333) -> network model (L349) -> model vs data (L376-412) -> C/P (commented out, L414-418) -> Discussion.
+%   Duplicated arguments: mass flow excluded at L161 and again at L203-246; motor-speed argument at L194-197 and L241-246; section cut at L183-189 and L333-347 (the second contradicts Fig 3C); diffusion at L106 and L160.
+%   Proposed order by question: (R1) what do the flows look like? asymmetric bidirectional, topology, cargo (Figs 1-2). (R2) what drives each direction? exclusions -> osmotic, root cut, section cut -> hypothesis (Fig 3). (R3) if motors carry a lipid condensate, what return flow follows? single pipe (Fig 4A-C) with the isolated segment as its test (both streams continue, ~a fifth slower), then the network version: global pressure solve with growth as sink, lipid fraction as parameter (Fig 4D-K). (R4) does the network model explain measured speeds in space and time? (Fig 5, Fig 6 if kept). Discussion: C/P on motor-carried carbon (answers Intro L49), track organisation, what the model leaves out (aquaporins, osmotic pumping), other organisms (Guest & Dawson).
+%   The Heaton test (L203-246) would shrink to two sentences in R2 plus Methods/SI; the growth -> carbon demand calculation stays as model input in R3.
 \subsection*{Asymmetric bidirectional speeds}
 Fungal networks grow through the extension of fungal tips away from the root of the host plant.
 Over time, these elongated hyphae develop into a branched mycelial structure.
@@ -137,6 +143,7 @@ For each video we computed the share of the moving signal that travels towards t
 Together, these results show that lipids generally move in the direction of the tips (Fig.~\ref{fig:asymmetries}D): we found a median direction bias of 0.71 towards the tips, with 84\% of edges having lipids with a to-tip direction bias, against roughly even for brightfield in both metrics. 
 
 \subsection*{Perturbations show that cytoplasmic flow toward the root is pressure driven while lipids are likely translocated along pressure-insensitive steady flows.}
+% NOTE (11 Oct, structure): this heading states the old conclusion ('lipids likely translocated along pressure-insensitive steady flows'); after the rewrite of the hypothesis section it should match R2 (what drives each direction?). Heading styles are mixed in Results (\subsection*, \subsection, \namedsubsection).
 \begin{figure} 
 \centering
 \includegraphics[width=\textwidth]{figures/Figure_3_v3.pdf} 
@@ -159,6 +166,7 @@ In the past, pressure gradients and molecular motors have been suggested to be p
 It is also important to discuss other potential mechanisms that could drive flows in fungal hyphae, and to evaluate whether our data support or contradict each of them. 
 Diffusion as a mechanism could be present close to the tips, as that is where we observe the most random movement of particles (Fig.~\ref{fig:hyphal_profiling}D4), but the directed, unbroken flow in the rest of the network is not consistent with diffusion alone. 
 Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_2010,lew_mass_2005,lew_how_2011}, is also unlikely to be the main driver of flows in our system, as it cannot explain the presence of two opposing streams at similar speeds in the same hypha. 
+% NOTE (11 Oct, structure): mass flow is excluded here and tested again at length in 'Lipid transport across the network' (L203-246); keep one (here, R2), move the Heaton test to Methods/SI.
 Peristaltic streaming has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}). 
 
 The difference in flow behavior both within an edge, and along an edge with distance to tip, suggests that each direction could be associated with a different mechanism.
@@ -181,6 +189,7 @@ A connection to the root is therefore not needed for either flow, which rules ou
 How far a driving force can reach is a separate question, and we asked it by shrinking the connected network further.
 
 To further hone down on the range of a potential driving force, we wanted to know what the minimal size of the subgraph was that was necessary to conserve flows in the two directions.
+% NOTE (11 Oct, structure): the section cut is described here (R2) and again at L333-347 as the single-pipe test (R3); keep the data once, refer to it from R3.
 We made targeted cuts to isolate small segments from the network and image flows at sufficient distance from the cut induced stress (Fig.~\ref{fig:perturbations}C).
 In patches of network as small as only a few millimeters in total length, we still observed flows in the two directions (Fig.~\ref{fig:perturbations}C).
 We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\%, but flow never stopped (Fig.~\ref{fig:perturbations}C).
@@ -201,6 +210,7 @@ The flows towards the root are also more variable in speed.
 This suggests that the mechanism driving these flows is different from the mechanism driving the to-tip flows, and is likely pressure driven.
 
 \namedsubsection{Lipid transport across the network}{subsec:lipid_flow}
+% NOTE (11 Oct, structure): this block (to ~L260) is the pre-30 Sep model (hydraulic dissipation minimisation, wrong SI figures, transport_paper#129) and re-asks R2 questions after the hypothesis; candidates: Heaton test -> R2/SI, growth -> carbon demand -> R3 model input, lipid fraction (L248-260) -> R3 parameter.
 Although the above results elucidate the mechanism for lipid translocation across the network, they do not provide a predictive framework for how lipid flux is distributed.
 In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
 We wanted to characterize more precisely how the growth of different tips could collectively contribute to overall lipid flow patterns. 
@@ -239,6 +249,7 @@ Indeed, the fluid flow always follows the pressure gradient and therefore cannot
 % NOTE (7 Oct): Fig. SI carbonflow (d, e) is one of the wrong SI files (FigS2-S5, transport_paper#129), so the speed claim here and the peaked-distribution claim at L122 have no figure behind them until it is replaced.
 
 Finally, as shown in Fig. \ref{fig:hyphal_profiling}F,G and \ref{fig:asymmetries}A, the flow speed in the modeled and observed direction of the lipid flux narrowly peaks around the value $v_0 = 3\mu m/s$.
+% NOTE (11 Oct, structure): repeats the motor-speed argument of the hypothesis section (L194-197); keep one.
 In addition to not being able to predict a speed of the right order of magnitude, the growth induced mass flow model does not yield such a peaked distribution (Fig. SI\ref{fig:carbonflow}e).
 The peaked distribution instead strongly suggests that the movement of lipids within the AM fungal colony is an active process driven by the movement of molecular motors on tracks walking at fixed speed.
 In fact, the speed of known molecular motors can typically be in the range $2-6\mu m/s$ for the faster ones \cite{howard_mechanics_2002}.
@@ -418,6 +429,7 @@ Because the movement of lipids generates fluid flow in the reverse direction, th
  % We wanted to know whether the lipid movement induced backflow could explain the proportionality of resource exchange. We assumed that the concentration of phosphorus in the water of the inner tube was constant and that the input carbon flux varied. We found that, under this assumption, the carbon flux from the plant and the phosphorous flux from the fungal colony were maintained proportionally (Fig. \ref{fig:hydraulic_proportionality}b). To obtain a proportionality factor of $1/3$ $\mu g$P / $\mu g$C, as previously found (see Chapter \ref{chapt2}), we had to set the concentration of P to $\approx 1.9 mol/L$ which is much higher than the concentration typical found in plant cells of 5-20$mmol/L$ \cite{bieleski_phosphate_1973}.
 
 \section*{Discussion}
+% NOTE (11 Oct, structure): the Discussion lacks the C/P point the Intro sets up (L49; notes at the C/P paragraph below); the fluorescence detection-limit paragraph (pixel speeds 8-9 um/s) reads as Methods/SI; most of the rest is speculation (track orientation, supply-driven growth, aquaporins), which could be tightened around what the model leaves out.
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
 They also strongly support the idea that this movement of lipids could be actively driven by molecular motors moving in one direction on polar cytoskeletal filaments.
 This network of filaments inside the fungal network is mathematically equivalent to a weighted oriented graph, where the weight of a given edge can represent the number of cytoskeletal filaments, allowing molecular motor movement.
