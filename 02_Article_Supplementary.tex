@@ -209,6 +209,23 @@ In fact, the speed of known molecular motors can typically be in the range $2-6\
 This hypothesis is further motivated by the qualitative observation that the movement of lipids in the colony follows well established tracks. 
 % NOTE (5 Oct, Overleaf comments, L111): Coco: Find a shorter way to discard the Heaton model, or refer to SI; too long for an uninformed reader.
 
+\namedsubsection{Lipid volume fraction needed for growth}{subsec:si_lipid_fraction}
+% NOTE (12 Oct): moved from the main text (Results, after the mass-flow test) as it stood, outline headings dropped (Simon: not central to the paper; mention in the Discussion). Its lipid fluxes come from the dissipation-minimisation model of the section above (subsec:si_mass_flow), so it reads after that one; the numbers are from the old analysis (see the notes).
+Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
+To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
+We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
+% NOTE (12 Oct): numbers to reconcile: '4 %' here, '5 %' at the emulsion paragraph, theta 0.05 in Fig 4 E-H, measured moving lipid share 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94). The next sentence says 'decrease away from the tip', against 'increased' here.
+% NOTE (2 Oct, 'why mm?'): means 'over 10 mm', and yes, the lipid volume fraction theta. Old analysis; the current measurement is the moving lipid share, 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94).
+The decrease away from the tip was due to a decrease in flux, which itself was due to the multiplication of alternative paths towards the root when moving closer to it.
+Similar spatial variation on similar length scales has previously been established in \emph{R. irregularis} \cite{bago_carbon_2000}.
+However, in that earlier research the magnitude of the maximum volume fraction was estimated to be $\sim$ 20\%. 
+% NOTE (5 Oct, Overleaf comments, L113): Simon: Replace with the explanation from Filipe's document. | Simon: 'Will put into supplementary figure.' | Coco: 'I think this belongs to discussion.'
+% NOTE (7 Oct, Bago value and key): '~20 %' cites bago_carbon_2000, a review (Plant Physiol 124). The measurement is in bago_translocation_2002 (Plant Physiol 128, Fig. 3): ~24 % of hyphal volume near the root, 0.5 % at the front; the intro (L37) now uses that key and value, so the two disagree. Also: '4 %' here vs '5 %' at the start of L148.
+
+% If carbon movement was only driven by diffusion, its average speed would be of the order of $v_{diff} = \frac{\lambda_{diff}}{L}$ with $\lambda_{diff}$ the diffusion coefficient of carbon in the cytoplasm and $L$ a typical length for the network. Using an upper bound $\lambda_{diff}=10^{-5}cm^2/s$ corresponding to diffusion of small ions and using the typical centimeter scale of the longest hyphae $L = 1cm$, we obtain $v_{diff}=0.1um/s$. Such low speed together with the observed growth would result in lipid volume fraction $\frac{\phi_{i,j}}{v_{diff}\pi R_{i,j}^2}$ larger than 100\% which is physically impossible.
+
+This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
+
 \namedsubsection{Splitting the lipid demand between merging hyphae}{subsec:si_demand_split}
 % NOTE (12 Oct): section text to be written by Simon; cited from the Methods (transport model, demand split). Purpose (Simon): show that the choice of split rule does not matter here, so the main model uses the simplest (even).
 % NOTE (1, set-up): main model (weakly coupled return, junction 10 mm, motors along the growth graph, a >= 0.8 b, theta 0.05, no return-width exponent), 15 sessions, scored against the bright-field to-root speed (224 tree edges, 1,366 loop edges). A tip's demand passes back up the growth graph; where hyphae merge it is divided by conductance b^4/L of each parent hypha, by area b^2, or equally. Tree edges have one path, so the rule cannot act there.

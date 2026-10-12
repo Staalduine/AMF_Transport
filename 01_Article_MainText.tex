@@ -230,7 +230,11 @@ The flows towards the root are also more variable in speed.
 This suggests that the mechanism driving these flows is different from the mechanism driving the to-tip flows, and is likely pressure driven.
 
 % NOTE (12 Oct, transition hypothesis -> minimal model; facts for Simon's text): the hypothesis leaves one question open: what sets the pressure gradient behind the to-root flow? Not the plant (root cut: both flows continue, to-root lower and flatter) and not long-range connectivity (isolated segments of a few mm: both flows continue, about a fifth slower; Fig 3C). The osmotic shock shows the to-root flow follows pressure (x3.5, relaxing within a minute). Candidate bridge: in an aseptate hypha the motor-carried lipid condensate moves volume toward the tip, so with no net outflow the same volume has to return, which needs a local pressure gradient: a source of to-root flow inside every hypha, consistent with all three perturbations. That is the single-pipe model (Fig 4A-C, the emulsion/condensate paragraph and the u(r) paragraph below); the isolated segment is its direct test; the network version then needs the growth demand (now in SI, subsec:si_mass_flow) and how motor streams divide at junctions (the 'ambiguous in a looped network' paragraph, which fits after the single pipe rather than before it). Order this would give: hypothesis -> open question -> lipid condensate -> single pipe (Fig 4A-C) -> isolated segment -> network (Fig 4D-G).
-\namedsubsection{Lipid transport across the network}{subsec:lipid_flow}
+\namedsubsection{Coupled circulation driven by motors}{subsec:model}
+We synthesize the above results into a minimal model that explains the observed bidirectional transport of resources in the network and its modulation over space and time. Namely that a motor-driven condensate containing lipids moves towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC). This model is consistent with the observed flows in both directions, and with the perturbation experiments that we performed.
+
+
+
 % NOTE (11 Oct, structure): this block (to ~L260) is the pre-30 Sep model (hydraulic dissipation minimisation, wrong SI figures, transport_paper#129) and re-asks R2 questions after the hypothesis; candidates: Heaton test -> R2/SI, growth -> carbon demand -> R3 model input, lipid fraction (L248-260) -> R3 parameter.
 % NOTE (12 Oct, Fig 4 v2 review): this block (to the 'Fast active transport' paragraph) describes none of the new Fig 4; the Fig 4 text starts at the emulsion paragraph. Its model (dissipation minimisation, theta from growth, ~4 %) is not the model of Fig 4 E-H (weakly coupled backflow, demand split by hyphal area, theta 0.05, a >= 0.8 b, backflow ~ diameter^0.7), which no paragraph introduces yet. What R3 needs from here: growth -> Delta V_k -> Delta C_k with a root source node (model input; Fig 4C shows tip growth only schematically) and the lipid fraction as a parameter. Proposed R3 order: growth sets demand (L250-257 without the dissipation part) -> lipid fraction (current numbers) -> emulsion -> single pipe (Fig 4A-C) -> network (Fig 4D-H); dissipation minimisation to the mass-flow verdict -> SI/Methods.
 % NOTE (12 Oct): Howard's comments are still in the compiled text as {\color{blue} ...} in this block (7 places, 'similar', 'biovolume', 'Delta C_k propto Delta V_k', 'resistances', 'rate of energy consumption', 'model referred to twice', 'why mm?'); the 'Delta C_k' one wraps a NOTE and the following sentences up to 'These are modeled as lipid effluxes'.
@@ -241,23 +245,7 @@ We wanted to characterize more precisely how the growth of different tips could 
 
 % NOTE (12 Oct): the growth-induced mass flow test (dissipation minimisation, Heaton) moved to the SI (Simon), section 'Growth-induced mass flow' (subsec:si_mass_flow); the growth -> Delta V_k -> Delta C_k set-up with the root source node went with it and is also the minimal model's input.
 
-\subsubsection*{Lipid volume fraction needed for growth}
-\paragraph*{At 3~$\mu m/s$, growth needs a lipid fraction rising to about 4\,\% away from the tip}
-Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
-To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
-We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
-% NOTE (12 Oct): numbers to reconcile: '4 %' here, '5 %' at the emulsion paragraph, theta 0.05 in Fig 4 E-H, measured moving lipid share 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94). The next sentence says 'decrease away from the tip', against 'increased' here.
-% NOTE (2 Oct, 'why mm?'): means 'over 10 mm', and yes, the lipid volume fraction theta. Old analysis; the current measurement is the moving lipid share, 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94).
-The decrease away from the tip was due to a decrease in flux, which itself was due to the multiplication of alternative paths towards the root when moving closer to it.
-Similar spatial variation on similar length scales has previously been established in \emph{R. irregularis} \cite{bago_carbon_2000}.
-However, in that earlier research the magnitude of the maximum volume fraction was estimated to be $\sim$ 20\%. 
-% NOTE (5 Oct, Overleaf comments, L113): Simon: Replace with the explanation from Filipe's document. | Simon: 'Will put into supplementary figure.' | Coco: 'I think this belongs to discussion.'
-% NOTE (7 Oct, Bago value and key): '~20 %' cites bago_carbon_2000, a review (Plant Physiol 124). The measurement is in bago_translocation_2002 (Plant Physiol 128, Fig. 3): ~24 % of hyphal volume near the root, 0.5 % at the front; the intro (L37) now uses that key and value, so the two disagree. Also: '4 %' here vs '5 %' at the start of L148.
-
-% If carbon movement was only driven by diffusion, its average speed would be of the order of $v_{diff} = \frac{\lambda_{diff}}{L}$ with $\lambda_{diff}$ the diffusion coefficient of carbon in the cytoplasm and $L$ a typical length for the network. Using an upper bound $\lambda_{diff}=10^{-5}cm^2/s$ corresponding to diffusion of small ions and using the typical centimeter scale of the longest hyphae $L = 1cm$, we obtain $v_{diff}=0.1um/s$. Such low speed together with the observed growth would result in lipid volume fraction $\frac{\phi_{i,j}}{v_{diff}\pi R_{i,j}^2}$ larger than 100\% which is physically impossible.
-
-\paragraph*{Fast active transport avoids overloading the hyphae}
-This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
+% NOTE (12 Oct): the lipid volume fraction needed for growth (Theta at v0 = 3 um/s, rising to ~4 % away from the tip; 'fast active transport avoids overloading') moved to the SI (Simon: not central), section 'Lipid volume fraction needed for growth' (subsec:si_lipid_fraction); to be mentioned in the Discussion. The emulsion paragraph below opens with 'our estimate of 5 %', which pointed back to it.
 
 % \begin{figure}[hbt!]
 % \centering
@@ -307,9 +295,9 @@ Even our estimate of 5\% of the cytoplasm filled with lipids suggests that a sig
 Such a proportion could easily lead to clogging if all of the lipids coalesce into a single phase.
 What then is this large fraction of neutral lipid packaged within the cytoplasm?
 The minimal unit of lipid packaging is generally thought to be membrane bound lipid droplets.
-Such lipid droplets are generally kept from coalescing by coating \cite{thiam_why_2017}.
+Such lipid droplets are generally kept from coalescing by coating~\cite{thiam_why_2017}.
 The ensemble of those lipid droplets can then form an emulsion with a set lipid volume fraction.
-The emulsion phase, due to the repulsive strength between the different lipid droplets, can have different rheological properties than the rest of the cytoplasm \cite{jeffrey_rheological_1976}.
+The emulsion phase, due to the repulsive strength between the different lipid droplets, can have different rheological properties than the rest of the cytoplasm~\cite{jeffrey_rheological_1976}.
 We assume that this emulsion is phase-separated from the bulk cytoplasm.
 % NOTE (5 Oct, Overleaf comments, L134): Coco: Move to the discussion and refer to the sister paper.
 
@@ -377,7 +365,8 @@ A network of connected pipes is then analogous to a network of these individual 
 
 \paragraph*{Toy networks: trees concentrate backflow, width and anastomoses relieve it, loops circulate}
 Such an electrical circuit equivalent of the network can be solved with linear algebra using Kirchhoff's law at each intersection, and requiring that the sum of pressure drops around loops in the network be zero (Methods).
-As in the case of growth induced mass flow discussed above in \nameref{subsec:lipid_flow}, we set the sink magnitude at each node to correspond to newly created volume $\Delta V_k$ and added a global source node.
+As in the case of growth induced mass flow discussed above in \nameref{subsec:si_mass_flow}, we set the sink magnitude at each node to correspond to newly created volume $\Delta V_k$ and added a global source node.
+% NOTE (12 Oct): reference repointed from subsec:lipid_flow (that heading is gone) to the SI mass-flow section; 'discussed above' now points to the SI.
 A number of properties can be shown in toy networks (Figure \ref{fig:schematic_model} D-G).
 Tree networks aggregate backflow into their central trunk,   increasing flow rate (Figure \ref{fig:schematic_model} H).
 This increase in flow rate can increase backflow speeds, if not modulated by a greater flow capacity, which can be done by increasing the diameter (Figure \ref{fig:schematic_model}E, I).
@@ -444,6 +433,7 @@ Because the movement of lipids generates fluid flow in the reverse direction, th
 
 \section*{Discussion}
 % NOTE (11 Oct, structure): the Discussion lacks the C/P point the Intro sets up (L49; notes at the C/P paragraph below); the fluorescence detection-limit paragraph (pixel speeds 8-9 um/s) reads as Methods/SI; most of the rest is speculation (track orientation, supply-driven growth, aquaporins), which could be tightened around what the model leaves out.
+% NOTE (12 Oct, for the Discussion; SI subsec:si_lipid_fraction): at v0 = 3 um/s the lipid flux needed for the observed growth fills a growing share of the hypha away from the tip (old analysis: up to ~4 % over ~10 mm; current measurement of the moving lipid share: 2.4 % within 2 mm of a tip, 4.6 % beyond 4 mm, transport_paper#94); Bago et al. measured ~24 % near the root and 0.5 % at the front (bago_translocation_2002, Fig. 3; the moved text cites the review bago_carbon_2000 with ~20 %). Point it supports: transport at motor speeds lets the colony grow without filling hyphae with lipid; at diffusive speeds (~0.1 um/s, commented-out estimate in the SI section) the needed fraction exceeds 100 %. Fits the supply-driven growth paragraphs.
 \subsubsection*{Motor tracks form an oriented network}
 \paragraph*{Lipids follow growth on polar filaments, an oriented graph}
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
