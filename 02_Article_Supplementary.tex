@@ -209,6 +209,30 @@ In fact, the speed of known molecular motors can typically be in the range $2-6\
 This hypothesis is further motivated by the qualitative observation that the movement of lipids in the colony follows well established tracks. 
 % NOTE (5 Oct, Overleaf comments, L111): Coco: Find a shorter way to discard the Heaton model, or refer to SI; too long for an uninformed reader.
 
+\namedsubsection{Splitting the lipid demand between merging hyphae}{subsec:si_demand_split}
+% NOTE (12 Oct): section text to be written by Simon; cited from the Methods (transport model, demand split). Purpose (Simon): show that the choice of split rule does not matter here, so the main model uses the simplest (even).
+% NOTE (1, set-up): main model (weakly coupled return, junction 10 mm, motors along the growth graph, a >= 0.8 b, theta 0.05, no return-width exponent), 15 sessions, scored against the bright-field to-root speed (224 tree edges, 1,366 loop edges). A tip's demand passes back up the growth graph; where hyphae merge it is divided by conductance b^4/L of each parent hypha, by area b^2, or equally. Tree edges have one path, so the rule cannot act there.
+% NOTE (2, source): transport_paper branch feat/demand-split-compare (commits 1173217, f89b893): fig_outputs/model_grid/run_grid_junction.sh split, Working_notebooks/demand_split_compare.py -> fig_outputs/model_grid/junction/split_compare.csv (run 12 Oct).
+% NOTE (3, beyond the table): where the model puts lipid has no relation to the moving Nile Red signal under any split (within-plate Spearman rho 0.00-0.01, 1,678 fluorescence edges, ~30 % of them get no model lipid); 53-56 % of the growth demand reaches a root under all three (the rest is stranded at non-root growth sources, set by the motor direction, not the split).
+\begin{table}
+\centering
+\begin{tabular}{lccc}
+\hline
+ & conductance ($b^4/L$) & area ($b^2$) & even \\
+\hline
+lipid current changed vs area ($>10\%$) & 44\% & -- & 26\% \\
+tree edges within $2\times$ & 87.9\% & 87.9\% & 87.9\% \\
+tree edges, Spearman $\rho$ & 0.41 & 0.41 & 0.41 \\
+loop edges within $2\times$ & 85.4\% & 85.9\% & 86.3\% \\
+loop edges within $1.5\times$ & 62.6\% & 63.0\% & 63.3\% \\
+loop edges, Spearman $\rho$ & 0.29 & 0.29 & 0.29 \\
+motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
+\hline
+\end{tabular}
+\caption{\textbf{[Title.]} [Caption.]}
+\label{tab:si_demand_split}
+\end{table}
+
 \namedsubsection{Modelling the to-tip speed}{subsec:si_forward_flow}
 % NOTE (10 Oct): section text to be written by Simon; cited from the main text (hypothesis section, to-tip speed modulated by diameter and tip distance). Simon (9 Oct): the diameter dependence is an SI item, not main text. Sources: transport_paper#132 (comment of 7 Oct, constant vs falloff; comment 6056041406, diameter), #134 (v0(D) in the model); science/forward_speed_models.typ (rhizosphere#259); scripts forward_speed_compare.py / forward_speed_compare_fl.py (#133), Working_notebooks/speed_vs_diameter.py (feat/fluorescence-detection-limit 7990008).
 % NOTE (1, models, fitted on four plates and scored on the fifth, 15 sessions): constant, exponential v0(1 - e^(-d/lambda)), offset v_inf - (v_inf - v_tip) e^(-d/lambda), step, plus width and force-balance variants; bright-field 1,503 edges with both streams, fluorescence 5-frame streaks 1,365 edges.
