@@ -231,6 +231,8 @@ This suggests that the mechanism driving these flows is different from the mecha
 
 \namedsubsection{Lipid transport across the network}{subsec:lipid_flow}
 % NOTE (11 Oct, structure): this block (to ~L260) is the pre-30 Sep model (hydraulic dissipation minimisation, wrong SI figures, transport_paper#129) and re-asks R2 questions after the hypothesis; candidates: Heaton test -> R2/SI, growth -> carbon demand -> R3 model input, lipid fraction (L248-260) -> R3 parameter.
+% NOTE (12 Oct, Fig 4 v2 review): this block (to the 'Fast active transport' paragraph) describes none of the new Fig 4; the Fig 4 text starts at the emulsion paragraph. Its model (dissipation minimisation, theta from growth, ~4 %) is not the model of Fig 4 E-H (weakly coupled backflow, demand split by hyphal area, theta 0.05, a >= 0.8 b, backflow ~ diameter^0.7), which no paragraph introduces yet. What R3 needs from here: growth -> Delta V_k -> Delta C_k with a root source node (model input; Fig 4C shows tip growth only schematically) and the lipid fraction as a parameter. Proposed R3 order: growth sets demand (L250-257 without the dissipation part) -> lipid fraction (current numbers) -> emulsion -> single pipe (Fig 4A-C) -> network (Fig 4D-H); dissipation minimisation to the mass-flow verdict -> SI/Methods.
+% NOTE (12 Oct): Howard's comments are still in the compiled text as {\color{blue} ...} in this block (7 places, 'similar', 'biovolume', 'Delta C_k propto Delta V_k', 'resistances', 'rate of energy consumption', 'model referred to twice', 'why mm?'); the 'Delta C_k' one wraps a NOTE and the following sentences up to 'These are modeled as lipid effluxes'.
 \subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
 Although the above results elucidate the mechanism for lipid translocation across the network, they do not provide a predictive framework for how lipid flux is distributed.
 In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
@@ -239,6 +241,7 @@ We wanted to characterize more precisely how the growth of different tips could 
 \subsubsection*{Growth-induced mass flow does not explain the flows}
 \paragraph*{Growth creates volume; in other fungi its water demand drives the flow}
 Hyphal extension as shown in Fig.~\ref{fig:schematic_model}D, in addition to consuming carbon, is also associated with the creation of new network volume.
+% NOTE (12 Oct, Fig 4 v2): Fig 4D is now the junction panel (backflows merge); no panel shows a growth map, Fig 4C shows tip growth schematically. Same for the Fig 4D reference in the next paragraph.
 The corresponding demand for water has been shown to be the mechanism driving flows in colonies of other (non-mycorrhizal) fungal species~\cite{heaton_growth-induced_2010, heaton_advection_2012}.
 In those systems, the movement of matter within the network is well explained by the movement of water in a network of pipes with set sources and sinks. A hydraulic pressure gradient is established across the network, from inoculation roots to the tips, and the resulting flows are sufficient to explain the observed movement of matter.
 We wanted to investigate whether this explanation was compatible with our AMF system.
@@ -265,6 +268,7 @@ We assign to each edge $(i,j)\in E$ a hydraulic resistance $\mathcal{R}_{i,j}$ a
 With a carbon flux from $i$ to $j$ $\phi_{i,j}$ the power dissipation {\color{blue} maybe write as: the rate of energy consumption} is set to $\mathcal{R}_{i,j} \phi_{i,j}^2$.
 We minimize the objective function $\sum_{(i,j)\in E} \mathcal{R}_{i,j} \phi_{i,j}^2$ under the constraint that for all nodes $k$, $\sum_{i\in N} \phi_{i,k} = \Delta C_k$ (Methods).
 This model allows us to estimate, in each edge of the network, the expected direction and lower bound of lipid flux required for the observed growth of the tip (Fig. SI\ref{fig:carbonflow}b). 
+% NOTE (12 Oct): mass flow is already excluded in the Perturbations section (diffusion/mass flow/peristalsis paragraph); this test (from here to the motor-speed paragraph) can shrink to one or two sentences there plus SI/Methods. Fig. SI carbonflow b, d, e here and below are wrong SI files (transport_paper#129).
 
 % When comparing these expected lipid fluxes with the one observed in each edge. We found that in 70\% of the cases, the direction of lipid flux could be predicted by our model. This percentage increased to more than 80\% when we considered only points in the network where both the modelled and measured absolute flux were high (Fig. \ref{fig:carbonflow}c).
 
@@ -277,6 +281,7 @@ Indeed, the fluid flow always follows the pressure gradient and therefore cannot
 
 \paragraph*{The narrow peak at 3~$\mu m/s$ points to motors, not mass flow}
 Finally, as shown in Fig. \ref{fig:hyphal_profiling}F,G and \ref{fig:asymmetries}A, the flow speed in the modeled and observed direction of the lipid flux narrowly peaks around the value $v_0 = 3\mu m/s$.
+% NOTE (12 Oct): Fig 1 has panels A-E, so 'Fig. hyphal_profiling F,G' points to nothing; the to-tip speed distribution is Fig 2A/B. The motor-speed range (2-6 um/s, howard_mechanics_2002) repeats the hypothesis section (steinberg_cell_2017).
 % NOTE (11 Oct, structure): repeats the motor-speed argument of the hypothesis section (L194-197); keep one.
 In addition to not being able to predict a speed of the right order of magnitude, the growth induced mass flow model does not yield such a peaked distribution (Fig. SI\ref{fig:carbonflow}e).
 The peaked distribution instead strongly suggests that the movement of lipids within the AM fungal colony is an active process driven by the movement of molecular motors on tracks walking at fixed speed.
@@ -289,6 +294,7 @@ This hypothesis is further motivated by the qualitative observation that the mov
 Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
 To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
 We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
+% NOTE (12 Oct): numbers to reconcile: '4 %' here, '5 %' at the emulsion paragraph, theta 0.05 in Fig 4 E-H, measured moving lipid share 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94). The next sentence says 'decrease away from the tip', against 'increased' here.
 % NOTE (2 Oct, 'why mm?'): means 'over 10 mm', and yes, the lipid volume fraction theta. Old analysis; the current measurement is the moving lipid share, 2.4 % (< 2 mm from a tip) -> 4.6 % (> 4 mm) (transport_paper#94).
 The decrease away from the tip was due to a decrease in flux, which itself was due to the multiplication of alternative paths towards the root when moving closer to it.
 Similar spatial variation on similar length scales has previously been established in \emph{R. irregularis} \cite{bago_carbon_2000}.
