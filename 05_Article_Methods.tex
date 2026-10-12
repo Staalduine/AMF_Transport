@@ -332,6 +332,7 @@ The two limits of this coupling are the global solve~\cite{heaton_growth-induced
 The backflow is what is measured: the distribution of to-root streak speeds on an edge, summarised by its median where one value is needed.
 The model's counterpart is the core flux over the area of the return lane, $|q_c| / (\pi r^2)$, with $r^2 = a^2 (11.64~\mu\mathrm{m} / D)^{0.7}$, at most $b^2$.
 The diameter exponent was fitted on 1,178 bright-field edges (held out 0.68).
+% NOTE (12 Oct): Simon dropped the return-width exponent from the main model (physical inputs only). On the 1 Oct tables (same 15 sessions, 1,590 edges, only this flag differing) it added little: within 2x 87.5 % vs 86.2 % without; Spearman rho tree 0.44 vs 0.41, loop 0.34 vs 0.29; median model/measured 0.98 vs 0.99. Without it the return speed is |q_c| / (pi a^2), so the two sentences above go; the main-model tables and Figs 4 E-H, 5 and 6 are to be rebuilt without it (transport_paper run_grid_junction.sh).
 Runs on physical inputs alone drop it ($r = a$) and are marked where used.
 \end{enumerate}
 It is scored against that median.
