@@ -310,22 +310,32 @@ This could explain why active transport mechanisms at high speeds are necessary 
 
 \begin{figure}
  \centering
- \includegraphics[width=\textwidth]{figures/Figure_4_final.pdf}
- \caption{\textbf{Proposed model of lipid flows and pressure-based backflows.}
-\textbf{(A)} Schematic showcase of lipid intake.
-Lipids are added from the plant, and go into a lipid condensate.
-This condensate is of radius $b - a$ where $b$ is the full hyphal radius, and $a$ is the non-condensate center radius.
-\textbf{(B)} Lipids in the condensate are pulled along by microtubules.
-This increases a pressure at the side where lipids are pulled.
-This increase in pressure pushes non-condensate fluids back through the center of the hyphae.
-\textbf{(C)} Lipids arrive at tips to facilitate growth.
-Some of these lipids do not aid in growth and are put back into backflow.
-\textbf{(D-K)} Model properties on small networks.
-\textbf{(D, H)} A tree-like network accumulates lipid demand going towards the root.
-Multiple growing tips also supply more backflow, increasing backflow velocity.
-\textbf{(E, I)} Width has a calming effect on backflow velocity.
-\textbf{(F, J)} Backflow in loops induces circularity, increasing total flow energy in the network.
-\textbf{(G, K)} Merges and loop additions also serve to lower the backflow velocity.}
+ \includegraphics[width=\textwidth]{figures/Figure_4_v2.pdf}
+ \caption{\textbf{[Title.]}
+\textbf{(A)} [Network with the plant root.]
+\textbf{(B)} [Motor lanes and core backflow.]
+\textbf{(C)} [Tip: lanes turn back, growth.]
+\textbf{(D)} [Branched hypha, backflows merge at the junction.]
+\textbf{(E--H)} [Small networks: demand, diameter, loop, growth step.]}
+% NOTE (12 Oct): Figure_4_v2.pdf = transport_paper manuscript/figures/fig4.pdf at 54489de (branch feat/model-net-flux, not merged): A-C the NWO talk's schematic (drawn by docs/presentations/2026-10-nwo-biophysics/schematic.py), D junction ('more growth beyond: more flow below'), E-H unchanged from 320d1a1. Caption placeholders above; the old caption is kept commented out below.
+% NOTE (12 Oct, E-H settings, from the Typst caption of the same commit): to-root speed in model units on one shared scale, networks are illustrations, not fitted to a colony. E demand: growing side tips along a backbone of uniform diameter. F diameter: one path tapering from 9 to 4 um, fixed demand. G loop: arms of 8 and 5 um between the same junctions; small arm 1.2 against 3.0 model units (global solve 0.03 against 3.4; conveyor 2.5 on both). H growth step: backbone of E with three side tips, then two more grown downstream; shaded = added stretch. E, F, H are trees (global solve and conveyor agree). Model: weakly coupled backflow (switching hyphae at a junction costs the resistance of 10 mm of 4 um-radius core), motors along the growth graph, demand split by hyphal area, tip-slowed motor speed, theta 0.05, a >= 0.8 b, backflow ~ diameter^0.7, segments ~2.5 mm, tip growth 25 um per step.
+% NOTE (12 Oct, panel letters): old -> new: D,H (tree demand) -> E; E,I (width) -> F; F,J (loop) -> G; G,K (merges, loop additions) -> no panel; new: D (junction), H (growth step). Main-text references to update: Fig 4D at L241 and L252 (growth map; no panel shows one), 'D-G' L409, 'H' L410, 'E, I' L411, 'F, J' L415; Fig 4B at L380 (single pipe -> now B/C).
+% OLD CAPTION (Figure_4_final.pdf):
+%  \caption{\textbf{Proposed model of lipid flows and pressure-based backflows.}
+% \textbf{(A)} Schematic showcase of lipid intake.
+% Lipids are added from the plant, and go into a lipid condensate.
+% This condensate is of radius $b - a$ where $b$ is the full hyphal radius, and $a$ is the non-condensate center radius.
+% \textbf{(B)} Lipids in the condensate are pulled along by microtubules.
+% This increases a pressure at the side where lipids are pulled.
+% This increase in pressure pushes non-condensate fluids back through the center of the hyphae.
+% \textbf{(C)} Lipids arrive at tips to facilitate growth.
+% Some of these lipids do not aid in growth and are put back into backflow.
+% \textbf{(D-K)} Model properties on small networks.
+% \textbf{(D, H)} A tree-like network accumulates lipid demand going towards the root.
+% Multiple growing tips also supply more backflow, increasing backflow velocity.
+% \textbf{(E, I)} Width has a calming effect on backflow velocity.
+% \textbf{(F, J)} Backflow in loops induces circularity, increasing total flow energy in the network.
+% \textbf{(G, K)} Merges and loop additions also serve to lower the backflow velocity.}
 % NOTE (5 Oct, Overleaf comments, L130): Simon: 'Lipids don't enter the network?' The condensate also consists of lipids. | Simon: Make a circuit equivalent: resistors and current drivers in parallel. | Simon: The model gives the boundary conditions; the network's resistors are also defined.
  \label{fig:schematic_model}
 \end{figure}
