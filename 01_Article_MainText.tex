@@ -181,7 +181,7 @@ Pre-cut data were acquired up to 40 minutes before the cut, post-cut data from 4
 In the past, pressure gradients and molecular motors have been suggested to be potential mechanisms driving flows in fungal hyphae~\cite{steinberg_cell_2017,kokkoris_mycelial_2026}. 
 It is also important to discuss other potential mechanisms that could drive flows in fungal hyphae, and to evaluate whether our data support or contradict each of them. 
 Diffusion as a mechanism could be present close to the tips, as that is where we observe the most random movement of particles (Fig.~\ref{fig:hyphal_profiling}D4), but the directed, unbroken flow in the rest of the network is not consistent with diffusion alone. 
-Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_2010,lew_mass_2005,lew_how_2011}, is also unlikely to be the main driver of flows in our system, as it cannot explain the presence of two opposing streams at similar speeds in the same hypha. 
+Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_2010,lew_mass_2005,lew_how_2011}, is also unlikely to be the main driver of flows in our system, as it cannot explain the presence of two opposing streams at similar speeds in the same hypha (SI, \nameref{subsec:si_mass_flow}). 
 Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}). 
 
 \subsubsection*{Perturbations separate the two directions}
@@ -229,6 +229,7 @@ While they are affected by segment isolation, they are still able to flow, indic
 The flows towards the root are also more variable in speed.
 This suggests that the mechanism driving these flows is different from the mechanism driving the to-tip flows, and is likely pressure driven.
 
+% NOTE (12 Oct, transition hypothesis -> minimal model; facts for Simon's text): the hypothesis leaves one question open: what sets the pressure gradient behind the to-root flow? Not the plant (root cut: both flows continue, to-root lower and flatter) and not long-range connectivity (isolated segments of a few mm: both flows continue, about a fifth slower; Fig 3C). The osmotic shock shows the to-root flow follows pressure (x3.5, relaxing within a minute). Candidate bridge: in an aseptate hypha the motor-carried lipid condensate moves volume toward the tip, so with no net outflow the same volume has to return, which needs a local pressure gradient: a source of to-root flow inside every hypha, consistent with all three perturbations. That is the single-pipe model (Fig 4A-C, the emulsion/condensate paragraph and the u(r) paragraph below); the isolated segment is its direct test; the network version then needs the growth demand (now in SI, subsec:si_mass_flow) and how motor streams divide at junctions (the 'ambiguous in a looped network' paragraph, which fits after the single pipe rather than before it). Order this would give: hypothesis -> open question -> lipid condensate -> single pipe (Fig 4A-C) -> isolated segment -> network (Fig 4D-G).
 \namedsubsection{Lipid transport across the network}{subsec:lipid_flow}
 % NOTE (11 Oct, structure): this block (to ~L260) is the pre-30 Sep model (hydraulic dissipation minimisation, wrong SI figures, transport_paper#129) and re-asks R2 questions after the hypothesis; candidates: Heaton test -> R2/SI, growth -> carbon demand -> R3 model input, lipid fraction (L248-260) -> R3 parameter.
 % NOTE (12 Oct, Fig 4 v2 review): this block (to the 'Fast active transport' paragraph) describes none of the new Fig 4; the Fig 4 text starts at the emulsion paragraph. Its model (dissipation minimisation, theta from growth, ~4 %) is not the model of Fig 4 E-H (weakly coupled backflow, demand split by hyphal area, theta 0.05, a >= 0.8 b, backflow ~ diameter^0.7), which no paragraph introduces yet. What R3 needs from here: growth -> Delta V_k -> Delta C_k with a root source node (model input; Fig 4C shows tip growth only schematically) and the lipid fraction as a parameter. Proposed R3 order: growth sets demand (L250-257 without the dissipation part) -> lipid fraction (current numbers) -> emulsion -> single pipe (Fig 4A-C) -> network (Fig 4D-H); dissipation minimisation to the mass-flow verdict -> SI/Methods.
@@ -238,56 +239,7 @@ Although the above results elucidate the mechanism for lipid translocation acros
 In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
 We wanted to characterize more precisely how the growth of different tips could collectively contribute to overall lipid flow patterns. 
 
-% \subsubsection*{Growth-induced mass flow does not explain the flows}
-% \paragraph*{Growth creates volume; in other fungi its water demand drives the flow}
-% Hyphal extension as shown in Fig.~\ref{fig:schematic_model}D, in addition to consuming carbon, is also associated with the creation of new network volume.
-% % NOTE (12 Oct, Fig 4 v2): Fig 4D is now the junction panel (backflows merge); no panel shows a growth map, Fig 4C shows tip growth schematically. Same for the Fig 4D reference in the next paragraph.
-% The corresponding demand for water has been shown to be the mechanism driving flows in colonies of other (non-mycorrhizal) fungal species~\cite{heaton_growth-induced_2010, heaton_advection_2012}.
-% In those systems, the movement of matter within the network is well explained by the movement of water in a network of pipes with set sources and sinks. A hydraulic pressure gradient is established across the network, from inoculation roots to the tips, and the resulting flows are sufficient to explain the observed movement of matter.
-% We wanted to investigate whether this explanation was compatible with our AMF system.
-% Because volume creation and carbon demand are proportional, we use the same approach as for carbon, simply replacing the magnitude of the carbon source and sink, $\Delta C_k$, with the volume $\Delta V_k$.
-% We keep a similar global source node corresponding to a water reservoir. {\color{blue} the word ``similar" suggests that a reader will know the other work which should not be assumed}
-% % NOTE (5 Oct, Overleaf comments, corentinbees L97, 4 x 'reference not up to date / not correct / does not seem correct', 1 x 'no longer the right introduction'): check which words they sit on in Overleaf. Citations here (Heaton 2010 growth-induced mass flow, Heaton 2012 advection-diffusion) look right (2010 is the origin of the first solve). The figure reference Fig.~\ref{fig:schematic_model}D here and in the next paragraph is wrong now: Fig 4D is 'tree-like network accumulates lipid demand', not growth/volume creation; no current panel shows the growth map (old Fig 3A is commented out; Obsidian note 'For figure 4, put a real growth map into the schema'). The fifth comment: this section now parametrises carbon demand and flows, it does not test the Heaton model. Goes away with the L94-L111 rewrite.
-
-\paragraph*{Growth per node gives the carbon demand, supplied from one root source node}
-We represented the growing network as a temporally evolving graph where each edge has an activation time corresponding to its first appearance.
-We call $N$ the set of all graph nodes, and $E$ the set of all graph edges.
-This labelling allowed the growth between two time steps to be established in a spatially resolved manner (Fig.~\ref{fig:schematic_model}D).
-For each growing node $k\in N$ we could establish the total biovolume {\color{blue} maybe ``network volume" since you have not used the term biovolume above} newly built from that node $\Delta V_k$.
-The demand for carbon at each node $\Delta C_k$ is proportional to the newly built biovolume. {\color{blue} maybe just write: The nodal demand for carbon  $\Delta C_k\propto\Delta V_k $
-% NOTE (2 Oct): L94-L111 describe the pre-30 Sep model (hydraulic minimisation, theta from growth; same as the wrong FigS2, transport_paper#129). The manuscript model is now the global pressure solve on physical inputs; Howard's comments in this block mostly go away with that rewrite.
-} These are modeled as lipid effluxes out of the system, so the demand gets a negative sign. Lipids must be supplied from the root compartment, which is represented by adding one additional "source" node to the network, $S_{source} = - \sum_{k \in N} \Delta C_k$. The "source" node is connected to the nodes of the network closest to the plant (see Methods) through zero length junctions. Inevitably, because of loops created through anastomoses, there are multiple possible paths from the "source" node to a node with non-zero carbon demand. 
-% NOTE (5 Oct, Overleaf comments, L101): Coco: Start with the single-hypha model (current Fig 4A), then explain how it is solved and parametrised for a full growing network.
-
-\paragraph*{Ambiguous paths are resolved by minimising hydraulic dissipation}
-These multiple paths require us to resolve ambiguities in the lipid distribution inside the network, while adhering to the growth constraints in the observed data.
-We assume, as in previous work \cite{heaton_growth-induced_2010}, that carbon flux would be distributed over those paths in a way that minimizes the dissipation of hydraulic energy. 
-
-\paragraph*{Edge resistances and the minimisation give the lipid flux per edge}
-We assign to each edge $(i,j)\in E$ a hydraulic resistance $\mathcal{R}_{i,j}$ associated with energy dissipation. {\color{blue} i think in network literature these are called resistances, so maybe write as ${\cal R}_{i,j}$, which are different than energy dissipation} We set $\mathcal{R}_{i,j} = \frac{8 \mu L_{i,j}}{\pi b_{i,j}^4}$ where $L_{i,j}$ is the length of the edge, $b_{i,j}$ is its radius, and $\mu$ is a viscosity that is treated as a constant in global energy minimization.
-With a carbon flux from $i$ to $j$ $\phi_{i,j}$ the power dissipation {\color{blue} maybe write as: the rate of energy consumption} is set to $\mathcal{R}_{i,j} \phi_{i,j}^2$.
-We minimize the objective function $\sum_{(i,j)\in E} \mathcal{R}_{i,j} \phi_{i,j}^2$ under the constraint that for all nodes $k$, $\sum_{i\in N} \phi_{i,k} = \Delta C_k$ (Methods).
-This model allows us to estimate, in each edge of the network, the expected direction and lower bound of lipid flux required for the observed growth of the tip (Fig. SI\ref{fig:carbonflow}b). 
-% NOTE (12 Oct): mass flow is already excluded in the Perturbations section (diffusion/mass flow/peristalsis paragraph); this test (from here to the motor-speed paragraph) can shrink to one or two sentences there plus SI/Methods. Fig. SI carbonflow b, d, e here and below are wrong SI files (transport_paper#129).
-
-% When comparing these expected lipid fluxes with the one observed in each edge. We found that in 70\% of the cases, the direction of lipid flux could be predicted by our model. This percentage increased to more than 80\% when we considered only points in the network where both the modelled and measured absolute flux were high (Fig. \ref{fig:carbonflow}c).
-
-\paragraph*{Mass flow gives the wrong speeds and cannot be bidirectional}
-The calculation  yields the exact volumetric flow rate $Q_{i,j}$ in the hydraulic equivalent of the network.
-The speed $v_{i,j}$ was then set as $v_{i,j}=\frac{Q_{i,j}}{\pi b_{i,j}^2}$. {\color{blue} something is wrong with this sentence since model is referred to twice:} We found that this model did not explain the speed in the direction predicted by the model (Fig. SI\ref{fig:carbonflow}d).
-Such a model also does not explain the existence of fluid movement in the other direction.
-Indeed, the fluid flow always follows the pressure gradient and therefore cannot be bidirectional.
-% NOTE (7 Oct): Fig. SI carbonflow (d, e) is one of the wrong SI files (FigS2-S5, transport_paper#129), so the speed claim here and the peaked-distribution claim at L122 have no figure behind them until it is replaced.
-
-\paragraph*{The narrow peak at 3~$\mu m/s$ points to motors, not mass flow}
-Finally, as shown in Fig. \ref{fig:hyphal_profiling}F,G and \ref{fig:asymmetries}A, the flow speed in the modeled and observed direction of the lipid flux narrowly peaks around the value $v_0 = 3\mu m/s$.
-% NOTE (12 Oct): Fig 1 has panels A-E, so 'Fig. hyphal_profiling F,G' points to nothing; the to-tip speed distribution is Fig 2A/B. The motor-speed range (2-6 um/s, howard_mechanics_2002) repeats the hypothesis section (steinberg_cell_2017).
-% NOTE (11 Oct, structure): repeats the motor-speed argument of the hypothesis section (L194-197); keep one.
-In addition to not being able to predict a speed of the right order of magnitude, the growth induced mass flow model does not yield such a peaked distribution (Fig. SI\ref{fig:carbonflow}e).
-The peaked distribution instead strongly suggests that the movement of lipids within the AM fungal colony is an active process driven by the movement of molecular motors on tracks walking at fixed speed.
-In fact, the speed of known molecular motors can typically be in the range $2-6\mu m/s$ for the faster ones \cite{howard_mechanics_2002}.
-This hypothesis is further motivated by the qualitative observation that the movement of lipids in the colony follows well established tracks. 
-% NOTE (5 Oct, Overleaf comments, L111): Coco: Find a shorter way to discard the Heaton model, or refer to SI; too long for an uninformed reader.
+% NOTE (12 Oct): the growth-induced mass flow test (dissipation minimisation, Heaton) moved to the SI (Simon), section 'Growth-induced mass flow' (subsec:si_mass_flow); the growth -> Delta V_k -> Delta C_k set-up with the root source node went with it and is also the minimal model's input.
 
 \subsubsection*{Lipid volume fraction needed for growth}
 \paragraph*{At 3~$\mu m/s$, growth needs a lipid fraction rising to about 4\,\% away from the tip}
