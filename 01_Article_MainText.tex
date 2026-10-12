@@ -40,7 +40,7 @@ Our model provides an intuitive understanding for the observed proportionality i
 The symbiosis between Arbuscular Mycorrhizal (AM) fungi and their host plants has existed for 400 million years~\cite{remy_four_1994,brundrett_evolutionary_2018}.
 For the symbiosis to endure this long, robust mechanisms must be in place to ensure its stability.
 Indeed, symbiosis can be a many to many relationship, which means that the plant can interact with multiple independent fungal colonies and one fungal network can interact with multiple plant hosts~\cite{kiers_reciprocal_2011,walder_mycorrhizal_2012}.
-Without selective orientation of nutrients towards partners that engage in a proportional effort of nutrient provision, plant or fungal “free ride” phenotypes may emerge that reap the benefits of the symbiosis while avoiding costs~\cite{kiers_reciprocal_2011,bever_preferential_2009,walder_regulation_2015,noe_mycorrhizal_2018,kiers_misconceptions_2016}. 
+Without selective orientation of nutrients towards partners that engage in a proportional effort to provide nutrients, "free ride" plant or fungal phenotypes can emerge that reap the benefits of symbiosis while avoiding costs~\cite{kiers_reciprocal_2011,bever_preferential_2009,walder_regulation_2015,noe_mycorrhizal_2018,kiers_misconceptions_2016}. 
 
 \paragraph*{Carbon must reach the growing edge and phosphorus the root, through open pipes}
 The fungal partner forms a network in the soil using plant derived carbon.
@@ -94,7 +94,7 @@ From these data and findings, we construct a minimal model that explains the obs
 Fungal networks grow through the extension of fungal tips away from the root of the host plant.
 Over time, these elongated hyphae develop into a branched mycelial structure.
 The network's topological context therefore varies along the length of a hypha.
-Close to a growing tip, the network is most tree-like: 40\% of the edges within 1~mm of a tip are bridges, that is, not part of any loop, against 11--14\% of the edges further than 2~mm from a tip (Fig.~\ref{fig:hyphal_profiling}A, inset).
+Close to a growing tip, the network is more tree-like: 40\% of the edges within 1~mm of a tip are bridges, that is, not part of any loop, versus 11--14\% of the edges further than 2~mm from a tip (Fig.~\ref{fig:hyphal_profiling}A, inset).
 Moving away from the tip, more growing hyphae depend on the same runner hypha, and anastomosis (fusion between a hyphal tip and a hyphal segment) creates loops, which give many alternative paths from the tip towards the root~\cite{oyarte_galvez_travelling-wave_2025}.
 
 \begin{figure}
@@ -121,12 +121,12 @@ We chose runner hyphae, the main routes to the root and the edges of high betwee
 
 \paragraph*{To-tip speeds stay near 3~$\mu m/s$, to-root speeds rise with tip distance and vary more}
 In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}D).
-Over the field of view, directed movement exceeds diffusion by more than two orders of magnitude, so the slope of a streak is its speed.
+In the field of view, the directed movement exceeds diffusion by more than two orders of magnitude, so the slope of a streak is its speed.
 % NOTE (6 Oct, answers Coco's 'why is there little diffusive movement?'): Peclet estimate, order of magnitude only. Assumed: lipid droplet 0.5 um diameter, cytoplasm viscosity 10x water (0.01 Pa s), T 295 K: D = kT/(6 pi eta r) = 0.09 um^2/s; over a 10 s kymograph sqrt(2Dt) = 1.3 um against 30 um at 3 um/s; Pe = vL/D with L = 10 um = 350. Check the droplet size and viscosity before submission. Weaker near the tips (Fig 1D kymograph 4): issue #5.
 Each streak gives one speed, and each kymograph was reduced to a set of to-tip and to-root speeds (SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
 In the histogram of the extracted speeds of a video, the to-tip speeds (positive) and the to-root speeds (negative) each form a peak.
 We took the median of each of the two groups as the speed of that direction in that video (Fig.~\ref{fig:hyphal_profiling}E). 
-Speeds to tip slow down close to the tip, but stay close to 3~$\mu m / s$ further away (Fig.~\ref{fig:hyphal_profiling}E).
+The speeds to the tip slow down near the tip, but stay close to 3~$\mu m / s$ further away (Fig.~\ref{fig:hyphal_profiling}E).
 Speeds to root generally increase with distance from the tip (Fig.~\ref{fig:hyphal_profiling}E), and have a wide range: the median interquartile range of a hypha's speeds is 1.6~$\mu m / s$ to root, against 0.6~$\mu m / s$ to tip (SI Fig.~\ref{fig:speed_iqr}).
 This result was confirmed by repeating a similar experiment on various plates over 15 repetitions over 5 plates showing a consistent phenomenology (Fig.~\ref{fig:asymmetries} A, B). 
 
@@ -157,7 +157,7 @@ We set out to find whether there was a directional bias in the movement of lipid
 For each video we computed the share of the moving signal that travels towards the tip, from 0 (all to the root) to 1 (all to the tip) (Methods, \nameref{subsec:direction_bias}).
 Together, these results show that lipids generally move in the direction of the tips (Fig.~\ref{fig:asymmetries}D): we found a median direction bias of 0.71 towards the tips, with 84\% of edges having lipids with a to-tip direction bias, against roughly even for brightfield in both metrics. 
 
-\namedsubsection{Perturbations show that cytoplasmic flow toward the root is pressure driven while lipids are likely translocated along pressure-insensitive steady flows}{subsec:res_perturbations}
+\namedsubsection{Perturbations show that cytoplasmic flow toward the root is pressure driven while to-tip flows are likely locally driven and pressure-insensitive}{subsec:res_perturbations}
 % NOTE (11 Oct, structure): this heading states the old conclusion ('lipids likely translocated along pressure-insensitive steady flows'); after the rewrite of the hypothesis section it should match R2 (what drives each direction?). Heading styles are mixed in Results (\subsection*, \subsection, \namedsubsection).
 \begin{figure} 
 \centering
@@ -182,18 +182,17 @@ In the past, pressure gradients and molecular motors have been suggested to be p
 It is also important to discuss other potential mechanisms that could drive flows in fungal hyphae, and to evaluate whether our data support or contradict each of them. 
 Diffusion as a mechanism could be present close to the tips, as that is where we observe the most random movement of particles (Fig.~\ref{fig:hyphal_profiling}D4), but the directed, unbroken flow in the rest of the network is not consistent with diffusion alone. 
 Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_2010,lew_mass_2005,lew_how_2011}, is also unlikely to be the main driver of flows in our system, as it cannot explain the presence of two opposing streams at similar speeds in the same hypha. 
-% NOTE (11 Oct, structure): mass flow is excluded here and tested again at length in 'Lipid transport across the network' (L203-246); keep one (here, R2), move the Heaton test to Methods/SI.
-Peristaltic streaming has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}). 
+Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}). 
 
 \subsubsection*{Perturbations separate the two directions}
 \paragraph*{An osmotic shock raises the to-root speed briefly and leaves the to-tip speed unchanged}
-The difference in flow behavior both within an edge, and along an edge with distance to tip, suggests that each direction could be associated with a different mechanism.
+The difference in flow behavior both within an edge and along an edge with distance to tip suggests that each direction could be associated with a different mechanism.
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
-This experiment has been done in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
+This experiment has been performed in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
 Following a similar approach, we added a drop of dissolved NaCl solution (100 to 400 mOsm) (Methods, \nameref{subsec:perturbations}) to the base of the network a few centimeters behind the growing front and imaged near the growth edge (Fig.~\ref{fig:perturbations}A).
 We expected that this would create a low turgor pressure within the hyphae at the location of the drop, shifting the pressure gradient within the network, and therefore changing flows internal to the hyphae.
 We observed that the flow speed in the tip direction was almost unaffected by the addition of the salt solution  (Fig.~\ref{fig:perturbations}A);  fluorescence imaging of the lipids showed that their movement in the tip direction was also unaffected (SI Fig.~\ref{fig:salt_shock}D).
-By contrast, the flow speed in the root direction was approximately raised to 3.5x and relaxed within a minute.
+By contrast, the flow speed in the root direction was approximately increased to 3.5 times and relaxed in a minute.
 Medium-like drops resulted in what looked like light hypo-osmotic shocks, pushing the flow towards the tips.
 
 \paragraph*{After a root cut both flows continue: the plant connection is not needed}
@@ -201,32 +200,31 @@ Past work proposed that plant host transpiration could be the driving force expl
 Although the plant in our root-organ culture does not produce leaves and, therefore, does not evapotranspirate, we wanted to test whether the connection to the plant was necessary for the flows in the two directions to be maintained.
 In one network, we imaged a runner hypha at multiple positions from root to tip to measure the velocity profile along its length.
 We then severed the network from the root with a scalpel cut along its entire bottom (Fig.~\ref{fig:perturbations}B) and recorded the same positions again, in the first half hour after the cut, and then again in the second half hour.
-Flows in both directions continued.
-The to-tip speed stayed at about 3~$\mu m/s$, and the to-root speed became lower and flatter along the hypha, but the asymmetry between the two directions remained (Fig.~\ref{fig:perturbations}B).
+Flows continued in both directions.
+The to-tip speed remained at about 3~$\mu m/s$, and the to-root speed decreased and became flatter along the hypha, but the asymmetry between the two directions remained (Fig.~\ref{fig:perturbations}B).
 This matches earlier work showing that flows can still be active a year without a plant host~\cite{kleinCytoplasmicFlowDynamics2026}.
 A connection to the root is therefore not needed for either flow, which rules out transpiration by the plant as their driver.
-How far a driving force can reach is a separate question, and we asked it by shrinking the connected network further.
+How far a driving force can reach is a separate question, and we asked it by further shrinking the connected network.
 
 \paragraph*{In isolated segments of a few millimetres both flows continue, about a fifth slower}
 To further hone down on the range of a potential driving force, we wanted to know what the minimal size of the subgraph was that was necessary to conserve flows in the two directions.
-% NOTE (11 Oct, structure): the section cut is described here (R2) and again at L333-347 as the single-pipe test (R3); keep the data once, refer to it from R3.
 We made targeted cuts to isolate small segments from the network and image flows at sufficient distance from the cut induced stress (Fig.~\ref{fig:perturbations}C).
 In patches of network as small as only a few millimeters in total length, we still observed flows in the two directions (Fig.~\ref{fig:perturbations}C).
-We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\%, but flow never stopped (Fig.~\ref{fig:perturbations}C).
+We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\% \%, but the flow never stopped (Fig.~\ref{fig:perturbations}C).
 In none of the experiments did the flow stop.
-These experiments demonstrate that the mechanical origin of flows in the two directions does not require the long range connectivity of the network to operate (SI, \nameref{subsec:si_segment_size}). 
+These experiments demonstrate that the mechanical origin of flows in the two directions does not require long range connectivity of the network to operate (SI, \nameref{subsec:si_segment_size}). 
 
 \namedsubsection{Our hypothesis on the flow mechanics, given the evidence}{subsec:res_hypothesis}
 \subsubsection*{To-tip flow: pressure-insensitive and local, consistent with motors on microtubules}
-For the to-tip flows, the evidence points to a mechanism that is insensitive to pressure gradients, and that is able to maintain a speed which is modulated by both hyphal diameter and distance to tip, but is otherwise robust to perturbations (SI, \nameref{subsec:si_forward_flow}).
-The lack of response to osmotic shocks, the lack of response to root cuts, and little response to segment isolation all suggest that the mechanism is not pressure driven, and that there is something local to the hypha that is responsible for the to-tip flows.
-We have ruled out diffusion, mass flow and peristaltic streaming in the previous section for drivers of the network-wide flows, and the evidence points to a mechanism that is consistent with molecular motors moving along microtubules, which are known to be present in AMF~\cite{timonen_microtubules_2001}.
+For to tip flows, evidence points to a mechanism that is insensitive to pressure gradients and capable of maintaining a speed that is modulated by both hyphal diameter and distance to tip, but is otherwise robust to perturbations (SI, \nameref{subsec:si_forward_flow}).
+The lack of response to osmotic shocks, the lack of response to root cuts, and little response to segment isolation all suggest that the mechanism is not pressure driven and that there is something local to the hypha that is responsible for the to-tip flows.
+We have ruled out diffusion, mass flow, and peristaltic streaming in the previous section as drivers of network-wide flows, and the evidence points to a mechanism that is consistent with molecular motors moving along microtubules, which are known to be present in AMF~\cite{timonen_microtubules_2001}.
 
 \subsubsection*{The lipid cargo supports motors; the to-root flow is pressure driven}
-This hypothesis is supported by the characteristics of its likely cargo, the lipid droplets. In some way, these lipid droplets have to arrive at the tips for growth.
-These lipid droplets are thought to be transported by molecular motors in AMF~\cite{bago_translocation_2002}, shown to be transporting lipids in other fungal species~\cite{guimaraes_peroxisomes_2015, lin_active_2016}, and the speed of the to-tip flows is consistent with the range of speeds for molecular motors~\cite{steinberg_cell_2017}.
+This hypothesis is supported by the characteristics of its likely cargo, lipid droplets. In some way, these lipid droplets have to arrive at the tips to facilitate growth.
+These lipid droplets are believed to be transported by molecular motors in AMF~\cite{bago_translocation_2002}, it has been shown that other fungal species transport lipids along microtubules~\cite{guimaraes_peroxisomes_2015, lin_active_2016}, and the speed of the to-tip flows is consistent with the range of speeds of molecular motors~\cite{steinberg_cell_2017}.
 They move at a steady speed, in a straight line. 
-The flows towards the root, on the other hand, are sensitive to pressure changes from osmotic shocks (Fig.~\ref{fig:perturbations}A).
+However, flows towards the root are sensitive to pressure changes from osmotic shocks (Fig.~\ref{fig:perturbations}A).
 While they are affected by segment isolation, they are still able to flow, indicating that whatever is driving the flows in this direction is not dependent on long range connectivity of the network.
 The flows towards the root are also more variable in speed.
 This suggests that the mechanism driving these flows is different from the mechanism driving the to-tip flows, and is likely pressure driven.
