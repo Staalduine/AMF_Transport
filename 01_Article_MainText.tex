@@ -238,16 +238,16 @@ Although the above results elucidate the mechanism for lipid translocation acros
 In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
 We wanted to characterize more precisely how the growth of different tips could collectively contribute to overall lipid flow patterns. 
 
-\subsubsection*{Growth-induced mass flow does not explain the flows}
-\paragraph*{Growth creates volume; in other fungi its water demand drives the flow}
-Hyphal extension as shown in Fig.~\ref{fig:schematic_model}D, in addition to consuming carbon, is also associated with the creation of new network volume.
-% NOTE (12 Oct, Fig 4 v2): Fig 4D is now the junction panel (backflows merge); no panel shows a growth map, Fig 4C shows tip growth schematically. Same for the Fig 4D reference in the next paragraph.
-The corresponding demand for water has been shown to be the mechanism driving flows in colonies of other (non-mycorrhizal) fungal species~\cite{heaton_growth-induced_2010, heaton_advection_2012}.
-In those systems, the movement of matter within the network is well explained by the movement of water in a network of pipes with set sources and sinks. A hydraulic pressure gradient is established across the network, from inoculation roots to the tips, and the resulting flows are sufficient to explain the observed movement of matter.
-We wanted to investigate whether this explanation was compatible with our AMF system.
-Because volume creation and carbon demand are proportional, we use the same approach as for carbon, simply replacing the magnitude of the carbon source and sink, $\Delta C_k$, with the volume $\Delta V_k$.
-We keep a similar global source node corresponding to a water reservoir. {\color{blue} the word ``similar" suggests that a reader will know the other work which should not be assumed}
-% NOTE (5 Oct, Overleaf comments, corentinbees L97, 4 x 'reference not up to date / not correct / does not seem correct', 1 x 'no longer the right introduction'): check which words they sit on in Overleaf. Citations here (Heaton 2010 growth-induced mass flow, Heaton 2012 advection-diffusion) look right (2010 is the origin of the first solve). The figure reference Fig.~\ref{fig:schematic_model}D here and in the next paragraph is wrong now: Fig 4D is 'tree-like network accumulates lipid demand', not growth/volume creation; no current panel shows the growth map (old Fig 3A is commented out; Obsidian note 'For figure 4, put a real growth map into the schema'). The fifth comment: this section now parametrises carbon demand and flows, it does not test the Heaton model. Goes away with the L94-L111 rewrite.
+% \subsubsection*{Growth-induced mass flow does not explain the flows}
+% \paragraph*{Growth creates volume; in other fungi its water demand drives the flow}
+% Hyphal extension as shown in Fig.~\ref{fig:schematic_model}D, in addition to consuming carbon, is also associated with the creation of new network volume.
+% % NOTE (12 Oct, Fig 4 v2): Fig 4D is now the junction panel (backflows merge); no panel shows a growth map, Fig 4C shows tip growth schematically. Same for the Fig 4D reference in the next paragraph.
+% The corresponding demand for water has been shown to be the mechanism driving flows in colonies of other (non-mycorrhizal) fungal species~\cite{heaton_growth-induced_2010, heaton_advection_2012}.
+% In those systems, the movement of matter within the network is well explained by the movement of water in a network of pipes with set sources and sinks. A hydraulic pressure gradient is established across the network, from inoculation roots to the tips, and the resulting flows are sufficient to explain the observed movement of matter.
+% We wanted to investigate whether this explanation was compatible with our AMF system.
+% Because volume creation and carbon demand are proportional, we use the same approach as for carbon, simply replacing the magnitude of the carbon source and sink, $\Delta C_k$, with the volume $\Delta V_k$.
+% We keep a similar global source node corresponding to a water reservoir. {\color{blue} the word ``similar" suggests that a reader will know the other work which should not be assumed}
+% % NOTE (5 Oct, Overleaf comments, corentinbees L97, 4 x 'reference not up to date / not correct / does not seem correct', 1 x 'no longer the right introduction'): check which words they sit on in Overleaf. Citations here (Heaton 2010 growth-induced mass flow, Heaton 2012 advection-diffusion) look right (2010 is the origin of the first solve). The figure reference Fig.~\ref{fig:schematic_model}D here and in the next paragraph is wrong now: Fig 4D is 'tree-like network accumulates lipid demand', not growth/volume creation; no current panel shows the growth map (old Fig 3A is commented out; Obsidian note 'For figure 4, put a real growth map into the schema'). The fifth comment: this section now parametrises carbon demand and flows, it does not test the Heaton model. Goes away with the L94-L111 rewrite.
 
 \paragraph*{Growth per node gives the carbon demand, supplied from one root source node}
 We represented the growing network as a temporally evolving graph where each edge has an activation time corresponding to its first appearance.
@@ -316,17 +316,17 @@ This could explain why active transport mechanisms at high speeds are necessary 
 
 \begin{figure}
  \centering
- \includegraphics[width=\textwidth]{figures/Figure_4_v3.pdf}
+ \includegraphics[width=\textwidth]{figures/Figure_4_v4.pdf}
  \caption{\textbf{[Title.]}
 \textbf{(A)} [Network with the plant root.]
 \textbf{(B)} [Motor lanes and core backflow.]
 \textbf{(C)} [Tip: lanes turn back, growth.]
-\textbf{(D)} [Branched hypha, backflows merge at the junction.]
-\textbf{(E--H)} [Small networks: demand, diameter, loop, growth step.]}
+\textbf{(D--G)} [Small networks: demand, diameter, loop, growth step.]}
 % NOTE (12 Oct): Figure_4_v2.pdf = transport_paper manuscript/figures/fig4.pdf at 54489de (branch feat/model-net-flux, not merged): A-C the NWO talk's schematic (drawn by docs/presentations/2026-10-nwo-biophysics/schematic.py), D junction ('more growth beyond: more flow below'), E-H unchanged from 320d1a1. Caption placeholders above; the old caption is kept commented out below.
 % NOTE (12 Oct, E-H settings, from the Typst caption of the same commit): to-root speed in model units on one shared scale, networks are illustrations, not fitted to a colony. E demand: growing side tips along a backbone of uniform diameter. F diameter: one path tapering from 9 to 4 um, fixed demand. G loop: arms of 8 and 5 um between the same junctions; small arm 1.2 against 3.0 model units (global solve 0.03 against 3.4; conveyor 2.5 on both). H growth step: backbone of E with three side tips, then two more grown downstream; shaded = added stretch. E, F, H are trees (global solve and conveyor agree). Model: weakly coupled backflow (switching hyphae at a junction costs the resistance of 10 mm of 4 um-radius core), motors along the growth graph, demand split by hyphal area, tip-slowed motor speed, theta 0.05, a >= 0.8 b, backflow ~ diameter^0.7, segments ~2.5 mm, tip growth 25 um per step.
 % NOTE (12 Oct, later): the return-width exponent ('backflow ~ diameter^0.7' in the note above) is dropped from the main model (Simon); Fig 4 E-H were drawn with it and are to be redrawn without (toy_graphs.py CURRENT_MODEL_KW). See the Methods note at the return-lane sentence for the comparison.
 % NOTE (12 Oct, Figure_4_v3.pdf): compact layout, transport_paper be3806d (branch feat/fig4-compact, from feat/model-net-flux): A-C unchanged; D beside E-H; E-H as a 2 x 2 block of profiles with each small network as an inset, no colour bar (y-axis: to-root speed, model units). E-H redrawn without the return-width exponent: the toy profiles are identical to the nearest 0.01 with and without it, so the note above about redrawing is settled. About 35 % less height than v2 (5.2 vs 8.0 in).
+% NOTE (12 Oct, Figure_4_v4.pdf, transport_paper feat/fig4-compact): A-C over the four small networks in one row, now lettered D-G (demand, diameter, loop, growth step); the junction panel (old D, 'backflows merge') dropped (Simon): A shows the branched network, D (demand) the accumulating backflow. 4.4 in high (v2 8.0 in). Panel letters in the notes above (E-H) now read D-G.
 % NOTE (12 Oct, panel letters): old -> new: D,H (tree demand) -> E; E,I (width) -> F; F,J (loop) -> G; G,K (merges, loop additions) -> no panel; new: D (junction), H (growth step). Main-text references to update: Fig 4D at L241 and L252 (growth map; no panel shows one), 'D-G' L409, 'H' L410, 'E, I' L411, 'F, J' L415; Fig 4B at L380 (single pipe -> now B/C).
 % OLD CAPTION (Figure_4_final.pdf):
 %  \caption{\textbf{Proposed model of lipid flows and pressure-based backflows.}
