@@ -301,6 +301,7 @@ Each piece's volume per unit time, $\pi (D/2)^2 L / \Delta t$ summed over its ed
 Growth needs $\lambda = 0.26$ volumes of lipid per volume grown (dry-mass fraction 0.21, carbon fraction 0.5, carbon-use efficiency 0.5, density 1.1~g\,cm$^{-3}$, over 0.9 \todo{confirm: lipid density}; \texttt{constants.py}).
   \item \textbf{Routing.}
 Each tip's lipid demand is passed back up the growth graph to the roots, split between merging hyphae by cross-sectional area.
+% NOTE (12 Oct): Simon switched the main model to an even split between merging hyphae (the split rule does not change the scores; transport_paper demand_split_compare.py, branch feat/demand-split-compare). Main model, 15 sessions, within 2x of the measured to-root speed: conductance (b^4/L) / area / even = tree 87.9 / 87.9 / 87.9 %, loop 85.4 / 85.9 / 86.3 %; Spearman rho tree 0.41 all, loop 0.29 all; motor direction agrees with the observed one on 93.3 % of 712 edges under all three; the split changes the lipid current on 26 % (even) and 44 % (conductance) of edges against area. 'by cross-sectional area' in the sentence above becomes 'equally'.
 The result is the lipid current $J$ on every edge.
   \item \textbf{Motor speed.}
 Motors run the way each hypha grew, at
