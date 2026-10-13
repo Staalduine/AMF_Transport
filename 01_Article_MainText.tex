@@ -144,6 +144,7 @@ We stained neutral lipids with Nile Red fluorescent dye~\cite{bago_tracking_2002
 At the resolution of the fluorescence videos (0.14~$\mu$m per pixel, 0.5 or 1~s per frame, 10 to 20~s per video), we saw no evidence of lipid particles randomly switching direction, as they would in the random walk underlying diffusive motion (Fig.~\ref{fig:asymmetries}C).
 The lipids moved to the tip at a median of 2.42~$\mu m/s$ (879 edges with both directions measured in fluorescence), insignificantly different from the 2.95~$\mu m/s$ of the bright-field to-tip stream (SI Fig.~\ref{fig:fl_forward_backward}).
 In the other direction, fewer fluorescence streams were detected (989 against 1,396 to tip), at a median of 2.20~$\mu m/s$ against 2.91~$\mu m/s$ in bright-field.
+% NOTE (13 Oct): Simon: drop speed comparisons with fluorescence (Nile Red streaks are censored near 5 um/s, Methods detection limit). The two sentences above compare Nile Red and bright-field speeds (2.42 vs 2.95, 2.20 vs 2.91 um/s, stream counts) and cite SI fig:fl_forward_backward, which is now commented out (the reference shows ??).
 
 \paragraph*{Lipids have a to-tip direction bias of 0.71, bright-field is roughly even}
 By comparing bright-field and fluorescence videos of the same position, recorded about 15 seconds apart, it is clear that only a subset of trails visible in bright-field kymographs appear also in the fluorescence version (Fig.~\ref{fig:asymmetries}C, D): fluorescence gives 625 videos and 879 edges with both directions measured, bright-field 731 videos and 1,513 edges.
@@ -225,8 +226,6 @@ This suggests that the mechanism driving these flows is different from the mecha
 \namedsubsection{Coupled circulation driven by motors}{subsec:model}
 We synthesize the above results into a minimal model that explains the observed bidirectional transport of resources in the network and its modulation over space and time. Namely that a motor-driven condensate containing lipids moves towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC). This model is consistent with the observed flows in both directions, and with the perturbation experiments that we performed.
 
-
-
 \subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
 Although the above results elucidate the mechanism for lipid translocation across the network, they do not provide a predictive framework for how lipid flux is distributed.
 In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
@@ -236,40 +235,14 @@ We wanted to characterize more precisely how the growth of different tips could 
 
 % NOTE (12 Oct): the lipid volume fraction needed for growth (Theta at v0 = 3 um/s, rising to ~4 % away from the tip; 'fast active transport avoids overloading') moved to the SI (Simon: not central), section 'Lipid volume fraction needed for growth' (subsec:si_lipid_fraction); to be mentioned in the Discussion. The emulsion paragraph below opens with 'our estimate of 5 %', which pointed back to it.
 
-% \begin{figure}[hbt!]
-% \centering
-% \includegraphics[width = \textwidth]{figures/figure3_lipid_flux.pdf} 
-% \caption{\textbf{Demand of carbon for growth creates carbon flux at the colony scale} . \textbf{(a)} Network graph where regions that have grown between selected time-points have been highlighted in red. \textbf{(b)} Predicted motor direction through the hydraulic assumption. Color indicates direction, color wheel shows which direction. \textbf{(c)} Comparison of estimated and observed flux directions. Fluorescence is indicated in red, brightfield flux is indicated in black. Line is running average. \textbf{(d)} Aggregate flux direction in fluorescence (red) and brightfield (black) for all measured trails (number of trails = 10). \textbf{(e)} scatterplot of measured fluorescence flux ratio (y-axis) against calculated hydraulic speed (x-axis). Top left and bottom right quadrants are areas of agreement where hydraulic flux and measured flux point in same direction. Circle is example exclusion zone for \textbf{f}. \textbf{(f)} Ratio of same-sign flux ratio and hydraulic speeds. Exclusion zone removes points in \textbf{e} whose distance from the origin is less than the exclusion radius. \textbf{(g)} Histogram of absolute hydraulic speeds computed for whole network. \textbf{(h)} Histogram of all absolute fluorescence speeds measured for network.}
-% \label{fig:lipid_flows}
-% \end{figure}
-
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{figures/Figure_4_v5.pdf}
- \caption{\textbf{[Title.]}
-\textbf{(A)} [Network with the plant root.]
-\textbf{(B)} [Motor lanes and core backflow.]
-\textbf{(C)} [Tip: lanes turn back, growth.]
-\textbf{(D--G)} [Small networks: demand, diameter, loop, growth step.]}
-% NOTE (12 Oct, Fig 4 as it stands; replaces the seven Fig 4 notes of today): Figure_4_v5.pdf = transport_paper feat/fig4-compact (from feat/model-net-flux, neither merged), Working_notebooks/manuscript_figures/fig4.py. A-C the NWO talk's schematic (docs/presentations/2026-10-nwo-biophysics/schematic.py): network with root, motor lanes at v0 with backflow in the core, lanes turning back at the tip with growth dV/dt. D-G four small networks (top) and their to-root speed profiles (below, shared y-axis, model units; illustrations, not fitted): D demand (side tips along a uniform backbone), E diameter (one path tapering 9 -> 4 um, fixed demand), F loop (wide and narrow arm between the same junctions), G growth step (two more tips grown, before/after vs distance from the root, shaded = added stretch). Toy model = the main model: weakly coupled return (10 mm of 4 um-radius core to switch hyphae at a junction), motors along the growth graph, even demand split, theta 0.05, a >= 0.8 b, no return-width exponent (profiles identical with and without it), ~2.5 mm segments, 25 um tip growth per step. Main-text panel references in the toy-network paragraph still use the old letters ('H', 'E, I', 'F, J'): old D,H -> D; E,I -> E; F,J -> F; old G,K (merges) has no panel; G (growth step) is new.
-% OLD CAPTION (Figure_4_final.pdf):
-%  \caption{\textbf{Proposed model of lipid flows and pressure-based backflows.}
-% \textbf{(A)} Schematic showcase of lipid intake.
-% Lipids are added from the plant, and go into a lipid condensate.
-% This condensate is of radius $b - a$ where $b$ is the full hyphal radius, and $a$ is the non-condensate center radius.
-% \textbf{(B)} Lipids in the condensate are pulled along by microtubules.
-% This increases a pressure at the side where lipids are pulled.
-% This increase in pressure pushes non-condensate fluids back through the center of the hyphae.
-% \textbf{(C)} Lipids arrive at tips to facilitate growth.
-% Some of these lipids do not aid in growth and are put back into backflow.
-% \textbf{(D-K)} Model properties on small networks.
-% \textbf{(D, H)} A tree-like network accumulates lipid demand going towards the root.
-% Multiple growing tips also supply more backflow, increasing backflow velocity.
-% \textbf{(E, I)} Width has a calming effect on backflow velocity.
-% \textbf{(F, J)} Backflow in loops induces circularity, increasing total flow energy in the network.
-% \textbf{(G, K)} Merges and loop additions also serve to lower the backflow velocity.}
-% NOTE (5 Oct, Overleaf comments, L130): Simon: 'Lipids don't enter the network?' The condensate also consists of lipids. | Simon: Make a circuit equivalent: resistors and current drivers in parallel. | Simon: The model gives the boundary conditions; the network's resistors are also defined.
- \label{fig:schematic_model}
+ \caption{\textbf{Our model, showing motor flows moving toward the tip, and turning back as pressure-based flows. Model qualities are shown in the second row.}
+\textbf{(A)} Schematic of the model: to-tip flow (blue) returns as to-root flow (pink).
+\textbf{(B)} Motor lanes (blue) are at the hyphal wall, carrying lipids (yellow), traveling at speed $v_0$, with a backflow of cytoplasm (pink) in the core. 
+\textbf{(C)} At the tip, the motor lanes turn back, and the hypha grows at a rate $dV/dt$, calculated with a cylindrical volume.
+\textbf{(D-G)} Various model qualities: (D) Demand accumulation along a uniform backbone with side tips; (E) Diameter tapering from 9 to 4 um along a single path, with fixed demand; (F) Loop between two junctions, with wide and narrow arms; (G) Growth step, with two more tips grown. Top row: network schematics; bottom row: to-root speed profiles ($\mu m / s$), with the growth shaded.}\label{fig:schematic_model}
 \end{figure}
 
 \subsubsection*{The lipids form an emulsion separate from the bulk cytoplasm}
@@ -285,7 +258,7 @@ We assume that this emulsion is phase-separated from the bulk cytoplasm.
 
 \subsubsection*{Single-pipe model: a moving lipid layer drives a central backflow}
 \paragraph*{An emulsion layer at $v_0$ leaves an inner tube for water}
-We thought that this large flux of a lipid emulsion throughout the aseptate mycellium could trigger large movement of the cytoplasmic fluid in both the direction of the lipid due to viscous friction and the other direction due to the incompressibility of the fluid in the case where no water could flow out of the hyphae.
+We thought that this large flux of a lipid emulsion throughout the aseptate mycelium could trigger large movement of the cytoplasmic fluid in both the direction of the lipid due to viscous friction and the other direction due to the incompressibility of the fluid in the case where no water could flow out of the hyphae.
 % NOTE (5 Oct, Overleaf comments, L136): Coco: This should be the beginning of the paragraph introducing Fig 4A.
 This led us to propose the following conceptual model.
 Lipid droplets form a water-oil-like emulsion of higher viscosity that uniformly coats the internal surface of the hyphal pipe.
@@ -453,6 +426,7 @@ This phenomenon could explain the observation that lipids can also move in two d
 \subsubsection*{The detection limit explains only part of the slower to-root lipid stream}
 Speeds taken from the orientation of all moving pixels, which do not depend on the streak detection and follow the true speed up to 8 to 9~$\mu m/s$ at 2 frames per second, still show a smaller to-root branch in fluorescence than in bright-field: the to-root stream is faster than the to-tip stream by more than the 1.3-fold margin on 20\% of the fluorescence edges against 39\% of the same edges in bright-field (532 edges with both measured).
 So the detection limit explains part of the lower fluorescence speeds in the to-root direction, but not all of them, and why the stained cargo returns more slowly than the bright-field backflow remains open (Methods, \nameref{subsec:fl_detection_limit}).
+% NOTE (13 Oct): this Discussion paragraph is a fluorescence vs bright-field speed comparison too (pixel speeds, to-root branch 20 vs 39 %); falls under Simon's decision to drop such comparisons.
 % NOTE (10 Oct): moved here from the Results lipid paragraph (Simon: 'this is for discussion'). Numbers redone 10 Oct (see the note after the Results lipid paragraph): on the 532 paired edges 21 % vs 39 %; with both modes cut at 5 um/s 13 % vs 17 % (difference CI includes 0).
 
 \subsubsection*{Mechanical coupling could make trade proportional; radius adaptation could control it}
