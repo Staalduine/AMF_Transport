@@ -293,6 +293,7 @@ The median IQR is 0.63~$\mu$m/s to tip and 1.58~$\mu$m/s to root in bright-field
 \label{fig:speed_iqr}
 \end{figure}
 % NOTE (10 Oct, IQRs of censored speeds (transport_paper#132 comment 6088415445; feat/fl-numbers-limits 8391a7e, manuscript/fl_numbers_limits.md)): median IQR to tip / to root, streaks < 5 um/s in both modes: bright-field 0.62 / 1.25, Nile Red 1.06 / 1.17 (directions with q75 < 5: 0.60 / 1.41 vs 1.07 / 1.18). So the bright-field to-root spread drops toward Nile Red once truncated, the to-tip one does not. Nile Red directions have a median of 14 streaks vs 87 in bright-field.
+% NOTE (13 Oct): matched-range version drawn: suppfig/FigS_video_positions_iqr_cap5.pdf (transport_paper feat/s8-capped-iqr 6c7bcf7, figS_video_positions.py --cap 5): every stream's quartiles recomputed from its streaks below 5 um/s in BOTH modes (the Nile Red detection limit), directions with fewer than 5 such streaks dropped. Bright-field 3,462 streams from 729 videos, median IQR 0.62 to tip / 1.25 to root; Nile Red 2,364 from 625, 1.06 / 1.17. Simon to choose which version the figure shows (swap the \includegraphics file).
 
 % -----------------------------------------------------------------------
 % FIGURE: to-tip against to-root speed per edge, fluorescence vs bright-field
@@ -368,6 +369,7 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 \label{fig:tip_root_scatter}
 \end{figure}
 % NOTE (10 Oct, supersedes the Nile Red numbers in the note above (transport_paper#132 comment 6088415445; feat/fl-numbers-limits 8391a7e, manuscript/fl_numbers_limits.md)): panel B is streak medians, censored above ~5 um/s. Per-pixel at 2 fps: Nile Red 608 video edges, medians 2.40 / 2.20, rho 0.65; bright-field pixels 2,194 video edges, 2.76 / 2.73, rho 0.66.
+% NOTE (13 Oct): matched-range version drawn: suppfig/figS_tip_root_scatter_cap5.pdf (figS_tip_root_scatter.py --cap 5, same branch): medians from streaks below 5 um/s in both modes. Bright-field 1,505 video edges, medians to tip 2.91 / to root 3.04 um/s, Spearman tip-root 0.62, to-root vs tip distance 0.12, to-tip vs distance 0.22; Nile Red 867 video edges, 2.09 / 1.91, rho 0.49, 0.28, 0.26. Cutting at 5 removes bright-field's fast to-root arm (the full version has to-root median 3.43).
 
 % -----------------------------------------------------------------------
 % FIGURE: osmotic shock, examples, response against osmolarity, Nile Red
