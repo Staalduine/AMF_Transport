@@ -306,6 +306,7 @@ Each tip's lipid demand is passed back up the growth graph to the roots, split b
 % NOTE (12 Oct): Simon switched the main model to an even split between merging hyphae (the split rule does not change the scores; transport_paper demand_split_compare.py, branch feat/demand-split-compare). Main model, 15 sessions, within 2x of the measured to-root speed: conductance (b^4/L) / area / even = tree 87.9 / 87.9 / 87.9 %, loop 85.4 / 85.9 / 86.3 %; Spearman rho tree 0.41 all, loop 0.29 all; motor direction agrees with the observed one on 93.3 % of 712 edges under all three; the split changes the lipid current on 26 % (even) and 44 % (conductance) of edges against area. 'by cross-sectional area' in the sentence above becomes 'equally'.
 The result is the lipid current $J$ on every edge.
   \item \textbf{Motor speed.}
+% NOTE (13 Oct): Simon: the main text commits to a constant v0 for now (and an equal demand split); the offset profile below becomes a variant in SI \nameref{subsec:si_model_variants}. Constant v0 = 3 um/s (constants.v0) with the even split and the 10 mm junction resistance: within 2x 85.3 % (offset 86.5 %), Spearman rho tree 0.10 (0.41), loop 0.20 (0.29); run const_even_j10000.
 Motors run the way each hypha grew, at
   \[
     v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},

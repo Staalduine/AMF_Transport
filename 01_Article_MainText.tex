@@ -200,7 +200,7 @@ This matches earlier work showing that flows can still be active a year without 
 A connection to the root is therefore not needed for either flow, which rules out transpiration by the plant as their driver.
 How far a driving force can reach is a separate question, and we asked it by further shrinking the connected network.
 
-\paragraph*{In isolated segments of a few millimetres both flows continue, about a fifth slower}
+\paragraph*{In isolated segments of a few millimeters both flows continue, about a fifth slower}
 To further hone down on the range of a potential driving force, we wanted to know what the minimal size of the subgraph was that was necessary to conserve flows in the two directions.
 We made targeted cuts to isolate small segments from the network and image flows at sufficient distance from the cut induced stress (Fig.~\ref{fig:perturbations}C).
 In patches of network as small as only a few millimeters in total length, we still observed flows in the two directions (Fig.~\ref{fig:perturbations}C).
@@ -223,13 +223,15 @@ While they are affected by segment isolation, they are still able to flow, indic
 The flows towards the root are also more variable in speed.
 This suggests that the mechanism driving these flows is different from the mechanism driving the to-tip flows, and is likely pressure driven.
 
-\namedsubsection{Coupled circulation driven by motors}{subsec:model}
 We synthesize the above results into a minimal model that explains the observed bidirectional transport of resources in the network and its modulation over space and time. Namely that a motor-driven condensate containing lipids moves towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC). This model is consistent with the observed flows in both directions, and with the perturbation experiments that we performed.
 
-\subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
-Although the above results elucidate the mechanism for lipid translocation across the network, they do not provide a predictive framework for how lipid flux is distributed.
-In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
-We wanted to characterize more precisely how the growth of different tips could collectively contribute to overall lipid flow patterns. 
+% NOTE (13 Oct, Simon: describe the model's implementation in general terms here, with the simple choices; variants go to SI \nameref{subsec:si_model_variants}). Steps as implemented (Methods, \nameref{subsec:transport_model}): (1) demand: the hypha grown over the next four network frames, pi (D/2)^2 L / Delta t per piece, shared among the growing tips it grows from, at 0.26 volumes of lipid per volume grown; (2) routing: each tip's demand passed back up the growth graph to the roots, split equally where hyphae merge, giving the lipid current J on every edge; (3) motors run the way each hypha grew at a constant v0 = 3 um/s (measured to-tip median 2.95 um/s); (4) annulus: lipid share theta = 0.05 of an annulus at v0 carries J, a^2 = b^2 - J / (pi v0 theta), a >= 0.8 b; (5) motor stream q_s = pi v0 [(1 - theta)(b^2 - a^2) + a^2]; (6) backflow: pressure solve on the core Poiseuille conductances with the divergence of q_s as sources, roots tied to a common reservoir, a 10 mm core resistance for flow switching hyphae at junctions; (7) read-out: to-root speed |q_c| / (pi a^2).
+% NOTE (13 Oct, scores of the simple choices; transport_paper fig_outputs/model_grid/junction/const_even_j10000, constant v0 3 um/s, even split, weakly coupled return 10 mm, physical inputs; 15 sessions, 5 plates, 1,590 bright-field edges): within 2x of the measured to-root speed 85.3 % (tree 85.7, loop 85.2), median fold error 1.37, median model/measured 1.03; Spearman rho tree 0.10, loop 0.20. Against the offset tip profile (current tables, split_even_j10000): within 2x 86.5 % (tree 87.9, loop 86.3), fold 1.35, rho tree 0.41, loop 0.29. The constant speed keeps the level but loses most of the ranking on tree edges, and within 1 mm of a tip (86 edges) over-predicts the to-root speed by a median 1.58 (offset 1.25). Model 5-95 % range 2.89-4.60 um/s against measured 1.52-6.78.
+
+% \subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
+% Although the above results elucidate the mechanism for lipid translocation across the network, they do not provide a predictive framework for how lipid flux is distributed.
+% In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
+% We wanted to characterize more precisely how the growth of different tips could collectively contribute to overall lipid flow patterns. 
 
 % NOTE (12 Oct): the growth-induced mass flow test (dissipation minimisation, Heaton) moved to the SI (Simon), section 'Growth-induced mass flow' (subsec:si_mass_flow); the growth -> Delta V_k -> Delta C_k set-up with the root source node went with it and is also the minimal model's input.
 
@@ -244,17 +246,6 @@ We wanted to characterize more precisely how the growth of different tips could 
 \textbf{(C)} At the tip, the motor lanes turn back, and the hypha grows at a rate $dV/dt$, calculated with a cylindrical volume.
 \textbf{(D-G)} Various model qualities: (D) Demand accumulation along a uniform backbone with side tips; (E) Diameter tapering from 9 to 4 um along a single path, with fixed demand; (F) Loop between two junctions, with wide and narrow arms; (G) Growth step, with two more tips grown. Top row: network schematics; bottom row: to-root speed profiles ($\mu m / s$), with the growth shaded.}\label{fig:schematic_model}
 \end{figure}
-
-\subsubsection*{The lipids form an emulsion separate from the bulk cytoplasm}
-Even our estimate of 5\% of the cytoplasm filled with lipids suggests that a significant proportion of the volume of the hyphal is filled with lipids.
-Such a proportion could easily lead to clogging if all of the lipids coalesce into a single phase.
-What then is this large fraction of neutral lipid packaged within the cytoplasm?
-The minimal unit of lipid packaging is generally thought to be membrane bound lipid droplets.
-Such lipid droplets are generally kept from coalescing by coating~\cite{thiam_why_2017}.
-The ensemble of those lipid droplets can then form an emulsion with a set lipid volume fraction.
-The emulsion phase, due to the repulsive strength between the different lipid droplets, can have different rheological properties than the rest of the cytoplasm~\cite{jeffrey_rheological_1976}.
-We assume that this emulsion is phase-separated from the bulk cytoplasm.
-% NOTE (5 Oct, Overleaf comments, L134): Coco: Move to the discussion and refer to the sister paper.
 
 \subsubsection*{Single-pipe model: a moving lipid layer drives a central backflow}
 \paragraph*{An emulsion layer at $v_0$ leaves an inner tube for water}
@@ -339,6 +330,17 @@ The speed was higher in those central hyphae where the lipid density was also hi
 In tree-like parts of the network, the net volumetric flow of water through the whole pipe $q^w$ is close to zero because the amplitude of growth induced mass flow is negligible (Fig. \ref{fig:carbonflow}d,e).
 % NOTE (7 Oct, SI references): Fig. carbonflow f (L174) and d,e (here) are among the wrong SI files (FigS2-S5, transport_paper#129); no figure behind these claims until replaced.
 Then, the movement of water in and around the suspension of lipid droplets can only be compensated for by faster speeds in the opposite direction in the inner pipe.
+
+\subsubsection*{The lipids form an emulsion separate from the bulk cytoplasm}
+Even our estimate of 5\% of the cytoplasm filled with lipids suggests that a significant proportion of the volume of the hyphal is filled with lipids.
+Such a proportion could easily lead to clogging if all of the lipids coalesce into a single phase.
+What then is this large fraction of neutral lipid packaged within the cytoplasm?
+The minimal unit of lipid packaging is generally thought to be membrane bound lipid droplets.
+Such lipid droplets are generally kept from coalescing by coating~\cite{thiam_why_2017}.
+The ensemble of those lipid droplets can then form an emulsion with a set lipid volume fraction.
+The emulsion phase, due to the repulsive strength between the different lipid droplets, can have different rheological properties than the rest of the cytoplasm~\cite{jeffrey_rheological_1976}.
+We assume that this emulsion is phase-separated from the bulk cytoplasm.
+% NOTE (5 Oct, Overleaf comments, L134): Coco: Move to the discussion and refer to the sister paper.
 
 \namedsubsection{Lipid generated backflow}{subsec:res_backflow}
 % \begin{figure}
