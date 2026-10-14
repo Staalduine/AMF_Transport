@@ -307,6 +307,7 @@ Each tip's lipid demand is passed back up the growth graph to the roots, split b
 The result is the lipid current $J$ on every edge.
   \item \textbf{Motor speed.}
 % NOTE (13 Oct): Simon: the main text commits to a constant v0 for now (and an equal demand split); the offset profile below becomes a variant in SI \nameref{subsec:si_model_variants}. Constant v0 = 3 um/s (constants.v0) with the even split and the 10 mm junction resistance: within 2x 85.3 % (offset 86.5 %), Spearman rho tree 0.10 (0.41), loop 0.20 (0.29); run const_even_j10000.
+% NOTE (14 Oct): superseded: Simon switched back to the offset profile below (it equals the falloff fitted on full-flow edges only: 3.09 / 2.15 um/s / 1.9 mm); constant v0 is a variant in the SI. Full-flow edges within 2x 89.1 % (constant 88.1 %).
 Motors run the way each hypha grew, at
   \[
     v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
