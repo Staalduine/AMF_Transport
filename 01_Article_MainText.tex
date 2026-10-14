@@ -204,7 +204,7 @@ How far a driving force can reach is a separate question, and we asked it by fur
 To further hone down on the range of a potential driving force, we wanted to know what the minimal size of the subgraph was that was necessary to conserve flows in the two directions.
 We made targeted cuts to isolate small segments from the network and image flows at sufficient distance from the cut induced stress (Fig.~\ref{fig:perturbations}C).
 In patches of network as small as only a few millimeters in total length, we still observed flows in the two directions (Fig.~\ref{fig:perturbations}C).
-We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\% \%, but the flow never stopped (Fig.~\ref{fig:perturbations}C).
+We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\%, but the flow never stopped (Fig.~\ref{fig:perturbations}C).
 In none of the experiments did the flow stop.
 These experiments demonstrate that the mechanical origin of flows in the two directions does not require long range connectivity of the network to operate (SI, \nameref{subsec:si_segment_size}). 
 
@@ -366,6 +366,7 @@ Vertical error bars: 25th–75th percentile of the measured velocity pixels of t
 \textbf{(f)} Backflow along trail in e (31 measured segments, bar: 25th–75th percentile) with the prediction, within 2x on 97 \% of segments with median.}
     \label{fig:fig5_plug}
 \end{figure}
+% NOTE (14 Oct, Fig 5 split, Simon: Fig 5 becomes two figures; one needs a panel on the forward (to-tip) speed fit). Panel draft: transport_paper fig_outputs/forward_speed_bayes/fig.png (Working_notebooks/forward_speed_bayes.py, branch feat/forward-speed-bayes c098da4). Bayesian hierarchical fit of v(d) = v_inf - (v_inf - v_tip) e^(-d/ell) to the log median to-tip streak speed of each bright-field edge, weighted by that median's bootstrapped error from the edge's own streaks; edge and plate random effects (plate effects sum to zero). 1,495 edges, 300,127 streaks, 15 sessions, 5 plates; d = network distance to the nearest growing tip. Posterior median [95 % interval]: v_tip 2.18 [1.89, 2.40] um/s, v_inf 2.91 [2.83, 3.02] um/s, ell 1.84 [1.04, 3.58] mm; edge-to-edge spread 0.24 on log speed (about 27 %), plate effects -6 to +6 %. Only 82 edges lie within 1 mm of a tip and 7 within 250 um, so v_tip leans on the nearest few edges. Least-squares fits on edge medians (13 Oct): v_tip and v_inf move by about 0.1 um/s whichever plate is left out, ell 0.75-2.5 mm; fitted per plate alone ell runs to the bound in two plates. Falloff to 0 (v0 (1 - e^(-d/lambda))) gives lambda ~140 um and fits worse held out (median fold 1.156 vs 1.140 for the offset).
 % NOTE (7 Oct, Fig 5 caption numbers): fig_plug_model.png was committed 30 Sep as '1,566 edges in 15 sessions'; the caption says 1,248 edges in 11 sessions. After the 3 Oct no-cut rebuild (transport_paper manuscript/figs4-6_rebuild_2026-10-03.md) the physical-input global solve gives 1,590 edges, fold error x1.45, 77 % within 2x, and 79 % of trail segments within 2x (caption: 84 %). The bin counts and the 97 % in (f) were not re-derived.
 
 \subsubsection*{The network model reproduces the measured speeds and their spatial pattern}
