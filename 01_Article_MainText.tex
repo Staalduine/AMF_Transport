@@ -254,24 +254,24 @@ We synthesize the above results into a minimal model that explains the observed 
 % NOTE (15 Oct, missing steps): Between the single pipe (this subsection) and 'pipes as circuit elements' the text does not give how the network model is built: growth gives the demand, which is routed by the GIMF solve into the lipid current J (0.256 times the GIMF flux); J sets the annulus (theta 0.05, a >= 0.8 b); the motor stream q_s = pi v [(1 - theta)(b^2 - a^2) + a^2] runs at the tip-dependent speed v(d) along the GIMF direction; the global pressure solve gives the net flux q^w, and the return is q_c = q_s - q^w; widths are the recalibrated Keras width. The Methods list these steps; a few sentences here plus a pointer would close the gap.
 \paragraph*{A condensate layer at $v_m$ leaves an inner tube for water}
 We imagine that a flux of condensate containing lipid driven by motors throughout the aseptate mycelium could trigger large movement of the cytoplasmic fluid in both the direction of the lipid due to viscous friction and the other direction due to the incompressibility of the fluid in the case where no water could flow out of the hyphae.
-As such, the condensate, a water-oil-like emulsion of lipid droplets of higher viscosity, forms a layer that uniformly coats the internal surface of the hyphal pipe. We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae. The condensate layer has a volumetric proportion $\theta$ of lipids and $(1-\theta)$ of water, and moves at a speed $v_m$. In this model, we also imagine that the condensate layer is coating the walls, and that the water in the core of the hyphae is free to flow at a rate of $q^w_{r<a}$, with a radius $a$ smaller than the hyphal radius $b$. The volumetric proportion of lipids in the whole pipe is $\Theta$, which is related to $\theta$ by $\Theta = \theta (b^2 - a^2) / b^2$.
+As such, the condensate, a water-oil-like emulsion of lipid droplets of higher viscosity, forms a layer that uniformly coats the internal surface of the hyphal pipe. We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae. The condensate layer has a volumetric proportion $\theta$ of lipids and $(1-\theta)$ of water, and moves at a speed $v_m$. In this model, we also imagine that the condensate layer is coating the walls, and that the water in the core of the hyphae is free to flow at a rate of $q_{w,r<a}$, with a radius $a$ smaller than the hyphal radius $b$. The volumetric proportion of lipids in the whole pipe is $\Theta$, which is related to $\theta$ by $\Theta = \theta (b^2 - a^2) / b^2$.
 
 By solving the Navier-Stokes equation in the inner pipe, setting the boundary conditions to be $v_m$ at the border of the inner pipe, one can determine the radial speed profile $u(r)$ in cylindrical symmetry to be 
 
 \begin{equation}
 \label{eq:speed_profile_main}
-u(r) = v_m + \frac{2(q^w_{r<a} - \pi a^2 v_m)(a^2 - r^2)}{\pi a^4}.
+u(r) = v_m + \frac{2(q_{w,r<a} - \pi a^2 v_m)(a^2 - r^2)}{\pi a^4}.
 \end{equation}
 
 The flow of water through the inner pipe can be written as
 
 \begin{equation}
 \label{eq:net_inner_flow}
-q^w_{r<a} = q^w - \pi b^2 \Theta \frac{1-\theta}{\theta} v_m,
+q_{w,r<a} = q_w - \pi b^2 \Theta \frac{1-\theta}{\theta} v_m,
 \end{equation}
 
-where $q^w$ is the net flow of water through the whole pipe.
-Interestingly, when one assumes $q^w = 0$ as would be the case in a closed pipe system, we have:
+where $q_w$ is the net flow of water through the whole pipe.
+Interestingly, when one assumes $q_w = 0$ as would be the case in a closed pipe system, we have:
 \begin{equation}
 \label{eq:max_speed}
 u(0) = -v_m\left(1+2\frac{\Theta(1-\theta)}{\theta-\Theta}\right) .
@@ -294,17 +294,17 @@ Because fluid movement happens at low Reynolds numbers in our system and the ent
 A network of connected pipes is then analogous to a network of these individual circuit elements.
 
 Such an electrical circuit equivalent of the network can be solved with linear algebra using Kirchhoff's law at each intersection, and requiring that the sum of pressure drops around loops in the network be zero (Methods). 
-As in the case of growth induced mass flow discussed above in \nameref{subsec:si_mass_flow}, we set the sink magnitude at each node to correspond to newly created volume $\Delta V_k$ and added a global reservoir, connected to manually annotated nodes which are strongly suspected to be connected to roots.  This volume can be though of as the minimal volume which needs to be transported to the tips to have sustained growth. Using lipid dry mass measurements, we can estimate the volume amount of lipid $J$ that needs to be transported to the tips to sustain growth (Methods, \nameref{subsec:si_lipid_fraction}). This allows us to set the sink magnitude at each node in the network. Additionally, we assume that the network is interested in the energy minimization of the flow, which is equivalent to minimizing the total power dissipation in the network. This allows us to solve for the pressure at each node in the network, and therefore the demand $J$ through each edge.
+As in the case of growth induced mass flow discussed above in \nameref{subsec:si_mass_flow}, we set the sink magnitude at each node to correspond to newly created volume $\Delta V_k$ and added a global reservoir, connected to manually annotated nodes which are strongly suspected to be connected to roots.  This volume can be though of as the minimal volume which needs to be transported to the tips to have sustained growth. Using lipid dry mass measurements, we can estimate the volume amount of lipid $J_l$ that needs to be transported to the tips to sustain growth (Methods, \nameref{subsec:si_lipid_fraction}). This allows us to set the sink magnitude at each node in the network. Additionally, we assume that the network is interested in the energy minimization of the flow, which is equivalent to minimizing the total power dissipation in the network. This allows us to solve for the pressure at each node in the network, and therefore the demand $J_l$ through each edge.
 
-In each edge the lipid current fixes the size of the motor-driven condensate: with a lipid share $\theta$ of the condensate (set to 0.05) moving at the motor speed $v_m$, $J = \pi(b^2 - a^2)\theta v_m$, so the core radius follows from $a^2 = b^2 - J/(\pi v_m \theta)$, so an edge that carries more lipid has a thicker condensate and a narrower core. The sign of $J_{i, j}$ determines the direction of motor flow. The condensate and the core it drags along carry a volume 
+In each edge the lipid current fixes the size of the motor-driven condensate: with a lipid share $\theta$ of the condensate (set to 0.05) moving at the motor speed $v_m$, $J_l = \pi(b^2 - a^2)\theta v_m$, so the core radius follows from $a^2 = b^2 - J_l/(\pi v_m \theta)$, so an edge that carries more lipid has a thicker condensate and a narrower core. The sign of $J_l$ determines the direction of motor flow. The condensate and the core it drags along carry a volume 
 
 \begin{equation}
 q_s = \pi v_m\left[(1-\theta)(b^2-a^2) + a^2\right]
 \end{equation}
 
-towards the tips. Each edge then acts as a source of flux $q_s$ in parallel with the hydraulic resistance of its core, $R = 8\mu L/(\pi a^4)$, so that its net water flux is $q^w = q_s - \Delta p/R$ (Methods). These values are all derived from the previously solved $J_{i, j}$, and we use them in a second solver to find the backflow. Solving these elements together for the pressures, with no water entering or leaving the network except at the roots, which are tied to a common reservoir (growth is neglected here, as it moves far less volume than the motors),, gives $q^w$ on every edge, and with it the pressure-driven return through the core, $q_c = q_s - q^w$. We compare the mean speed of this return, $|q_c|/(\pi a^2)$, with the measured to-root speed. Centerline speed $u(0)$ would be the speed at the center of the pipe, which we do not expect to measure reliably. The model uses only measured or physical inputs: the network and its growth from the time-lapse, hyphal widths from the network images recalibrated on the filmed hyphae, the measured to-tip speed, and $\theta = 0.05$ with $a \geq 0.8\,b$; nothing is fitted to the to-root speeds.
+towards the tips. Each edge then acts as a source of flux $q_s$ in parallel with the hydraulic conductance of its core, $K = \pi a^4/(8\mu L)$, so that its net water flux is $q_w = q_s - K\Delta p$ (Methods), where $\Delta p = p_j - p_i$ is the pressure difference along the edge from node $i$ to node $j$, the direction in which $q_s$ and $q_w$ are counted. These values are all derived from the previously solved $J_l$, and we use them in a second solver to find the backflow. Solving these elements together for the pressures, with no water entering or leaving the network except at the roots, which are tied to a common reservoir (growth is neglected here, as it moves far less volume than the motors), gives $q_w$ on every edge, and with it the pressure-driven return through the core, $q_c = q_s - q_w$. We compare the mean speed of this return, $|q_c|/(\pi a^2)$, with the measured to-root speed. Centerline speed $u(0)$ would be the speed at the center of the pipe, which we do not expect to measure reliably. The model uses only measured or physical inputs: the network and its growth from the time-lapse, hyphal widths from the network images recalibrated on the filmed hyphae, the measured to-tip speed, and $\theta = 0.05$ with $a \geq 0.8\,b$; nothing is fitted to the to-root speeds.
 
-Motor flow speed was calibrated on measured to-tip speeds, with a tip falloff of $v_{\infty}$ 3.10 $\mu m / s$ to $v_{tip}$ 2.14 $\mu m/s$ over $\ell$ 1.71 mm (Fig.~\ref{fig:fig5_plug}b; Methods). The model predicts the to-root speed on 1,544 bright-field edges in 15 sessions with a median fold error of 1.45. 
+In the model, $v_m$ is given by a calibrated function of the network distance $d$ to the nearest growing tip, $\hat{v}_m(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\,e^{-d/\ell}$, fitted to the measured to-tip speeds, with $v_\infty = 3.10~\mu$m/s, $v_{\mathrm{tip}} = 2.14~\mu$m/s and $\ell = 1.71$~mm (Fig.~\ref{fig:fig5_plug}b; Methods). The model predicts the to-root speed on 1,544 bright-field edges in 15 sessions with a median fold error of 1.45. 
 
 A number of properties can be shown in toy networks (Figure~\ref{fig:schematic_model} D-G).
 Tree networks aggregate backflow into their central trunk,   increasing flow rate (Figure \ref{fig:schematic_model} H).
@@ -319,11 +319,11 @@ Finally, anastomoses can reduce the load on a tree-like network by routing backf
 This way, pressure differences in tree-like sections get reduced, and backflow nutrients can be accessed by more parts of the network.
 
 \paragraph*{The model predicts backflow per edge, faster where the lipid density is higher}
-This allowed us to predict on each edge what the net volumetric rate of fluid movement $q^w$ would be and then the direction and magnitude of the flow speed in the inner tube of each edge of the network (Fig \ref{fig:fig5_plug}).
+This allowed us to predict on each edge what the net volumetric rate of fluid movement $q_w$ would be and then the direction and magnitude of the flow speed in the inner tube of each edge of the network (Fig \ref{fig:fig5_plug}).
 We found that our model captures salient features of the bidirectionality of flow observed across all edges.
 The speed was higher in those central hyphae where the lipid density was also higher, which was explained by the larger proportion of the volume of the pipe occupied by the condensate moving at $v_m$ and dragging water with it (\ref{eq:max_speed}).
 % NOTE (15 Oct, main-text review): No figure or number backs 'higher in central hyphae where the lipid density was also higher'. Candidates are the model lipid current or a/b against betweenness or tip distance on the measured edges.
-In tree-like parts of the network, the net volumetric flow of water through the whole pipe $q^w$ is close to zero because the amplitude of growth induced mass flow is negligible (Fig. \ref{fig:carbonflow}d,e).
+In tree-like parts of the network, the net volumetric flow of water through the whole pipe $q_w$ is close to zero because the amplitude of growth induced mass flow is negligible (Fig. \ref{fig:carbonflow}d,e).
 % NOTE (7 Oct, SI references): Fig. carbonflow f (L174) and d,e (here) are among the wrong SI files (FigS2-S5, transport_paper#129); there is no figure behind these claims until they are replaced.
 Then, the movement of water in and around the suspension of lipid droplets can only be compensated for by faster speeds in the opposite direction in the inner pipe.
 
@@ -393,7 +393,7 @@ We found that the model could overall explain well the distribution of speeds fr
 % NOTE (15 Oct, main-text review): The current 5-95th percentiles are 1.03-7.15 for the model and 1.61-6.82 um/s measured (KS 0.056); the 25-75th percentiles are 2.52-4.87 against 2.41-4.86.
 Speeds slower than $v_m$ were explained by the existence of loops in the network that led to a net circulation of water through some of the pipes that crossed the same direction as lipid flux.
 % NOTE (15 Oct, main-text review): This is not shown. The outlier check found the model's too-slow edges to be loop circulation in the global solve; whether the measured slow edges sit on loops is untested. Also, sparse-flow edges (13 %, ~1.8 um/s both ways) make up many of the measured slow ones, and the model does not describe them (SI, full and sparse flow).
-According to equations \ref{eq:net_inner_flow} and \ref{eq:speed_profile_main}, when $q^w$ is large enough and positive, $q^w_{r<a}$ can also be positive and larger than $\pi a^2 v_m$, which can lead to the absolute speed being lower than $v_m$.
+According to equations \ref{eq:net_inner_flow} and \ref{eq:speed_profile_main}, when $q_w$ is large enough and positive, $q_{w,r<a}$ can also be positive and larger than $\pi a^2 v_m$, which can lead to the absolute speed being lower than $v_m$.
 During the length of a hypha, our model could explain the gradual increase of flow speed when moving away from the tip, as well as the sudden decrease which seemed to coincide with entering regions with multiple alternative paths due to anastomoses to the root (Fig.\ref{fig:fig5_plug}F).
 % NOTE (15 Oct, main-text review): Panel F is now Fig 6b, and the trail-wide rise is in Fig 5d. No panel shows a 'sudden decrease' on entering looped regions.
 Our model could also explain the increase in flow speed over time at specific locations (Fig.\ref{fig:fig5_plug}e). 
