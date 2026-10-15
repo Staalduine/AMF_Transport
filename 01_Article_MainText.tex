@@ -59,11 +59,8 @@ In addition, it has been observed in the past that, when a single AM network was
 Past research has quantified the flow speed in both directions in networks of different ages~\cite{oyarte_galvez_travelling-wave_2025}.
 However, without staining the lipids and/or phosphorus, it is difficult to understand the organization of resource flow across the network and the underpinning transport mechanisms.
 Resource specific staining can shed light on the distribution of resource flux within the network.
-For example, using Nile Red staining, it was found that lipid density varies along the hyphae, from about 24\% of the hyphal volume near the root to about 0.5\% at the front, and that lipid bodies move in both directions, mostly with the cytoplasmic stream~\cite{bago_translocation_2002}.
-% NOTE (15 Oct, main-text review): To meet the literature claim-strength rule, state the method and system of Bago 2002 before submission: Nile Red or staining, in which culture system, and how the 24 % and 0.5 % were measured (their Fig. 3).
-% NOTE (15 Oct, Bago 2002 full text, PMC148950): Bago et al. grew Glomus intraradices (now Rhizophagus irregularis) in monoxenic culture with Ri T-DNA transformed carrot roots, in two-compartment Petri dishes, and Gigaspora margarita in single-compartment dishes. They stained lipid bodies with Nile Red (0.05 ug/mL in the medium) and imaged them live by two-photon microscopy. The 24 % (near the root) and 0.5 % (at the growing front) are the share of hyphal volume occupied by lipid bodies in extraradical runner hyphae of G. intraradices, estimated from thresholded three-dimensional z-stacks (their Fig. 3b and 3f); asymbiotic germ tubes gave 15.6 % near the spore and 0.3 % at the tip (their Fig. 1). They report that most lipid bodies move with the cytoplasmic stream, some against it and some anchored, at up to about 4 um/s in G. intraradices and 8 to 11 um/s in Gi. margarita. They suggest that movement independent of the stream may run on microtubular arrays, but they did not test microtubules or motors, which supports the 'proposed but never tested' sentence below for this paper. A sentence that states the evidence could read: 'Using Nile Red and two-photon microscopy in monoxenic root-organ cultures, Bago et al. estimated that lipid bodies fill about 24 % of the volume of extraradical runner hyphae near the root and 0.5 % at the growing front'.
-A role for microtubule tracks in this movement has been proposed, but to our knowledge it has never been tested.
-% NOTE (15 Oct, main-text review): 'never been tested' is a strong negative; check Uetake et al. 2002 (microtubules and lipid bodies in AM hyphae) and the motor literature (manuscript/literature_motors.md) before keeping it.
+For example, using Nile Red staining and two-photon microscopy, it was found that lipid density varies along the hyphae, from about 24\% of the hyphal volume near the root to about 0.5\% at the front, and that lipid bodies move in both directions, mostly with the cytoplasmic stream~\cite{bago_translocation_2002}.
+A role for microtubule tracks in this movement has been proposed, and microtubules have been imaged across the network~\cite{uetake_extensive_2002}, but to our knowledge the link between microtubules and lipid transport has never been established.
 
 \paragraph*{Speeds correlate with betweenness centrality, without a mechanical basis}
 Flow speeds along the hyphae are modulated with time and location within the network~\cite{oyarte_galvez_travelling-wave_2025}.
@@ -81,7 +78,6 @@ How can the transport mechanisms in place maintain a form of bidirectional trans
 To answer these questions, we acquired image data at two different spatial and temporal resolutions to quantify the flow speed in specific edges of growing networks.
 At high spatial and temporal resolution, we acquired bright-field videos of transport dynamics within single hyphal edges over multiple days.
 Using Nile red, a neutral lipid-specific fluorescent dye, we also characterized and quantified the movement of carbon in the form of lipids along these same edges.
-% NOTE (15 Oct, main-text review): after dropping the Nile Red speed comparisons, what remains from fluorescence is the direction bias (Fig 2D, which Simon does not count as evidence of tip concentration) and the cut / shock responses; 'quantified the movement of carbon' may promise more than the paper now shows.
 At low spatial and temporal resolution, we obtained time-lapse images of growing networks that were transformed into their equivalent mathematical graph.
 In this way, we can relate the growth of the network with the measured flow speeds observed in the same network, allowing us to explain high-resolution observations both mechanistically and quantitatively.
 Additionally, a small number of perturbation experiments were performed to characterize each flow direction.
@@ -142,21 +138,18 @@ Hexagons are coloured by their ratio to 1:1 within a factor 1.3: to-root faster 
 \textbf{(D)} Direction bias per video, the share of the speed-weighted moving signal going to the tip (median over the edges of the video; videos with too little directed signal left out), from bright-field (grey) and Nile Red fluorescence (yellow, median .71).
 Dashed lines: medians; triangles: the example shown in C.}\label{fig:asymmetries}
 \end{figure}
-% NOTE (15 Oct): Simon keeps panel D for now, but it is not real evidence of tip concentration.
-% NOTE (15 Oct, main-text review): the Fig 2 title ('carries most of the lipid') and the paragraph heading 'Lipids have a to-tip direction bias of 0.71' (and L154, 'lipids generally move in the direction of the tips') rest on panel D.
+% Revisit the bias once the Nile Red speed comparisons are dropped (see note in subsec:res_speeds).
 
 \subsubsection*{The lipid cargo moves mostly to the tip}
 \paragraph*{Lipids move to the tip at the bright-field to-tip speed; fewer, slower lipid streams go to the root}
 We asked if the asymmetry in the directional speeds could be due to the difference in cell components that would be moving in the two directions, which could inform the mechanism of movement.
 We stained neutral lipids with Nile Red fluorescent dye~\cite{bago_tracking_2002} and imaged the same positions with both bright-field and fluorescence setups (Fig.~\ref{fig:asymmetries}C, D).
 At the resolution of the fluorescence videos (0.14~$\mu$m per pixel, 0.5 or 1~s per frame, 10 to 20~s per video), we saw no evidence of lipid particles randomly switching direction, as they would in the random walk underlying diffusive motion (Fig.~\ref{fig:asymmetries}C).
-The lipids moved to the tip at a median of 2.42~$\mu m/s$ (879 edges with both directions measured in fluorescence), insignificantly different from the 2.95~$\mu m/s$ of the bright-field to-tip stream (SI Fig.~\ref{fig:fl_forward_backward}).
+The lipids moved to the tip at a median of 2.42~$\mu m/s$ (879 edges with both directions measured in fluorescence), insignificantly different from the 2.95~$\mu m/s$ of the bright-field to-tip stream.
 In the other direction, fewer fluorescence streams were detected (989 against 1,396 to tip), at a median of 2.20~$\mu m/s$ against 2.91~$\mu m/s$ in bright-field.
-% NOTE (13 Oct): Simon says to drop speed comparisons with fluorescence (Nile Red streaks are censored near 5 um/s; see the Methods detection limit). The two sentences above compare Nile Red and bright-field speeds (2.42 against 2.95 and 2.20 against 2.91 um/s, plus stream counts) and cite SI fig:fl_forward_backward, which is now commented out (the reference shows ??).
 
 \paragraph*{Lipids have a to-tip direction bias of 0.71, bright-field is roughly even}
 By comparing bright-field and fluorescence videos of the same position, recorded about 15 seconds apart, it is clear that only a subset of trails visible in bright-field kymographs appear also in the fluorescence version (Fig.~\ref{fig:asymmetries}C, D): fluorescence gives 625 videos and 879 edges with both directions measured, bright-field 731 videos and 1,513 edges.
-% NOTE (15 Oct, main-text review): the bright-field edge count predates the 20 um minimum video-edge length (now 1,481 edges with a to-tip stream, 1,544 with a to-root stream and model output); recount if the sentence stays.
 We set out to find whether there was a directional bias in the movement of lipids.
 For each video we computed the share of the moving signal that travels towards the tip, from 0 (all to the root) to 1 (all to the tip) (Methods, \nameref{subsec:direction_bias}).
 Together, these results show that lipids generally move in the direction of the tips (Fig.~\ref{fig:asymmetries}D): we found a median direction bias of 0.71 towards the tips, with 84\% of edges having lipids with a to-tip direction bias, against roughly even for brightfield in both metrics. 
@@ -192,8 +185,7 @@ Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_m
 The difference in flow behavior both within an edge and along an edge with distance to tip suggests that each direction could be associated with a different mechanism.
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
 This experiment has been performed in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
-Following a similar approach, we added a drop of dissolved NaCl solution (100 to 400 mOsm) (Methods, \nameref{subsec:perturbations}) to the base of the network a few centimeters behind the growing front and imaged near the growth edge (Fig.~\ref{fig:perturbations}A).
-% NOTE (15 Oct, main-text review): Regarding the range, the Fig 3 caption says 50 to 400 mOsm, and the Methods note says 50-400 is right (two sucrose drops at 50 mOsm). The word 'NaCl' also leaves out the sucrose drops.
+Following a similar approach, we added a drop of dissolved either NaCl or sucrose solution (50 to 400 mOsm) (Methods, \nameref{subsec:perturbations}) to the base of the network a few centimeters behind the growing front and imaged near the growth edge (Fig.~\ref{fig:perturbations}A).
 We expected that this would create a low turgor pressure within the hyphae at the location of the drop, shifting the pressure gradient within the network, and therefore changing flows internal to the hyphae.
 We observed that the flow speed in the tip direction was almost unaffected by the addition of the salt solution  (Fig.~\ref{fig:perturbations}A);  fluorescence imaging of the lipids showed that their movement in the tip direction was also unaffected (SI Fig.~\ref{fig:salt_shock}D).
 By contrast, the flow speed in the root direction was approximately increased to 3.5 times and relaxed in a minute.
@@ -207,7 +199,6 @@ We then severed the network from the root with a scalpel cut along its entire bo
 Flows continued in both directions.
 The to-tip speed remained at about 3~$\mu m/s$, and the to-root speed decreased and became flatter along the hypha, but the asymmetry between the two directions remained (Fig.~\ref{fig:perturbations}B).
 This matches earlier work showing that flows can still be active a year without a plant host~\cite{kleinCytoplasmicFlowDynamics2026}.
-% NOTE (15 Oct, main-text review): check that Klein et al. 2026 (Fungal Biology 130:101775, 'Cytoplasmic flow dynamics in AMF are intrinsic and independent of plant hosts') shows flows after a year without a host, and state their system (literature claim strength).
 A connection to the root is therefore not needed for either flow, which rules out transpiration by the plant as their driver.
 How far a driving force can reach is a separate question, and we asked it by further shrinking the connected network.
 
@@ -218,7 +209,7 @@ In patches of network as small as only a few millimeters in total length, we sti
 We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\%, but the flow never stopped (Fig.~\ref{fig:perturbations}C).
 In none of the experiments did the flow stop.
 These experiments demonstrate that the mechanical origin of flows in the two directions does not require long range connectivity of the network to operate (SI, \nameref{subsec:si_segment_size}). 
-% NOTE (15 Oct, main-text review): this section-cut result is repeated in the single-pipe section (L~'An isolated segment keeps bidirectional flow'), with different numbers; one of the two can go.
+% NOTE (15 Oct, Simon): The repeated isolated-segment paragraph in the single-pipe section ('An isolated segment keeps bidirectional flow, as the model predicts') was removed. Three pieces of it may be worth reusing here: the model's prediction that a pipe closed at both ends (net water flux zero, small lipid fraction) keeps a return at about v0 (eq. max_speed); the clotting after cutting, with the gellin precedent (nguyen_fungal_2021); and the link to SI video 3 (https://www.dropbox.com/scl/fi/ors0lqpopi5yymh6e79o9/SIvideo3.avi). Its claim that both speeds stay close to 3 um/s did not match Fig 3C, where both streams are about a fifth slower.
 
 \namedsubsection{Our hypothesis on the flow mechanics, given the evidence}{subsec:res_hypothesis}
 \subsubsection*{To-tip flow: pressure-insensitive and local, consistent with motors on microtubules}
@@ -296,24 +287,6 @@ It also suggests a possible explanation for the spatial and temporal variation o
 The spatial variation of $\Theta$ (Fig. \ref{fig:carbonflow}f) indeed directly contributes to the magnitude of the backflow speed.
 % NOTE (15 Oct, main-text review): fig:carbonflow is the wrong SI file (old FigS2, mass / P:C); nothing currently shows the spatial variation of Theta.
  
-\paragraph*{An isolated segment keeps bidirectional flow, as the model predicts}
-A direct consequence of such a conceptual model is that a single pipe insulated at both ends where the movement of lipid is maintained will still exhibit bidirectional flows (Fig. \ref{fig:schematic_model}B).
-We therefore isolated a segment of $\sim$1mm of hypha from the rest of the network by physically cutting the neighboring edges.
-Preliminary experiments had shown that severing the hyphae in this way leads to a temporary spilling of the cytoplasm that quickly stopped because of some physical clotting.
-A similar clotting phenomenon after hyphal injury was recently reported in another (non-mycorrhizal) fungal species that involves a shear sensitive protein called gellin \cite{nguyen_fungal_2021}.
-We then observed fluid movement inside the isolated edge at high resolution (Fig. \ref{fig:fig5_plug}B, \href{https://www.dropbox.com/scl/fi/ors0lqpopi5yymh6e79o9/SIvideo3.avi?rlkey=lfbndih3j9fg033892r7t8cw5&dl=0}{SI video 3}).
-% NOTE (15 Oct, main-text review): On references, Fig 5B is now the to-tip speed fit, and the isolated segment is Fig 3C. The next line cites 'Fig. perturbations D, E', but Fig 3 has panels A-C only.
-We found that fluid was still moving and that flow was still bidirectional (Fig. \ref{fig:perturbations}D, E).
-Flow speed was of similar magnitude (3$\mu$m/s) in both directions.
-This observation provides further evidence against the idea that a significant proportion of fluid movement could be explained by growth induced mass flow.
-We indeed observed a fluid movement of similar magnitude as in the full network while our isolated segment did not show any growth.
-Our model is instead fully compatible with the maintenance of bidirectional fluid movement in the disconnected hypha.
-According to our model, after cutting, the active entrainment of the lipid suspension phase could be maintained at its fixed speed (3$\mu$m/s).
-Because the isolated hypha is clotted at both ends, it is reasonable to assume that the net water flow through the whole pipe is zero.
-Furthermore, with the additional assumption that the volume fraction of the lipid suspension is negligible, we directly obtain from equation \ref{eq:max_speed} that the speed in the opposite direction should also be maintained and should be close to $v_0$.
-Analysis of the kymograph revealed that the speed in both directions is indeed close to $3\mu m/s$.
-% NOTE (15 Oct, main-text review): The phrases 'similar magnitude (3 um/s)' and 'close to 3 um/s' conflict with Fig 3C, where both streams are about a fifth slower after the cut (posterior ratio 0.78-0.83; note below). This passage also duplicates the Fig 3C paragraph in the perturbation section.
-% NOTE (10 Oct, replaces the 7 Oct section-cut note): the isolated segment does not keep both speeds unchanged: after the section cut both streams slow by about a fifth (Fig 3C, posterior ratio after/before: bright-field to tip 0.81, to root 0.78; Nile Red to tip 0.83, to root 0.77), the to-tip slowdown is credible and recovers over hours, and videos on a cut stub fall to 0.05-0.4 (SI, \nameref{subsec:si_segment_size}). So 'the speed in both directions is indeed close to 3 um/s' and the model's 'maintained at its fixed speed' need qualifying: flow continues in both directions at reduced speed.
 
 \subsubsection*{Network model: pipes as circuit elements}
 \paragraph*{Each pipe is a pressure generator in parallel with a resistor}
