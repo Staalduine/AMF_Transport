@@ -312,7 +312,7 @@ The result is the lipid flow rate $J_l$ on every edge.
 % NOTE (14 Oct, final model): Motor DIRECTION follows the sign of the GIMF net flux on each edge (outward from the roots by network distance where the GIMF flux is zero), not the growth graph; 'Motors run the way each hypha grew' becomes this. The speed profile below stays. Growth-graph direction is an SI variant: it matches the observed motor direction better on loop edges (86 against 81 %) but cuts the upper half of the to-root distribution.
 Motors run the way each hypha grew, at
   \[
-    v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
+    \hat{v}_m(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
   \]
   with $v_\infty = 3.10~\mu$m/s, $v_{\mathrm{tip}} = 2.14~\mu$m/s, $\ell = 1.71$~mm, fitted to the measured to-tip speed (1,054 bright-field edges, 12 sessions; leave-one-session-out ranges 3.08--3.14, 2.08--2.16~$\mu$m/s and 1.44--1.92~mm).
 Refitted on all 15 sessions (1,495 edges) the fit gives 3.09~$\mu$m/s, 1.85~$\mu$m/s and 1.49~mm (leave-one-session-out 3.06--3.16, 1.74--1.95~$\mu$m/s and 1.34--1.81~mm), but predicts held-out sessions slightly worse (median $|\log$ error$|$ 0.096, against 0.093 for the constants above; \texttt{motor\_speed\_refit.py}), so the constants are kept.
@@ -324,13 +324,13 @@ It changes the prediction only near the tips: within 1~mm of a tip (87 edges) th
 A constant motor speed scores worse in both comparisons.
 The scores reported use the constants above.
   \item \textbf{Motor annulus.}
-In a hypha of lumen radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v$, whose lipid share $\theta = 0.05$ carries $J_l$: $a^2 = b^2 - J_l/(\pi v \theta)$, with $a \geq 0.8\, b$.
+In a hypha of lumen radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v_m = \hat{v}_m(d)$, whose lipid share $\theta = 0.05$ carries $J_l$: $a^2 = b^2 - J_l/(\pi v_m \theta)$, with $a \geq 0.8\, b$.
   \item \textbf{Motor stream.}
-% NOTE (15 Oct, the circuit element the main text points to, L~'pressure generator in parallel with a resistor'; no derivation is in the Methods yet): In a pipe of length L whose annulus (a < r < b) moves at v0, the core is Poiseuille flow with the wall speed v0 at r = a, so the water flux through the core is q_inner = pi a^2 v0 - (pi a^4 / (8 mu L)) Delta p. Adding the water carried in the annulus, pi (b^2 - a^2)(1 - theta) v0, gives the net water flux q^w = q_s - Delta p / R, with the motor stream q_s = pi v0 [(1 - theta)(b^2 - a^2) + a^2] and the core resistance R = 8 mu L / (pi a^4). Each pipe is therefore a current source q_s in parallel with a resistor R (equivalently, a pressure source R q_s in series with R), and the network is solved with Kirchhoff's law at the nodes. The pressure-driven part of the core flux, q_c = q_s - q^w = Delta p / R, is the return the model reads out as |q_c| / (pi a^2). The main text says 'a voltage generator and a resistor put in parallel'; in circuit terms it is a current source in parallel or a voltage source in series.
-The volume carried towards the tip is $q_s = \pi v \left[(1-\theta)(b^2 - a^2) + a^2\right]$: the annulus and the core dragged along at its edge.
+% NOTE (15 Oct, the circuit element the main text points to; notation aligned with the main text on Simon's request): In a pipe of length L whose annulus (a < r < b) moves at v_m, the core is Poiseuille flow with the wall speed v_m at r = a, so the water flux through the core is q_{w,r<a} = pi a^2 v_m - K Delta p, with the core conductance K = pi a^4 / (8 mu L) and Delta p = p_j - p_i along the edge. Adding the water carried in the annulus, pi (b^2 - a^2)(1 - theta) v_m, gives the net water flux q_w = q_s - K Delta p, with the motor stream q_s = pi v_m [(1 - theta)(b^2 - a^2) + a^2]. Each pipe is therefore a flux source q_s in parallel with the conductance K, and the network is solved with Kirchhoff's law at the nodes. The pressure-driven part of the core flux, q_c = q_s - q_w = K Delta p, is the return the model reads out as |q_c| / (pi a^2). This derivation is still to be written into the Methods text.
+The volume carried towards the tip is $q_s = \pi v_m \left[(1-\theta)(b^2 - a^2) + a^2\right]$: the annulus and the core dragged along at its edge.
   \item \textbf{Backflow.}
 The volume returns by a pressure-driven flow in the cores.
-The pressure is solved on the graph with Poiseuille conductances $K = \pi r^4 / (8 \mu L)$ and the divergence of $q_s$ as sources.
+The pressure is solved on the graph with Poiseuille conductances $K = \pi a^4 / (8 \mu L)$ of the cores and the divergence of $q_s$ as sources.
 Every annotated root is tied to one common reservoir at zero pressure through a conductance equal to about 10~mm of core of radius 4~$\mu$m (\texttt{testing\_new\_model.g\_res}), so volume can pass between roots through the reservoir.
 The hyphal walls pass no water: volume enters and leaves the network only at the roots.
 The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (the growth demand routed through an edge is a median 5.2\% of its to-tip flux; SI \todo{SI section ``Volume and lipid budget'' not in the LaTeX SI yet}).
