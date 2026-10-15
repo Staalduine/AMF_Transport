@@ -350,9 +350,17 @@ A constant motor speed scores worse in the transport model (Methods).
 \begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_estimators.png}
-\caption{[Caption to be written.]}
+\caption{\textbf{Of the widths measured in the network images, the legacy Keras width follows the lumen width best; widths read directly from the image profile are limited by the blur.}
+Each point is a network edge filmed at high magnification, coloured by plate; y-axis: the lumen width in the bright-field flow videos (U-Net wall segmentation, twice the distance transform), x-axis: the width of the same edge in the network image of that session (1.725~$\mu$m per pixel).
+Top row: widths stored with the network graph: the width used by the model tables (table; the segmenter width where present, else the legacy width), the legacy width from a Keras model on cross-sections of the network image (legacy), and the width head of the segmenter (seg; stored in steps of 0.125~$\mu$m, hence the stripes).
+Bottom row: widths read from cross-sections of the raw network image, median per edge: the full width at half maximum of the dark dip (img\_fwhm), the distance between the steepest falling and rising flanks (img\_grad), and the integral of the fractional darkness across the hypha (img\_area, in $\mu$m).
+Panel titles: Spearman correlation with the lumen width, the median over the five plates (within) and over all edges (pooled); median absolute error of the lumen width predicted by a linear calibration fitted on the other four plates (held-out $|$err$|$; 1.52~$\mu$m for a constant); number of edges.
+The legacy width is about 3~$\mu$m wider than the lumen but tracks it best (within-plate $\rho$ 0.61, range 0.40--0.65 over plates; held-out error 1.17~$\mu$m, within 20\% of the lumen width on 65\% of edges).
+The dark band of a hypha in the network images is 15--20~$\mu$m wide against lumens of 5--13~$\mu$m, so the full width at half maximum and the flank distance hardly follow the lumen width ($\rho$ 0.17 and 0.02).}
 \label{fig:width_estimators}
 \end{figure}
+% NOTE (15 Oct): caption drafted by Claude on Simon's request; numbers from transport_paper fig_outputs/width_feasibility/width_feasibility_stats.csv (width_feasibility.py, feat/width-feasibility). 'About 3 um wider': median legacy minus lumen 2.8 um (medians 11.3 and 8.7 um, 1,969 edges); the log-log slope of lumen on legacy is 0.45.
+% NOTE (15 Oct, correction to note 5 of this section): the five badly stitched session frames affect only the image widths (bottom row): there the nearest earlier frame within 20 um of the edge (2-6 h earlier) is imaged instead. The stored widths (top row) are not affected.
 \begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_lumen_speed.png}
