@@ -269,6 +269,15 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 % NOTE (4, scoring): models fitted on four plates and scored on the fifth (within-plate Spearman); the walls_v4 ranking has tip distance x width and force x throttle best (0.58), width only 0.50, tip distance alone 0.22.
 % NOTE (5, transport model link): the transport model keeps v0 constant with only the tip-distance term; a diameter-dependent v0(D) was under test (#134). The main model uses physical inputs only, with no fitted width exponent (Simon, 12 Oct).
 
+% NOTE (15 Oct, 6, falloff to zero vs offset, Simon: SI only): same hierarchical Bayesian fit as Fig 5b with v_tip fixed at 0, v(d) = v_inf (1 - e^(-d/ell)), 1,481 bright-field edges: v_inf 2.79 [2.75, 2.83] um/s, ell 194 [145, 241] um; offset fit v_tip 2.18 [1.92, 2.39], v_inf 2.93 [2.86, 3.03] um/s, ell 1.85 [1.11, 3.52] mm. Zero curve: 2.0 um/s at 250 um, flat at 2.8 um/s beyond ~1 mm, so it misses the rise over 1-3 mm and sits ~10 % below the edges beyond 4 mm; within 500 um it fits slightly better (median log residual -0.006 vs -0.066). WAIC: offset higher by 25.5 +- 7.3 (10.6 from the 82 edges within 1 mm of a tip, 12.7 from those beyond 3 mm). Only 7 edges lie within 250 um of a tip, so a drop on the ~20 um scale of the tip kymographs (\nameref{subsec:si_tips}) is below what the edge data resolve. Source: transport_paper feat/flow-regime, forward_speed_bayes.py --zero (c2a9ca9).
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.7\textwidth,keepaspectratio]{suppfig/figS_tip_falloff_zero.png}
+\caption{[Caption to be written.]}
+\label{fig:tip_falloff_zero}
+\end{figure}
+% NOTE (15 Oct): figure = Fig 5b with both fits: edge medians (grey), binned medians with IQR (black), falloff with offset (blue, 95 % band) and falloff to zero (vermillion, 95 % band).
+
 \namedsubsection{Full and sparse flow}{subsec:si_flow_regimes}
 % NOTE (15 Oct): section text to be written by Simon; new section on Simon's request (sparse vs full flow moved out of Fig 5, as an observational difference).
 % NOTE (1, classification): per bright-field edge, streak density in the to-tip kymograph; threshold 0.27 streaks per um per s, calibrated on Simon's blind labels (60 kymographs, two rounds; full flow / sparse flow / dormant / artifact). Sparse flow: few thin streaks, slow and about symmetric, ~1.8 um/s in both directions. 1,284 full and 197 sparse edges (~13 %) of 1,481 classified (transport_paper fig_outputs/flow_regime/edges.csv).
