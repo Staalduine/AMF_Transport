@@ -32,6 +32,7 @@ We find that carbon likely moves across the fungus on a directed network of mole
 Our findings also suggest a tight coupling between network growth, internal carbon (lipid) transport dynamics, and bidirectional fluid movement within the network.
 The movement of lipids in the open pipe system inherently produces a backflow of cytoplasmic fluid, which may be responsible for the movement of phosphorus.
 Our model provides an intuitive understanding for the observed proportionality in resource exchange between the two organisms.
+% NOTE (15 Oct, main-text review): per the C/P note in the Discussion, the model makes the returning volume proportional to the motor-carried carbon by construction (slope 1.000), but not to growth carbon (slope 0.19, 95 % CI -0.47 to 0.86, 15 sessions); 'understanding of the observed proportionality' needs that qualifier. Also: the perturbations listed are segment cuts and osmotic shocks; the root cut is missing.
 \end{abstract}
 
 \section*{Introduction}
@@ -59,7 +60,9 @@ Past research has quantified the flow speed in both directions in networks of di
 However, without staining the lipids and/or phosphorus, it is difficult to understand the organization of resource flow across the network and the underpinning transport mechanisms.
 Resource specific staining can shed light on the distribution of resource flux within the network.
 For example, using Nile Red staining, it was found that lipid density varies along the hyphae, from about 24\% of the hyphal volume near the root to about 0.5\% at the front, and that lipid bodies move in both directions, mostly with the cytoplasmic stream~\cite{bago_translocation_2002}.
+% NOTE (15 Oct, main-text review): literature claim strength: state Bago 2002's method and system (Nile Red / staining in which culture system, how the 24 % and 0.5 % were measured; their Fig. 3) before submission.
 A role for microtubule tracks in this movement has been proposed, but to our knowledge it has never been tested.
+% NOTE (15 Oct, main-text review): 'never been tested' is a strong negative; check Uetake et al. 2002 (microtubules and lipid bodies in AM hyphae) and the motor literature (manuscript/literature_motors.md) before keeping it.
 
 \paragraph*{Speeds correlate with betweenness centrality, without a mechanical basis}
 Flow speeds along the hyphae are modulated with time and location within the network~\cite{oyarte_galvez_travelling-wave_2025}.
@@ -77,6 +80,7 @@ How can the transport mechanisms in place maintain a form of bidirectional trans
 To answer these questions, we acquired image data at two different spatial and temporal resolutions to quantify the flow speed in specific edges of growing networks.
 At high spatial and temporal resolution, we acquired bright-field videos of transport dynamics within single hyphal edges over multiple days.
 Using Nile red, a neutral lipid-specific fluorescent dye, we also characterized and quantified the movement of carbon in the form of lipids along these same edges.
+% NOTE (15 Oct, main-text review): after dropping the Nile Red speed comparisons, what remains from fluorescence is the direction bias (Fig 2D, which Simon does not count as evidence of tip concentration) and the cut / shock responses; 'quantified the movement of carbon' may promise more than the paper now shows.
 At low spatial and temporal resolution, we obtained time-lapse images of growing networks that were transformed into their equivalent mathematical graph.
 In this way, we can relate the growth of the network with the measured flow speeds observed in the same network, allowing us to explain high-resolution observations both mechanistically and quantitatively.
 Additionally, a small number of perturbation experiments were performed to characterize each flow direction.
@@ -123,6 +127,7 @@ We took the median of each of the two groups as the speed of that direction in t
 The speeds to the tip slow down near the tip, but stay close to 3~$\mu m / s$ further away (Fig.~\ref{fig:hyphal_profiling}E).
 Speeds to root generally increase with distance from the tip (Fig.~\ref{fig:hyphal_profiling}E), and have a wide range: the median interquartile range of a hypha's speeds is 1.6~$\mu m / s$ to root, against 0.6~$\mu m / s$ to tip (SI Fig.~\ref{fig:speed_iqr}).
 This result was confirmed by repeating a similar experiment on various plates over 15 repetitions over 5 plates showing a consistent phenomenology (Fig.~\ref{fig:asymmetries} A, B). 
+% NOTE (15 Oct, main-text review): '15 repetitions over 5 plates' = 15 sessions on 5 plates.
 
 \begin{figure}
  \centering
@@ -137,6 +142,7 @@ Hexagons are coloured by their ratio to 1:1 within a factor 1.3: to-root faster 
 Dashed lines: medians; triangles: the example shown in C.}\label{fig:asymmetries}
 \end{figure}
 % NOTE (15 Oct): Simon keeps panel D for now, but it is not real evidence of tip concentration.
+% NOTE (15 Oct, main-text review): the Fig 2 title ('carries most of the lipid') and the paragraph heading 'Lipids have a to-tip direction bias of 0.71' (and L154, 'lipids generally move in the direction of the tips') rest on panel D.
 
 \subsubsection*{The lipid cargo moves mostly to the tip}
 \paragraph*{Lipids move to the tip at the bright-field to-tip speed; fewer, slower lipid streams go to the root}
@@ -149,6 +155,7 @@ In the other direction, fewer fluorescence streams were detected (989 against 1,
 
 \paragraph*{Lipids have a to-tip direction bias of 0.71, bright-field is roughly even}
 By comparing bright-field and fluorescence videos of the same position, recorded about 15 seconds apart, it is clear that only a subset of trails visible in bright-field kymographs appear also in the fluorescence version (Fig.~\ref{fig:asymmetries}C, D): fluorescence gives 625 videos and 879 edges with both directions measured, bright-field 731 videos and 1,513 edges.
+% NOTE (15 Oct, main-text review): the bright-field edge count predates the 20 um minimum video-edge length (now 1,481 edges with a to-tip stream, 1,544 with a to-root stream and model output); recount if the sentence stays.
 We set out to find whether there was a directional bias in the movement of lipids.
 For each video we computed the share of the moving signal that travels towards the tip, from 0 (all to the root) to 1 (all to the tip) (Methods, \nameref{subsec:direction_bias}).
 Together, these results show that lipids generally move in the direction of the tips (Fig.~\ref{fig:asymmetries}D): we found a median direction bias of 0.71 towards the tips, with 84\% of edges having lipids with a to-tip direction bias, against roughly even for brightfield in both metrics. 
@@ -185,6 +192,7 @@ The difference in flow behavior both within an edge and along an edge with dista
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
 This experiment has been performed in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
 Following a similar approach, we added a drop of dissolved NaCl solution (100 to 400 mOsm) (Methods, \nameref{subsec:perturbations}) to the base of the network a few centimeters behind the growing front and imaged near the growth edge (Fig.~\ref{fig:perturbations}A).
+% NOTE (15 Oct, main-text review): range: the Fig 3 caption says 50 to 400 mOsm, and the Methods note says 50-400 is right (two sucrose drops at 50 mOsm); 'NaCl' also leaves out the sucrose drops.
 We expected that this would create a low turgor pressure within the hyphae at the location of the drop, shifting the pressure gradient within the network, and therefore changing flows internal to the hyphae.
 We observed that the flow speed in the tip direction was almost unaffected by the addition of the salt solution  (Fig.~\ref{fig:perturbations}A);  fluorescence imaging of the lipids showed that their movement in the tip direction was also unaffected (SI Fig.~\ref{fig:salt_shock}D).
 By contrast, the flow speed in the root direction was approximately increased to 3.5 times and relaxed in a minute.
@@ -198,6 +206,7 @@ We then severed the network from the root with a scalpel cut along its entire bo
 Flows continued in both directions.
 The to-tip speed remained at about 3~$\mu m/s$, and the to-root speed decreased and became flatter along the hypha, but the asymmetry between the two directions remained (Fig.~\ref{fig:perturbations}B).
 This matches earlier work showing that flows can still be active a year without a plant host~\cite{kleinCytoplasmicFlowDynamics2026}.
+% NOTE (15 Oct, main-text review): check that Klein et al. 2026 (Fungal Biology 130:101775, 'Cytoplasmic flow dynamics in AMF are intrinsic and independent of plant hosts') shows flows after a year without a host, and state their system (literature claim strength).
 A connection to the root is therefore not needed for either flow, which rules out transpiration by the plant as their driver.
 How far a driving force can reach is a separate question, and we asked it by further shrinking the connected network.
 
@@ -208,6 +217,7 @@ In patches of network as small as only a few millimeters in total length, we sti
 We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\%, but the flow never stopped (Fig.~\ref{fig:perturbations}C).
 In none of the experiments did the flow stop.
 These experiments demonstrate that the mechanical origin of flows in the two directions does not require long range connectivity of the network to operate (SI, \nameref{subsec:si_segment_size}). 
+% NOTE (15 Oct, main-text review): this section-cut result is repeated in the single-pipe section (L~'An isolated segment keeps bidirectional flow'), with different numbers; one of the two can go.
 
 \namedsubsection{Our hypothesis on the flow mechanics, given the evidence}{subsec:res_hypothesis}
 \subsubsection*{To-tip flow: pressure-insensitive and local, consistent with motors on microtubules}
@@ -226,8 +236,8 @@ This suggests that the mechanism driving these flows is different from the mecha
 
 We synthesize the above results into a minimal model that explains the observed bidirectional transport of resources in the network and its modulation over space and time. Namely that a motor-driven condensate containing lipids moves towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC). This model is consistent with the observed flows in both directions, and with the perturbation experiments that we performed.
 
-% NOTE (14 Oct, final model choice, Simon; supersedes the model notes above where they differ): global pressure solve (no junction resistance); motors along the sign of the GIMF net flux (the growth-induced mass flow solve of the growth demand, Heaton 2010), outward from the roots on edges without net flux; lipid current = 0.256 x the GIMF flux (no even split); annulus from the lipid current with theta 0.05 and a >= 0.8 b; motor speed: tip falloff 3.10 / 2.14 um/s, 1.71 mm (= the full-flow fit); read-out |q_c| / (pi a^2), no width exponent. transport_paper fig_outputs/model_grid/junction/global_gimf_gimf, branch feat/flow-regime. 1,574 bright-field edges, 15 sessions: within 2x 77.6 % (full flow 79.2 %, sparse 67.0 %), median fold error x1.44; the modelled distribution matches the measured one (KS 0.045; 5/25/50/75/95th percentiles 1.27 / 2.56 / 3.40 / 4.85 / 6.91 vs 1.57 / 2.37 / 3.54 / 4.79 / 6.79 um/s). Why GIMF motors: growth-graph motors match the observed motor direction slightly better on loops (86 vs 81 %, 677 edges) but cut the upper half of the distribution (95th percentile 4.7 um/s, KS 0.23-0.25), because counter-oriented loop motors drain the return of the main routes (SI variants). Known limits: hyphae within ~1 mm of a tip are over-predicted (median 2.84 vs 2.13 um/s; measured to-root / to-tip ~1 there), sparse flow (13 % of filmed edges, thin hyphae, ~1.8 um/s both ways) is not described, and wide trunks are under-predicted (network widths compress the width contrast).
-% NOTE (14 Oct, later): with the minimum video-edge length raised to 20 um (1,544 edges): within 2x 78.0 %, KS 0.050; 15 / 20 / 30 um drop 17 / 30 / 75 edges and leave the scores unchanged. Outliers inspected (10 worst each way): the too-slow ones are clean two-way flows that the global solve gives almost no return (loop circulation; median 0.3 of their own stream), the too-fast ones mostly videos with one-way flow, a dormant hypha and one 10.8 um junction piece; only the short edges are removed (Simon).
+% NOTE (15 Oct, main model, consolidated; replaces the 14 Oct model notes): global pressure solve (no junction resistance); motors along the sign of the GIMF net flux (growth-induced mass flow solve of the growth demand, Heaton 2010), outward from the roots on edges without net flux; lipid current = 0.256 x the GIMF flux; annulus from the lipid current with theta 0.05 and a >= 0.8 b; motor speed tip falloff 3.10 / 2.14 um/s, 1.71 mm; read-out |q_c| / (pi a^2), no width exponent; widths = legacy Keras width x 0.75 (recalibrated on the filmed lumens), fallback 0.83 x segmenter; minimum video-edge length 20 um. transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb (feat/flow-regime). 1,544 bright-field edges, 15 sessions: within 2x 77.5 % (full flow 78.9 %, sparse 65.9 %), median fold error 1.45, KS 0.056. Why GIMF motors: growth-graph motors match the observed motor direction slightly better on loops (86 vs 81 %, 677 edges) but cut the upper half of the distribution (95th percentile 4.7 um/s, KS 0.23-0.25; SI variants). Outliers inspected (10 worst each way): too slow = clean two-way flows the global solve gives almost no return (loop circulation), too fast = mostly one-way videos, a dormant hypha, a junction piece; only edges shorter than 20 um removed (Simon). Known limits: within 1 mm of a tip over-predicted (3.11 vs 2.17 um/s), beyond 8 mm under-predicted (3.50 vs 4.22 um/s; not from the width input, SI widths), sparse flow (13 % of edges) not described (SI, full and sparse flow).
+
 
 % \subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
 % Although the above results elucidate the mechanism for lipid translocation across the network, they do not provide a predictive framework for how lipid flux is distributed.
@@ -251,6 +261,7 @@ We synthesize the above results into a minimal model that explains the observed 
 \subsubsection*{Single-pipe model: a moving lipid layer drives a central backflow}
 \paragraph*{An emulsion layer at $v_0$ leaves an inner tube for water}
 We thought that this large flux of a lipid emulsion throughout the aseptate mycelium could trigger large movement of the cytoplasmic fluid in both the direction of the lipid due to viscous friction and the other direction due to the incompressibility of the fluid in the case where no water could flow out of the hyphae.
+% NOTE (15 Oct, main-text review): notation: the equations use capital Theta (eq. net_inner_flow, max_speed) but the text only defines theta (lipid share of the emulsion); Theta (the lipid volume fraction of the whole pipe?) needs a definition here.
 % NOTE (5 Oct, Overleaf comments, L136): Coco: This should be the beginning of the paragraph introducing Fig 4A.
 This led us to propose the following conceptual model.
 Lipid droplets form a water-oil-like emulsion of higher viscosity that uniformly coats the internal surface of the hyphal pipe.
@@ -282,6 +293,7 @@ This result suggests a possible explanation for the bidirectional movement that 
 For all values of $\Theta$ and $\theta$, we have $u(0)$ which is of opposite sign compared to $v_0$.
 It also suggests a possible explanation for the spatial and temporal variation of speeds.
 The spatial variation of $\Theta$ (Fig. \ref{fig:carbonflow}f) indeed directly contributes to the magnitude of the backflow speed.
+% NOTE (15 Oct, main-text review): fig:carbonflow is the wrong SI file (old FigS2, mass / P:C); nothing currently shows the spatial variation of Theta.
  
 \paragraph*{An isolated segment keeps bidirectional flow, as the model predicts}
 A direct consequence of such a conceptual model is that a single pipe insulated at both ends where the movement of lipid is maintained will still exhibit bidirectional flows (Fig. \ref{fig:schematic_model}B).
@@ -289,6 +301,7 @@ We therefore isolated a segment of $\sim$1mm of hypha from the rest of the netwo
 Preliminary experiments had shown that severing the hyphae in this way leads to a temporary spilling of the cytoplasm that quickly stopped because of some physical clotting.
 A similar clotting phenomenon after hyphal injury was recently reported in another (non-mycorrhizal) fungal species that involves a shear sensitive protein called gellin \cite{nguyen_fungal_2021}.
 We then observed fluid movement inside the isolated edge at high resolution (Fig. \ref{fig:fig5_plug}B, \href{https://www.dropbox.com/scl/fi/ors0lqpopi5yymh6e79o9/SIvideo3.avi?rlkey=lfbndih3j9fg033892r7t8cw5&dl=0}{SI video 3}).
+% NOTE (15 Oct, main-text review): references: Fig 5B is now the to-tip speed fit; the isolated segment is Fig 3C. 'Fig. perturbations D, E' on the next line: Fig 3 has panels A-C only.
 We found that fluid was still moving and that flow was still bidirectional (Fig. \ref{fig:perturbations}D, E).
 Flow speed was of similar magnitude (3$\mu$m/s) in both directions.
 This observation provides further evidence against the idea that a significant proportion of fluid movement could be explained by growth induced mass flow.
@@ -298,24 +311,29 @@ According to our model, after cutting, the active entrainment of the lipid suspe
 Because the isolated hypha is clotted at both ends, it is reasonable to assume that the net water flow through the whole pipe is zero.
 Furthermore, with the additional assumption that the volume fraction of the lipid suspension is negligible, we directly obtain from equation \ref{eq:max_speed} that the speed in the opposite direction should also be maintained and should be close to $v_0$.
 Analysis of the kymograph revealed that the speed in both directions is indeed close to $3\mu m/s$.
+% NOTE (15 Oct, main-text review): 'similar magnitude (3 um/s)' and 'close to 3 um/s' conflict with Fig 3C: both streams about a fifth slower after the cut (posterior ratio 0.78-0.83; note below). Also duplicates the Fig 3C paragraph in the perturbation section.
 % NOTE (10 Oct, replaces the 7 Oct section-cut note): the isolated segment does not keep both speeds unchanged: after the section cut both streams slow by about a fifth (Fig 3C, posterior ratio after/before: bright-field to tip 0.81, to root 0.78; Nile Red to tip 0.83, to root 0.77), the to-tip slowdown is credible and recovers over hours, and videos on a cut stub fall to 0.05-0.4 (SI, \nameref{subsec:si_segment_size}). So 'the speed in both directions is indeed close to 3 um/s' and the model's 'maintained at its fixed speed' need qualifying: flow continues in both directions at reduced speed.
 
 \subsubsection*{Network model: pipes as circuit elements}
 \paragraph*{Each pipe is a pressure generator in parallel with a resistor}
 Our conceptual model seemed to be well validated by the data at the individual pipe level.
+% NOTE (15 Oct, main-text review): 'well validated' is stronger than the cut result supports (flow continues both ways, ~20 % slower).
 However, we wanted to know what its consequences would be at the network level.
 Could it explain the observed variation of speed in space and time?
 When establishing the speed profile through the pipe, we were also able to derive the pressure gradient along the idealised hyphal pipe.
 For a pipe of length $L$ the expression for the pressure drop was analogous to an electrical voltage drop where a voltage generator and a resistor would be put in parallel (Methods).
+% NOTE (15 Oct, main-text review): no pressure-drop / circuit derivation found in the Methods (grep: no 'voltage', 'generator', 'Kirchhoff' in 05_Article_Methods.tex).
 Because fluid movement happens at low Reynolds numbers in our system and the entrance length in each individual hyphal pipe is close to its diameter, the approximation of an infinite length cylinder we used to derive flow profile in a single pipe is still justified in the network context.
 A network of connected pipes is then analogous to a network of these individual circuit elements.
 
 \paragraph*{Toy networks: trees concentrate backflow, width and anastomoses relieve it, loops circulate}
 Such an electrical circuit equivalent of the network can be solved with linear algebra using Kirchhoff's law at each intersection, and requiring that the sum of pressure drops around loops in the network be zero (Methods).
 As in the case of growth induced mass flow discussed above in \nameref{subsec:si_mass_flow}, we set the sink magnitude at each node to correspond to newly created volume $\Delta V_k$ and added a global source node.
+% NOTE (15 Oct, main-text review): 'discussed above' now points to the SI; and in the main model the sources are the roots, not one global source node (Methods, demand / routing).
 % NOTE (12 Oct): reference repointed from subsec:lipid_flow (that heading is gone) to the SI mass-flow section; 'discussed above' now points to the SI.
 A number of properties can be shown in toy networks (Figure \ref{fig:schematic_model} D-G).
 Tree networks aggregate backflow into their central trunk,   increasing flow rate (Figure \ref{fig:schematic_model} H).
+% NOTE (15 Oct, main-text review): Fig 4 panels H, I, J (this line, E/I and F/J below) do not exist: the caption runs A-G (D-G toy networks, top schematics / bottom profiles).
 This increase in flow rate can increase backflow speeds, if not modulated by a greater flow capacity, which can be done by increasing the diameter (Figure \ref{fig:schematic_model}E, I).
 One feature this model also predicts is circularity in added loops, specifically if these have a width imbalance.
 The pressure difference that has to be serviced by both makes the wide arm flow faster, and the narrow arm far slower than in just a single edge.
@@ -328,12 +346,14 @@ This way, pressure differences in tree-like sections get reduced, and backflow n
 This allowed us to predict on each edge what the net volumetric rate of fluid movement $q^w$ would be and then the direction and magnitude of the flow speed in the inner tube of each edge of the network (Fig \ref{fig:fig5_plug}).
 We found that our model captures salient features of the bidirectionality of flow observed across all edges.
 The speed was higher in those central hyphae where the lipid density was also higher, which was explained by the larger proportion of the volume of the pipe occupied by the lipid suspension moving in $v_0$ and dragging water with it (\ref{eq:max_speed}).
+% NOTE (15 Oct, main-text review): no figure or number behind 'higher in central hyphae where the lipid density was also higher'; candidates: model lipid current or a/b against betweenness or tip distance on the measured edges.
 In tree-like parts of the network, the net volumetric flow of water through the whole pipe $q^w$ is close to zero because the amplitude of growth induced mass flow is negligible (Fig. \ref{fig:carbonflow}d,e).
 % NOTE (7 Oct, SI references): Fig. carbonflow f (L174) and d,e (here) are among the wrong SI files (FigS2-S5, transport_paper#129); no figure behind these claims until replaced.
 Then, the movement of water in and around the suspension of lipid droplets can only be compensated for by faster speeds in the opposite direction in the inner pipe.
 
 \subsubsection*{The lipids form an emulsion separate from the bulk cytoplasm}
 Even our estimate of 5\% of the cytoplasm filled with lipids suggests that a significant proportion of the volume of the hyphal is filled with lipids.
+% NOTE (15 Oct, main-text review): 'our estimate of 5 %' pointed to the lipid-fraction paragraph now in the SI (subsec:si_lipid_fraction); cite it there.
 Such a proportion could easily lead to clogging if all of the lipids coalesce into a single phase.
 What then is this large fraction of neutral lipid packaged within the cytoplasm?
 The minimal unit of lipid packaging is generally thought to be membrane bound lipid droplets.
@@ -356,24 +376,17 @@ We assume that this emulsion is phase-separated from the bulk cytoplasm.
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{figures/fig_plug_model.png}
-    \caption{
-Measured brightfield backflow speed against the model-predicted speed (blue).
-\textbf{(a)} Distribution over every measured edge with model output (1,248 edges in 11 sessions).
-\textbf{(b)} Percentiles of the same distributions from the 1st to the 99th.
-\textbf{(c)} Measured against predicted on the 232 trail segments within 10 mm of the trail tip. 84\% of points fall within a factor of two of the measured speeds.
-Vertical error bars: 25th–75th percentile of the measured velocity pixels of the videos covering the segment; horizontal error bars: range of the prediction over the trail's segments within $\pm0.5$ mm; grey wedge: within 2x; line: identity.
-\textbf{(d)} Backflow on trail segments against distance to the trail's tip at the session, in bins of 0–1, 1–2, 2–3, 3–5, 5–7.5, 7.5–10, 10–15 and 15–20 mm holding 4, 16, 23, 56, 63, 70, 95, 89 measured segments; line: bin median, band: 25th–75th percentile (grey for measured, blue for the model speed).
-\textbf{(e)} The session network of EPY2412A088 t55 with trail (black), its tip at the session (star) and the annotated roots (circles), in image coordinates.
-\textbf{(f)} Backflow along trail in e (31 measured segments, bar: 25th–75th percentile) with the prediction, within 2x on 97 \% of segments with median.}
+    \caption{\textbf{The network model reproduces the distribution of to-root speeds and their rise away from the growing tips.}
+Measured bright-field speeds (grey, black) against the model (blue): global pressure solve with motors at the to-tip speed profile of (b), physical inputs only, nothing fitted to the to-root speeds (Methods).
+Measured speeds are the median of the kymograph streaks of each video direction; directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m are left out.
+\textbf{(a)} Distribution of the to-root speed over every measured edge, measured (grey bars) and modelled (blue line), counts on a log axis (1,544 edges in 15 sessions on 5 plates; 77.5\% within a factor 2); speeds of 10~$\mu$m/s and above fall in the last bin.
+\textbf{(b)} To-tip speed against distance to the nearest growing tip: edge medians (grey, 1,481 edges), binned medians with 25th--75th percentile (black), and a hierarchical Bayesian fit of $v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell}$ (posterior median and 95\% credible band, blue): $v_{\mathrm{tip}} = 2.18$ [1.92, 2.39]~$\mu$m/s, $v_\infty = 2.93$ [2.86, 3.03]~$\mu$m/s, $\ell = 1.85$ [1.11, 3.52]~mm (SI, \nameref{subsec:si_forward_flow}).
+\textbf{(c)} Measured against modelled to-root speed on the 274 trail segments within 10~mm of the trail tip: 86\% within a factor 2, median ratio of modelled to measured 1.21.
+Paler points have a larger uncertainty (the measured interquartile range and the range of the model within $\pm$0.5~mm along the trail, combined); grey wedge: within a factor 2; line: identity.
+\textbf{(d)} To-root speed on trail segments against the distance to the trail's tip at the session, in bins of 0--1, 1--2, 2--3, 3--5, 5--7.5, 7.5--10, 10--15 and 15--20~mm holding 3, 14, 19, 65, 73, 100, 130 and 88 measured segments; line: bin median, band: 25th--75th percentile (grey: measured, blue: model).}
     \label{fig:fig5_plug}
 \end{figure}
-% NOTE (14 Oct, Fig 5 split, Simon: Fig 5 becomes two figures; one needs a panel on the forward (to-tip) speed fit). Panel draft: transport_paper fig_outputs/forward_speed_bayes/fig.png (Working_notebooks/forward_speed_bayes.py, branch feat/forward-speed-bayes c098da4). Bayesian hierarchical fit of v(d) = v_inf - (v_inf - v_tip) e^(-d/ell) to the log median to-tip streak speed of each bright-field edge, weighted by that median's bootstrapped error from the edge's own streaks; edge and plate random effects (plate effects sum to zero). 1,495 edges, 300,127 streaks, 15 sessions, 5 plates; d = network distance to the nearest growing tip. Posterior median [95 % interval]: v_tip 2.18 [1.89, 2.40] um/s, v_inf 2.91 [2.83, 3.02] um/s, ell 1.84 [1.04, 3.58] mm; edge-to-edge spread 0.24 on log speed (about 27 %), plate effects -6 to +6 %. Only 82 edges lie within 1 mm of a tip and 7 within 250 um, so v_tip leans on the nearest few edges. Least-squares fits on edge medians (13 Oct): v_tip and v_inf move by about 0.1 um/s whichever plate is left out, ell 0.75-2.5 mm; fitted per plate alone ell runs to the bound in two plates. Falloff to 0 (v0 (1 - e^(-d/lambda))) gives lambda ~140 um and fits worse held out (median fold 1.156 vs 1.140 for the offset).
-% NOTE (7 Oct, Fig 5 caption numbers): fig_plug_model.png was committed 30 Sep as '1,566 edges in 15 sessions'; the caption says 1,248 edges in 11 sessions. After the 3 Oct no-cut rebuild (transport_paper manuscript/figs4-6_rebuild_2026-10-03.md) the physical-input global solve gives 1,590 edges, fold error x1.45, 77 % within 2x, and 79 % of trail segments within 2x (caption: 84 %). The bin counts and the 97 % in (f) were not re-derived.
-% NOTE (14 Oct): figures/fig_plug_model.png replaced by the final model (global solve, GIMF motors and routing, a >= 0.8 b, theta 0.05, tip falloff; current tables with the 10 um minimum video edge; model_accuracy_two_models.py --plug-only --oriented --physical --alpha-by-error on transport_paper fig_outputs/model_grid/junction/global_gimf_gimf, branch feat/flow-regime). Caption numbers to update: (a) 1,574 edges in 15 sessions (caption: 1,248 in 11); (c) 276 trail segments within 10 mm of the tip, 87 % within 2x, bias 1.21 (caption: 232 segments, 84 %); (d) bins 0-1 ... 15-20 mm hold 3, 14, 19, 66, 73, 101, 133, 88 segments; (f) 31 segments, 94 % within 2x, median |log2 error| 0.32 (caption: 97 %). The model sits ~0.5-0.9 um/s above the measured trail medians at 2.5-12.5 mm and 3.3 vs 2.0 um/s within 1 mm of the tip (a known limit, see the model note in the model section). The caption's '(blue)' and panel letters still fit.
-% NOTE (14 Oct, later; supersedes the numbers in the note above): minimum video-edge length raised from 10 to 20 um (Simon: remove edges that are too short; ~two hyphal diameters, so the kymograph is clear of the junction); fig_plug_model.png redrawn on these tables (transport_paper junction/global_gimf_gimf_minedge20, streak_measurements e28d486). Caption numbers: (a) 1,544 edges in 15 sessions; (c) 274 trail segments within 10 mm of the tip, 87 % within 2x, bias 1.21; (d) bins hold 3, 14, 19, 65, 73, 100, 130, 88 segments; (f) 30 segments, 93 % within 2x, median |log2 error| 0.33. All edges: within 2x 78.0 %, KS 0.050.
-% NOTE (15 Oct, Fig 5 restructure, Simon): figures/fig_plug_model.png redrawn with four panels (model_accuracy_two_models.py --layout fig5, transport_paper feat/flow-regime, tables junction/global_gimf_gimf_minedge20): (a) distribution over every measured edge, counts on a log axis, 1,544 edges in 15 sessions; (b) NEW, to-tip speed against distance to the nearest growing tip, 1,481 bright-field edges, hierarchical Bayesian fit of v(d) = v_inf - (v_inf - v_tip) e^(-d/ell): v_tip 2.18 [1.92, 2.39] um/s, v_inf 2.93 [2.86, 3.03] um/s, ell 1.85 [1.11, 3.52] mm (posterior median, 95 %); (c) old panel c, 274 trail segments within 10 mm of the tip, 87 % within 2x, bias 1.21; (d) old panel d, bins hold 3, 14, 19, 65, 73, 100, 130, 88 segments. Dropped: old panel b (percentiles, same idea as a). Old e and f moved to Fig 6 (below). Caption above still describes the old six panels; the main-text references to Fig 5 e and F now point to Fig 6.
-% NOTE (15 Oct, later, Fig 5b): falloff to zero added as a second curve (vermillion), same hierarchical Bayesian fit with v_tip fixed at 0, v(d) = v_inf (1 - e^(-d/ell)): v_inf 2.79 [2.75, 2.83] um/s, ell 194 [145, 241] um (offset fit: v_tip 2.18, v_inf 2.93, ell 1.85 mm). The zero curve is at 2.0 um/s by 250 um and flat at 2.8 um/s beyond ~1 mm; it misses the gradual rise over 1-3 mm and sits ~10 % below the edges beyond 4 mm. WAIC (expected log predictive density, 1,481 edges): offset higher by 25.5 +- 7.3, of which 10.6 from the 82 edges within 1 mm of a tip and 12.7 from those beyond 3 mm. Only 7 edges lie within 250 um of a tip, so the data cannot see a drop on the ~20 um scale of the hand-traced tip kymographs (SI, Movement at the growing tips). Source: transport_paper feat/flow-regime, forward_speed_bayes.py --zero.
-% NOTE (15 Oct, Simon): the falloff-to-zero curve moves to the SI (section Choices in the to-tip speed model, fig:tip_falloff_zero); Fig 5b shows the offset fit only again.
+% NOTE (15 Oct, main-text review): Fig 5 caption drafted by Claude (Simon, 15 Oct) from the current panels and numbers (note below); (b) shows the Bayesian fit, while the model runs on the earlier least-squares constants of the same form (3.10 / 2.14 um/s, 1.71 mm; Methods), so 'motors at the profile of (b)' is approximate.
 % NOTE (15 Oct, Keras widths; supersedes the numbers of the Fig 5 notes above where they differ): main model now on the recalibrated Keras widths (0.75 x legacy Keras width, fallback 0.83 x segmenter; Methods, transport model). figures/fig_plug_model.png and fig6_model_examples.png redrawn (transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb, feat/flow-regime). (a) 1,544 edges in 15 sessions; all edges within 2x 77.5 % (segmenter widths 78.0 %), KS 0.056, median fold error 1.45; (b) unchanged; (c) 274 trail segments, 86 % within 2x, bias 1.21; (d) bin counts unchanged (3, 14, 19, 65, 73, 100, 130, 88). Fig 6b: 30 segments, 90 % within 2x, median |log2 error| 0.31. Model / measured by lumen-width tercile 1.15 / 1.03 / 0.99 (segmenter 1.20 / 1.05 / 0.96); within 1 mm of a tip 3.11 um/s (segmenter 2.84, measured 2.17); beyond 8 mm 3.50 (measured 4.22). The theta sweep and the model-variant comparisons were run on the segmenter widths.
 
 \begin{figure}
@@ -382,18 +395,22 @@ Vertical error bars: 25th–75th percentile of the measured velocity pixels of t
     \caption{[Caption to be written.]}
     \label{fig:fig6_examples}
 \end{figure}
-% NOTE (15 Oct): Fig 6 (Simon: individual examples of the model working); panels a-b are the old Fig 5 e-f (model_accuracy_two_models.py --layout fig6). (a) session network of EPY2412A088_t55 with trail Main (black), its tip at the session (star) and the annotated roots (circles), image coordinates; (b) backflow along Main, 30 measured segments (bar: 25th-75th percentile) with the prediction, within 2x on 93 %, median |log2 error| 0.33. More examples to add (5 Oct comment: a loopy region, accurate predictions over time).
+% NOTE (15 Oct): Fig 6 (Simon: individual examples of the model working), panels a-b = the old Fig 5 e-f (model_accuracy_two_models.py --layout fig6, Keras-width run): (a) session network of EPY2412A088_t55 with trail Main (black), tip (star), annotated roots (circles); (b) to-root speed along Main, 30 measured segments (bar: 25th-75th percentile) with the model, within 2x on 90 %, median |log2 error| 0.31. Candidates from the Typst Fig 6 in the note on the panels to add.
 
 \subsubsection*{The network model reproduces the measured speeds and their spatial pattern}
 Could our conceptual model at the network level quantitatively explain the variation of speeds observed throughout the networks (Fig.\ref{fig:hyphal_profiling}f)?
+% NOTE (15 Oct, main-text review): Fig 1 has panels A-E (no f); the variation across networks is Fig 2B (or Fig 1E for one trail). Fig 5b, 5c, 5d and Fig 6 are not referred to anywhere in the text; the overall scores (77.5 % of edges within 2x, 86 % of trail segments) and the known limits (consolidated model note above) are not reported.
 To answer that question, we first plotted the distribution of observed and modeled flow speeds for all edges observed in high magnification (Fig.\ref{fig:fig5_plug} A).
 We found that the model could overall explain well the distribution of speeds from 1.5 to 6 $\mu m/s$.
+% NOTE (15 Oct, main-text review): current 5-95th percentiles: model 1.03-7.15, measured 1.61-6.82 um/s (KS 0.056); the 25-75th: 2.52-4.87 vs 2.41-4.86.
 Speeds slower than $v_0$ were explained by the existence of loops in the network that led to a net circulation of water through some of the pipes that crossed the same direction as lipid flux.
+% NOTE (15 Oct, main-text review): not shown: the outlier check found the model's too-slow edges to be loop circulation in the global solve; whether the measured slow edges sit on loops is untested. Also: sparse-flow edges (13 %, ~1.8 um/s both ways) are many of the measured slow ones, and the model does not describe them (SI, full and sparse flow).
 According to equations \ref{eq:net_inner_flow} and \ref{eq:speed_profile_main}, when $q^w$ is large enough and positive, $q^w_{r<a}$ can also be positive and larger than $\pi a^2 v_0$, which can lead to the absolute speed being lower than $v_0$.
 During the length of a hypha, our model could explain the gradual increase of flow speed when moving away from the tip, as well as the sudden decrease which seemed to coincide with entering regions with multiple alternative paths due to anastomoses to the root (Fig.\ref{fig:fig5_plug}F).
+% NOTE (15 Oct, main-text review): panel F is now Fig 6b; the trail-wide rise is Fig 5d. No panel shows a 'sudden decrease' on entering looped regions.
 Our model could also explain the increase in flow speed over time at specific locations (Fig.\ref{fig:fig5_plug}e). 
+% NOTE (15 Oct, main-text review): no panel shows a time series (old e = the network map, now Fig 6a). The Typst growth-step panels (EPY088 Main t28 -> t55, LPD025 Middle t25 / t36 / t50) would back this; see the Fig 6 note.
 % NOTE (5 Oct, Overleaf comments, L182): Simon: Need a concrete example of this. | Simon: 'Also good to-do for fig 5.'
-% NOTE (7 Oct): '1.5 to 6 um/s' fits the rebuild (global solve 5-95 %: 1.5-6.6 vs measured 1.5-6.8 um/s). 'Slower than v0 explained by loops' does not fit it: 53 % of the global solve's misses are too slow. '(Fig. fig5_plug e)' for the increase over time: panel e is the network map, no time series. '(Fig. hyphal_profiling f)' is lowercase where the other panel letters are now capitals.
 
 \subsubsection*{One physical model from pipe to network, with consequences for trade}
 Our simple physical model can therefore explain a wide variety of our experimental observations.
@@ -401,6 +418,7 @@ At the single hypha level, it provides an explanation for bidirectional fluid fl
 At the growing network level, it is compatible with the observed non-trivial spatio-temporal variations in flow speeds.
 Such a physical explanation of bidirectional transport in AM fungal networks has direct consequences on symbiotic trade.
 Because the movement of lipids generates fluid flow in the reverse direction, the proportionality of resource exchange could emerge directly from this physical coupling. 
+% NOTE (15 Oct, main-text review): see the C/P notes in the Discussion: proportional to motor-carried carbon by construction, not to growth carbon.
 
  % We wanted to know whether the lipid movement induced backflow could explain the proportionality of resource exchange. We assumed that the concentration of phosphorus in the water of the inner tube was constant and that the input carbon flux varied. We found that, under this assumption, the carbon flux from the plant and the phosphorous flux from the fungal colony were maintained proportionally (Fig. \ref{fig:hydraulic_proportionality}b). To obtain a proportionality factor of $1/3$ $\mu g$P / $\mu g$C, as previously found (see Chapter \ref{chapt2}), we had to set the concentration of P to $\approx 1.9 mol/L$ which is much higher than the concentration typical found in plant cells of 5-20$mmol/L$ \cite{bieleski_phosphate_1973}.
 
@@ -410,6 +428,7 @@ Because the movement of lipids generates fluid flow in the reverse direction, th
 \subsubsection*{Motor tracks form an oriented network}
 \paragraph*{Lipids follow growth on polar filaments, an oriented graph}
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
+% NOTE (15 Oct, main-text review): the main model now takes the motor direction from the GIMF solve, not the growth graph; growth-graph direction matches the observed motor direction only slightly better on loops (86 vs 81 %, 677 edges). Decide which story this section tells. The 8 Oct note below ('constant motor speed v0 being tested against v0(D) in #134') is stale: the model uses the tip falloff; the diameter dependence is in SI subsec:si_forward_flow.
 They also strongly support the idea that this movement of lipids could be actively driven by molecular motors moving in one direction on polar cytoskeletal filaments.
 This network of filaments inside the fungal network is mathematically equivalent to a weighted oriented graph, where the weight of a given edge can represent the number of cytoskeletal filaments, allowing molecular motor movement.
 It is unclear how this oriented network organizes to maintain a coherent intensity and polarity with growth. 
