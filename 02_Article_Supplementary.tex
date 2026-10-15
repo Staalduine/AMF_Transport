@@ -269,6 +269,39 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 % NOTE (4, scoring): models fitted on four plates and scored on the fifth (within-plate Spearman); the walls_v4 ranking has tip distance x width and force x throttle best (0.58), width only 0.50, tip distance alone 0.22.
 % NOTE (5, transport model link): the transport model keeps v0 constant with only the tip-distance term; a diameter-dependent v0(D) was under test (#134). The main model uses physical inputs only, with no fitted width exponent (Simon, 12 Oct).
 
+\namedsubsection{Full and sparse flow}{subsec:si_flow_regimes}
+% NOTE (15 Oct): section text to be written by Simon; new section on Simon's request (sparse vs full flow moved out of Fig 5, as an observational difference).
+% NOTE (1, classification): per bright-field edge, streak density in the to-tip kymograph; threshold 0.27 streaks per um per s, calibrated on Simon's blind labels (60 kymographs, two rounds; full flow / sparse flow / dormant / artifact). Sparse flow: few thin streaks, slow and about symmetric, ~1.8 um/s in both directions. 1,284 full and 197 sparse edges (~13 %) of 1,481 classified (transport_paper fig_outputs/flow_regime/edges.csv).
+% NOTE (2, final model by regime, 1,544 edges, junction/global_gimf_gimf_minedge20): full flow 1,273 edges, within 2x 79.3 %, bias (model / measured) 0.99, measured median 3.86 um/s, model 3.50; sparse flow 179 edges, 69.3 %, bias 1.60, measured 1.85, model 3.09; unclassified 92 edges, 77.2 %. Trail segments within 10 mm (figure below): full within 2x 89 %, bias 1.20 (245 segments); sparse 53 %, bias 1.87 (15).
+% NOTE (3, width, 14 Oct regime analysis): sparse-flow edges are thinner, median lumen 6.2 vs 8.4 um for full flow. The model has no sparse state: it gives these edges the full motor stream, so it over-predicts their backflow.
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.6\textwidth,keepaspectratio]{suppfig/figS_flow_regimes.png}
+\caption{[Caption to be written.]}
+\label{fig:flow_regimes}
+\end{figure}
+% NOTE (15 Oct): figure = Fig 5c with each trail segment coloured by the flow regime of its edge (model_accuracy_two_models.py --layout regimes): full flow 245, sparse 15, no regime 14 segments; grey wedge within 2x, line identity.
+
+\namedsubsection{Lumen width and network width}{subsec:si_widths}
+% NOTE (15 Oct): section text to be written by Simon; new section on Simon's request (lumen width against the network (STG) width, and the methods to extract them).
+% NOTE (1, methods): lumen width from the bright-field videos, U-Net walls (walls_v4), 2 x the distance transform, on 1,454 of the 1,503 to-tip edges after the 14 Oct extension (445 videos added). Network widths on the same edges from the low-magnification network images: the flow-table width ('table'), the segmenter width ('seg', quantised at 0.125 um), the legacy Keras width ('legacy'), and three direct image measures (FWHM of the cross-section profile, gradient edges, integrated darkness).
+% NOTE (2, agreement with the lumen, figure 'estimators', 1,969-1,984 matched edges, 5 plates; transport_paper feat/width-feasibility, width_feasibility.py): within-plate Spearman rho with the lumen width: legacy 0.61, table 0.48, seg 0.48, image darkness 0.41, FWHM 0.17, gradient 0.02. Held out by plate, linear calibration to the lumen: median |error| legacy 1.17 um, table / seg 1.27, FWHM 1.48, a constant 1.52 um. The network images do not resolve the lumen width: the best estimator calls 39 % of edges within 10 % of the lumen.
+% NOTE (3, relation to speed, figure 'lumen vs network width'): within-plate Spearman of the to-tip speed with lumen width 0.54 (1,449 edges), with the network widths 0.30-0.36 (table 0.32, legacy 0.31, seg 0.31), image FWHM 0.18. Log-log slope of to-tip speed on width: lumen 0.53 (rho 0.58), STG width 0.29-0.33. Bayesian to-tip fit with a width term (forward_speed_bayes, lumen): beta 0.49 [0.45, 0.54]; with tip distance x width: beta 0.47, v_tip 2.18, v_inf 2.92 um/s, ell 1.10 mm.
+% NOTE (4, model input): the transport model uses the network widths (it needs every edge, not only the filmed ones). The legacy Keras width calibrated to the lumen (lumen = a + b legacy, clipped 2-20 um; keras_width_rescale.py) is the candidate replacement; not used in the final model.
+% NOTE (5, caveat): five session frames have bad stitching in the network images (LPD2412A025_t36, STR2307A112_t38 / _t60 / _t73, PNF2307A080_t74), which spoils their network widths.
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_estimators.png}
+\caption{[Caption to be written.]}
+\label{fig:width_estimators}
+\end{figure}
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_lumen_speed.png}
+\caption{[Caption to be written.]}
+\label{fig:width_lumen_speed}
+\end{figure}
+
 \namedsubsection{Movement at the growing tips}{subsec:si_tips}
 % NOTE (10 Oct): section text to be written by Simon; to be filled with more data later (Simon: does not lead to many conclusions yet). Sources: transport_paper explore/tip-diffusion (f4a8ba7, 37c25b3), manuscript/tip_diffusion_sketch.md; AMF_Transport#5; transport_paper#132 Q1.
 % NOTE (1, streaks vs tip distance, bright-field, 654,711 streaks, 15 sessions): median to-tip streak duration 1.20 s within 0.5 mm of a tip vs 1.40-1.45 s beyond 1 mm; length 2.6 vs 4.2-4.5 um (shorter because slower, not shorter-lived). Per kymograph: median 38 moving streaks within 0.5 mm vs 118-149 beyond 2 mm; no moving streak in 20 % of kymographs within 1 mm vs 5-8 % beyond; static share of streaks 0.31 vs 0.02-0.04. Structure-tensor coherence flat (0.74-0.79). Many near-tip kymographs look clean but low-SNR (Simon). Caveats: detector minimum 15 frames (0.75 s) censors short or irregular movement; tip edges are short and counts are not length-normalised; streaks pooled without bootstrap.
