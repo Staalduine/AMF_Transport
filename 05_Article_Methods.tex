@@ -296,6 +296,9 @@ Cuts round a patch of network isolated it from both its source and its sinks; 4 
 
 The model predicts the to-root speed on every edge of a session's graph from the network, its growth and the measured motor speed (\texttt{transport\_paper/compute\_funcs/backflow\_model.py}; step by step in SI \todo{SI model-steps figure, no LaTeX label yet}).
 Below, $D$ is the hyphal diameter of an edge, $L$ its length and $d$ its distance to the nearest growing tip.
+The diameter $D$ comes from an earlier width model (a Keras network on cross-sections of the network image), recalibrated on the hyphae measured in the flow videos: its width is multiplied by 0.75, the median ratio of the lumen diameter in the videos to this width over 1,969 filmed edges (SI, \nameref{subsec:si_widths}).
+The 8\% of edges without such a width take 0.83 times the segmenter's diameter, the same ratio for the segmenter.
+% NOTE (15 Oct, Simon): main-model widths switched from the segmenter to the recalibrated Keras width (Simon: say it is from a Keras model, recalibrated on measured hyphae). The two sentences above drafted by Claude on that request. Keras width = /edge_width_timesteps width_um (model_quadratic.h5); its spread across edges matches the lumen's (log-SD 0.257 vs 0.254; segmenter 0.211). Run: transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb, feat/flow-regime.
 \begin{enumerate}
   \item \textbf{Demand.}
 The hypha added over the next four frames is split into connected pieces.
