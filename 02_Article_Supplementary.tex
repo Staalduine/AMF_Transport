@@ -216,6 +216,20 @@ However, in that earlier research the magnitude of the maximum volume fraction w
 
 This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
 
+\namedsubsection{Spatial variation of the lipid volume fraction}{subsec:si_theta_spatial}
+% NOTE (15 Oct): This section was added on Simon's request (modelled and measured spatial variation of Theta); the text is Simon's to write. It replaces the main text's pointer to SI fig:carbonflow f, which is the wrong file. Source: transport_paper Working_notebooks/theta_spatial.py (feat/flow-regime), fig_outputs/flow_regime/theta_spatial.csv.
+% NOTE (15 Oct, model): In the main model the lipid volume fraction of the whole lumen is Theta = theta (b^2 - a^2) / b^2 = J / (pi b^2 v), where theta = 0.05 is the lipid share of the motor-driven condensate. The floor a >= 0.8 b caps Theta at 0.05 times 0.36 = 1.8 %, and 24 % of the 1,534 measured edges sit at that cap. The median Theta is 0.68 % (interquartile range 0.2 to 1.8 % in every tip-distance bin). Theta does not change with the distance to the nearest growing tip (Spearman rho 0.00; bin medians 0.85, 0.54, 0.65, 0.77 and 0.64 % at 0-1, 1-2, 2-4, 4-8 and beyond 8 mm): in the model it varies from edge to edge with the routed demand and the width, not with tip distance.
+% NOTE (15 Oct, measured): Nile Red gives no absolute volume fraction, only relative measures on 274 filmed junction legs (transport_paper lipid_tip_distance.py --moving, issue #94). The moving share of the lipid signal (moving over all lipid fluorescence of a leg, free of exposure) rises with tip distance, from a median 2.2 % within 1 mm of a tip to 4.7 % beyond 4 mm (rho +0.34). The moving to-tip lipid per volume of the to-tip lane, divided by its plate median, falls instead (rho -0.27; 1.12 within 1 mm, 0.56 at 4-8 mm, 21 legs); this measure depends on the lane share taken from the bright-field speeds, v_r / (v_t + v_r). Both are limited by the Nile Red detection limit near 5 um/s (Methods), which misses fast lipid.
+% NOTE (15 Oct, literature): Bago et al. 2002 (Nile Red and two-photon microscopy, G. intraradices in monoxenic root-organ culture; their Fig. 3) report the total lipid (moving and static) at about 24 % of the volume of extraradical runner hyphae near the root and 0.5 % at the growing front, so total lipid rises away from the front, in the same direction as the measured moving share. Their values are total lipid, an order of magnitude above the model's Theta of moving lipid.
+% NOTE (15 Oct, reading): The model keeps theta constant, so its Theta has no trend with tip distance, while the measured moving share of lipid roughly doubles from the tips to more than 4 mm away. A theta that rises away from the tips would raise the modelled return there and lower it near the tips, the direction of both known biases (over-prediction within 1 mm of a tip, under-prediction beyond 8 mm); this is untested.
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_theta_spatial.png}
+\caption{[Caption to be written.]}
+\label{fig:theta_spatial}
+\end{figure}
+% NOTE (15 Oct): Figure: (A) modelled Theta on every measured edge against the network distance to the nearest growing tip, with bin medians and interquartile ranges; dotted, the cap of 1.8 % set by a >= 0.8 b. (B) trends with tip distance, each quantity divided by its median over bins: model Theta (blue), the measured moving share of the lipid signal (orange) and the measured moving to-tip lipid concentration (vermillion).
+
 \namedsubsection{Model variants}{subsec:si_model_variants}
 % NOTE (2, demand split): Conductance, area and even splits give the same scores (section below, tab:si_demand_split).
 % NOTE (3, return coupling): The global solve (no cost to switch hyphae at junctions; Heaton 2010) and the conveyor (each edge returns its own stream) are the two limits of the 10 mm junction resistance. The numbers are to be taken from the transport_paper junction runs (growth_area_j3000 / j10000, global) when this section is written.
