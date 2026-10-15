@@ -250,6 +250,34 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \end{table}
 
 \namedsubsection{Modelling the to-tip speed}{subsec:si_forward_flow}
+% NOTE (15 Oct): text below drafted by Claude on Simon's request (fill out the forward model SI section), from the notes of this section and the current fits (transport_paper feat/flow-regime: forward_speed_bayes.py, edges.csv / posterior.csv / width_compare.csv; width_feasibility_stats.csv). The width numbers marked 873 edges are from the walls_v4 rebuild (note of 11 Oct below); the force-balance sentence needs Simon's check of the model's form.
+The transport model needs the to-tip (motor) speed on every edge of the network (Methods), so we asked which properties of a hypha predict it.
+We used the bright-field videos only (\nameref{subsec:si_forward_choices}).
+For each edge we pooled the moving to-tip streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,481 edges with 299,584 streaks in 15 sessions on 5 plates.
+
+\paragraph*{Distance to the nearest growing tip.}
+The to-tip speed is lower close to the growing tips and levels off within a few millimetres (Fig.~\ref{fig:fig5_plug}b).
+We described this with a falloff to an offset,
+\[
+v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
+\]
+with $d$ the network distance to the nearest growing tip at the session.
+We fitted it with a hierarchical Bayesian model on the log median streak speed of each edge, $y_i = \log v(d_i) + w_p + u_i + \epsilon_i$, with an edge effect $u_i \sim N(0, \sigma_{\mathrm{edge}})$, a plate effect $w_p$ (summing to zero over plates) and a sampling error $\epsilon_i$ whose standard deviation was bootstrapped from the edge's own streaks, so that edges with few or scattered streaks count less.
+Priors were uniform on $v_\infty$ and $v_{\mathrm{tip}}$ (0.05 to 10~$\mu$m/s) and on $\log \ell$ (10~$\mu$m to 50~mm), half-normal on the standard deviations, and the posterior was sampled with adaptive Metropolis (4 chains, $\hat{R} \leq 1.01$).
+The posterior medians [95\% intervals] were $v_{\mathrm{tip}} = 2.18$ [1.92, 2.39]~$\mu$m/s, $v_\infty = 2.93$ [2.86, 3.03]~$\mu$m/s and $\ell = 1.85$ [1.11, 3.52]~mm.
+Edges scatter around the curve by 0.22 on the log scale (about 25\%), and the plates differ by $-6$ to $+7$\%.
+The speed at the tip rests on few edges: 82 lie within 1~mm of a tip and 7 within 250~$\mu$m.
+In least-squares fits on the edge medians, fitted on four plates and scored on the fifth, the offset form predicted the held-out edges better than a constant speed or an exponential rise from zero (median fold error 1.14, against 1.17 and 1.16), and a step at a fixed distance did worst.
+The transport model uses an earlier least-squares fit of the same form ($v_\infty = 3.10$, $v_{\mathrm{tip}} = 2.14~\mu$m/s, $\ell = 1.71$~mm; Methods), whose far-from-tip speed is 6\% above the Bayesian one.
+
+\paragraph*{Hyphal width.}
+The to-tip speed also rises with the lumen width measured in the same videos (SI Fig.~\ref{fig:width_lumen_speed}), with a within-plate Spearman correlation of 0.54 (1,449 edges).
+The relation holds in each of the five plates and is unchanged when the tip distance is accounted for (log-log slope 0.53 [0.46, 0.60], partial within-plate $\rho = 0.53$; 873 edges).
+Adding a factor $(w/9~\mu\mathrm{m})^\beta$ to the Bayesian fit (1,434 edges with a lumen width) gave $\beta = 0.49$ [0.45, 0.54] without and $0.47$ [0.43, 0.52] with the tip term; with the width included the tip falloff remains ($v_{\mathrm{tip}} = 2.18$, $v_\infty = 2.92~\mu$m/s) and its length shortens to $\ell = 1.10$ [0.63, 1.98]~mm.
+Scored on held-out plates, the predictions from tip distance and width together, and from a force-balance form with a tip throttle, correlated best with the measured speeds (within-plate $\rho = 0.58$), width alone reached 0.50 and tip distance alone 0.22.
+The to-root speed rises more steeply with width (slope 1.16 [1.05, 1.27]).
+Because the network images do not resolve the lumen width (\nameref{subsec:si_widths}), the transport model uses the tip distance only (\nameref{subsec:si_forward_choices}).
+
 % NOTE (10 Oct): section text to be written by Simon; cited from the main text (hypothesis section, to-tip speed modulated by diameter and tip distance). Simon (9 Oct): the diameter dependence is an SI item, not main text. Sources: transport_paper#132 (comment of 7 Oct, constant vs falloff; comment 6056041406, diameter), #134 (v0(D) in the model); science/forward_speed_models.typ (rhizosphere#259); scripts forward_speed_compare.py / forward_speed_compare_fl.py (#133), Working_notebooks/speed_vs_diameter.py (feat/fluorescence-detection-limit 7990008).
 % NOTE (1, models, fitted on four plates and scored on the fifth, 15 sessions): constant, exponential v0(1 - e^(-d/lambda)), offset v_inf - (v_inf - v_tip) e^(-d/lambda), step, plus width and force-balance variants; bright-field 1,503 edges with both streams, fluorescence 5-frame streaks 1,365 edges.
 % NOTE (2, tip distance): falloff at the tips in both channels, gradual, not a step. Median to-tip within 1 mm of a tip / overall: bright-field 2.23 / 2.95 um/s (0.76), fluorescence 1.89 / 2.47 (0.77); paired 908 edges 0.76 / 0.73. Held-out offset fit: bright-field v_tip 1.9-2.2, v_inf 2.8-3.0 um/s, lambda 0.75-2.5 mm; fluorescence 1.3-1.7 / 2.5-2.7 / 1.5-3.3 mm. Near tips (< 1 mm) models without tip distance over-predict 1.21-1.25x; offset beats exponential and constant held out (fold-change error 1.14 vs 1.16 vs 1.17, bright-field); a step ranks worst.
@@ -262,6 +290,27 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 % NOTE (13 Oct): Simon (13 Oct) dropped speed comparisons with fluorescence (detection limit near 5 um/s). The fluorescence numbers in the notes above (near-tip falloff 1.89 / 2.47 um/s, held-out offset fits, Nile Red diameter slopes 0.54-0.56, fluorescence 5-frame streaks on 1,365 edges) fall under it; the bright-field numbers stand. See \nameref{subsec:si_forward_choices}.
 
 \namedsubsection{Choices in the to-tip speed model}{subsec:si_forward_choices}
+% NOTE (15 Oct): text below drafted by Claude on Simon's request, from the notes of this section and of the section above.
+Three choices shape the to-tip speed used in the transport model.
+
+\paragraph*{Bright-field only.}
+The fits use the bright-field videos (20 frames per second) only.
+The Nile Red videos (1 or 2 frames per second) lose fast streaks: relative to 1--3~$\mu$m/s, the number of streaks found per bright-field streak drops to 0.22 at 4--5~$\mu$m/s and 0.11 at 6--7~$\mu$m/s at 2 frames per second, and to 0.07--0.08 at 6--8~$\mu$m/s at 1 frame per second, and the per-pixel medians at 1 frame per second level off at 4.4--4.5~$\mu$m/s (Methods, \nameref{subsec:fl_detection_limit}).
+Fluorescence speeds are therefore censored near 5~$\mu$m/s, and we do not compare them with the bright-field speeds.
+
+\paragraph*{A falloff to an offset, not to zero.}
+A falloff to zero at the tip, $v(d) = v_\infty (1 - e^{-d/\ell})$, fitted with the same hierarchical Bayesian model, gave $v_\infty = 2.79$ [2.75, 2.83]~$\mu$m/s and $\ell = 194$ [145, 241]~$\mu$m (SI Fig.~\ref{fig:tip_falloff_zero}).
+To reach zero at the tip and still pass the edges nearest to it, its falloff length shrinks to about 200~$\mu$m, after which the curve is flat: it reaches 2.0~$\mu$m/s at 250~$\mu$m and 2.8~$\mu$m/s from about 1~mm onwards.
+It therefore misses the gradual rise over 1--3~mm and lies about 10\% below the edges beyond 4~mm, while within 500~$\mu$m of a tip it fits as well as the offset form.
+By the widely applicable information criterion the offset form predicts better (expected log predictive density higher by 25.5 $\pm$ 7.3), with 10.6 of the difference from the 82 edges within 1~mm of a tip and 12.7 from those beyond 3~mm.
+A drop to near zero over the last tens of micrometres, as seen in the hand-traced tip kymographs (\nameref{subsec:si_tips}), is below what the edge data resolve and is not excluded.
+
+\paragraph*{Tip distance, not width.}
+Width predicts the to-tip speed better than tip distance (\nameref{subsec:si_forward_flow}), but the transport model needs a speed on every edge of the network, and there only the network widths are available.
+These track the lumen width poorly (within-plate $\rho$ 0.48--0.61) and correlate with the to-tip speed at $\rho$ 0.30--0.36, against 0.54 for the lumen width (\nameref{subsec:si_widths}).
+The transport model therefore uses the tip-distance profile alone, with physical inputs only and no fitted width exponent.
+A constant motor speed scores worse in the transport model (Methods).
+
 % NOTE (13 Oct): section text to be written by Simon; new section on Simon's request (decisions for the to-tip speed model, specifically leaving fluorescence out). Facts for it below.
 % NOTE (1, fluorescence left out): the model is fitted and scored on bright-field (20 fps) only. Nile Red videos (1-2 fps) are censored above ~5 um/s: streaks found per bright-field streak, relative to 1-3 um/s, 0.22 at 4-5, 0.18 at 5-6, 0.11 at 6-7 um/s at 2 fps, and 0.07-0.08 at 6-8 um/s at 1 fps (Methods, \nameref{subsec:fl_detection_limit}). Per-pixel medians at 1 fps plateau at 4.4-4.5 um/s. Simon, 13 Oct: no speed comparison with fluorescence because of this limit.
 % NOTE (2, what leaving it out removes): the fluorescence fits of the to-tip section (offset fit v_tip 1.3-1.7, v_inf 2.5-2.7 um/s, lambda 1.5-3.3 mm; Nile Red diameter slope 0.54 [0.39, 0.69], walls_v4), which agreed in direction with bright-field; SI figures S9 (fluorescence vs bright-field density) and S11 (to-tip vs to-root scatter), commented out; the fluorescence panels of S8.
