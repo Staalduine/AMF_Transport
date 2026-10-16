@@ -236,12 +236,12 @@ We synthesize the above results into a minimal model that explains the observed 
 
 \begin{figure}
  \centering
- \includegraphics[width=\textwidth]{figures/Figure_4_v5.pdf}
+ \includegraphics[width=\textwidth]{figures/Figure_4_v6.pdf}
  \caption{\textbf{Our model, showing motor flows moving toward the tip, and turning back as pressure-based flows. Model qualities are shown in the second row.}
 \textbf{(A)} Schematic of the model: to-tip flow (blue) returns as to-root flow (pink).
 \textbf{(B)} The motor-driven condensate layer (blue) at the hyphal wall, containing lipids (yellow), moves at speed $v_m$, with a backflow of cytoplasm (pink) in the core. 
 \textbf{(C)} At the tip, the condensate layer turns back, and the hypha grows at a rate $dV/dt$, calculated with a cylindrical volume.
-\textbf{(D-G)} Various model qualities: (D) Demand accumulation along a uniform backbone with side tips; (E) Diameter tapering from 9 to 4 um along a single path, with fixed demand; (F) Loop between two junctions, with wide and narrow arms; (G) Growth step, with two more tips grown. Top row: network schematics; bottom row: to-root speed profiles ($\mu m / s$), with the growth shaded.}\label{fig:schematic_model}
+\textbf{(D-G)} Various model qualities: (D) Demand accumulation along a uniform backbone with side tips; (E) Diameter tapering from 9 to 4 um along a single path, with fixed demand; (F) Loop between two junctions, with wide and narrow arms; (G) Growth step, with two more tips grown. Top row: network schematics; bottom row: to-root speed profiles (model units), with the growth shaded.}\label{fig:schematic_model}
 \end{figure}
 
 \subsubsection*{Single-pipe model: a moving condensate layer drives a central backflow}
@@ -300,13 +300,12 @@ towards the tips. Each edge then acts as a source of flux $q_s$ in parallel with
 In the model, $v_m$ is given by a calibrated function of the network distance $d$ to the nearest growing tip, $\hat{v}_m(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\,e^{-d/\ell}$, fitted to the measured to-tip speeds, with $v_\infty = 3.10~\mu$m/s, $v_{\mathrm{tip}} = 2.14~\mu$m/s and $\ell = 1.71$~mm (Fig.~\ref{fig:fig5_plug}b; Methods). The model predicts the to-root speed on 1,544 bright-field edges in 15 sessions with a median fold error of 1.45. 
 
 A number of properties can be shown in toy networks (Figure~\ref{fig:schematic_model} D-G).
-Tree networks aggregate backflow into their central trunk,   increasing flow rate (Figure \ref{fig:schematic_model} H).
-% NOTE (15 Oct, main-text review): Fig 4 panels H, I and J (cited on this line, and as E/I and F/J below) do not exist. The caption runs A-G, with D-G the toy networks (schematics on top, profiles at the bottom).
-This increase in flow rate can increase backflow speeds, if not modulated by a greater flow capacity, which can be done by increasing the diameter (Figure \ref{fig:schematic_model}E, I).
+Tree networks aggregate backflow into their central trunk,   increasing flow rate (Figure \ref{fig:schematic_model}D).
+This increase in flow rate can increase backflow speeds, if not modulated by a greater flow capacity, which can be done by increasing the diameter (Figure \ref{fig:schematic_model}E).
 One feature this model also predicts is circularity in added loops, specifically if these have a width imbalance.
 The pressure difference that has to be serviced by both makes the wide arm flow faster, and the narrow arm far slower than in just a single edge.
 % NOTE (7 Oct, terminology): The terms 'width imbalance', 'wide arm' and 'narrow arm' here, and 'Width has a calming effect' in the Fig 4 caption (E, I), need diameter wording per the width rule.
-While this increases energy overall in the network, these induced circularities likely facilitate the distribution of nutrients in the backflow throughout the network (Figure \ref{fig:schematic_model}F, J).
+While this increases energy overall in the network, these induced circularities likely facilitate the distribution of nutrients in the backflow throughout the network (Figure \ref{fig:schematic_model}F).
 % NOTE (15 Oct, loops, Simon): No data in the paper show loop circulation or its role in distributing nutrients. The one loop analysis (Typst Fig 6D) found the global solve's error rising with local loop density (median fold error 1.33 on tree edges, rising to 1.74 at ~1 loop per mm), and the model's worst under-predictions are clean two-way flows to which it gives almost no return (loop circulation). Keep Fig 4F as a property of the model, and move the circulation point to the Discussion (Simon; see the note there).
 Finally, anastomoses can reduce the load on a tree-like network by routing backflow through multiple edges.
 This way, pressure differences in tree-like sections get reduced, and backflow nutrients can be accessed by more parts of the network.
