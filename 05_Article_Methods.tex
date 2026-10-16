@@ -233,7 +233,7 @@ Where the per-direction pixel statistics were empty in the stored plate tables (
 Fluorescence streak speeds above about 5~$\mu$m/s are therefore censored, not absent, and fluorescence streak speed distributions are compared with bright-field below that speed only.
 The per-pixel speeds at 2 frames per second extend the comparison above it, and still show a smaller rootward branch in fluorescence than in bright-field.
 The direction bias is computed from the orientation of all moving pixels and does not depend on the streak detection (Direction bias), but its size is understated: on synthetic kymographs with known flux ratios, real asymmetries were pulled toward 0.5 by 0.04 to 0.13 at 2 frames per second and 0.11 to 0.16 at 1 frame per second, so the fluorescence values are lower bounds.
-% NOTE (10 Oct (transport_paper#132 comment 6088415445; feat/fl-numbers-limits 8391a7e, manuscript/fl_numbers_limits.md)): This paragraph says Nile Red streak distributions are compared with bright-field below 5 um/s only, but the main text (L68) compared full-range medians (2.15 against 2.95, 1.96 against 3.55); the redone numbers are in the notes at L68. The near-tip slow-down in the motor-speed fit (near/far 0.63, 'in both channels') is not established from Nile Red alone: its interval is 0.55-1.14.
+% NOTE (10 Oct (transport_paper#132 comment 6088415445; feat/fl-numbers-limits 8391a7e, manuscript/fl_numbers_limits.md)): This paragraph says Nile Red streak distributions are compared with bright-field below 5 um/s only, but the main text (Results, lipid paragraph) compares full-range medians (lipids 2.42 against 2.95 um/s tipward, 2.20 against 2.91 rootward); those sentences fall under Simon's 13 Oct decision to drop fluorescence speed comparisons. The near-tip slow-down in the motor-speed fit (near/far 0.63, 'in both channels') is not established from Nile Red alone: its interval is 0.55-1.14.
 
 \namedsubsection{Videos on the network}{subsec:videos_on_network}
 
@@ -244,7 +244,7 @@ The hyphae in each video are then matched to the edges of the surrounding graph 
 \paragraph{Direction.}
 A stream runs to the tip when it runs the way its edge grew in the growth graph.
 Where a stretch of hypha appeared within one frame, so that its dates tie, it takes the direction its motor stream points to.
-Where the stream labelled to root is motor-like (within 25\% of 3.06~$\mu$m/s, with a quartile ratio of streak speeds of at most 1.25) and the stream labelled to tip is not, the direction is taken to be reversed and the two are swapped (58 edges).
+Where the stream labelled rootward is motor-like (within 25\% of 3.06~$\mu$m/s, with a quartile ratio of streak speeds of at most 1.25) and the stream labelled tipward is not, the direction is taken to be reversed and the two are swapped (58 edges).
 
 \paragraph{Trails} were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI \todo{SI mirror-arm figure, no LaTeX label yet}); STR2307A112 t73 LeftMiddle was dropped whole.
 Along a trail, each measured edge is placed at its distance from the trail's root end.
