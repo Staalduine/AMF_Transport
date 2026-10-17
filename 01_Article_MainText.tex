@@ -325,8 +325,9 @@ The model predicts the rootward speed on 1,544 bright-field edges in 15 sessions
 
 A number of properties can be shown in toy networks (Fig.~\ref{fig:schematic_model} D-G).
 Tree networks aggregate backflow into their central trunk, increasing flow rate (Fig.~\ref{fig:schematic_model}D).
-This increase in flow rate can increase backflow speeds, if not modulated by a greater flow capacity, which can be done by increasing the inner diameter (Fig.~\ref{fig:schematic_model}E).
-These two properties in tree-like networks are the basis for the observed increase in rootward speed with distance from the tip (Fig.~\ref{fig:asymmetries}B).
+This increase in flow rate can increase backflow speeds, if not modulated by a greater flow capacity, which can be done by increasing the diameter (Fig.~\ref{fig:schematic_model}E).
+These two properties in tree-like networks, combined with the increase in motor speeds away from the tip, are the basis for the observed rise in rootward speed with distance from the tip (Fig.~\ref{fig:asymmetries}B).
+Demand increases it, and diameter has a dampening effect.
 One feature this model also predicts is circularity in added loops, specifically if these have a resistance imbalance.
 A length or diameter difference between two arms of a loop can create a circular flow, with a faster arm returning to the trunk and a slower arm carrying a net flow to the tip (Fig.~\ref{fig:schematic_model}F).
 This also concentrates the backflow in the wider or shorter arm.
@@ -438,15 +439,84 @@ This violates the model's assumption of particles moving together in tight flows
 Our simple physical model can therefore explain a wide variety of our experimental observations.
 At the single hypha level, it provides an explanation for bidirectional fluid flow.
 At the growing network level, it is compatible with the observed non-trivial spatio-temporal variations in flow speeds.
-Such a physical explanation of bidirectional transport in AM fungal networks has direct consequences on symbiotic trade.
+Such a physical explanation of bidirectional transport in AM fungal networks has direct consequences on symbiotic trade by construction.
 Because the movement of lipids generates fluid flow in the reverse direction, the proportionality of resource exchange could emerge directly from this physical coupling. 
-% NOTE (15 Oct, main-text review): See the C/P notes in the Discussion: the returning volume is proportional to motor-carried carbon by construction, not to growth carbon.
+% NOTE (17 Oct, outline for this paragraph, Simon: P at a fixed concentration in the backflow, loaded at the tips): The model is a closed hydraulic circuit: in all 15 sessions the volume returning into the roots equals the motor stream leaving them. If the backflow takes up P at the tips, where the condensate turns back, at a concentration [P], the P delivered to the plant is [P] times the motor volume stream and the carbon carried out is theta times the motor stream times the carbon density of lipid. The exchange ratio C : P = theta c_lipid / [P] is then set by two local quantities and does not depend on network size, shape or growth rate: proportional trade follows from the transport itself, without regulation. Qualifier: it is proportional to the carbon the motors move, not to the carbon used for growth (slope 0.19, 95 % CI -0.47 to 0.86, 15 sessions; on STR112 growth carbon rises 4.7-fold over five sessions while the return stays flat), whereas the measured exchange rate of Bisot et al. (3-4 ug C per ug P by mass) uses expended, growth-based carbon. The model thus predicts P in proportion to transported carbon, a testable distinction. At 3-4 um/s the backflow covers 1 cm in ~45 min, consistent with >= 85 % of absorbed P reaching the root within ~100 h (Bisot et al.).
+
+Our model is by design a closed hydraulic circuit, where the volume returning into the roots equals the motor stream leaving them.
+If phosphorus is taken up at the tips, where the condensate turns back, at a concentration [P], the phosphorus delivered to the plant is [P] times the motor volume stream and the carbon carried out is $\theta$ times the motor stream times the carbon density of lipid.
+The exchange ratio C : P = $\theta c_{lipid} / [P]$ is then set by two local quantities and does not depend on network size, shape or growth rate: proportional trade follows from the transport itself, without regulation.
+
+
 
  % We wanted to know whether the lipid movement induced backflow could explain the proportionality of resource exchange. We assumed that the concentration of phosphorus in the water of the inner tube was constant and that the input carbon flux varied. We found that, under this assumption, the carbon flux from the plant and the phosphorous flux from the fungal colony were maintained proportionally (Fig. \ref{fig:hydraulic_proportionality}b). To obtain a proportionality factor of $1/3$ $\mu g$P / $\mu g$C, as previously found (see Chapter \ref{chapt2}), we had to set the concentration of P to $\approx 1.9 mol/L$ which is much higher than the concentration typical found in plant cells of 5-20$mmol/L$ \cite{bieleski_phosphate_1973}.
 
 \section*{Discussion}
-% NOTE (11 Oct, structure): The Discussion lacks the C/P point the Intro sets up (L49; notes at the C/P paragraph below). The fluorescence detection-limit paragraph (pixel speeds 8-9 um/s) reads as Methods or SI material. Most of the rest is speculation (track orientation, supply-driven growth, aquaporins), which could be tightened around what the model leaves out.
-% NOTE (12 Oct, for the Discussion; SI subsec:si_lipid_fraction): At v0 = 3 um/s the lipid flux needed for the observed growth fills a growing share of the hypha away from the tip (old analysis: up to ~4 % over ~10 mm; current measurement of the moving lipid share: 2.4 % within 2 mm of a tip and 4.6 % beyond 4 mm, transport_paper#94). Bago et al. measured ~24 % near the root and 0.5 % at the front (bago_translocation_2002, Fig. 3; the moved text cites the review bago_carbon_2000 with ~20 %). The point it supports is that transport at motor speeds lets the colony grow without filling hyphae with lipid, while at diffusive speeds (~0.1 um/s, commented-out estimate in the SI section) the needed fraction exceeds 100 %. This fits the supply-driven growth paragraphs.
+
+\subsection*{Measured flows and how far they can be trusted}
+% NOTE (17 Oct, Discussion outline, 1, two streams; Figs 1-2): Every filmed runner hypha carries two opposing streams: a tipward stream narrowly around 3 um/s, slower near the tips, and a rootward stream that is more variable and rises with distance from the tip (1,544 bright-field edges in 15 sessions on 5 plates).
+
+In this work, we have shown extensive analysis of flows in the hyphal network of AM fungi.
+We show that in most hyphae, there are at least two opposing streams: a tipward stream narrowly around 3~$\mu$m/s, slower near the tips, and a rootward stream that is more variable and rises with distance from the tip (1,544 bright-field edges in 15 sessions on 5 plates). 
+
+% NOTE (17 Oct, Discussion outline, 2, lipid direction; Fig 2D): The Nile Red-stained lipid moves mostly tipward (median direction bias 0.71, 84 % of edges tipward), while bright-field movement is roughly even.
+
+We also imaged lipid movement using Nile Red staining, and found that the lipid moves mostly tipward (median direction bias 0.71, 84\% of edges tipward), while bright-field movement is roughly even.
+
+% NOTE (17 Oct, Discussion outline, 3, perturbations; Fig 3): An osmotic shock changes only the rootward stream (pressure-driven); after a root cut both streams continue (neither needs the plant); isolated segments of a few millimetres keep both streams about a fifth slower (both are local).
+
+In trying to differentiate the mechanisms behind these two streams, we found that an osmotic shock changes only the rootward stream, which is therefore pressure-driven.
+After a root cut both streams continue, so neither needs the plant.
+Isolated segments of a few millimeters keep both streams, about a fifth slower, so both are driven locally. 
+
+% NOTE (17 Oct, Discussion outline, 4, reliability; SI lid, selection bias, flow regimes, widths): Bright-field streak speeds (20 fps, lid on) are the reliable measurement; fluorescence speeds are limited by 2 fps sampling and are not compared with bright-field. We film runner hyphae of high betweenness (SI selection bias), tips are undersampled, 13 % of edges show sparse flow in thin hyphae, and network-image widths agree with the video lumen only at rho 0.49.
+
+For most of the analysis, we rely on brightfield imaging, where the 20 Hz framerate allowed adequate sampling space to capture all the flows.
+Because the lid had to stay on during imaging to avoid flows reacting to air flow (SI, \nameref{subsec:si_lid}), a lot of optical resolution was lost between the hyphae and the objective.
+Even more so with fluorescence imaging, where the exposure requirements forced us to image most of those videos at 2 or 1 Hz.
+This put limits on the velocity sample space (SI, \nameref{subsec:si_forward_choices}; Methods, \nameref{subsec:fl_detection_limit}), so a thorough brightfield to fluorescence comparison could not be done directly.
+% NOTE (17 Oct): Removed from the text: 'Perhaps we will add more results from 3D confocal later' (the confocal theta measurement is parked until after submission). 
+
+We also have to be careful about extrapolating the model results to the entirety of the network graph, as there were biases in how the videos were made (SI, \nameref{subsec:si_video_selection}).
+High edge-betweenness edges were favoured to be filmed as opposed to low edge-betweenness edges.
+The model itself also does not account for the sparse flow regime that was observed, where single particles are seen to be moving, not a large co-moving amount.
+Finally, the hyphal diameter extraction, while effective in aggregate, is noisy and brought a lot of noise into the model.
+Extracting hyphal diameter from the 2x network images requires us to guess at a diameter of a sub-optical resolution object under varying focus qualities (SI, \nameref{subsec:si_widths}).
+While some aspects of the model were validated with the more accurate diameters extracted from videos, full network diameter data cannot be extracted in such a way, and therefore that limits the analysis. 
+
+\subsection*{The model: what it explains and where it falls short}
+% NOTE (17 Oct, Discussion outline, 5, strengths; Figs 5-6): One mechanism (a motor-driven condensate and a pressure-driven return) with one swept parameter (theta) reproduces the speed distribution (77.5 % within a factor of 2, KS 0.056), the rise away from the tips and the ranking of trails (rho 0.50), the growth step (Fig 6C-D), demand accumulation in trees (6A) and routing in loops beyond width (6B).
+
+
+
+% NOTE (17 Oct, Discussion outline, 6, perturbations explained): The return is pressure-driven and local, and a cut segment slows because its nearest tip comes closer (lower motor speed, lower return).
+
+\subsubsection*{Mechanical coupling could make trade proportional; radius adaptation could control it}
+We see that bidirectional resource movement and trade could be largely mechanically mediated.
+Such a control mechanism has the advantage of being robust because the proportionality of flow is embedded in the physical properties of the system and, therefore, does not require additional biological control.
+However, in our model, the path taken by the phosphorus in the network is strongly dependent on its relative cumulative hydraulic resistance and, therefore, on the edge radii.
+Radial adaptation could constitute a flow control mechanism.
+However, we never observed hyphal external radii diminishing.
+Full control would probably require an additional ingredient of radial shrinkage. 
+% NOTE (9 Oct, C/P framing, Simon: frame on motor-carried carbon; transport_paper#128, analysis feat/cp-production fb436c6): In the global solve the volume returning into the roots equals the motor stream leaving them in all 15 sessions, so P out (constant [P]) is proportional to motor-carried carbon (theta times the motor stream) by construction (log-log slope 1.000). This is a property of the mechanism, not a fitted result. Against growth carbon it does not hold, with slope 0.19 (95 % CI -0.47 to 0.86, R2 0.03) over 15 sessions. On STR2307A112, growth carbon rises 4.7-fold over 5 sessions while the return stays flat (0.0050-0.0066 uL/h).
+% NOTE (9 Oct, needed P concentration): With P:C = 1/3 to 1/4 ug P per ug C, motor-carried carbon at theta 0.05 needs [P] = 0.38 to 0.29 mol/L in the returning fluid, proportional to theta (0.19 mol/L at theta 0.025, 0.76 at 0.10). Plant cells have 5-20 mmol/L (bieleski_phosphate_1973; the range was not re-checked). Reaching 20 mmol/L needs theta ~0.0026, at which the motors carry ~0.19 times the carbon that growth uses (3.7 times at theta 0.05, median). So a plausible [P] and feeding growth pull theta in opposite directions. The old analysis (commented-out paragraph at the end of the Results) needed ~1.9 mol/L.
+% NOTE (9 Oct, Bisot et al. 2026, full text checked, PMC12891005; bisot_carbon-phosphorous_2025): The exchange rate kappa = Phi_C / Phi_P is by MASS, ~3-4 ug C per ug P ('3 to 4 C/P'; Fig. 5 fronts at kappa0 = 3 and 4), and it is set by host genotype, not by fungal strain or P availability. Their carbon is EXPENDED carbon (CUE 50 %, i.e. twice the carbon built into biomass, spores included), a growth-based quantity, not the motor-carried carbon of this framing. Also, >= 85 % of absorbed P reaches the root within ~100 h (absorbed P would be ~30 % of fungal dry mass if none were transferred, against <= 4-5 % P measured in hyphae).
+
+If this proportionality is to match the measured exchange rate of Bisot et al.~\cite{bisot_carbon-phosphorous_2025} (3--4 $\mu$g C per $\mu$g P by mass), it is important to note that the model predicts phosphorus in proportion to transported carbon, not to the carbon used for growth.
+This distinction is testable, as at 3--4 $\mu$m/s the backflow covers 1~cm in $\sim$45~min, consistent with $\geq$85\% of absorbed phosphorus reaching the root within $\sim$100~h~\cite{bisot_carbon-phosphorous_2025}.
+
+% NOTE (17 Oct, outline for the C/P point of the Discussion; numbers in the 9 Oct notes below): Matching 3-4 ug C per ug P at theta 0.05 needs [P] ~0.29-0.38 mol/L in the returning fluid, 15-75 times the 5-20 mmol/L typical of plant cells (range not re-checked). At 20 mmol/L, theta would be ~0.0026, and the motors would then carry only ~0.19 times the carbon growth uses. A plausible free-phosphate concentration and feeding growth therefore pull theta in opposite directions. Ways out: P travels in a concentrated form (polyphosphate; literature note at the aquaporin subsection), or not all of the returning volume carries P at the same concentration. This is the C/P point the structure note below says the Discussion lacks.
+\subsubsection*{Where the model falls short}
+% NOTE (17 Oct, Discussion outline, 9, where the global solve misses): It concentrates the return on the main routes, over-predicting there and under-predicting well-connected regions off them (kappa and betweenness, Results); it misplaces the return in places (PNF080 t91, Fig 6F); the loop circulation it produces is not seen in the data (core reversal on 0.5-2.6 % of edge length).
+% NOTE (15 Oct, Simon, for the Discussion): State that the global solve induces circulation around loops, which is not necessarily found in the data, but that a model like this is the best at redirecting flow into the central hyphae, raising their speed, which is what we measure. The supporting facts are that the global solve reproduces the upper half of the measured rootward distribution (95th percentile 7.15 against 6.82 um/s, KS 0.056), where locally coupled models (conveyor, junction cost) stay below ~4.7 um/s and give too little spread, and that the measured rootward speed rises away from the trail tips (Fig 5d) and correlates with betweenness (oyarte_galvez_travelling-wave_2025). Against it, its error grows with local loop density (Typst Fig 6D), and its too-slow misses are loop circulation. (16 Oct) Related: the network geometry works against circulation (Fig 4F note), and the measured backflow rises with network robustness kappa while the model does not follow; making every node near the image's bottom edge a root of the solve does not change this (SI subsec:si_tree_loop).
+
+\paragraph*{Rheological implications}
+% NOTE (17 Oct): Speculative; the Discussion may be the better place for the yield-stress idea.
+This points to the idea that the cytoplasm could be a yield stress fluid, which would have a different rheology than the condensate layer. 
+
+% NOTE (17 Oct, Discussion outline, 11, inputs): Network widths are noisy (rho 0.49 with the lumen), which also exaggerates loop-arm differences, and the data keep a width effect at fixed demand that the model lacks; theta is constant although the Nile Red moving share varies (tip/far 0.47); the motor direction comes from the growth-induced mass flow; far from tips the model under-predicts (3.5 against 4.2 um/s).
+
+\subsection*{Relation to other systems and to the symbiosis}
 \subsubsection*{Motor tracks form an oriented network}
 \paragraph*{Lipids follow growth on polar filaments, an oriented graph}
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
@@ -461,10 +531,9 @@ It is unclear how this oriented network organizes to maintain a coherent intensi
 Each edge of the network has a growth inherited orientation that is associated with the polarity of tip extension.
 It is likely that part of the network of transport filaments simply orients in the direction of tip growth at the moment of its creation and persists in that direction over longer timescales.
 
-\paragraph*{Rheological implications}
-% NOTE (17 Oct): Speculative; the Discussion may be the better place for the yield-stress idea.
-This points to the idea that the cytoplasm could be a yield stress fluid, which would have a different rheology than the condensate layer. 
+% NOTE (17 Oct, Discussion outline, 13, mass flow and betweenness): Growth-induced mass flow (Heaton, Lew) cannot produce two opposing streams; here it only routes the lipid demand. Against the traffic picture of Oyarte Galvez et al.: the model follows edge betweenness strongly (rho 0.50) but the measured backflow only weakly (0.16).
 
+% NOTE (12 Oct, for the Discussion; SI subsec:si_lipid_fraction): At v0 = 3 um/s the lipid flux needed for the observed growth fills a growing share of the hypha away from the tip (old analysis: up to ~4 % over ~10 mm; current measurement of the moving lipid share: 2.4 % within 2 mm of a tip and 4.6 % beyond 4 mm, transport_paper#94). Bago et al. measured ~24 % near the root and 0.5 % at the front (bago_translocation_2002, Fig. 3; the moved text cites the review bago_carbon_2000 with ~20 %). The point it supports is that transport at motor speeds lets the colony grow without filling hyphae with lipid, while at diffusive speeds (~0.1 um/s, commented-out estimate in the SI section) the needed fraction exceeds 100 %. This fits the supply-driven growth paragraphs.
 \subsubsection*{Growth may follow supply}
 \paragraph*{The system may be supply driven}
 One way of thinking about the system is that it is mainly driven by supply.
@@ -486,28 +555,11 @@ Because lipids are incompressible and cannot accumulate in a node, this means th
 This phenomenon could explain the observation that lipids can also move in two directions in fungal hyphae.
 % NOTE (8 Oct): Guest & Dawson 2026 (guest_multiple_2026) infer antiparallel MT arrays where branches growing from opposite directions fused (under nocodazole, such branches retract toward both nodes at once). This is another lineage in which anastomosis leaves tracks pointing both ways in one edge. In our model the motor direction comes from the hydraulic solve or from the growth direction (both open, Simon 8 Oct); there is no evidence of motor switching yet.
 
-\subsubsection*{The detection limit explains only part of the slower rootward lipid stream}
-Speeds taken from the orientation of all moving pixels, which do not depend on the streak detection and follow the true speed up to 8 to 9~$\mu m/s$ at 2 frames per second, still show a smaller rootward branch in fluorescence than in bright-field: the rootward stream is faster than the tipward stream by more than the 1.3-fold margin on 20\% of the fluorescence edges against 39\% of the same edges in bright-field (532 edges with both measured).
-So the detection limit explains part of the lower fluorescence speeds in the rootward direction, but not all of them, and why the stained cargo returns more slowly than the bright-field backflow remains open (Methods, \nameref{subsec:fl_detection_limit}).
-% NOTE (13 Oct, merged 16 Oct): This Discussion paragraph is a fluorescence against bright-field speed comparison (pixel speeds), so it falls under Simon's 13 Oct decision to drop such comparisons. It was moved here from the Results (Simon: 'this is for discussion'); on the 532 paired edges the numbers are 21 % against 39 %, and with both modes cut at 5 um/s 13 % against 17 % (the difference CI includes 0).
-
-\subsubsection*{Mechanical coupling could make trade proportional; radius adaptation could control it}
-% NOTE (15 Oct, Simon, for the Discussion): State that the global solve induces circulation around loops, which is not necessarily found in the data, but that a model like this is the best at redirecting flow into the central hyphae, raising their speed, which is what we measure. The supporting facts are that the global solve reproduces the upper half of the measured rootward distribution (95th percentile 7.15 against 6.82 um/s, KS 0.056), where locally coupled models (conveyor, junction cost) stay below ~4.7 um/s and give too little spread, and that the measured rootward speed rises away from the trail tips (Fig 5d) and correlates with betweenness (oyarte_galvez_travelling-wave_2025). Against it, its error grows with local loop density (Typst Fig 6D), and its too-slow misses are loop circulation. (16 Oct) Related: the network geometry works against circulation (Fig 4F note), and the measured backflow rises with network robustness kappa while the model does not follow; making every node near the image's bottom edge a root of the solve does not change this (SI subsec:si_tree_loop).
-We see that bidirectional resource movement and trade could be largely mechanically mediated.
-Such a control mechanism has the advantage of being robust because the proportionality of flow is embedded in the physical properties of the system and, therefore, does not require additional biological control.
-However, in our model, the path taken by the phosphorus in the network is strongly dependent on its relative cumulative hydraulic resistance and, therefore, on the edge radii.
-Radial adaptation could constitute a flow control mechanism.
-However, we never observed hyphal external radii diminishing.
-Full control would probably require an additional ingredient of radial shrinkage. 
-% NOTE (9 Oct, C/P framing, Simon: frame on motor-carried carbon; transport_paper#128, analysis feat/cp-production fb436c6): In the global solve the volume returning into the roots equals the motor stream leaving them in all 15 sessions, so P out (constant [P]) is proportional to motor-carried carbon (theta times the motor stream) by construction (log-log slope 1.000). This is a property of the mechanism, not a fitted result. Against growth carbon it does not hold, with slope 0.19 (95 % CI -0.47 to 0.86, R2 0.03) over 15 sessions. On STR2307A112, growth carbon rises 4.7-fold over 5 sessions while the return stays flat (0.0050-0.0066 uL/h).
-% NOTE (9 Oct, needed P concentration): With P:C = 1/3 to 1/4 ug P per ug C, motor-carried carbon at theta 0.05 needs [P] = 0.38 to 0.29 mol/L in the returning fluid, proportional to theta (0.19 mol/L at theta 0.025, 0.76 at 0.10). Plant cells have 5-20 mmol/L (bieleski_phosphate_1973; the range was not re-checked). Reaching 20 mmol/L needs theta ~0.0026, at which the motors carry ~0.19 times the carbon that growth uses (3.7 times at theta 0.05, median). So a plausible [P] and feeding growth pull theta in opposite directions. The old analysis (commented-out paragraph at the end of the Results) needed ~1.9 mol/L.
-% NOTE (9 Oct, Bisot et al. 2026, full text checked, PMC12891005; bisot_carbon-phosphorous_2025): The exchange rate kappa = Phi_C / Phi_P is by MASS, ~3-4 ug C per ug P ('3 to 4 C/P'; Fig. 5 fronts at kappa0 = 3 and 4), and it is set by host genotype, not by fungal strain or P availability. Their carbon is EXPENDED carbon (CUE 50 %, i.e. twice the carbon built into biomass, spores included), a growth-based quantity, not the motor-carried carbon of this framing. Also, >= 85 % of absorbed P reaches the root within ~100 h (absorbed P would be ~30 % of fungal dry mass if none were transferred, against <= 4-5 % P measured in hyphae).
-
 \subsubsection*{Aquaporins and osmotic pumping would extend the model, not contradict it}
 In our model, we assumed that water could not flow out of the hyphae except at the hyphal-root interface.
-However, it is likely that the ERM hyphae are covered with aquaporins that let water in and out.
-% NOTE (5 Oct, Overleaf comments, L201): Simon: 'Maybe even not': AMF lacks genes associated with passive water-exchange hydroporins.
+However, it is likely that the extraradical hyphae are covered with aquaporins that let water in and out.
 % NOTE (7 Oct, aquaporins): R. irregularis (then G. intraradices) has two functional aquaporins, GintAQPF1 and GintAQPF2 (Li et al. 2013, New Phytol 197:617-630, doi:10.1111/nph.12011): expressed in yeast, they speed the volume response to osmotic shock. This was found by web search, and the full text was not read; it was not in PhD.bib. It is now in PhD.bib as li_first_2013 (not yet cited).
+% NOTE (17 Oct, polyphosphate literature, abstracts and figure text checked, full texts not read in full): AM fungi accumulate P as polyphosphate (polyP) in vacuoles and move it to the host. Hijikata et al. 2010 (New Phytol, doi:10.1111/j.1469-8137.2009.03168.x; Glomus sp. HR1 on Lotus japonicus, two-compartment culture, Pi pulse to the hyphal side): polyP rose to ~64 % of total hyphal P within 5 h while free Pi stayed low, and polyP then appeared on the root side, which they read as polyP being the long-distance carrier (abstract only). Solaiman et al. 1999 (Appl Environ Microbiol, PMC91766; Gigaspora margarita): extraradical hyphae hold mostly long-chain and granular polyP, intraradical hyphae shorter chains. Kikuchi et al. 2016 (New Phytol 211:1202, doi:10.1111/nph.14016; Rhizophagus clarus HR1 on Lotus japonicus, compartment pots): suppressing host transpiration (ABA, darkness, shoot removal) slowed polyP translocation, the translocation rate correlated with transpiration (r = 0.65, nmol Pi per h per mg protein), and knocking down the fungal aquaglyceroporin RcAQP3 by virus-induced gene silencing reduced it; they propose transpiration-driven hyphal water flow towards the root as the driver. For this paper: (1) a concentrated vacuolar polyP stream is a way out of the high [P] needed in the C/P note (the measured quantities are per mg protein, not concentrations in the returning fluid, so no direct comparison yet); (2) Kikuchi et al. attribute the rootward water flow to transpiration, while in our root-organ culture there is no transpiration and both flows continue after the root cut (Fig 3B); our motor-driven return is an alternative driver that would act alongside transpiration where there is a shoot.
 In that case any kind of water potential gradient between the inside and outside of the hyphae could produce influx or outflux of water at any point of the network.
 The resulting system would be analogous to the xylem-phloem system of plants.
 In that case, the sugar loaded phloem generates an influx of water from the xylem.
