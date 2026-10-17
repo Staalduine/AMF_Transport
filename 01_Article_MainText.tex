@@ -356,9 +356,9 @@ A number of other correlations also emerge from the model (SI, \nameref{subsec:s
 The network structure is a key determinant of the backflow speed, with the model predicting that edges with a higher betweenness centrality have a faster backflow speed.
 The model also predicts that edges with a larger share of lipid moving to the tip have a faster backflow speed, which is consistent with the observed correlation between lipid share and backflow speed (Spearman $\rho = 0.40$ within plates, also after accounting for tip distance).
 We also define a measure of edge network density or robustness $\kappa$ as the number of cuts needed to disconnect the network section within 0.25 to 1~mm of an edge from the root, averaged over these section sizes.
-While the model does not reproduce the observed correlation between $\kappa$ and backflow speed, this could be observational bias, as the measured trails are not a random sample of the network, but largely high edge-betweenness edges (SI, \nameref{subsec:si_video_selection}).
-Edges with high $\kappa$ but low edge betweenness are less likely to be filmed, and therefore less likely to be included in the analysis.
-The model does generally over-predict the backflow speed on high-betweenness edges, and therefore underestimates the speeds measured in edges with high $\kappa$ and low betweenness (SI Figs.~\ref{fig:tree_loop},~\ref{fig:kappa}).
+The model does not reproduce the observed rise of the backflow speed with $\kappa$.
+Splitting the filmed edges at the median $\kappa$ and edge betweenness, the model under-predicts on well-connected edges of low betweenness (3.0 against 3.8~$\mu$m/s measured) and over-predicts on poorly connected edges of high betweenness (4.5 against 3.5~$\mu$m/s).
+The model concentrates the return on the main routes to the root, whereas the measured backflow is also fast in well-connected parts of the network that lie off these routes (SI Figs.~\ref{fig:tree_loop},~\ref{fig:kappa}).
 
 Some other shortcomings are that the model assumes a uniform flow within hyphae, and does not account for the existence of observed sparse flows (SI, \nameref{subsec:si_flow_regimes}).
 These are edges where only sparse particles are seen moving in either direction.
