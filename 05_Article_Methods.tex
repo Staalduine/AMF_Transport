@@ -11,7 +11,7 @@
 %          TO WRITE = only a candidate, not in this file yet)
 % 1.  Resource availability / data and code availability -- DRAFTED (typst "Resource availability"); missing: repository DOI, Zenodo DOIs.
 % 2.  Key resources table -- DRAFTED (typst "Key resources table"); missing: Nile Red and Phytagel supplier/cat. no., Petri dish cat. no., dataset DOI.
-% 3.  Fungal strains, root organ cultures and plates -- DRAFTED (typst "Experimental model and study participant details"); missing: protocol unchanged for all plates?, days after crossing for 4 plates, section-cut plates.
+% 3.  Fungal strains, root-organ cultures and plates -- DRAFTED (typst "Experimental model and study participant details"); missing: protocol unchanged for all plates?, days after crossing for 4 plates, section-cut plates.
 % 4.  Network time-lapse imaging -- DRAFTED (typst "Network imaging"); missing: which station imaged each plate (Aretha at 1.37 um/px).
 % 5.  Stitching, segmentation, network extraction -- DRAFTED (typst "Stitching, segmentation and network extraction"; amftrack, segmenter, orchestrator); missing: segmenter checkpoint, SI figures (stitching, segmenter, graph repair) have no LaTeX labels.
 % 6.  Dated / growth graph -- DRAFTED (typst "The dated network graph"; STHype); missing: SI section "Motor direction" not in the LaTeX SI.
@@ -65,7 +65,7 @@ Per-hypha flow and network dataset & This paper & \todo{DOI} \\
 \multicolumn{3}{l}{\textbf{Experimental models: organisms/strains}} \\
 \textit{Rhizophagus irregularis} strain C2 & I. Sanders~\cite{oyarte_galvez_travelling-wave_2025} & DAOM 664346 \\
 \textit{Rhizophagus irregularis} strain A5 & I. Sanders~\cite{oyarte_galvez_travelling-wave_2025} & DAOM 664344 \\
-Ri T-DNA transformed \textit{Daucus carota} root organ culture, clone DC1 & \cite{oyarte_galvez_travelling-wave_2025} & N/A \\
+Ri T-DNA transformed \textit{Daucus carota} root-organ culture, clone DC1 & \cite{oyarte_galvez_travelling-wave_2025} & N/A \\
 \multicolumn{3}{l}{\textbf{Software and algorithms}} \\
 Python 3.11; NumPy 2.4, SciPy 1.17, pandas 2.3, NetworkX 3.6, scikit-image 0.25--0.26, PyTorch 2.10--2.13, MONAI 1.6 & python.org and the packages' own releases & N/A \\
 amftrack (stitching, segmentation, graph extraction) & This paper and \cite{oyarte_galvez_travelling-wave_2025} & github.com/mycostreams/ amftrack2024 \\
@@ -84,9 +84,9 @@ Cellophane sheets & Hoefer & TE73 \\
 \end{tabular}
 }
 
-\namedsubsection{Fungal strains, root organ cultures and plates}{subsec:strains}
+\namedsubsection{Fungal strains, root-organ cultures and plates}{subsec:strains}
 
-\paragraph{Fungal strains and root organ cultures.}
+\paragraph{Fungal strains and root-organ cultures.}
 Colonies of \textit{Rhizophagus irregularis} strain C2 (DAOM 664346; four plates) and strain A5 (DAOM 664344; plate STR2307A112) were grown with Ri T-DNA transformed carrot roots (\textit{Daucus carota}, clone DC1) in two-compartment split Petri dishes (94~mm), as described~\cite{oyarte_galvez_travelling-wave_2025}.
 Briefly, fungal stocks were cultivated on modified Strullu--Romand (MSR) medium with transformed carrot roots for 2--6 months, and a plug of mycelium and spores from a stock was placed on 2--3~cm of fresh root in one compartment.
 That compartment held MSR with phosphate reduced to 1\%; the other, the fungal compartment, held regular MSR under a sheet of cellophane.
@@ -174,7 +174,7 @@ Videos are processed by PolyFlow (\texttt{flow\_analysis\_comps}; SI Fig.~\ref{f
 \begin{enumerate}
   \item \textbf{Hyphae in the video.}
 A U-Net (MONAI) predicts, per pixel, the distance to the hyphal wall, its orientation and the lumen.
-Facing wall pixels are paired across the lumen along the wall normal (up to 15~$\mu$m apart), and the midpoints of the pairs give each hypha's centreline and its lumen diameter (median error 0.83~$\mu$m against hand-drawn walls).
+Facing wall pixels are paired across the lumen along the wall normal (up to 15~$\mu$m apart), and the midpoints of the pairs give each hypha's centreline and its diameter (median error 0.83~$\mu$m against hand-drawn walls).
 The centrelines are turned into a small graph, one edge per hypha.
   \item \textbf{Kymographs.}
 Each centreline is smoothed and resampled at 1~px spacing.
@@ -298,8 +298,8 @@ Cuts round a patch of network isolated it from both its source and its sinks; 4 
 
 The model predicts the rootward speed on every edge of a session's graph from the network, its growth and the measured motor speed (\texttt{transport\_paper/compute\_funcs/backflow\_model.py}; step by step in SI \todo{SI model-steps figure, no LaTeX label yet}).
 Below, $D$ is the hyphal diameter of an edge, $L$ its length and $d$ its distance to the nearest growing tip.
-The diameter $D$ comes from an earlier width model (a Keras network on cross-sections of the network image), recalibrated on the hyphae measured in the flow videos: its width is multiplied by 0.75, the median ratio of the lumen diameter in the videos to this width over 1,969 filmed edges (SI, \nameref{subsec:si_widths}).
-The 8\% of edges without such a width take 0.83 times the segmenter's diameter, the same ratio for the segmenter.
+The diameter $D$ comes from an earlier diameter model (a Keras network on cross-sections of the network image), recalibrated on the hyphae measured in the flow videos: its diameter is multiplied by 0.75, the median ratio of the video-extracted diameter to this diameter over 1,969 filmed edges (SI, \nameref{subsec:si_widths}).
+The 8\% of edges without such a diameter take 0.83 times the segmenter's diameter, the same ratio for the segmenter.
 % NOTE (15 Oct, Simon): The main-model widths were switched from the segmenter to the recalibrated Keras width (Simon: say it is from a Keras model, recalibrated on measured hyphae). Claude drafted the two sentences above on that request. The Keras width is /edge_width_timesteps width_um (model_quadratic.h5); its spread across edges matches the lumen's (log-SD 0.257 against 0.254; segmenter 0.211). The run is transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb on feat/flow-regime.
 \begin{enumerate}
   \item \textbf{Demand.}
@@ -324,7 +324,7 @@ It changes the prediction only near the tips: within 1~mm of a tip (87 edges) th
 A constant motor speed scores worse in both comparisons.
 The scores reported use the constants above.
   \item \textbf{Motor annulus.}
-In a hypha of lumen radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v_m = \hat{v}_m(d)$, whose lipid share $\theta = 0.05$ carries $J_l$: $a^2 = b^2 - J_l/(\pi v_m \theta)$, with $a \geq 0.8\, b$.
+In a hypha of radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v_m = \hat{v}_m(d)$, whose lipid share $\theta = 0.05$ carries $J_l$: $a^2 = b^2 - J_l/(\pi v_m \theta)$, with $a \geq 0.8\, b$.
   \item \textbf{Motor stream.}
 % NOTE (15 Oct, the circuit element the main text points to; notation aligned with the main text on Simon's request): In a pipe of length L whose annulus (a < r < b) moves at v_m, the core is Poiseuille flow with the wall speed v_m at r = a, so the water flux through the core is q_{w,r<a} = pi a^2 v_m - K Delta p, with the core conductance K = pi a^4 / (8 mu L) and Delta p = p_j - p_i along the edge. Adding the water carried in the annulus, pi (b^2 - a^2)(1 - theta) v_m, gives the net water flux q_w = q_s - K Delta p, with the motor stream q_s = pi v_m [(1 - theta)(b^2 - a^2) + a^2]. Each pipe is therefore a flux source q_s in parallel with the conductance K, and the network is solved with Kirchhoff's law at the nodes. The pressure-driven part of the core flux, q_c = q_s - q_w = K Delta p, is the return the model reads out as |q_c| / (pi a^2). This derivation is still to be written into the Methods text.
 The volume carried towards the tip is $q_s = \pi v_m \left[(1-\theta)(b^2 - a^2) + a^2\right]$: the annulus and the core dragged along at its edge.
