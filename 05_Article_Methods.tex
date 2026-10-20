@@ -333,7 +333,7 @@ The volume returns by a pressure-driven flow in the cores.
 The pressure is solved on the graph with Poiseuille conductances $K = \pi a^4 / (8 \mu L)$ of the cores and the divergence of $q_s$ as sources.
 Every annotated root is tied to one common reservoir at zero pressure through a conductance equal to about 10~mm of core of radius 4~$\mu$m (\texttt{testing\_new\_model.g\_res}), so volume can pass between roots through the reservoir.
 The hyphal walls pass no water: volume enters and leaves the network only at the roots.
-The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (the growth demand routed through an edge is a median 5.2\% of its tipward flux; SI, \nameref{subsec:si_volume_budget}).
+The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (on the 1,684 filmed edges the growth demand routed through an edge is a median 2.6\% of its $q_s$, interquartile range 0.9--6.7\%, and 12\% at the 90th percentile; SI, \nameref{subsec:si_volume_budget}).
 Flow passes between hyphae at junctions at no cost: one global pressure solve over the whole network; a resistance for switching hyphae at junctions, and the conveyor limit in which every edge carries back its own motor stream, are SI variants (\nameref{subsec:si_model_variants}).
   \item \textbf{Read-out.}
 The backflow is what is measured: the distribution of rootward streak speeds on an edge, summarised by its median where one value is needed.
