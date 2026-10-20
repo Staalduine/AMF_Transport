@@ -37,32 +37,27 @@ Our model provides an intuitive understanding for the observed proportionality i
 
 \section*{Introduction}
 \subsubsection*{Why bidirectional transport matters}
-\paragraph*{A long-lived, many-to-many symbiosis needs mechanisms against free riders}
 The symbiosis between arbuscular mycorrhizal (AM) fungi and their host plants has existed for 400 million years~\cite{remy_four_1994,brundrett_evolutionary_2018}.
 For the symbiosis to endure this long, robust mechanisms must be in place to ensure its stability.
 Indeed, symbiosis can be a many to many relationship, which means that the plant can interact with multiple independent fungal colonies and one fungal network can interact with multiple plant hosts~\cite{kiers_reciprocal_2011,walder_mycorrhizal_2012}.
 Without selective orientation of nutrients towards partners that engage in a proportional effort to provide nutrients, "free ride" plant or fungal phenotypes can emerge that reap the benefits of symbiosis while avoiding costs~\cite{kiers_reciprocal_2011,bever_preferential_2009,walder_regulation_2015,noe_mycorrhizal_2018,kiers_misconceptions_2016}. 
 
-\paragraph*{Carbon must reach the growing edge and phosphorus the root, through open pipes}
 The fungal partner forms a network in the soil using plant derived carbon.
 It absorbs phosphorus from the soil, which is then transported back to the plant.
 This means that carbon must constantly be shipped to the growing edge of the colony away from the plant, while phosphorus needs to be transported back in the other direction.
 Like other coenocytic fungi, AM fungi have aseptate hyphae, meaning that the organism can be considered a fully open pipe system, while they are growing.
 The mechanisms that could explain such bidirectional transport in a network of open pipes are so far unknown.
 
-\paragraph*{Phosphorus delivery is proportional to carbon received}
 Our group had previously estimated that the fungal use of carbon for growth was proportional to the flux of phosphorus towards the plant~\cite{bisot_carbon-phosphorous_2025}, when a single AM fungus was attached to a single plant.
 In addition, it has been observed in the past that, when a single AM network was connected to two different plant hosts that differed in their carbon supply, more phosphorus was directed towards the plant that provided more carbon~\cite{kiers_reciprocal_2011}. 
 
 \subsubsection*{What is known about flows in AM fungi}
-\paragraph*{Speeds are known in both directions, not which resource moves where}
 Past research has quantified the flow speed in both directions in networks of different ages~\cite{oyarte_galvez_travelling-wave_2025}.
 However, without staining the lipids and/or phosphorus, it is difficult to understand the organization of resource flow across the network and the underpinning transport mechanisms.
 Resource specific staining can shed light on the distribution of resource flux within the network.
 For example, using Nile Red staining and two-photon microscopy, it was found that lipid density varies along the hyphae, from about 24\% of the hyphal volume near the root to about 0.5\% at the front, and that lipid bodies move in both directions, mostly with the cytoplasmic stream~\cite{bago_translocation_2002}.
 A role for microtubule tracks in this movement has been proposed, and microtubules have been imaged across the network~\cite{uetake_extensive_2002}, but to our knowledge the link between microtubules and lipid transport has never been established.
 
-\paragraph*{Speeds correlate with betweenness centrality, without a mechanical basis}
 Flow speeds along the hyphae are modulated with time and location within the network~\cite{oyarte_galvez_travelling-wave_2025}.
 This can be interpreted through a traffic analogy inspired by the observed correlation between betweenness centrality, a typical transport network metric, and flow speeds.
 The betweenness centrality being the sum of times a shortest path between arbitrary nodes in a network crosses a particular network edge.
@@ -109,12 +104,10 @@ Marker shape gives the day, with the number of videos tipward / rootward in the 
 \end{figure}
 
 \subsubsection*{Tipward and rootward speeds along runner hyphae}
-\paragraph*{Flows filmed on runner hyphae of five colonies, in bright-field and Nile Red}
 We asked how this change in topological context affected the speeds of the flows in the two directions along a hypha: towards the growing tip (tipward) and towards the root (rootward), as defined by the growth direction of the network.
 We imaged flows at high resolution in 731 bright-field videos along the hyphae of five colonies (SI Fig.~\ref{fig:video_positions}) and, mostly at the same positions, in 625 videos of Nile Red fluorescence; for the example network of Fig.~\ref{fig:hyphal_profiling}, the videos were taken over three consecutive days.
 We chose runner hyphae, the main routes to the root and the edges of high betweenness centrality~\cite{kirkley_betweenness_2018}, where the tipward and rootward flows could be told apart by eye (SI, \nameref{subsec:si_video_selection}; SI Fig.~\ref{fig:bc_selection}). 
 
-\paragraph*{Tipward speeds stay near 3~$\mu m/s$, rootward speeds rise with tip distance and vary more}
 In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}D).
 In the field of view, the directed movement exceeds diffusion by more than two orders of magnitude, so the slope of a streak is its speed.
 % NOTE (6 Oct, answers Coco's 'why is there little diffusive movement?'): This is a Peclet estimate, to order of magnitude only. It assumes a lipid droplet of 0.5 um diameter, a cytoplasm viscosity 10 times that of water (0.01 Pa s) and T = 295 K, which give D = kT/(6 pi eta r) = 0.09 um^2/s. Over a 10 s kymograph, diffusion covers sqrt(2Dt) = 1.3 um, against 30 um of transport at 3 um/s. With L = 10 um, Pe = vL/D = 350. Check the droplet size and viscosity before submission. The argument is weaker near the tips (Fig 1D kymograph 4); see issue #5.
@@ -141,14 +134,12 @@ Dashed lines: medians; triangles: the example shown in C.}\label{fig:asymmetries
 % NOTE (16 Oct): The fluorescence speed sentences of the next subsection (lipids at 2.42 against 2.95 um/s; 989 against 1,396 rootward streams at 2.20 against 2.91 um/s; the video and edge counts in the bias paragraph) compare fluorescence and bright-field speeds, which Simon decided to drop on 13 Oct (detection limit; the SI comparisons are out). The direction bias (Fig 2D) does not depend on speeds and stays.
 
 \subsubsection*{The lipid cargo moves mostly to the tip}
-\paragraph*{Lipids move to the tip at the bright-field tipward speed; fewer, slower lipid streams go to the root}
 We asked if the asymmetry in the directional speeds could be due to the difference in cell components that would be moving in the two directions, which could inform the mechanism of movement.
 We stained neutral lipids with Nile Red fluorescent dye~\cite{bago_tracking_2002} and imaged the same positions with both bright-field and fluorescence setups (Fig.~\ref{fig:asymmetries}C, D).
 At the resolution of the fluorescence videos (0.14~$\mu$m per pixel, 0.5 or 1~s per frame, 10 to 20~s per video), we saw no evidence of lipid particles randomly switching direction, as they would in the random walk underlying diffusive motion (Fig.~\ref{fig:asymmetries}C).
 The lipids moved to the tip at a median of 2.42~$\mu m/s$ (879 edges with both directions measured in fluorescence), insignificantly different from the 2.95~$\mu m/s$ of the bright-field tipward stream.
 In the other direction, fewer fluorescence streams were detected (989 against 1,396 tipward), at a median of 2.20~$\mu m/s$ against 2.91~$\mu m/s$ in bright-field.
 
-\paragraph*{Lipids have a tipward direction bias of 0.71, bright-field is roughly even}
 By comparing bright-field and fluorescence videos of the same position, recorded about 15 seconds apart, it is clear that only a subset of trails visible in bright-field kymographs appear also in the fluorescence version (Fig.~\ref{fig:asymmetries}C, D): fluorescence gives 625 videos and 879 edges with both directions measured, bright-field 731 videos and 1,513 edges.
 We set out to find whether there was a directional bias in the movement of lipids.
 For each video we computed the share of the moving signal that travels towards the tip, from 0 (all to the root) to 1 (all to the tip) (Methods, \nameref{subsec:direction_bias}).
@@ -182,7 +173,6 @@ Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_20
 Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}). 
 
 \subsubsection*{Perturbations separate the two directions}
-\paragraph*{An osmotic shock raises the rootward speed briefly and leaves the tipward speed unchanged}
 The difference in flow behavior both within an edge and along an edge with distance to tip suggests that each direction could be associated with a different mechanism.
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
 This experiment has been performed in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
@@ -192,7 +182,6 @@ We observed that the flow speed in the tip direction was almost unaffected by th
 By contrast, the flow speed in the root direction was approximately increased to 3.5 times and relaxed in a minute.
 Medium-like drops resulted in what looked like light hypo-osmotic shocks, pushing the flow towards the tips.
 
-\paragraph*{After a root cut both flows continue: the plant connection is not needed}
 Past work proposed that plant host transpiration could be the driving force explaining the flow of resources towards the root~\cite{kikuchi_aquaporin-mediated_2016}.
 Although the plant in our root-organ culture does not produce leaves and, therefore, does not evapotranspirate, we wanted to test whether the connection to the plant was necessary for the flows in the two directions to be maintained.
 In one network, we imaged a runner hypha at multiple positions from root to tip to measure the velocity profile along its length.
@@ -203,7 +192,6 @@ This matches earlier work showing that flows can still be active a year without 
 A connection to the root is therefore not needed for either flow, which rules out transpiration by the plant as their driver.
 How far a driving force can reach is a separate question, and we asked it by further shrinking the connected network.
 
-\paragraph*{In isolated segments of a few millimeters both flows continue, about a fifth slower}
 To further hone down on the range of a potential driving force, we wanted to know what the minimal size of the subgraph was that was necessary to conserve flows in the two directions.
 We made targeted cuts to isolate small segments from the network and image flows at sufficient distance from the cut induced stress (Fig.~\ref{fig:perturbations}C).
 In patches of network as small as only a few millimeters in total length, we still observed flows in the two directions (Fig.~\ref{fig:perturbations}C).
@@ -252,7 +240,6 @@ Top row: network schematics; bottom row: rootward speed $v$ ($\mu$m/s) from the 
 
 \subsubsection*{Single-pipe model: a moving condensate layer drives a central backflow}
 % SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): check the single-pipe and network-model derivations here (eq:speed_profile_main, eq:net_inner_flow, eq:max_speed) against Methods notation. Open contradiction: the network paragraph says growth volume is a sink with a global source; Methods says growth volume is not a sink in the pressure solve.
-\paragraph*{A condensate layer at $v_m$ leaves an inner tube for water}
 We imagine that a flux of condensate containing lipid driven by motors throughout the aseptate mycelium could trigger large movement of the cytoplasmic fluid in both the direction of the lipid due to viscous friction and the other direction due to the incompressibility of the fluid in the case where no water could flow out of the hyphae.
 As such, the condensate, a water-oil-like emulsion of lipid droplets of higher viscosity, forms a layer that uniformly coats the internal surface of the hyphal pipe.
 We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae.
@@ -288,7 +275,6 @@ The spatial variation of $\Theta$ (SI Fig.~\ref{fig:theta_spatial}) indeed direc
 Where a larger share of the lipid moves to the tip, the rootward stream is faster (Spearman $\rho = 0.40$ within plates, also after accounting for tip distance), as the model predicts (Eq.~\ref{eq:max_speed}: the backflow rises with $\Theta$).
 
 \subsubsection*{Network model: pipes as circuit elements}
-\paragraph*{Each pipe is a flux source in parallel with a resistor}
 Our conceptual model seemed to be supported by the data at the individual pipe level.
 Cutting a segment out of the network brings the nearest tip closer, which in the model lowers the motor speed and with it the backflow, as observed after section cuts, where both streams slowed by about a fifth (Fig.~\ref{fig:perturbations}C).
 However, we wanted to know what its consequences would be at the network level.
@@ -516,7 +502,6 @@ Finally, the model is hampered by its noisy diameter measurements.
 Every comparison with video-extracted diameters shows that much stronger correlations can be found if diameters were extracted with more precision and accuracy.
 Future work has to see how this can be done while also imaging the growth of an entire network (SI, \nameref{subsec:si_widths}; SI, \nameref{subsec:si_model_variants}). 
 
-\paragraph*{Rheological implications}
 
 One element that the model does not take into account is the observed phenomenon of sparse flows.
 These are regions with sparse particles moving through the hyphae, without evidence of being moved by back-to-back traffic.
@@ -527,7 +512,6 @@ Sparse particles could still be moving with motors along microtubules, just not 
 \subsection*{Relation to other systems and to the symbiosis}
 \subsubsection*{Motor tracks form an oriented network}
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): review and extend (with references) this subsection and "Growth may follow supply": the oriented track graph, Kirchhoff violations, supply-driven growth and the information bottleneck.
-\paragraph*{Lipids follow growth on polar filaments, an oriented graph}
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
 Taking the steady $\sim$3~$\mu$m/s stream as the motor flow, on loop edges, where the direction is not fixed by the tree structure, its direction matches the growth direction on 86\% of 677 edges.
 It is likely that part of the network of transport filaments simply orients in the direction of tip growth at the moment of its creation and persists in that direction over longer timescales.
@@ -542,19 +526,16 @@ AM fungi would thus combine both solutions, motors in one direction and pressure
 The comparison has limits: \textit{Filoreta} is a wall-less amoeba without turgor, and it moves single organelles rather than a lipid condensate.
 
 \subsubsection*{Growth may follow supply}
-\paragraph*{The system may be supply driven}
 One way of thinking about the system is that it is mainly driven by supply.
 Although in this paper our approach was to estimate what the flux of carbon was in each edge of the network from growth observation, it is possible that from the fungal point of view things work the other way around.
 Growth would mainly emerge from the network's underlying molecular motor track organization.
 
-\paragraph*{Supply-driven growth avoids an information bottleneck}
 This has the advantage of solving an informational bottleneck.
 If a tip grows at one end of the network, how is the information about its carbon demand transmitted to the root-fungal interface where that carbon will eventually come from?
 Instead of needing information transmission to match supply and demand and orient carbon fluxes accordingly, fungal tips could grow and branch according to the carbon supply of the existing network of molecular motor tracks.
 Indeed, the net flux of lipid across the colony could be entirely determined by its orientation (track direction) and intensity (number of parallel tracks assuming tracks are saturated with motors) as well as by the plant supply (source).
 The growth might then simply occur at a rate limited by the network-determined supply of lipids.
 
-\paragraph*{Topology changes need track reorganization, which could send lipids both ways}
 However, some abrupt topological changes, such as anastomosis or the colony abandoning growth in a specific region of space, could require a reorganization of the cytoskeletal filaments.
 It is unclear how that reorganization is modulated in a way that allows one to maintain a flux of carbon that is consistent with the general fungal growth strategy.
 Depending on the timing of the reorganization, it is also likely that the flux of lipids moving on microtubules will not always follow the Kirchhoff law at some intersection.
