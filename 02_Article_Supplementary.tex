@@ -29,6 +29,7 @@
 \section{The network and the filmed hyphae}\label{sec:si_network}
 
 \namedsubsection{Tree-like edges and distance to the growing tips}{subsec:si_tree_tip}
+% SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): short text from the notes below.
 % NOTE (10 Oct): The section text is to be written by Simon; it is cited from the Fig 1A caption (inset). The facts below are from transport_paper master (Working_notebooks/manuscript_figures/fig1.py, bridge_share_by_tip(); recomputed 10 Oct).
 % NOTE (1, definition): an edge is tree-like when it is a bridge of the network graph (removing it disconnects the network; networkx bridges on the simple graph, degree-2 nodes dissolved), as in the model tables' `bridge` column; otherwise it lies on a loop. Methods, \nameref{subsec:dated_graph}, paragraph "Tree and loop edges", has the definition and a \todo for these bins.
 % NOTE (2, edges): The edges are the filmed edges of the main model tables, 15 sessions (loop_density_curve.prepare_edges): 1,590 edges, 1,579 of them with a tip distance. The tip distance is the network distance to the nearest growing tip (d_tip, model_accuracy/features_edges.csv).
@@ -189,6 +190,7 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 
 
 \namedsubsection{Stitching and graph repair}{subsec:si_stitching}
+% SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): text and the two captions.
 % NOTE (20 Oct): Section text to be written; cited from Methods (Stitching, segmentation and network extraction). Figures from transport_paper feat/flow-regime manuscript/figures (S_stitching.png: stitch_shear_by_station.py; S_graph_repair.png: graph_repair_figure.py; both 21 Sep), captions in the Typst supplement (manuscript/09_supplement.typ, "Acquisition and network").
 
 % FIGURE: camera shear by station (cited from Methods)
@@ -230,6 +232,7 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 \section{Perturbations}\label{sec:si_perturbations}
 
 \namedsubsection{Growth-induced mass flow}{subsec:si_mass_flow}
+% SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): resolve the blue comments and finish the section; figure replaced 20 Oct (figS_mass_flow).
 % NOTE (12 Oct): This section was moved from the main text (Results, 'Lipid transport across the network') as it stood, with the outline headings dropped and the first paragraph uncommented; its notes came with it. Its figure references (Fig 4D, Fig 1F,G, SI carbonflow b, d, e) are stale; see the notes.
 Hyphal extension as shown in Fig.~\ref{fig:schematic_model}D, in addition to consuming carbon, is also associated with the creation of new network volume.
 The corresponding demand for water has been shown to be the mechanism driving flows in colonies of other (non-mycorrhizal) fungal species~\cite{heaton_growth-induced_2010, heaton_advection_2012}.
@@ -509,6 +512,7 @@ The dark band of a hypha in the network images is 15--20~$\mu$m wide against vid
 % NOTE (15 Oct, reading and the variable-theta test): The model keeps theta constant, so its Theta has no trend with tip distance, while the measured moving share of lipid roughly doubles from the tips to more than 4 mm away. In the model a smaller theta needs a thicker condensate to carry the same lipid, which narrows the core and speeds up the return, so a theta that rises away from the tips raises the modelled return near the tips (not lowers it, as an earlier reading had it). Test (transport_paper model_accuracy_throttle.py --theta-tip-ratio 0.47, theta following the motor speed's tip-distance profile, fig_outputs/flow_regime/theta_tip_compare.csv), against the main model (theta 0.05 everywhere: within a factor of 2 on 77.5 %, KS 0.056, trail segments 86.1 % with bias 1.21, 3.11 against 2.17 um/s within 1 mm of a tip, 3.50 against 4.22 um/s beyond 8 mm): theta 0.024 at the tips rising to 0.05 far gives 77.1 %, KS 0.053, 85.8 % with bias 1.26, 3.26 um/s near the tips and 3.50 um/s far, so the near-tip over-prediction grows slightly. Theta 0.05 at the tips rising to 0.107 far gives 77.4 %, KS 0.095, 87.6 % with bias 1.08, 2.90 um/s near the tips and 3.23 um/s far, so the near-tip over-prediction shrinks but the far under-prediction grows and the distribution fits worse. A theta that follows the measured moving lipid share therefore trades one bias for the other and does not improve the model.
 
 \namedsubsection{Lipid volume fraction needed for growth}{subsec:si_lipid_fraction}
+% SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): resolve the blue comments and finish.
 % NOTE (12 Oct): This section was moved from the main text (Results, after the mass-flow test) as it stood, with the outline headings dropped (Simon: not central to the paper; mention in the Discussion). Its lipid fluxes come from the dissipation-minimisation model of the section above (subsec:si_mass_flow), so it reads after that one; the numbers are from the old analysis (see the notes).
 Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
 To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
@@ -524,6 +528,7 @@ However, in that earlier research the magnitude of the maximum volume fraction w
 This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
 
 \namedsubsection{The model step by step}{subsec:si_model_steps}
+% SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): a short walk-through of panels A-E and the caption.
 % NOTE (20 Oct): Section text to be written; cited from Methods (The transport model). Figure from transport_paper feat/flow-regime manuscript/figures/S_model_steps.pdf (presentation_model_steps.py), caption in the Typst supplement ("The model"). Regenerated 20 Oct on the final model tables (global_gimf_gimf_minedge20_keras_ratio_fb): E is the read-out |q_c| / (pi a^2), D the motor lane share 1 - a^2/b^2.
 
 % FIGURE: the main model step by step on EPY088 t55 (cited from Methods)
@@ -535,9 +540,11 @@ This could explain why active transport mechanisms at high speeds are necessary 
 \end{figure}
 
 \namedsubsection{Motor direction}{subsec:si_motor_direction}
+% SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): how the growth graph is oriented (the four dating rules) and how it compares with the GIMF direction; recheck the numbers in the note.
 % NOTE (20 Oct): Section text to be written; cited from Methods (The dated network graph, the four rules). Source: Typst supplement (manuscript/09_supplement.typ, "Motor direction", L852-935; motor_direction_compare.py): the GIMF direction and the growth graph disagree on 30.6 % of edges (tree 2.2 %, loop 33.6 %). Numbers predate the final model; recheck.
 
 \namedsubsection{Splitting the lipid demand between merging hyphae}{subsec:si_demand_split}
+% SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): check and finish.
 % NOTE (12 Oct): The section text is to be written by Simon; it is cited from the Methods (transport model, demand split). Its purpose (Simon) is to show that the choice of split rule does not matter here, so the main model uses the simplest (even).
 % NOTE (1, set-up): The model of this comparison (the main model before 14 Oct: weakly coupled return, junction 10 mm, motors along the growth graph, a >= 0.8 b, theta 0.05, no return-width exponent) is run on 15 sessions and scored against the bright-field rootward speed (224 tree edges, 1,366 loop edges). A tip's demand passes back up the growth graph; where hyphae merge it is divided by conductance b^4/L of each parent hypha, by area b^2, or equally. Tree edges have one path, so the rule cannot act there.
 % NOTE (2, source): The source is transport_paper branch feat/demand-split-compare (commits 1173217, f89b893): fig_outputs/model_grid/run_grid_junction.sh split, and Working_notebooks/demand_split_compare.py, which writes fig_outputs/model_grid/junction/split_compare.csv (run 12 Oct).
@@ -563,9 +570,11 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \end{table}
 
 \namedsubsection{Volume and lipid budget}{subsec:si_volume_budget}
+% SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): the short budget argument (numbers rechecked 20 Oct in the note).
 % NOTE (20 Oct): Section text to be written; cited from Methods (The transport model, growth volume not a sink). Source: Typst supplement ("The model", Volume and lipid budget): the growth demand routed through an edge is a median 5.2 % of its tipward flux (IQR 1.7-12 %), 12-17 % on main hyphae; growth needs 0.26 volumes of lipid per volume grown. Rechecked 20 Oct on the final model tables (global_gimf_gimf_minedge20_keras_ratio_fb, 1,684 filmed edges, 15 sessions): |GIMF flux| / q_s median 2.6 % (IQR 0.9-6.7 %, 90th percentile 12 %, 95th 16 %; session medians 0.7-7.4 %); over all network edges 0.3 %. The Typst 5.2 % came from an earlier model (other diameters); Methods now quotes 2.6 %.
 
 \namedsubsection{Model variants}{subsec:si_model_variants}
+% SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): one paragraph per variant with its scores, from the notes.
 % NOTE (2, demand split): Conductance, area and even splits give the same scores (section below, tab:si_demand_split).
 % NOTE (3, return coupling): The global solve (no cost to switch hyphae at junctions; Heaton 2010) and the conveyor (each edge returns its own stream) are the two limits of the junction resistance; the main model uses the global solve, and the 10 mm weak-coupling numbers are in note (7) below.
 % NOTE (4, return width exponent): The exponent entered as |q_c| / (pi r^2), with r^2 = a^2 (11.64 um / D)^0.7, fitted on the measured rootward speeds. It was dropped on 12 Oct (physical inputs only): 87.5 against 86.2 % within a factor of 2, rho 0.44 against 0.41 on tree edges and 0.34 against 0.29 on loop edges (1 Oct tables).
@@ -579,6 +588,7 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 
 
 \namedsubsection{Motors as a force}{subsec:si_motor_force}
+% SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): the force-balance specification Methods points to (Typst source in the note uses old terms).
 % NOTE (20 Oct): Section text to be written; cited from Methods (The transport model, force-balance motor model). Source: Typst supplement (manuscript/09_supplement.typ, "Motors as a force", L736-809; force_motor_model.py, lane_drag.py). Uses the old to-tip / to-root terms and the conveyor-era comparisons; rewrite on the final model or shorten to the specification Methods points to.
 
 
@@ -629,6 +639,7 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \section{Trade}\label{sec:si_trade}
 
 \namedsubsection{Phosphorus concentration needed for the exchange rate}{subsec:si_cp_exchange}
+% SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): possibly: builds on the Bisot C/P result.
 % NOTE (18 Oct): New section on Simon's request (moved from the main-text C/P subsection); text to be written by Simon.
 % NOTE (18 Oct, C/P facts, merged from the 9 and 17 Oct main-text notes; transport_paper#128, feat/cp-production fb436c6): In the global solve the return into the roots equals the motor stream leaving them in all 15 sessions (log-log slope 1.000), so P out at constant [P] is proportional to motor-carried carbon by construction; against growth carbon the slope is 0.19 (95 % CI -0.47 to 0.86, R2 0.03); on STR2307A112 growth carbon rises 4.7-fold over 5 sessions while the return stays at 0.0050-0.0066 uL/h. The required [P] scales with theta: 0.19 mol/L at theta 0.025, 0.29-0.38 at 0.05, 0.76 at 0.10 (P:C 1/3-1/4 ug P per ug C); plant cells 5-20 mmol/L (bieleski_phosphate_1973, range not re-checked); at theta 0.0026 (20 mmol/L) the motors carry ~0.19 times the carbon growth uses, against 3.7 times at theta 0.05. Bisot et al. (full text checked, PMC12891005): the exchange rate is by mass, ~3-4 ug C per ug P, set by host genotype; their carbon is expended carbon (carbon use efficiency 50 %, twice the carbon built into biomass, spores included), a growth-based quantity; >= 85 % of absorbed P reaches the root within ~100 h (absorbed P would be ~30 % of fungal dry mass if none were transferred, against <= 4-5 % P measured in hyphae).
 
