@@ -117,6 +117,15 @@ Streaks count when they span at least 15 frames (20~fps).
 The median IQR is 0.63~$\mu$m/s tipward and 1.58~$\mu$m/s rootward.}
 \label{fig:speed_iqr}
 \end{figure}
+
+% FIGURE: streak against pixel speeds along one trail (cited from Methods, static-texture threshold)
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_streaks_pixels.png}
+\caption{[Caption to be written.]}
+\label{fig:streaks_pixels}
+\end{figure}
+% NOTE (20 Oct): Figure from transport_paper feat/flow-regime manuscript/figures/S_streaks_vs_pixels.png (streak_trail_profiles.py, 21 Sep): EPY088 t55 trail Main, pixel (before) and streak (after) speeds with 25th-75th percentile bars. Stale: its model line is the old throttled production model and its axes say "brightfield backflow / forward"; regenerate with tipward / rootward labels and without (or with the final) model line. Methods asks for the static-texture alternatives too, which this figure does not show.
 % NOTE (13 Oct): Simon: no speed comparison with fluorescence (Nile Red streaks stop near 5 um/s, detection limit), so the figure is bright-field only (FigS_video_positions_iqr_bf.pdf, transport_paper feat/si-drop-fl-comparisons 4525b15); the Nile Red IQRs and the 5 um/s matched-range version (FigS_video_positions_iqr_cap5.pdf) are dropped.
 
 % -----------------------------------------------------------------------
@@ -179,6 +188,45 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 % \end{figure}
 
 
+\namedsubsection{Stitching and graph repair}{subsec:si_stitching}
+% NOTE (20 Oct): Section text to be written; cited from Methods (Stitching, segmentation and network extraction). Figures from transport_paper feat/flow-regime manuscript/figures (S_stitching.png: stitch_shear_by_station.py; S_graph_repair.png: graph_repair_figure.py; both 21 Sep), captions in the Typst supplement (manuscript/09_supplement.typ, "Acquisition and network").
+
+% FIGURE: camera shear by station (cited from Methods)
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_stitching.png}
+\caption{[Caption to be written.]}
+\label{fig:stitching}
+\end{figure}
+
+% FIGURE: graph repair passes: persistence gate and gap bridging (cited from Methods)
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.9\textwidth,keepaspectratio]{suppfig/figS_graph_repair.png}
+\caption{[Caption to be written.]}
+\label{fig:graph_repair}
+\end{figure}
+
+\namedsubsection{Registering the videos and the trails}{subsec:si_registration}
+% NOTE (20 Oct): Section text to be written; cited from Methods (Videos on the network; Trails). Figures from transport_paper feat/flow-regime manuscript/figures (fig1e_registration.png: registration_panel.py, 21 Sep; figS_mirror_arm_trails.pdf, 26 Sep), captions in the Typst supplement. Stale: the mirror-arm figure labels its classes "to root faster" / "to tip faster (mirror)"; relabel rootward / tipward.
+
+% FIGURE: registration of one video on the network graph (cited from Methods)
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_registration.png}
+\caption{[Caption to be written.]}
+\label{fig:registration}
+\end{figure}
+
+% FIGURE: where the mirror arm sits along the trails (cited from Methods)
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_mirror_arm_trails.pdf}
+\caption{[Caption to be written.]}
+\label{fig:mirror_arm}
+\end{figure}
+
+
 \section{Perturbations}\label{sec:si_perturbations}
 
 \namedsubsection{Growth-induced mass flow}{subsec:si_mass_flow}
@@ -203,48 +251,36 @@ We assume, as in previous work \cite{heaton_growth-induced_2010}, that carbon fl
 We assign to each edge $(i,j)\in E$ a hydraulic resistance $\mathcal{R}_{i,j}$ associated with energy dissipation. {\color{blue} i think in network literature these are called resistances, so maybe write as ${\cal R}_{i,j}$, which are different than energy dissipation} We set $\mathcal{R}_{i,j} = \frac{8 \mu L_{i,j}}{\pi b_{i,j}^4}$ where $L_{i,j}$ is the length of the edge, $b_{i,j}$ is its radius, and $\mu$ is a viscosity that is treated as a constant in global energy minimization.
 With a carbon flux from $i$ to $j$ $\phi_{i,j}$ the power dissipation {\color{blue} maybe write as: the rate of energy consumption} is set to $\mathcal{R}_{i,j} \phi_{i,j}^2$.
 We minimize the objective function $\sum_{(i,j)\in E} \mathcal{R}_{i,j} \phi_{i,j}^2$ under the constraint that for all nodes $k$, $\sum_{i\in N} \phi_{i,k} = \Delta C_k$ (Methods).
-This model allows us to estimate, in each edge of the network, the expected direction and lower bound of lipid flux required for the observed growth of the tip (Fig. SI\ref{fig:carbonflow}b). 
+This model allows us to estimate, in each edge of the network, the expected direction and lower bound of lipid flux required for the observed growth of the tip (SI Fig.~\ref{fig:carbonflow}A). 
 
 % When comparing these expected lipid fluxes with the one observed in each edge. We found that in 70\% of the cases, the direction of lipid flux could be predicted by our model. This percentage increased to more than 80\% when we considered only points in the network where both the modelled and measured absolute flux were high (Fig. \ref{fig:carbonflow}c).
 
 The calculation  yields the exact volumetric flow rate $Q_{i,j}$ in the hydraulic equivalent of the network.
-The speed $v_{i,j}$ was then set as $v_{i,j}=\frac{Q_{i,j}}{\pi b_{i,j}^2}$. {\color{blue} something is wrong with this sentence since model is referred to twice:} We found that this model did not explain the speed in the direction predicted by the model (Fig. SI\ref{fig:carbonflow}d).
+The speed $v_{i,j}$ was then set as $v_{i,j}=\frac{Q_{i,j}}{\pi b_{i,j}^2}$. {\color{blue} something is wrong with this sentence since model is referred to twice:} We found that this model did not explain the speed in the direction predicted by the model (SI Fig.~\ref{fig:carbonflow}C).
 Such a model also does not explain the existence of fluid movement in the other direction.
 Indeed, the fluid flow always follows the pressure gradient and therefore cannot be bidirectional.
 % NOTE (7 Oct): Fig. SI carbonflow (d, e) is one of the wrong SI files (FigS2-S5, transport_paper#129), so the speed claim here and the peaked-distribution claim below have no figure behind them until it is replaced.
 
 Finally, as shown in Fig. \ref{fig:hyphal_profiling}F,G and \ref{fig:asymmetries}A, the flow speed in the modeled and observed direction of the lipid flux narrowly peaks around the value $v_0 = 3\mu m/s$.
 % NOTE (12 Oct): Fig 1 has panels A-E, so 'Fig. hyphal_profiling F,G' points to nothing; the tipward speed distribution is Fig 2A/B. The motor-speed range (2-6 um/s, howard_mechanics_2002) repeats the hypothesis section (steinberg_cell_2017).
-In addition to not being able to predict a speed of the right order of magnitude, the growth induced mass flow model does not yield such a peaked distribution (Fig. SI\ref{fig:carbonflow}e).
+In addition to not being able to predict a speed of the right order of magnitude, the growth induced mass flow model does not yield such a peaked distribution (SI Fig.~\ref{fig:carbonflow}B).
 The peaked distribution instead strongly suggests that the movement of lipids within the AM fungal colony is an active process driven by the movement of molecular motors on tracks walking at fixed speed.
 In fact, the speed of known molecular motors can typically be in the range $2-6\mu m/s$ for the faster ones \cite{howard_mechanics_2002}.
 This hypothesis is further motivated by the qualitative observation that the movement of lipids in the colony follows well established tracks. 
 
 
-% -----------------------------------------------------------------------
-% FIGURE S2
-% Actively referenced in main text (lines 93, 97, 99, 144, 150):
-%   "Fig. SI\ref{fig:carbonflow}b/d/e/f"
-% Content: hydraulic (growth-induced mass-flow) model predictions vs
-%          measurements; lipid volume-fraction spatial profile.
-% Subfigures mentioned in text: b (predicted motor direction),
-%   c (direction agreement, commented), d (speed comparison),
-%   e (speed histogram), f (lipid volume fraction along hypha).
-% -----------------------------------------------------------------------
+% FIGURE: growth-induced mass flow against the measured speeds (replaces the wrong-file FigS2, 20 Oct)
+% Generated by transport_paper Working_notebooks/manuscript_figures/figS_mass_flow.py (feat/flow-regime), main-model tables
+% (global_gimf_gimf_minedge20_keras_ratio_fb): the GIMF flux of each edge over its lumen area, |q_g| / (pi b^2).
+% NOTE (20 Oct, numbers): 1,684 filmed edges, 15 sessions: mass-flow speed median 0.075 um/s (IQR 0.025-0.192, 90th percentile 0.34; 3 edges above 1 um/s), against measured tipward 2.93 and rootward 3.25 um/s; per edge the tipward speed is a median 31 times the mass-flow speed. The figure has no direction panel (the old caption's B and C); the text's 'expected direction' now points at the map (A), which shows the speed only.
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=\textwidth]{suppfig/FigS2.pdf} % WRONG FILE (checked 2 Oct): shows mass (ug) and m_P/m_C over t-t* (one panel), not the caption's 6 hydraulic panels. Candidate: transport_paper manuscript/figures/figS_net_flux.pdf (A: net lumen speed ~0.1-1 um/s, i.e. growth-driven flow alone is far below the measured 2-8 um/s); panels differ, caption needs rewriting.
-\caption{\textbf{Growth-induced mass-flow model cannot explain observed speeds.}
-\textbf{(A)} TODO.
-\textbf{(B)} Predicted lipid flux direction from hydraulic minimisation.
-Color indicates direction.
-\textbf{(C)} Comparison of estimated and observed flux directions.
-Percentage of agreement as a function of exclusion radius.
-\textbf{(D)} Measured speed vs hydraulic model speed for all edges.
-Model does not reproduce observed speeds.
-\textbf{(E)} Histogram of absolute hydraulic speeds across whole network compared to measured bright-field speeds.
-\textbf{(F)} Lipid volume fraction $\theta$ estimated from growth flux, plotted against distance from the hyphal tip.
-}
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_mass_flow.pdf}
+\caption{\textbf{Growth-induced mass flow alone is far slower than the measured streams.}
+The flow needed to supply the volume added by the growing tips, routed through the network from the roots with minimal dissipation (Methods), divided by the lumen area of each edge.
+\textbf{(A)} EPY2412A088 at t55, every edge coloured by this mass-flow speed (colour scale capped at 0.3~$\mu$m/s).
+\textbf{(B)} Distributions over the 1,684 filmed edges (15 sessions) of the measured tipward (blue) and rootward (pink) speeds and of the mass-flow speed (orange; median 0.075~$\mu$m/s).
+\textbf{(C)} Measured tipward speed against the mass-flow speed on the same edge; grey: identity. The measured speed is a median 31 times the mass-flow speed.}
 \label{fig:carbonflow}
 \end{figure}
 
@@ -487,6 +523,20 @@ However, in that earlier research the magnitude of the maximum volume fraction w
 
 This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
 
+\namedsubsection{The model step by step}{subsec:si_model_steps}
+% NOTE (20 Oct): Section text to be written; cited from Methods (The transport model). Figure from transport_paper feat/flow-regime manuscript/figures/S_model_steps.pdf (presentation_model_steps.py, 28 Sep), caption in the Typst supplement ("The model"). Stale: drawn before the final model (Keras diameters x 0.75, a >= 0.8 b, GIMF demand split, tip falloff); regenerate on the main-model tables.
+
+% FIGURE: the main model step by step on EPY088 t55 (cited from Methods)
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_model_steps.pdf}
+\caption{[Caption to be written.]}
+\label{fig:model_steps}
+\end{figure}
+
+\namedsubsection{Motor direction}{subsec:si_motor_direction}
+% NOTE (20 Oct): Section text to be written; cited from Methods (The dated network graph, the four rules). Source: Typst supplement (manuscript/09_supplement.typ, "Motor direction", L852-935; motor_direction_compare.py): the GIMF direction and the growth graph disagree on 30.6 % of edges (tree 2.2 %, loop 33.6 %). Numbers predate the final model; recheck.
+
 \namedsubsection{Splitting the lipid demand between merging hyphae}{subsec:si_demand_split}
 % NOTE (12 Oct): The section text is to be written by Simon; it is cited from the Methods (transport model, demand split). Its purpose (Simon) is to show that the choice of split rule does not matter here, so the main model uses the simplest (even).
 % NOTE (1, set-up): The model of this comparison (the main model before 14 Oct: weakly coupled return, junction 10 mm, motors along the growth graph, a >= 0.8 b, theta 0.05, no return-width exponent) is run on 15 sessions and scored against the bright-field rootward speed (224 tree edges, 1,366 loop edges). A tip's demand passes back up the growth graph; where hyphae merge it is divided by conductance b^4/L of each parent hypha, by area b^2, or equally. Tree edges have one path, so the rule cannot act there.
@@ -512,6 +562,9 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \label{tab:si_demand_split}
 \end{table}
 
+\namedsubsection{Volume and lipid budget}{subsec:si_volume_budget}
+% NOTE (20 Oct): Section text to be written; cited from Methods (The transport model, growth volume not a sink). Source: Typst supplement ("The model", Volume and lipid budget): the growth demand routed through an edge is a median 5.2 % of its tipward flux (IQR 1.7-12 %), 12-17 % on main hyphae; growth needs 0.26 volumes of lipid per volume grown. On the final model tables the GIMF flux is a median 2.6 % of the tipward flux (figS_mass_flow.py tables); recheck which number Methods should quote.
+
 \namedsubsection{Model variants}{subsec:si_model_variants}
 % NOTE (2, demand split): Conductance, area and even splits give the same scores (section below, tab:si_demand_split).
 % NOTE (3, return coupling): The global solve (no cost to switch hyphae at junctions; Heaton 2010) and the conveyor (each edge returns its own stream) are the two limits of the junction resistance; the main model uses the global solve, and the 10 mm weak-coupling numbers are in note (7) below.
@@ -523,6 +576,10 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 % NOTE (15 Oct, past demand on the session network; transport_paper past_demand.py, model_accuracy_throttle.py --past-demand K, fig_outputs/flow_regime/past_demand_compare.csv): Here the network stays at the session, so all 1,544 edges keep a prediction, and the lipid demand comes from the hypha grown in the K frames before the session, placed at the free ends of the grown pieces (pieces that have fused into the mesh keep it at their attachment nodes). Against the main model (next 4 frames: within a factor of 2 on 77.5 %, KS 0.056, trail segments 86.1 % with bias 1.21, 3.11 against 2.17 um/s within 1 mm of a tip, 3.50 against 4.22 um/s beyond 8 mm), the past 4, 8 and 12 frames give within a factor of 2 on 78.7, 79.1 and 79.8 %, KS 0.068, 0.070 and 0.072, trail segments 85.0, 86.9 and 88.3 % with bias 1.23, 1.16 and 1.13, 2.66, 2.62 and 2.58 um/s within 1 mm of a tip, and 3.88, 3.76 and 3.73 um/s beyond 8 mm. Past growth therefore reduces both the near-tip over-prediction and the far-from-tip under-prediction and raises the accuracy slightly, at the cost of a slightly worse distribution match. It weakens the growth step of Fig 6d: on EPY088 Main the model rises 1.34- to 1.37-fold from t28 to t55 (main model 1.51-fold, measured 1.71-fold), because the demand at t28 already includes the growth before it. On PNF080 t91 LeftMiddle at 9-17 mm the model rises from 1.8 to 2.4, 2.5 and 2.7 um/s against 6.3 um/s measured.
 % NOTE (17 Oct, model inputs; moved from the main-text Discussion 18 Oct, Simon: SI): Network widths are noisy (rho 0.49 with the lumen), which also exaggerates loop-arm differences, and the data keep a width effect at fixed demand that the model lacks; theta is constant although the Nile Red moving share varies (tip/far 0.47); the motor direction comes from the growth-induced mass flow; far from tips the model under-predicts (3.5 against 4.2 um/s).
 % NOTE (18 Oct, width term in the motors; moved from the main-text Discussion, Simon: SI; text to be written): The model's motors have no width dependence, whereas the measured tipward speed rises as $D^{0.48}$. Giving the motors a width term $(b/b_\mathrm{ref})^{p}$ (with $b_\mathrm{ref}$ the median radius of the filmed edges) with $p = 0.5$ brings the model's rootward width dependence to $D^{0.97}$, close to the measured $D^{1.07}$, at an unchanged overall fit (76.9 against 77.5\% within a factor 2, KS 0.056, loop $\rho$ 0.40); $p = 1$ overshoots ($D^{1.19}$, 75.6\%, KS 0.064). Neither variant changes the model's insensitivity to $\kappa$ ($\rho$ $-0.03$ and $-0.04$ against $+0.31$ measured), so the missing robustness effect is not a missing width term in the motors (SI, \nameref{subsec:si_model_variants}). On the tipward speeds themselves (1,452 edges), the square-root term ranks the measured speeds best ($\rho$ 0.35 against 0.29 without a width term) but, measured against the video lumen, gives only $D^{0.25}$, because the network widths it uses track the lumen only partly ($\rho$ 0.49); the linear term reproduces the measured $D^{0.48}$ (0.49) but then overshoots the rootward width dependence. With these widths no single exponent fits both streams, so width noise, not the form of the width term, limits the model here.
+
+
+\namedsubsection{Motors as a force}{subsec:si_motor_force}
+% NOTE (20 Oct): Section text to be written; cited from Methods (The transport model, force-balance motor model). Source: Typst supplement (manuscript/09_supplement.typ, "Motors as a force", L736-809; force_motor_model.py, lane_drag.py). Uses the old to-tip / to-root terms and the conveyor-era comparisons; rewrite on the final model or shorten to the specification Methods points to.
 
 
 \section{The model against the measurements}\label{sec:si_model_data}

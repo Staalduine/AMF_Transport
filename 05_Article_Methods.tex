@@ -127,13 +127,13 @@ The pipeline differs from~\cite{oyarte_galvez_travelling-wave_2025} and runs as 
 \begin{itemize}
   \item \textbf{Stitching.}
 Neighbouring tiles are registered by phase cross-correlation (scikit-image, 10$\times$ upsampling).
-The stage's own motion is modelled per station as a prior: a cross-axis shear of 14--17~px per row and a column offset of about 170~px that alternates with row parity (a serpentine; SI \todo{SI figure on stitching, no LaTeX label yet}).
+The stage's own motion is modelled per station as a prior: a cross-axis shear of 14--17~px per row and a column offset of about 170~px that alternates with row parity (a serpentine; SI Fig.~\ref{fig:stitching}).
   \item \textbf{Segmentation.}
 Hyphae are segmented with a convolutional network (a two-dimensional U-Net, MONAI), which also predicts each hypha's diameter \todo{which checkpoint built the paper graphs; an SI figure (no LaTeX label yet) compares the two}.
   \item \textbf{Graph extraction.}
 The mask is thinned to a one-pixel skeleton (Zhang--Suen) and turned into a graph of junction-to-junction edges.
 Two hyphae that run within 10~px (17~$\mu$m) of each other are fused into one edge, and short dead-end spurs are removed.
-  \item \textbf{Graph repair} (SI \todo{SI figure on graph repair, no LaTeX label yet}).
+  \item \textbf{Graph repair} (SI Fig.~\ref{fig:graph_repair}).
 Gaps between pieces of network are bridged only where the raw image shows hyphal signal along the bridge (an evidence gate on candidates proposed by a minimum spanning tree over gap distance), and a fragment is kept only if it recurs in the registered neighbouring frames (a persistence gate).
 \end{itemize}
 
@@ -147,7 +147,7 @@ The edges used throughout are the anchor graph's junction-to-junction runs of se
 They were annotated by hand on each plate (registrator) and advanced along their hyphae to the session.
 
 \paragraph{The growth graph} orients every segment from the end that appeared first to the end that appeared later, so each hypha points the way it grew.
-Four rules settle what dates alone cannot (SI \todo{SI section ``Motor direction'' not in the LaTeX SI yet}): a root-free stretch dated older than all its neighbours takes its oldest neighbour's date; a later-dated segment on the best-dated path from a root into such an island is backdated to the island's date; ties are broken by network distance along paths whose dates never decrease; and edges at a root point away from it.
+Four rules settle what dates alone cannot (SI, \nameref{subsec:si_motor_direction}): a root-free stretch dated older than all its neighbours takes its oldest neighbour's date; a later-dated segment on the best-dated path from a root into such an island is backdated to the island's date; ties are broken by network distance along paths whose dates never decrease; and edges at a root point away from it.
 With these rules 97.6\% of the network traces its growth back to a root.
 
 \paragraph{Growing tips} are degree-1 nodes of the session's graph, other than roots, from which the network extends within the next four frames (8~h).
@@ -187,7 +187,7 @@ The radial band-pass centre of the filter is not fixed: it is estimated for each
 Responses are thinned by non-maximum suppression across orientation, thresholded with hysteresis (bright-field 0.10 and 0.17; fluorescence 0.20 and 0.35), and linked within orientation sectors of 20\textdegree{} into connected streaks.
 A streak is kept when it spans at least 15 frames (bright-field; 5 in fluorescence, set on 7 Oct 2026 after a re-run of the fluorescence detection) and a straight line fits it to within 1.5~px; its speed is that line's slope.
   \item \textbf{Per edge and direction.}
-Streaks slower than 0.3~$\mu$m/s count as static texture (the detector's static flag; SI \todo{SI figure on streaks against pixels and the static-texture alternatives, no LaTeX label yet}), so an edge median below 0.3~$\mu$m/s cannot be measured.
+Streaks slower than 0.3~$\mu$m/s count as static texture (the detector's static flag; SI Fig.~\ref{fig:streaks_pixels}), so an edge median below 0.3~$\mu$m/s cannot be measured.
 The moving streaks are split by direction, and a direction needs at least 5 of them; its speed is their median, with the quartiles as its spread.
 \end{enumerate}
 
@@ -237,7 +237,7 @@ The direction bias is computed from the orientation of all moving pixels and doe
 
 \namedsubsection{Videos on the network}{subsec:videos_on_network}
 
-Each video is registered onto the edge it shows in the session's graph (registrator; SI \todo{SI registration figure, no LaTeX label yet}).
+Each video is registered onto the edge it shows in the session's graph (registrator; SI Fig.~\ref{fig:registration}).
 A few videos per session are anchored to graph nodes by hand, and a similarity transform fitted to them (rotation, scale and translation, with a reflection check) places every other video from its stage coordinates.
 The hyphae in each video are then matched to the edges of the surrounding graph by an optimal assignment on their positions, directions and connectivity, and hand pins overrule the match where it is ambiguous.
 
@@ -246,7 +246,7 @@ A stream runs to the tip when it runs the way its edge grew in the growth graph.
 Where a stretch of hypha appeared within one frame, so that its dates tie, it takes the direction its motor stream points to.
 Where the stream labelled rootward is motor-like (within 25\% of 3.06~$\mu$m/s, with a quartile ratio of streak speeds of at most 1.25) and the stream labelled tipward is not, the direction is taken to be reversed and the two are swapped (58 edges).
 
-\paragraph{Trails} were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI \todo{SI mirror-arm figure, no LaTeX label yet}); STR2307A112 t73 LeftMiddle was dropped whole.
+\paragraph{Trails} were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); STR2307A112 t73 LeftMiddle was dropped whole.
 Along a trail, each measured edge is placed at its distance from the trail's root end.
 
 \namedsubsection{Direction bias}{subsec:direction_bias}
@@ -296,7 +296,7 @@ Cuts round a patch of network isolated it from both its source and its sinks; 4 
 % NOTE (15 Oct, main model, consolidated; moved here from the main-text model section on 16 Oct, Simon): The main model uses a global pressure solve (no junction resistance). Motors run along the sign of the GIMF net flux (the growth-induced mass flow solve of the growth demand, Heaton 2010), and outward from the roots on edges without net flux. The lipid current is 0.256 times the GIMF flux. The annulus follows from the lipid current with theta 0.05 and a >= 0.8 b. The motor speed has a tip falloff (3.10 / 2.14 um/s, 1.71 mm). The read-out is |q_c| / (pi a^2), with no width exponent. Widths are the legacy Keras width times 0.75 (recalibrated on the filmed lumens), with a fallback of 0.83 times the segmenter width. The minimum video-edge length is 20 um. The run is transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb (feat/flow-regime). On 1,544 bright-field edges in 15 sessions, 77.5 % are within a factor of 2 (full flow 78.9 %, sparse 65.9 %), the median fold error is 1.45 and KS is 0.056. GIMF motors are used because growth-graph motors, although they match the observed motor direction slightly better on loops (86 against 81 %, 677 edges), cut the upper half of the distribution (95th percentile 4.7 um/s, KS 0.23-0.25; SI variants). The outliers were inspected (the 10 worst each way). The too-slow ones are clean two-way flows to which the global solve gives almost no return (loop circulation); the too-fast ones are mostly one-way videos, a dormant hypha and a junction piece. Only edges shorter than 20 um were removed (Simon). The known limits are these: within 1 mm of a tip the model over-predicts (3.11 against 2.17 um/s), beyond 8 mm it under-predicts (3.50 against 4.22 um/s; this does not come from the width input, see SI widths), and it does not describe sparse flow (13 % of edges; SI, full and sparse flow).
 % NOTE (17 Oct, read-out, Simon): The read-out |q_c| / (pi a^2) is the mean over the circular core cross-section of the pressure-driven (Poiseuille) part of the core flow, measured relative to the moving condensate wall: half its peak, |P| / 2 (the radially rotated integral of the parabola; the 2D integral across a diameter gives 2/3). The text should say which average this is. The alternatives score worse on the 1,564 measured rootward speeds: the 2D mean, 2/3 |P|, gives median 4.55 um/s, 71.1 % within a factor of 2, model / measured 1.41, KS 0.248; two-thirds of the lab-frame centreline speed, 2/3 |v_m - P| (what a depth-projected image shows at the pipe centre, and the read-out of the older shipped model), gives 2.65 um/s, 63.4 %, 0.85, KS 0.223; the current read-out gives 3.41 um/s, 77.7 %, 1.06, KS 0.047 (measured median 3.55). Which average the bright-field streaks sample depends on the depth of field against the 8-10 um lumen: particles across the whole lumen give the cross-section mean (1/2), a thin central slice the 2D mean (2/3) of the lab-frame profile.
 
-The model predicts the rootward speed on every edge of a session's graph from the network, its growth and the measured motor speed (\texttt{transport\_paper/compute\_funcs/backflow\_model.py}; step by step in SI \todo{SI model-steps figure, no LaTeX label yet}).
+The model predicts the rootward speed on every edge of a session's graph from the network, its growth and the measured motor speed (\texttt{transport\_paper/compute\_funcs/backflow\_model.py}; step by step in SI Fig.~\ref{fig:model_steps}).
 Below, $D$ is the hyphal diameter of an edge, $L$ its length and $d$ its distance to the nearest growing tip.
 The diameter $D$ comes from an earlier diameter model (a Keras network on cross-sections of the network image), recalibrated on the hyphae measured in the flow videos: its diameter is multiplied by 0.75, the median ratio of the video-extracted diameter to this diameter over 1,969 filmed edges (SI, \nameref{subsec:si_widths}).
 The 8\% of edges without such a diameter take 0.83 times the segmenter's diameter, the same ratio for the segmenter.
@@ -333,7 +333,7 @@ The volume returns by a pressure-driven flow in the cores.
 The pressure is solved on the graph with Poiseuille conductances $K = \pi a^4 / (8 \mu L)$ of the cores and the divergence of $q_s$ as sources.
 Every annotated root is tied to one common reservoir at zero pressure through a conductance equal to about 10~mm of core of radius 4~$\mu$m (\texttt{testing\_new\_model.g\_res}), so volume can pass between roots through the reservoir.
 The hyphal walls pass no water: volume enters and leaves the network only at the roots.
-The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (the growth demand routed through an edge is a median 5.2\% of its tipward flux; SI \todo{SI section ``Volume and lipid budget'' not in the LaTeX SI yet}).
+The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (the growth demand routed through an edge is a median 5.2\% of its tipward flux; SI, \nameref{subsec:si_volume_budget}).
 Flow passes between hyphae at junctions at no cost: one global pressure solve over the whole network; a resistance for switching hyphae at junctions, and the conveyor limit in which every edge carries back its own motor stream, are SI variants (\nameref{subsec:si_model_variants}).
   \item \textbf{Read-out.}
 The backflow is what is measured: the distribution of rootward streak speeds on an edge, summarised by its median where one value is needed.
@@ -341,7 +341,7 @@ The model's counterpart is the core flux over the core area, $|q_c| / (\pi a^2)$
 \end{enumerate}
 It is scored against that median.
 The variants in the supplement change one of these steps at a time.
-The force-balance motor model, in which the motors pull against the drag of their lane with a speed that falls with load, is specified in the supplement \todo{SI section ``Motors as a force'' not in the LaTeX SI yet}.
+The force-balance motor model, in which the motors pull against the drag of their lane with a speed that falls with load, is specified in the supplement (SI, \nameref{subsec:si_motor_force}).
 
 \namedsubsection{Quantification and statistical analysis}{subsec:statistics}
 
