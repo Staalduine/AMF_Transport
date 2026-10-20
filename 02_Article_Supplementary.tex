@@ -125,7 +125,7 @@ The median IQR is 0.63~$\mu$m/s tipward and 1.58~$\mu$m/s rootward.}
 \caption{[Caption to be written.]}
 \label{fig:streaks_pixels}
 \end{figure}
-% NOTE (20 Oct): Figure from transport_paper feat/flow-regime manuscript/figures/S_streaks_vs_pixels.png (streak_trail_profiles.py, 21 Sep): EPY088 t55 trail Main, pixel (before) and streak (after) speeds with 25th-75th percentile bars. Stale: its model line is the old throttled production model and its axes say "brightfield backflow / forward"; regenerate with tipward / rootward labels and without (or with the final) model line. Methods asks for the static-texture alternatives too, which this figure does not show.
+% NOTE (20 Oct): Figure from transport_paper feat/flow-regime fig_outputs/trail_profiles/trail_streaks_EPY2412A088_t55_Main_final.png (streak_trail_profiles.py): EPY088 t55 trail Main, pixel (before) and streak (after) speeds with 25th-75th percentile bars. Regenerated 20 Oct (streak_trail_profiles.py fig_outputs EPY2412A088_t55 final): the line is the final model (read-out |q_c| / (pi a^2), motor speed), axes tipward / rootward. Streaks vs filtered pixels, per-segment 75th/25th percentile ratio: rootward 1.49 vs 2.03, tipward 1.17 vs 1.31; final model on the streaks: rootward 90 % within 2x (bias 1.23, rho 0.69), tipward 100 % (bias 0.95). Methods asks for the static-texture alternatives too, which this figure does not show.
 % NOTE (13 Oct): Simon: no speed comparison with fluorescence (Nile Red streaks stop near 5 um/s, detection limit), so the figure is bright-field only (FigS_video_positions_iqr_bf.pdf, transport_paper feat/si-drop-fl-comparisons 4525b15); the Nile Red IQRs and the 5 um/s matched-range version (FigS_video_positions_iqr_cap5.pdf) are dropped.
 
 % -----------------------------------------------------------------------
@@ -208,7 +208,7 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 \end{figure}
 
 \namedsubsection{Registering the videos and the trails}{subsec:si_registration}
-% NOTE (20 Oct): Section text to be written; cited from Methods (Videos on the network; Trails). Figures from transport_paper feat/flow-regime manuscript/figures (fig1e_registration.png: registration_panel.py, 21 Sep; figS_mirror_arm_trails.pdf, 26 Sep), captions in the Typst supplement. Stale: the mirror-arm figure labels its classes "to root faster" / "to tip faster (mirror)"; relabel rootward / tipward.
+% NOTE (20 Oct): Section text to be written; cited from Methods (Videos on the network; Trails). Figures from transport_paper feat/flow-regime manuscript/figures (fig1e_registration.png: registration_panel.py, 21 Sep; figS_mirror_arm_trails.pdf: fig2.py build_supplement), captions in the Typst supplement. The mirror-arm legend was relabelled rootward / tipward on 20 Oct (fig2.py build_supplement).
 
 % FIGURE: registration of one video on the network graph (cited from Methods)
 \begin{figure}[hbt!]
@@ -524,7 +524,7 @@ However, in that earlier research the magnitude of the maximum volume fraction w
 This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
 
 \namedsubsection{The model step by step}{subsec:si_model_steps}
-% NOTE (20 Oct): Section text to be written; cited from Methods (The transport model). Figure from transport_paper feat/flow-regime manuscript/figures/S_model_steps.pdf (presentation_model_steps.py, 28 Sep), caption in the Typst supplement ("The model"). Stale: drawn before the final model (Keras diameters x 0.75, a >= 0.8 b, GIMF demand split, tip falloff); regenerate on the main-model tables.
+% NOTE (20 Oct): Section text to be written; cited from Methods (The transport model). Figure from transport_paper feat/flow-regime manuscript/figures/S_model_steps.pdf (presentation_model_steps.py), caption in the Typst supplement ("The model"). Regenerated 20 Oct on the final model tables (global_gimf_gimf_minedge20_keras_ratio_fb): E is the read-out |q_c| / (pi a^2), D the motor lane share 1 - a^2/b^2.
 
 % FIGURE: the main model step by step on EPY088 t55 (cited from Methods)
 \begin{figure}[hbt!]
