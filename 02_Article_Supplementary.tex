@@ -11,31 +11,32 @@
 \setcounter{figure}{0} % reset figure counter for Supplementary Figures
 \makeatletter
 \renewcommand{\thefigure}{S\@arabic\c@figure} % figures numbered S1, S2, ...
+\setcounter{table}{0} % reset table counter for Supplementary Tables
+\renewcommand{\thetable}{S\@arabic\c@table} % tables numbered S1, S2, ...
+\setcounter{section}{0} % SI sections numbered S1, S2, ..., subsections S1.1, S1.2, ... (citable with \ref)
+\renewcommand{\thesection}{S\@arabic\c@section}
+\renewcommand{\thesubsection}{\thesection.\@arabic\c@subsection}
+\renewcommand{\namedsubsection}[2]{\subsection{#1}\label{#2}}
 \makeatother
+\titleformat{\section}{\Large\sffamily\bfseries}{\thesection}{0.75em}{#1}[]
+\titleformat{\subsection}{\sffamily\bfseries}{\thesubsection}{0.5em}{#1}[]
 
 %  MAIN TEXT
 
 \newpage
-\section*{Supplementary Information}
+{\LARGE\bfseries Supplementary Information}\par\bigskip
 
-% -----------------------------------------------------------------------
-% FIGURE S1
-% Actively referenced in main text (line 48):
-%   "method, SI Fig. \ref{fig:speed_flux_extraction_real_data}"
-% Content: pipeline for extracting directional (tip-ward / root-ward)
-%          speeds from bright-field kymographs.
-% -----------------------------------------------------------------------
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth]{suppfig/FigS_streak_pipeline.pdf}
-\caption{\textbf{Method for extracting directional speeds from kymographs.}
-\textbf{(A)} TODO.
-\textbf{(B)} TODO.
-}
-\label{fig:speed_flux_extraction_real_data}
-\end{figure}
+\section{The network and the filmed hyphae}\label{sec:si_network}
 
-\clearpage
+\namedsubsection{Tree-like edges and distance to the growing tips}{subsec:si_tree_tip}
+% NOTE (10 Oct): The section text is to be written by Simon; it is cited from the Fig 1A caption (inset). The facts below are from transport_paper master (Working_notebooks/manuscript_figures/fig1.py, bridge_share_by_tip(); recomputed 10 Oct).
+% NOTE (1, definition): an edge is tree-like when it is a bridge of the network graph (removing it disconnects the network; networkx bridges on the simple graph, degree-2 nodes dissolved), as in the model tables' `bridge` column; otherwise it lies on a loop. Methods, \nameref{subsec:dated_graph}, paragraph "Tree and loop edges", has the definition and a \todo for these bins.
+% NOTE (2, edges): The edges are the filmed edges of the main model tables, 15 sessions (loop_density_curve.prepare_edges): 1,590 edges, 1,579 of them with a tip distance. The tip distance is the network distance to the nearest growing tip (d_tip, model_accuracy/features_edges.csv).
+% NOTE (3, numbers, bins by tip distance in mm, n edges / % tree-like): The bins give these edge counts and tree-like shares: <1 mm, 86 edges and 39.5 %; 1-2 mm, 201 and 20.4 %; 2-4 mm, 438 and 10.5 %; 4-8 mm, 568 and 10.7 %; >8 mm, 286 and 14.3 %. The main text states 40 % within 1 mm against 11-14 % beyond 2 mm.
+% NOTE (4, context): Over all edges of the same networks, 36 % are tree-like, against 15 % of the filmed edges (\nameref{subsec:si_video_selection}), so the filmed set under-samples tree-like edges.
+% NOTE (5, open): Still open: a figure (share by tip distance, filmed against all edges) if wanted, and the per-session spread.
+
+\namedsubsection{Selection bias of the filmed hyphae}{subsec:si_video_selection}
 
 % -----------------------------------------------------------------------
 % FIGURE: positions of all flow videos
@@ -55,71 +56,6 @@ The LPD2412A025 sessions (10--12 Jan 2025) are days 10--12 of Fig.~\ref{fig:hyph
 \label{fig:video_positions}
 \end{figure}
 
-\namedsubsection{Lid-on and lid-off flow videos}{subsec:si_lid}
-% NOTE (10 Oct): The section text is to be written by Simon; it is cited from the main text (peristaltic streaming, flow reversals). The facts below are from transport_paper#121 (Simon, 2 Oct: a stated condition of the flow videos, Methods supplement).
-% NOTE (12 Oct, lid-off videos): Sessions filmed with the lid off show back-and-forth flow driven by air flow over the plate (docs log 2026-10-01-a-lid-off-dropbox-4x-session-showed-the-motion-gate-passing-drifting-static-texture.md). Simon: basically all videos made before July 2023 were filmed with the lid off (in the lab Dropbox). The paper's flow plates were all filmed later; the dates from the video metadata.json on Snellius are PNF2307A072 10-13 Aug 2023 (591 videos), PNF2307A080 13-16 Aug 2023 (655), LPD2412A022 7 Jan 2025 (64), LPD2412A025 10-15 Jan 2025 (282) and EPY2412A088 22 and 24 Jan 2025 (102). By their plate ids, the perturbation plates (LPD2412, EPY2412, SAL2506, CER2506) were set up after July 2023. So no lid-off video enters the paper's data; the lid-off example in the docs log (PNF2306A062, 18 Jul 2023) puts the switch between 18 Jul and 10 Aug 2023.
-
-\namedsubsection{Size of the isolated segment}{subsec:si_segment_size}
-% NOTE (10 Oct): The section text is to be written by Simon; it is cited from the main text (section cuts, "does not require the long range connectivity"). The facts are from docs log 2026-09-29-registering-the-cut-videos-shows-the-stage-coordinates-are-off-by-millimetres-and-the-smallest-isolated-piece-loses-the-most-flow.md. The analysis is transport_paper Working_notebooks/figure3/section_cut_registered.py (branch feat/section-cut-registered 4a34453), with outputs in fig_outputs/perturbations/section_cut_registered/videos.csv.
-% NOTE (1, data): Simon registered the cut-day videos by hand onto arc-unit STG stores anchored on the last frame before the cut: LPD2412A025_t77, EPY2412A104_t82, EPY2412A084_t73, LPD2412A009_t90. LPD2412A023 cannot be registered (its segmented frames miss the long hyphae around the cut site).
-% NOTE (2, piece size from the network): A piece is isolated when the cut splits it off its component (the cut mark severs every edge within max(50 um, 2.5 map px)). The stores have segmentation gaps, so the 24 and 73 mm pieces may still be joined in reality.
-% NOTE (3, post/pre speed on the same STG edges, 0-30 min / later): EPY2412A104, inside a 4.6 mm piece between two cuts (hand value 4.3 mm), has 0.74 / 0.18 at 35-68 min. LPD2412A025, a 24 mm piece, 1.4 mm from the cut, has 0.26 / 0.68 at 80-326 min. EPY2412A084, a 73 mm piece, 3 mm away, has 0.78 / 0.84 at 30-58 min. LPD2412A009, still connected, 1.9 mm along the network, has 0.80 / 0.66 at 93-119 min. At a cut stub (EPY104, LPD009) the values are 0.10-0.50 / ~0.10.
-% NOTE (4, reading in the log): the smallest isolated piece loses the most flow over time; whether the size dependence holds needs more than one small piece. Flow did not stop in any piece (main text), but at cut stubs it fell to ~0.1 of the pre-cut speed.
-% NOTE (5, caveats): Stage coordinates are unreliable on every cut plate (positions are off by 0.2-2.3 mm; videos were placed by frame matching and Coco's map labels instead). Registrations give the edge, not the position along it. EPY104 videos 22 and 28 may sit outside the piece (from comparing Coco's labels with the registration). The writeup science/section_cut_sites.typ (rhizosphere PR #240) still carries the older stage-position numbers.
-
-% -----------------------------------------------------------------------
-% FIGURE: section cut, speed before and after, Bayesian post/pre ratio
-% Generated by transport_paper Working_notebooks/figure3/segment_cut_bayes.py (feat/fig3c-timing 3e9b578)
-% NOTE (10 Oct, caption is Simon's to write; facts): The boxes show per-video median speeds (one point per video and stream; marker = cut
-% position, as in Fig 3C), before vs after the cut, bright-field and Nile Red fluorescence, to tip (blue) and to root (pink).
-% Above each pair: posterior median of the population ratio after/before with its 95 % credible interval, and stars for the
-% posterior probability that the change has the sign shown (* >= 0.95, ** >= 0.99, *** >= 0.999; n.s. below 0.95).
-% Model (log speed): y = mu_position + delta_position * after + noise; noise sd = kappa x the video's own spread
-% ((log p75 - log p25) / 1.349 of its pixel speeds), kappa estimated, so noisier videos weigh less; positions partially pooled
-% (delta_position ~ Normal(Delta, sd_delta)); priors Delta ~ N(0, 0.5), sd's HalfNormal; Gibbs + Metropolis, 4 chains, R-hat <= 1.012.
-% Results (ratio [95 % CrI], P(decrease)): bright-field to tip 0.81 [0.66, 0.96], 0.986; to root 0.78 [0.57, 1.16], 0.91;
-% Nile Red to tip 0.83 [0.67, 1.06], 0.95; to root 0.77 [0.56, 1.04], 0.96. Videos: bright-field 24 before / 45 after,
-% Nile Red 17 / 39, 4 positions. Frequentist check (permutation within position): to tip p = 0.005 (BF), < 0.001 (NR).
-% Reading: both streams slow by about 20 % after the cut, with similar posterior ratios; the rootward decrease is less certain
-% because its speeds spread more, and one bright-field position rises (raw 1.97x) but is down-weighted by its large spread.
-% -----------------------------------------------------------------------
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_segment_cut_bayes.pdf}
-\caption{[Caption to be written.]}
-\label{fig:segment_cut_bayes}
-\end{figure}
-
-% NOTE (10 Oct, distance to the cut and time after it; transport_paper feat/fig3c-timing 77aae55 / 40c1fae, Working_notebooks/figure3/section_cut_distance_time.py): The registered sessions are EPY084_t73, LPD009_t90, LPD025_t77 and EPY104_t82, with 106 videos per stream (78 after, 28 before) and 53 after-cut videos with a pre-cut reference on the same network edges (EPY084 15, LPD009 17, LPD025 19, EPY104 2). The stream is taken from the growth graph (the motor-like swap rule swapped no edge).
-% NOTE (model): The model is log(after/before) ~ a_plate + b log10(distance mm + 0.1) + c log10(minutes), with plate intercepts partially pooled and per-video noise = kappa x spread (post and pre spreads combined); R-hat <= 1.013. For time, the tipward coefficient is c = +0.47 [0.23, 0.69] per decade of minutes (P(c > 0) > 0.999), and the rootward one is +0.15 [-0.07, 0.38] (not credible). The distance coefficient b is not estimable, because distance is one value per plate among the modelled videos (EPY104 0.28, LPD025 1.2-1.4, LPD009 1.87, EPY084 2.99 mm); log distance and log time correlate at -0.05 to -0.30. Isolated against connected, and piece length, are constant within a plate (confounded with plate).
-% NOTE (reading): The tipward stream drops most just after the cut (ratio ~0.1-0.5) and recovers towards 0.7-0.8 over 1-5 h, mainly on LPD025. The rootward stream scatters widely (some above 1). Videos on a cut stub stay depressed in both streams (0.05-0.4). Caveats: registrations give the edge, not the position along it; stage coordinates are unreliable; there are only 4 sites.
-% NOTE (stream labels): Fig 3C assigns tipward / rootward by the order of the two directions in the flow file; on these re-run data that matches the growth direction for 93.5 % of 306 measurements and 100 % of the 58 at the Fig 3C positions (checked on the re-run, not on Fig 3C's original files, which are on Snellius only).
-
-% -----------------------------------------------------------------------
-% FIGURE: section cut, after/before ratio vs distance to the cut and time after the cut
-% Generated by transport_paper Working_notebooks/figure3/section_cut_distance_time.py (feat/fig3c-timing 40c1fae)
-% NOTE (10 Oct, caption is Simon's to write; facts): The rows are to tip and to root. The left panels show the ratio after/before (same network edges) against network distance to the cut (log), coloured by log10 minutes after the cut; the right panels show the ratio against minutes after the cut (log), coloured by log10 distance. Circles are isolated pieces, squares connected ones, and red crosses are videos on a cut stub. The styling is exploratory and is to be redrawn.
-% -----------------------------------------------------------------------
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_section_cut_distance_time.pdf}
-\caption{[Caption to be written.]}
-\label{fig:section_cut_distance_time}
-\end{figure}
-
-% -----------------------------------------------------------------------
-% FIGURE: section cut, speed time courses per plate and stream
-% Generated by the same script (40c1fae)
-% NOTE (10 Oct, caption is Simon's to write; facts): For each registered plate (LPD025, EPY104, EPY084, LPD009) and stream, the figure shows per-video speed (um/s) against minutes from the cut (symmetric log axis); the colours are blue for connected, orange for isolated and red for a cut stub. The styling is exploratory and is to be redrawn.
-% -----------------------------------------------------------------------
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{suppfig/figS_section_cut_timecourse.pdf}
-\caption{[Caption to be written.]}
-\label{fig:section_cut_timecourse}
-\end{figure}
-
-\namedsubsection{Selection bias of the filmed hyphae}{subsec:si_video_selection}
 % NOTE (10 Oct): The section text is to be written by Simon; the facts are below (sources: transport_paper feat/bc-selection-bias d2054b7, manuscript/bc_selection_bias.md, #130).
 % NOTE (1, why): the flow videos were taken by eye on runner hyphae where the two streams could be told apart (main text, Results opening). Speed statistics therefore describe the filmed hyphae, not the network as a whole; this section measures how different the filmed edges are, so the reader can judge how far the results generalise.
 % NOTE (2, measure): Betweenness centrality (BC) is used as defined by Oyarte Galvez et al. 2025 (oyarte_galvez_travelling-wave_2025, after freeman_set_1977): for each edge, it counts the shortest paths (by edge length; equal-length paths share 1/sigma each) from every node of the session network to the root compartment, i.e. one super-node joined at zero length to all annotated roots. The count is divided by the number of source nodes, so it is the share of nodes whose route to the root crosses the edge. Edges with BC = 0 are left out (62,469 of 1,139,071; 42 filmed). A variant uses only growing tips as sources.
@@ -141,288 +77,28 @@ The LPD2412A025 sessions (10--12 Jan 2025) are days 10--12 of Fig.~\ref{fig:hyph
 \label{fig:bc_selection}
 \end{figure}
 
-\namedsubsection{Tree-like edges and distance to the growing tips}{subsec:si_tree_tip}
-% NOTE (10 Oct): The section text is to be written by Simon; it is cited from the Fig 1A caption (inset). The facts below are from transport_paper master (Working_notebooks/manuscript_figures/fig1.py, bridge_share_by_tip(); recomputed 10 Oct).
-% NOTE (1, definition): an edge is tree-like when it is a bridge of the network graph (removing it disconnects the network; networkx bridges on the simple graph, degree-2 nodes dissolved), as in the model tables' `bridge` column; otherwise it lies on a loop. Methods, \nameref{subsec:dated_graph}, paragraph "Tree and loop edges", has the definition and a \todo for these bins.
-% NOTE (2, edges): The edges are the filmed edges of the main model tables, 15 sessions (loop_density_curve.prepare_edges): 1,590 edges, 1,579 of them with a tip distance. The tip distance is the network distance to the nearest growing tip (d_tip, model_accuracy/features_edges.csv).
-% NOTE (3, numbers, bins by tip distance in mm, n edges / % tree-like): The bins give these edge counts and tree-like shares: <1 mm, 86 edges and 39.5 %; 1-2 mm, 201 and 20.4 %; 2-4 mm, 438 and 10.5 %; 4-8 mm, 568 and 10.7 %; >8 mm, 286 and 14.3 %. The main text states 40 % within 1 mm against 11-14 % beyond 2 mm.
-% NOTE (4, context): Over all edges of the same networks, 36 % are tree-like, against 15 % of the filmed edges (\nameref{subsec:si_video_selection}), so the filmed set under-samples tree-like edges.
-% NOTE (5, open): Still open: a figure (share by tip distance, filmed against all edges) if wanted, and the per-session spread.
+\namedsubsection{Lid-on and lid-off flow videos}{subsec:si_lid}
+% NOTE (10 Oct): The section text is to be written by Simon; it is cited from the main text (peristaltic streaming, flow reversals). The facts below are from transport_paper#121 (Simon, 2 Oct: a stated condition of the flow videos, Methods supplement).
+% NOTE (12 Oct, lid-off videos): Sessions filmed with the lid off show back-and-forth flow driven by air flow over the plate (docs log 2026-10-01-a-lid-off-dropbox-4x-session-showed-the-motion-gate-passing-drifting-static-texture.md). Simon: basically all videos made before July 2023 were filmed with the lid off (in the lab Dropbox). The paper's flow plates were all filmed later; the dates from the video metadata.json on Snellius are PNF2307A072 10-13 Aug 2023 (591 videos), PNF2307A080 13-16 Aug 2023 (655), LPD2412A022 7 Jan 2025 (64), LPD2412A025 10-15 Jan 2025 (282) and EPY2412A088 22 and 24 Jan 2025 (102). By their plate ids, the perturbation plates (LPD2412, EPY2412, SAL2506, CER2506) were set up after July 2023. So no lid-off video enters the paper's data; the lid-off example in the docs log (PNF2306A062, 18 Jul 2023) puts the switch between 18 Jul and 10 Aug 2023.
 
-\namedsubsection{Growth-induced mass flow}{subsec:si_mass_flow}
-% NOTE (12 Oct): This section was moved from the main text (Results, 'Lipid transport across the network') as it stood, with the outline headings dropped and the first paragraph uncommented; its notes came with it. Its figure references (Fig 4D, Fig 1F,G, SI carbonflow b, d, e) are stale; see the notes.
-Hyphal extension as shown in Fig.~\ref{fig:schematic_model}D, in addition to consuming carbon, is also associated with the creation of new network volume.
-The corresponding demand for water has been shown to be the mechanism driving flows in colonies of other (non-mycorrhizal) fungal species~\cite{heaton_growth-induced_2010, heaton_advection_2012}.
-In those systems, the movement of matter within the network is well explained by the movement of water in a network of pipes with set sources and sinks. A hydraulic pressure gradient is established across the network, from inoculation roots to the tips, and the resulting flows are sufficient to explain the observed movement of matter.
-We wanted to investigate whether this explanation was compatible with our AM fungal system.
-Because volume creation and carbon demand are proportional, we use the same approach as for carbon, simply replacing the magnitude of the carbon source and sink, $\Delta C_k$, with the volume $\Delta V_k$.
-We keep a similar global source node corresponding to a water reservoir. {\color{blue} the word ``similar" suggests that a reader will know the other work which should not be assumed}
+\namedsubsection{Directional speeds from kymographs}{subsec:si_speeds}
 
-We represented the growing network as a temporally evolving graph where each edge has an activation time corresponding to its first appearance.
-We call $N$ the set of all graph nodes, and $E$ the set of all graph edges.
-This labelling allowed the growth between two time steps to be established in a spatially resolved manner (Fig.~\ref{fig:schematic_model}D).
-For each growing node $k\in N$ we could establish the total biovolume {\color{blue} maybe ``network volume" since you have not used the term biovolume above} newly built from that node $\Delta V_k$.
-The demand for carbon at each node $\Delta C_k$ is proportional to the newly built biovolume. {\color{blue} maybe just write: The nodal demand for carbon  $\Delta C_k\propto\Delta V_k $
-} These are modeled as lipid effluxes out of the system, so the demand gets a negative sign. Lipids must be supplied from the root compartment, which is represented by adding one additional "source" node to the network, $S_{source} = - \sum_{k \in N} \Delta C_k$. The "source" node is connected to the nodes of the network closest to the plant (see Methods) through zero length junctions. Inevitably, because of loops created through anastomoses, there are multiple possible paths from the "source" node to a node with non-zero carbon demand. 
-
-These multiple paths require us to resolve ambiguities in the lipid distribution inside the network, while adhering to the growth constraints in the observed data.
-We assume, as in previous work \cite{heaton_growth-induced_2010}, that carbon flux would be distributed over those paths in a way that minimizes the dissipation of hydraulic energy. 
-
-We assign to each edge $(i,j)\in E$ a hydraulic resistance $\mathcal{R}_{i,j}$ associated with energy dissipation. {\color{blue} i think in network literature these are called resistances, so maybe write as ${\cal R}_{i,j}$, which are different than energy dissipation} We set $\mathcal{R}_{i,j} = \frac{8 \mu L_{i,j}}{\pi b_{i,j}^4}$ where $L_{i,j}$ is the length of the edge, $b_{i,j}$ is its radius, and $\mu$ is a viscosity that is treated as a constant in global energy minimization.
-With a carbon flux from $i$ to $j$ $\phi_{i,j}$ the power dissipation {\color{blue} maybe write as: the rate of energy consumption} is set to $\mathcal{R}_{i,j} \phi_{i,j}^2$.
-We minimize the objective function $\sum_{(i,j)\in E} \mathcal{R}_{i,j} \phi_{i,j}^2$ under the constraint that for all nodes $k$, $\sum_{i\in N} \phi_{i,k} = \Delta C_k$ (Methods).
-This model allows us to estimate, in each edge of the network, the expected direction and lower bound of lipid flux required for the observed growth of the tip (Fig. SI\ref{fig:carbonflow}b). 
-
-% When comparing these expected lipid fluxes with the one observed in each edge. We found that in 70\% of the cases, the direction of lipid flux could be predicted by our model. This percentage increased to more than 80\% when we considered only points in the network where both the modelled and measured absolute flux were high (Fig. \ref{fig:carbonflow}c).
-
-The calculation  yields the exact volumetric flow rate $Q_{i,j}$ in the hydraulic equivalent of the network.
-The speed $v_{i,j}$ was then set as $v_{i,j}=\frac{Q_{i,j}}{\pi b_{i,j}^2}$. {\color{blue} something is wrong with this sentence since model is referred to twice:} We found that this model did not explain the speed in the direction predicted by the model (Fig. SI\ref{fig:carbonflow}d).
-Such a model also does not explain the existence of fluid movement in the other direction.
-Indeed, the fluid flow always follows the pressure gradient and therefore cannot be bidirectional.
-% NOTE (7 Oct): Fig. SI carbonflow (d, e) is one of the wrong SI files (FigS2-S5, transport_paper#129), so the speed claim here and the peaked-distribution claim below have no figure behind them until it is replaced.
-
-Finally, as shown in Fig. \ref{fig:hyphal_profiling}F,G and \ref{fig:asymmetries}A, the flow speed in the modeled and observed direction of the lipid flux narrowly peaks around the value $v_0 = 3\mu m/s$.
-% NOTE (12 Oct): Fig 1 has panels A-E, so 'Fig. hyphal_profiling F,G' points to nothing; the tipward speed distribution is Fig 2A/B. The motor-speed range (2-6 um/s, howard_mechanics_2002) repeats the hypothesis section (steinberg_cell_2017).
-In addition to not being able to predict a speed of the right order of magnitude, the growth induced mass flow model does not yield such a peaked distribution (Fig. SI\ref{fig:carbonflow}e).
-The peaked distribution instead strongly suggests that the movement of lipids within the AM fungal colony is an active process driven by the movement of molecular motors on tracks walking at fixed speed.
-In fact, the speed of known molecular motors can typically be in the range $2-6\mu m/s$ for the faster ones \cite{howard_mechanics_2002}.
-This hypothesis is further motivated by the qualitative observation that the movement of lipids in the colony follows well established tracks. 
-
-\namedsubsection{Lipid volume fraction needed for growth}{subsec:si_lipid_fraction}
-% NOTE (12 Oct): This section was moved from the main text (Results, after the mass-flow test) as it stood, with the outline headings dropped (Simon: not central to the paper; mention in the Discussion). Its lipid fluxes come from the dissipation-minimisation model of the section above (subsec:si_mass_flow), so it reads after that one; the numbers are from the old analysis (see the notes).
-Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
-To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
-We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
-% NOTE (12 Oct, 'why mm?'): 'by 10mm' means 'over 10 mm', and the fraction is the lipid volume fraction Theta of the old analysis. The numbers to reconcile are '4 %' here, '5 %' at the emulsion paragraph, theta 0.05 in the main model, and the measured moving lipid share of 2.4 % (< 2 mm from a tip) to 4.6 % (> 4 mm) (transport_paper#94; see \nameref{subsec:si_theta_spatial}). The next sentence says 'decrease away from the tip', against 'increased' here.
-The decrease away from the tip was due to a decrease in flux, which itself was due to the multiplication of alternative paths towards the root when moving closer to it.
-Similar spatial variation on similar length scales has previously been established in \emph{R. irregularis} \cite{bago_carbon_2000}.
-However, in that earlier research the magnitude of the maximum volume fraction was estimated to be $\sim$ 20\%. 
-% NOTE (7 Oct, Bago value and key): '~20 %' cites bago_carbon_2000, a review (Plant Physiol 124). The measurement is in bago_translocation_2002 (Plant Physiol 128, Fig. 3): ~24 % of hyphal volume near the root, 0.5 % at the front. The intro (L37) now uses that key and value, so the two disagree.
-
-% If carbon movement was only driven by diffusion, its average speed would be of the order of $v_{diff} = \frac{\lambda_{diff}}{L}$ with $\lambda_{diff}$ the diffusion coefficient of carbon in the cytoplasm and $L$ a typical length for the network. Using an upper bound $\lambda_{diff}=10^{-5}cm^2/s$ corresponding to diffusion of small ions and using the typical centimeter scale of the longest hyphae $L = 1cm$, we obtain $v_{diff}=0.1um/s$. Such low speed together with the observed growth would result in lipid volume fraction $\frac{\phi_{i,j}}{v_{diff}\pi R_{i,j}^2}$ larger than 100\% which is physically impossible.
-
-This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
-
-\namedsubsection{Phosphorus concentration needed for the exchange rate}{subsec:si_cp_exchange}
-% NOTE (18 Oct): New section on Simon's request (moved from the main-text C/P subsection); text to be written by Simon.
-% NOTE (18 Oct, C/P facts, merged from the 9 and 17 Oct main-text notes; transport_paper#128, feat/cp-production fb436c6): In the global solve the return into the roots equals the motor stream leaving them in all 15 sessions (log-log slope 1.000), so P out at constant [P] is proportional to motor-carried carbon by construction; against growth carbon the slope is 0.19 (95 % CI -0.47 to 0.86, R2 0.03); on STR2307A112 growth carbon rises 4.7-fold over 5 sessions while the return stays at 0.0050-0.0066 uL/h. The required [P] scales with theta: 0.19 mol/L at theta 0.025, 0.29-0.38 at 0.05, 0.76 at 0.10 (P:C 1/3-1/4 ug P per ug C); plant cells 5-20 mmol/L (bieleski_phosphate_1973, range not re-checked); at theta 0.0026 (20 mmol/L) the motors carry ~0.19 times the carbon growth uses, against 3.7 times at theta 0.05. Bisot et al. (full text checked, PMC12891005): the exchange rate is by mass, ~3-4 ug C per ug P, set by host genotype; their carbon is expended carbon (carbon use efficiency 50 %, twice the carbon built into biomass, spores included), a growth-based quantity; >= 85 % of absorbed P reaches the root within ~100 h (absorbed P would be ~30 % of fungal dry mass if none were transferred, against <= 4-5 % P measured in hyphae).
-
-\namedsubsection{Spatial variation of the lipid volume fraction}{subsec:si_theta_spatial}
-% NOTE (15 Oct): This section was added on Simon's request (modelled and measured spatial variation of Theta); the text is Simon's to write. It replaces the main text's pointer to SI fig:carbonflow f, which is the wrong file. Source: transport_paper Working_notebooks/theta_spatial.py (feat/flow-regime), fig_outputs/flow_regime/theta_spatial.csv.
-% NOTE (15 Oct, model): In the main model the lipid volume fraction of the whole lumen is Theta = theta (b^2 - a^2) / b^2 = J / (pi b^2 v), where theta = 0.05 is the lipid share of the motor-driven condensate. The floor a >= 0.8 b caps Theta at 0.05 times 0.36 = 1.8 %, and 24 % of the 1,534 measured edges sit at that cap. The median Theta is 0.68 % (interquartile range 0.2 to 1.8 % in every tip-distance bin). Theta does not change with the distance to the nearest growing tip (Spearman rho 0.00; bin medians 0.85, 0.54, 0.65, 0.77 and 0.64 % at 0-1, 1-2, 2-4, 4-8 and beyond 8 mm): in the model it varies from edge to edge with the routed demand and the width, not with tip distance.
-% NOTE (15 Oct, measured): Nile Red gives no absolute volume fraction, only relative measures on 274 filmed junction legs (transport_paper lipid_tip_distance.py --moving, issue #94). The moving share of the lipid signal (moving over all lipid fluorescence of a leg, free of exposure) rises with tip distance, from a median 2.2 % within 1 mm of a tip to 4.7 % beyond 4 mm (rho +0.34). The moving tipward lipid per volume of the tipward lane, divided by its plate median, falls instead (rho -0.27; 1.12 within 1 mm, 0.56 at 4-8 mm, 21 legs); this measure depends on the lane share taken from the bright-field speeds, v_r / (v_t + v_r). Both are limited by the Nile Red detection limit near 5 um/s (Methods), which misses fast lipid.
-% NOTE (15 Oct, literature): Bago et al. 2002 (Nile Red and two-photon microscopy, G. intraradices in monoxenic root-organ culture; their Fig. 3) report the total lipid (moving and static) at about 24 % of the volume of extraradical runner hyphae near the root and 0.5 % at the growing front, so total lipid rises away from the front, in the same direction as the measured moving share. Their values are total lipid, an order of magnitude above the model's Theta of moving lipid.
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_theta_spatial.png}
-\caption{[Caption to be written.]}
-\label{fig:theta_spatial}
-\end{figure}
-% NOTE (15 Oct, figure; Simon: the spread of the measured legs is needed): (A) modelled Theta on every measured edge against the network distance to the nearest growing tip, with bin medians and interquartile ranges; dotted, the cap of 1.8 % set by a >= 0.8 b. (B) The moving share of the lipid signal on 274 junction legs (89 videos, 5 plates): 5th to 95th percentile 1.35 to 8.8 %, interquartile range 2.1 to 5.2 %, median 3.8 %; 69 % of the legs lie within 4 mm of a tip, so the far bins rest on few legs. (C) The moving tipward lipid concentration, divided by its plate median, on the 114 legs with both stream speeds (62 videos): 5th to 95th percentile 0.26 to 3.7, interquartile range 0.64 to 1.62; 78 % within 4 mm of a tip. Both show bin medians with interquartile ranges (bins with at least 5 legs); the few legs above the 98th percentile fall above the axis (6 in B, 3 in C). (D) The three trends, each divided by its median over bins.
-% NOTE (15 Oct, measured lipid against measured return; transport_paper theta_spatial.py --backflow, fig_outputs/flow_regime/theta_backflow.csv): 212 Nile Red junction legs (86 videos, 5 plates) have a bright-field return measured on a store edge of their own arc. The moving share of the lipid signal correlates with the measured return (Spearman rho +0.39 pooled, median +0.29 within plates) and stays correlated after removing tip distance (partial rho +0.41 on the 109 legs with a tip distance; tip distance itself correlates with the return at +0.38 and with the moving share at +0.36). It correlates as much with the measured tipward speed (+0.38), so part of it may be that faster flow makes moving lipid easier to detect. The total lipid per lumen volume (plate-normalised) does not correlate with the return (rho -0.08 pooled, +0.08 within plates). The model's Theta on the same edges correlates with the measured return at +0.39 pooled and +0.43 within plates (partial +0.23 given tip distance), and the model's return with the measured one at +0.53.
-% NOTE (15 Oct, moving tipward lipid): The moving tipward share of the lipid (moving share times the tipward share of the moving fluorescence streaks; median 2.3 %, interquartile range 1.4 to 4.6 %) correlates with the measured return slightly more strongly than the moving share: rho +0.42 pooled, +0.40 within plates, +0.38 after removing tip distance (109 legs). It also correlates with the measured tipward speed (+0.45), and the tipward share alone correlates with the return at +0.27.
-% NOTE (15 Oct, reading and the variable-theta test): The model keeps theta constant, so its Theta has no trend with tip distance, while the measured moving share of lipid roughly doubles from the tips to more than 4 mm away. In the model a smaller theta needs a thicker condensate to carry the same lipid, which narrows the core and speeds up the return, so a theta that rises away from the tips raises the modelled return near the tips (not lowers it, as an earlier reading had it). Test (transport_paper model_accuracy_throttle.py --theta-tip-ratio 0.47, theta following the motor speed's tip-distance profile, fig_outputs/flow_regime/theta_tip_compare.csv), against the main model (theta 0.05 everywhere: within a factor of 2 on 77.5 %, KS 0.056, trail segments 86.1 % with bias 1.21, 3.11 against 2.17 um/s within 1 mm of a tip, 3.50 against 4.22 um/s beyond 8 mm): theta 0.024 at the tips rising to 0.05 far gives 77.1 %, KS 0.053, 85.8 % with bias 1.26, 3.26 um/s near the tips and 3.50 um/s far, so the near-tip over-prediction grows slightly. Theta 0.05 at the tips rising to 0.107 far gives 77.4 %, KS 0.095, 87.6 % with bias 1.08, 2.90 um/s near the tips and 3.23 um/s far, so the near-tip over-prediction shrinks but the far under-prediction grows and the distribution fits worse. A theta that follows the measured moving lipid share therefore trades one bias for the other and does not improve the model.
-
-\namedsubsection{Model variants}{subsec:si_model_variants}
-% NOTE (2, demand split): Conductance, area and even splits give the same scores (section below, tab:si_demand_split).
-% NOTE (3, return coupling): The global solve (no cost to switch hyphae at junctions; Heaton 2010) and the conveyor (each edge returns its own stream) are the two limits of the junction resistance; the main model uses the global solve, and the 10 mm weak-coupling numbers are in note (7) below.
-% NOTE (4, return width exponent): The exponent entered as |q_c| / (pi r^2), with r^2 = a^2 (11.64 um / D)^0.7, fitted on the measured rootward speeds. It was dropped on 12 Oct (physical inputs only): 87.5 against 86.2 % within a factor of 2, rho 0.44 against 0.41 on tree edges and 0.34 against 0.29 on loop edges (1 Oct tables).
-% NOTE (5, motors as a force, in progress 13 Oct, transport_paper feat/force-motor-network): The motor speed comes from a force balance against the solved pressure, v = v_max (1 - pi b^2 dp / (L k b)), with one linear solve per network. The first grid cell (v_max 6 um/s, b_half 4 um, offset main model as reference) gives tipward speeds of ~4.2 um/s everywhere, flat with tip distance, and 0.65 / 0.77 within a factor of 2 on tree / loop edges; the rest of the grid is running. On single edges, the per-edge force balance with lumen widths predicts the tipward speed best of the forward models (section \nameref{subsec:si_forward_choices}).
-% NOTE (14 Oct, final model and the variants it was chosen over; all on the current tables, 1,574 bright-field edges, global pressure solve unless stated; transport_paper feat/flow-regime): The main model is GIMF motors + GIMF routing, a >= 0.8 b, theta 0.05: 77.6 % within a factor of 2, KS 0.045 (distribution matched; segmenter widths, 10 um minimum edge; with the recalibrated Keras widths and 20 um minimum edge the main model gives 77.5 % and KS 0.056 on 1,544 edges, see the 15 Oct notes in \nameref{subsec:si_widths}). (6, motor direction / routing) Growth-graph motors with GIMF, area or even routing give 75.5-75.8 % within a factor of 2, KS 0.25, and a 95th percentile of 4.7 against 6.8 um/s. Per edge, the gain of GIMF motors is on edges where both directions agree (3.87 against 3.17 um/s; in the fastest measured quarter, 70 against 51 % within a factor of 2), not on the 263 edges where they disagree (on 69 % of those the observed direction sides with growth); see motor_direction_tail.py. (7, return) Weak coupling at 10 mm with growth motors gives 87.2 % within a factor of 2, but the spread is too small (log-SD 0.18 against 0.47); the global solve with growth motors gives 73 %. (8, supply-set lane instead of the demand annulus, growth motors) A constant a/b of 0.80-0.93 gives 77.9-79.4 % on full flow, KS 0.16-0.25; the width law x = 0.30 (w/10 um)^gamma gives 80.1-81.4 %. None reproduces the rise of the measured rootward / tipward ratio with lumen width (0.93 to 1.80) or along trails; see supply_compare.py and fig5_variants.py. (9, core floor) a >= 0.9 b gives a trail bias of 1.10 (against 1.21) and a near-tip speed of 2.61 against 2.84 um/s (measured 2.13), but KS 0.093. (10, regimes) Sparse flow (streak density >= 0.27 / um / s, from Simon's blind labels; 13 % of filmed edges) is over-predicted by a factor of 1.6-1.7 by every variant; on full-flow edges the main model is 79.2 % within a factor of 2. (11, demand against measured lipid transport) The Nile Red tipward flux barely follows the routed demand (elasticity 0.02-0.04 over 2.7 decades of demand).
-% NOTE (14 Oct, theta on the final model; theta_sweep_gimf.py, 1,574 edges, 10 um minimum edge): For theta 0.02 / 0.05 / 0.1 / 0.15 / 0.2 / 0.3, the share within a factor of 2 is 75.9 / 77.6 / 77.4 / 76.9 / 76.0 / 75.4 %; KS is 0.086 / 0.045 / 0.097 / 0.133 / 0.154 / 0.172; the trail bias is 1.36 / 1.21 / 1.06 / 1.02 / 0.99 / 0.96; the speed within 1 mm of a tip is 3.28 / 2.85 / 2.53 / 2.50 / 2.43 / 2.38 um/s (measured 2.13); beyond 8 mm it is 3.87 / 3.52 / 3.20 / 3.10 / 3.10 / 3.10 (measured 4.14); the floor binds on 49 / 23 / 6 / 1 / 0.4 / 0.1 % of edges. theta 0.05 gives the best distribution and accuracy; larger theta trades the far-from-tip level for the near-tip bias.
-% NOTE (15 Oct, demand window; transport_paper model_accuracy_throttle.py --demand-window, feat/flow-regime, fig_outputs/flow_regime/demand_window_common.csv): The main model takes the lipid demand from the hypha grown in the 4 frames after the session. The alternative takes it from the growth before the session (network at the earlier frame, so edges grown in the window have no model output). Scored on the 1,263 edges every run covers, next 4 (main) gives 75.5 % within a factor of 2, median fold error 1.48, KS 0.067, trail segments 84.8 % with bias 1.19, and 3.38 within 1 mm of a tip against 2.82 um/s measured (22 edges). Previous 4 gives 76.6 %, 1.46, 0.070, 86.5 % / 1.11, 2.81. Centred (-2, 2] gives 76.9 %, 1.46, 0.067, 88.2 % / 1.18, 3.19. Previous 8 gives 78.2 %, 1.42, 0.082, 90.4 % / 0.97, 3.00. Past growth predicts the rootward speed slightly better, consistent with backflow lagging growth. It does not fix PNF080 t91 LeftMiddle at 9-17 mm (model 1.8-2.9 against 6.5 um/s measured), where the tip region grew 60 mm within 3 mm of the trail in the 10 frames before the session and 9 mm in the 3 after. The cost is that 281 of 1,544 edges (the newest hyphae) drop out with the 8-frame window.
-% NOTE (15 Oct, past demand on the session network; transport_paper past_demand.py, model_accuracy_throttle.py --past-demand K, fig_outputs/flow_regime/past_demand_compare.csv): Here the network stays at the session, so all 1,544 edges keep a prediction, and the lipid demand comes from the hypha grown in the K frames before the session, placed at the free ends of the grown pieces (pieces that have fused into the mesh keep it at their attachment nodes). Against the main model (next 4 frames: within a factor of 2 on 77.5 %, KS 0.056, trail segments 86.1 % with bias 1.21, 3.11 against 2.17 um/s within 1 mm of a tip, 3.50 against 4.22 um/s beyond 8 mm), the past 4, 8 and 12 frames give within a factor of 2 on 78.7, 79.1 and 79.8 %, KS 0.068, 0.070 and 0.072, trail segments 85.0, 86.9 and 88.3 % with bias 1.23, 1.16 and 1.13, 2.66, 2.62 and 2.58 um/s within 1 mm of a tip, and 3.88, 3.76 and 3.73 um/s beyond 8 mm. Past growth therefore reduces both the near-tip over-prediction and the far-from-tip under-prediction and raises the accuracy slightly, at the cost of a slightly worse distribution match. It weakens the growth step of Fig 6d: on EPY088 Main the model rises 1.34- to 1.37-fold from t28 to t55 (main model 1.51-fold, measured 1.71-fold), because the demand at t28 already includes the growth before it. On PNF080 t91 LeftMiddle at 9-17 mm the model rises from 1.8 to 2.4, 2.5 and 2.7 um/s against 6.3 um/s measured.
-% NOTE (17 Oct, model inputs; moved from the main-text Discussion 18 Oct, Simon: SI): Network widths are noisy (rho 0.49 with the lumen), which also exaggerates loop-arm differences, and the data keep a width effect at fixed demand that the model lacks; theta is constant although the Nile Red moving share varies (tip/far 0.47); the motor direction comes from the growth-induced mass flow; far from tips the model under-predicts (3.5 against 4.2 um/s).
-% NOTE (18 Oct, width term in the motors; moved from the main-text Discussion, Simon: SI; text to be written): The model's motors have no width dependence, whereas the measured tipward speed rises as $D^{0.48}$. Giving the motors a width term $(b/b_\mathrm{ref})^{p}$ (with $b_\mathrm{ref}$ the median radius of the filmed edges) with $p = 0.5$ brings the model's rootward width dependence to $D^{0.97}$, close to the measured $D^{1.07}$, at an unchanged overall fit (76.9 against 77.5\% within a factor 2, KS 0.056, loop $\rho$ 0.40); $p = 1$ overshoots ($D^{1.19}$, 75.6\%, KS 0.064). Neither variant changes the model's insensitivity to $\kappa$ ($\rho$ $-0.03$ and $-0.04$ against $+0.31$ measured), so the missing robustness effect is not a missing width term in the motors (SI, \nameref{subsec:si_model_variants}). On the tipward speeds themselves (1,452 edges), the square-root term ranks the measured speeds best ($\rho$ 0.35 against 0.29 without a width term) but, measured against the video lumen, gives only $D^{0.25}$, because the network widths it uses track the lumen only partly ($\rho$ 0.49); the linear term reproduces the measured $D^{0.48}$ (0.49) but then overshoots the rootward width dependence. With these widths no single exponent fits both streams, so width noise, not the form of the width term, limits the model here.
-
-\namedsubsection{Splitting the lipid demand between merging hyphae}{subsec:si_demand_split}
-% NOTE (12 Oct): The section text is to be written by Simon; it is cited from the Methods (transport model, demand split). Its purpose (Simon) is to show that the choice of split rule does not matter here, so the main model uses the simplest (even).
-% NOTE (1, set-up): The model of this comparison (the main model before 14 Oct: weakly coupled return, junction 10 mm, motors along the growth graph, a >= 0.8 b, theta 0.05, no return-width exponent) is run on 15 sessions and scored against the bright-field rootward speed (224 tree edges, 1,366 loop edges). A tip's demand passes back up the growth graph; where hyphae merge it is divided by conductance b^4/L of each parent hypha, by area b^2, or equally. Tree edges have one path, so the rule cannot act there.
-% NOTE (2, source): The source is transport_paper branch feat/demand-split-compare (commits 1173217, f89b893): fig_outputs/model_grid/run_grid_junction.sh split, and Working_notebooks/demand_split_compare.py, which writes fig_outputs/model_grid/junction/split_compare.csv (run 12 Oct).
-% NOTE (3, beyond the table): where the model puts lipid has no relation to the moving Nile Red signal under any split (within-plate Spearman rho 0.00-0.01, 1,678 fluorescence edges, ~30 % of them get no model lipid); 53-56 % of the growth demand reaches a root under all three (the rest is stranded at non-root growth sources, set by the motor direction, not the split).
-% NOTE (14 Oct): The final main model routes the lipid by the GIMF solve (lipid current = 0.256 times the GIMF flux) with GIMF-oriented motors, so this split comparison (growth-graph routing, junction coupling) is now about a variant. Its point stands: the split rule does not change the scores.
-\begin{table}
-\centering
-\begin{tabular}{lccc}
-\hline
- & conductance ($b^4/L$) & area ($b^2$) & even \\
-\hline
-lipid current changed vs area ($>10\%$) & 44\% & -- & 26\% \\
-tree edges within $2\times$ & 87.9\% & 87.9\% & 87.9\% \\
-tree edges, Spearman $\rho$ & 0.41 & 0.41 & 0.41 \\
-loop edges within $2\times$ & 85.4\% & 85.9\% & 86.3\% \\
-loop edges within $1.5\times$ & 62.6\% & 63.0\% & 63.3\% \\
-loop edges, Spearman $\rho$ & 0.29 & 0.29 & 0.29 \\
-motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
-\hline
-\end{tabular}
-\caption{\textbf{[Title.]} [Caption.]}
-\label{tab:si_demand_split}
-\end{table}
-
-\namedsubsection{Modelling the tipward speed}{subsec:si_forward_flow}
-% NOTE (15 Oct): The text below was drafted by Claude on Simon's request (fill out the forward model SI section), from the notes of this section and the current fits (transport_paper feat/flow-regime: forward_speed_bayes.py, edges.csv / posterior.csv / width_compare.csv; width_feasibility_stats.csv). The width numbers marked 873 edges are from the walls_v4 rebuild (note of 11 Oct below); the force-balance sentence needs Simon's check of the model's form.
-The transport model needs the tipward (motor) speed on every edge of the network (Methods), so we asked which properties of a hypha predict it.
-We used the bright-field videos only (\nameref{subsec:si_forward_choices}).
-For each edge we pooled the moving tipward streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,481 edges with 299,584 streaks in 15 sessions on 5 plates.
-
-\paragraph*{Distance to the nearest growing tip.}
-The tipward speed is lower close to the growing tips and levels off within a few millimetres (Fig.~\ref{fig:fig5_plug}b).
-We described this with a falloff to an offset,
-\[
-v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
-\]
-with $d$ the network distance to the nearest growing tip at the session.
-We fitted it with a hierarchical Bayesian model on the log median streak speed of each edge, $y_i = \log v(d_i) + w_p + u_i + \epsilon_i$, with an edge effect $u_i \sim N(0, \sigma_{\mathrm{edge}})$, a plate effect $w_p$ (summing to zero over plates) and a sampling error $\epsilon_i$ whose standard deviation was bootstrapped from the edge's own streaks, so that edges with few or scattered streaks count less.
-Priors were uniform on $v_\infty$ and $v_{\mathrm{tip}}$ (0.05 to 10~$\mu$m/s) and on $\log \ell$ (10~$\mu$m to 50~mm), half-normal on the standard deviations, and the posterior was sampled with adaptive Metropolis (4 chains, $\hat{R} \leq 1.01$).
-The posterior medians [95\% intervals] were $v_{\mathrm{tip}} = 2.18$ [1.92, 2.39]~$\mu$m/s, $v_\infty = 2.93$ [2.86, 3.03]~$\mu$m/s and $\ell = 1.85$ [1.11, 3.52]~mm.
-Edges scatter around the curve by 0.22 on the log scale (about 25\%), and the plates differ by $-6$ to $+7$\%.
-The speed at the tip rests on few edges: 82 lie within 1~mm of a tip and 7 within 250~$\mu$m.
-In least-squares fits on the edge medians, fitted on four plates and scored on the fifth, the offset form predicted the held-out edges better than a constant speed or an exponential rise from zero (median fold error 1.14, against 1.17 and 1.16), and a step at a fixed distance did worst.
-The transport model uses an earlier least-squares fit of the same form ($v_\infty = 3.10$, $v_{\mathrm{tip}} = 2.14~\mu$m/s, $\ell = 1.71$~mm; Methods), whose far-from-tip speed is 6\% above the Bayesian one.
-
-\paragraph*{Hyphal diameter.}
-The tipward speed also rises with the diameter extracted from the same videos (SI Fig.~\ref{fig:width_lumen_speed}), with a within-plate Spearman correlation of 0.54 (1,449 edges).
-The relation holds in each of the five plates and is unchanged when the tip distance is accounted for (log-log slope 0.53 [0.46, 0.60], partial within-plate $\rho = 0.53$; 873 edges).
-Adding a factor $(D/9~\mu\mathrm{m})^\beta$ to the Bayesian fit (1,434 edges with a video-extracted diameter) gave $\beta = 0.49$ [0.45, 0.54] without and $0.47$ [0.43, 0.52] with the tip term; with the diameter included the tip falloff remains ($v_{\mathrm{tip}} = 2.18$, $v_\infty = 2.92~\mu$m/s) and its length shortens to $\ell = 1.10$ [0.63, 1.98]~mm.
-Scored on held-out plates, the predictions from tip distance and diameter together, and from a force-balance form with a tip throttle, correlated best with the measured speeds (within-plate $\rho = 0.58$), diameter alone reached 0.50 and tip distance alone 0.22.
-The rootward speed rises more steeply with diameter (slope 1.16 [1.05, 1.27]).
-Because the network images do not resolve the diameter (\nameref{subsec:si_widths}), the transport model uses the tip distance only (\nameref{subsec:si_forward_choices}).
-
-% NOTE (10 Oct, sources): The section is cited from the main text (hypothesis section, tipward speed modulated by diameter and tip distance). Simon (9 Oct): the diameter dependence is an SI item, not main text. The sources are transport_paper#132 (comment of 7 Oct, constant against falloff; comment 6056041406, diameter), #134 (v0(D) in the model), science/forward_speed_models.typ (rhizosphere#259), the scripts forward_speed_compare.py / forward_speed_compare_fl.py (#133), and Working_notebooks/speed_vs_diameter.py (feat/fluorescence-detection-limit 7990008).
-% NOTE (1, models, fitted on four plates and scored on the fifth, 15 sessions): The models are constant, exponential v0(1 - e^(-d/lambda)), offset v_inf - (v_inf - v_tip) e^(-d/lambda) and step, plus width and force-balance variants. The data are 1,503 bright-field edges with both streams.
-% NOTE (2, tip distance): Speeds fall off at the tips gradually, not as a step. The median tipward speed within 1 mm of a tip / overall is 2.23 / 2.95 um/s (0.76) in bright-field. The held-out offset fit gives v_tip 1.9-2.2, v_inf 2.8-3.0 um/s and lambda 0.75-2.5 mm in bright-field. Near tips (< 1 mm), models without tip distance over-predict by a factor of 1.21-1.25. Offset beats exponential and constant held out (fold-change error 1.14 against 1.16 against 1.17, bright-field), and a step ranks worst.
-% NOTE (11 Oct, 3, diameter; walls_v4 rebuild, supersedes the earlier 874-edge numbers: 309-junction sandbox rerun on walls_v4, lumen widths = 2 x distance transform, 873 lumen edges; transport_paper ef5a3c1, the #141 merge commit): The tipward slope against U-Net lumen diameter is 0.53 [0.46, 0.60] for bright-field streaks, with within-plate rho 0.52 and 0.53 partial given tip distance, positive in all 5 plates; bright-field pixels give 0.63 [0.55, 0.72]; to root the slope is 1.16 [1.05, 1.27]. For the width effect, speed ~ width | tip distance is 0.51 and speed ~ tip distance | width is 0.17. In the model ranking (held out by plate, within-plate Spearman), tip distance x width and force x throttle reach 0.58 and are best, width-only reaches 0.50 and tip distance alone 0.22; every model has 96-97 % within a factor of 2.
-% NOTE (4, caveats): The bright-field lumen and speed come from the same videos. Store widths give a much weaker result (rho 0.09-0.30). The flow-table widths (widths.json, mean_width_um) were inverted before flow_analysis_comps#80 and are not used here. Fluorescence numbers were removed from these notes after Simon dropped speed comparisons with fluorescence (13 Oct); see \nameref{subsec:si_forward_choices}.
-
-\namedsubsection{Choices in the tipward speed model}{subsec:si_forward_choices}
-% NOTE (15 Oct): The text below was drafted by Claude on Simon's request, from the notes of this section and of the section above.
-Three choices shape the tipward speed used in the transport model.
-
-\paragraph*{Bright-field only.}
-The fits use the bright-field videos (20 frames per second) only.
-The Nile Red videos (1 or 2 frames per second) lose fast streaks: relative to 1--3~$\mu$m/s, the number of streaks found per bright-field streak drops to 0.22 at 4--5~$\mu$m/s and 0.11 at 6--7~$\mu$m/s at 2 frames per second, and to 0.07--0.08 at 6--8~$\mu$m/s at 1 frame per second, and the per-pixel medians at 1 frame per second level off at 4.4--4.5~$\mu$m/s (Methods, \nameref{subsec:fl_detection_limit}).
-Fluorescence speeds are therefore censored near 5~$\mu$m/s, and we do not compare them with the bright-field speeds.
-
-\paragraph*{A falloff to an offset, not to zero.}
-A falloff to zero at the tip, $v(d) = v_\infty (1 - e^{-d/\ell})$, fitted with the same hierarchical Bayesian model, gave $v_\infty = 2.79$ [2.75, 2.83]~$\mu$m/s and $\ell = 194$ [145, 241]~$\mu$m (SI Fig.~\ref{fig:tip_falloff_zero}).
-To reach zero at the tip and still pass the edges nearest to it, its falloff length shrinks to about 200~$\mu$m, after which the curve is flat: it reaches 2.0~$\mu$m/s at 250~$\mu$m and 2.8~$\mu$m/s from about 1~mm onwards.
-It therefore misses the gradual rise over 1--3~mm and lies about 10\% below the edges beyond 4~mm, while within 500~$\mu$m of a tip it fits as well as the offset form.
-By the widely applicable information criterion the offset form predicts better (expected log predictive density higher by 25.5 $\pm$ 7.3), with 10.6 of the difference from the 82 edges within 1~mm of a tip and 12.7 from those beyond 3~mm.
-A drop to near zero over the last tens of micrometres, as seen in the hand-traced tip kymographs (\nameref{subsec:si_tips}), is below what the edge data resolve and is not excluded.
-
-\paragraph*{Tip distance, not diameter.}
-Diameter predicts the tipward speed better than tip distance (\nameref{subsec:si_forward_flow}), but the transport model needs a speed on every edge of the network, and there only the network-image diameters are available.
-These track the video-extracted diameter poorly (within-plate $\rho$ 0.48--0.61) and correlate with the tipward speed at $\rho$ 0.30--0.36, against 0.54 for the video-extracted diameter (\nameref{subsec:si_widths}).
-The transport model therefore uses the tip-distance profile alone, with physical inputs only and no fitted diameter exponent.
-A constant motor speed scores worse in the transport model (Methods).
-
-% NOTE (13 Oct, 1, fluorescence left out; Simon): There is no speed comparison with fluorescence because Nile Red videos (1-2 fps) are censored above ~5 um/s (the text above; also 0.18 streaks per bright-field streak at 5-6 um/s at 2 fps; Methods, \nameref{subsec:fl_detection_limit}).
-% NOTE (2, what leaving it out removes): Leaving it out removes the fluorescence fits of the tipward section (offset fit v_tip 1.3-1.7, v_inf 2.5-2.7 um/s, lambda 1.5-3.3 mm; Nile Red diameter slope 0.54 [0.39, 0.69], walls_v4), which agreed in direction with bright-field. It also removes two SI figures, now commented out (figS_fl_forward_backward_density, fluorescence against bright-field density; figS_tip_root_scatter, tipward against rootward), and the fluorescence panels of the speed IQR figure (fig:speed_iqr).
-% NOTE (3, transport model link): the transport model keeps v0 constant with only the tip-distance term; a diameter-dependent v0(D) was under test (#134). The main model uses physical inputs only, with no fitted width exponent (Simon, 12 Oct). The diameter source and the walls_v4 ranking are in the notes of \nameref{subsec:si_forward_flow}.
-
-% NOTE (15 Oct, 4, falloff to zero vs offset, Simon: SI only): This is the same hierarchical Bayesian fit as Fig 5b with v_tip fixed at 0, v(d) = v_inf (1 - e^(-d/ell)), on 1,481 bright-field edges: v_inf 2.79 [2.75, 2.83] um/s, ell 194 [145, 241] um. The offset fit gives v_tip 2.18 [1.92, 2.39], v_inf 2.93 [2.86, 3.03] um/s, ell 1.85 [1.11, 3.52] mm. The zero curve reaches 2.0 um/s at 250 um and is flat at 2.8 um/s beyond ~1 mm, so it misses the rise over 1-3 mm and sits ~10 % below the edges beyond 4 mm; within 500 um it fits slightly better (median log residual -0.006 against -0.066). WAIC is higher for the offset fit by 25.5 +- 7.3 (10.6 from the 82 edges within 1 mm of a tip, 12.7 from those beyond 3 mm). Only 7 edges lie within 250 um of a tip, so a drop on the ~20 um scale of the tip kymographs (\nameref{subsec:si_tips}) is below what the edge data resolve. The source is transport_paper feat/flow-regime, forward_speed_bayes.py --zero (c2a9ca9).
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=0.7\textwidth,keepaspectratio]{suppfig/figS_tip_falloff_zero.png}
-\caption{[Caption to be written.]}
-\label{fig:tip_falloff_zero}
-\end{figure}
-% NOTE (15 Oct): The figure is Fig 5b with both fits: edge medians (grey), binned medians with IQR (black), falloff with offset (blue, 95 % band) and falloff to zero (vermillion, 95 % band).
-
-\namedsubsection{Full and sparse flow}{subsec:si_flow_regimes}
-% NOTE (15 Oct): The section text is to be written by Simon; this is a new section on Simon's request (sparse against full flow moved out of Fig 5, as an observational difference).
-% NOTE (1, classification): Each bright-field edge is classified by the streak density in its tipward kymograph, with a threshold of 0.27 streaks per um per s, calibrated on Simon's blind labels (60 kymographs, two rounds; full flow / sparse flow / dormant / artifact). Sparse flow has few thin streaks, slow and about symmetric, ~1.8 um/s in both directions. Of 1,481 classified edges, 1,284 are full and 197 sparse (~13 %) (transport_paper fig_outputs/flow_regime/edges.csv).
-% NOTE (15 Oct, 2, main model by regime, recalibrated Keras widths, 1,544 edges; transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb, feat/flow-regime; supersedes the segmenter-width numbers): On all edges, full flow has 1,273 edges, 78.9 % within a factor of 2, bias (model / measured) 1.01, measured median 3.86 um/s and model 3.48; sparse has 179 edges, 65.9 %, bias 1.60, measured 1.85 and model 3.10; unclassified has 92, 80.4 %. On trail segments within 10 mm (figure below), full is 88 % within a factor of 2 with bias 1.20 (245 segments), and sparse 53 % with bias 1.79 (15).
-% NOTE (3, width, 14 Oct regime analysis): Sparse-flow edges are thinner, with a median lumen of 6.2 against 8.4 um for full flow. The model has no sparse state: it gives these edges the full motor stream, so it over-predicts their backflow.
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=0.6\textwidth,keepaspectratio]{suppfig/figS_flow_regimes.png}
-\caption{[Caption to be written.]}
-\label{fig:flow_regimes}
-\end{figure}
-% NOTE (15 Oct): The figure is Fig 5c, on the main model with recalibrated Keras widths, with each trail segment coloured by the flow regime of its edge (model_accuracy_two_models.py --layout regimes): full flow 245, sparse 15, no regime 14 segments. The grey wedge marks within a factor of 2, and the line is the identity.
-
-\namedsubsection{Video-extracted and network-image diameters}{subsec:si_widths}
-% NOTE (15 Oct): The section text is to be written by Simon; this is a new section on Simon's request (lumen width against the network (STG) width, and the methods to extract them).
-% NOTE (1, methods): The lumen width comes from the bright-field videos (U-Net walls, walls_v4, 2 times the distance transform), on 1,454 of the 1,503 tipward edges after the 14 Oct extension (445 videos added). The network widths on the same edges come from the low-magnification network images: the flow-table width ('table'), the segmenter width ('seg', quantised at 0.125 um), the legacy Keras width ('legacy'), and three direct image measures (FWHM of the cross-section profile, gradient edges, integrated darkness).
-% NOTE (2, agreement with the lumen, figure 'estimators', 1,969-1,984 matched edges, 5 plates; transport_paper feat/width-feasibility, width_feasibility.py): The within-plate Spearman rho with the lumen width is legacy 0.61, table 0.48, seg 0.48, image darkness 0.41, FWHM 0.17 and gradient 0.02. Held out by plate, with a linear calibration to the lumen, the median |error| is legacy 1.17 um, table / seg 1.27, FWHM 1.48 and a constant 1.52 um. The network images do not resolve the lumen width: the best estimator calls 39 % of edges within 10 % of the lumen.
-% NOTE (3, relation to speed, figure 'lumen vs network width'): The within-plate Spearman of the tipward speed is 0.54 with lumen width (1,449 edges), 0.30-0.36 with the network widths (table 0.32, legacy 0.31, seg 0.31) and 0.18 with image FWHM. The log-log slope of tipward speed on width is 0.53 for the lumen (rho 0.58) and 0.29-0.33 for the STG width. The Bayesian tipward fit with a width term (forward_speed_bayes, lumen) gives beta 0.49 [0.45, 0.54]; with tip distance x width it gives beta 0.47, v_tip 2.18, v_inf 2.92 um/s and ell 1.10 mm.
-% NOTE (15 Oct, 4, model input; Simon): The transport model uses the network widths (it needs every edge, not only the filmed ones). The main model uses the scaled Keras width (legacy times 0.75, the median lumen / legacy; fallback 0.83 times the segmenter width on the ~8 % of edges without a legacy width), described as a Keras width model recalibrated on the measured hyphae (Methods, transport model).
-% NOTE (15 Oct, 5, caveat): five session frames have bad stitching in the network images (LPD2412A025_t36, STR2307A112_t38 / _t60 / _t73, PNF2307A080_t74). This affects only the image widths (bottom row of the estimators figure): there the nearest earlier frame within 20 um of the edge (2-6 h earlier) is imaged instead. The stored widths (top row) are not affected.
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_estimators.png}
-\caption{\textbf{Of the diameters measured in the network images, the legacy Keras diameter follows the video-extracted diameter best; diameters read directly from the image profile are limited by the blur.}
-Each point is a network edge filmed at high magnification, coloured by plate; y-axis: the diameter extracted from the bright-field flow videos (U-Net wall segmentation, twice the distance transform), x-axis: the diameter of the same edge in the network image of that session (1.725~$\mu$m per pixel).
-Top row: diameters stored with the network graph: the diameter used by the model tables (table; the segmenter diameter where present, else the legacy diameter), the legacy diameter from the earlier Keras diameter model on cross-sections of the network image, since replaced by the segmenter (legacy), and the diameter head of the segmenter (seg; stored in steps of 0.125~$\mu$m, hence the stripes).
-Bottom row: diameters read from cross-sections of the raw network image, median per edge: the full width at half maximum of the dark dip (img\_fwhm), the distance between the steepest falling and rising flanks (img\_grad), and the integral of the fractional darkness across the hypha (img\_area, in $\mu$m).
-Panel titles: Spearman correlation with the video-extracted diameter, the median over the five plates (within) and over all edges (pooled); median absolute error of the video-extracted diameter predicted by a linear calibration fitted on the other four plates (held-out $|$err$|$; 1.52~$\mu$m for a constant); number of edges.
-The legacy diameter is about 3~$\mu$m wider than the video-extracted diameter but tracks it best (within-plate $\rho$ 0.61, range 0.40--0.65 over plates; held-out error 1.17~$\mu$m, within 20\% of the video-extracted diameter on 65\% of edges).
-The dark band of a hypha in the network images is 15--20~$\mu$m wide against video-extracted diameters of 5--13~$\mu$m, so the full width at half maximum and the flank distance hardly follow the video-extracted diameter ($\rho$ 0.17 and 0.02).}
-\label{fig:width_estimators}
-\end{figure}
-% NOTE (15 Oct): The caption was drafted by Claude on Simon's request; the numbers are from transport_paper fig_outputs/width_feasibility/width_feasibility_stats.csv (width_feasibility.py, feat/width-feasibility). 'About 3 um wider' is the median legacy minus lumen, 2.8 um (medians 11.3 and 8.7 um, 1,969 edges); the log-log slope of lumen on legacy is 0.45.
-% NOTE (15 Oct, final model on the legacy Keras widths; transport_paper feat/flow-regime, theta_sweep_gimf.py --widths, fig_outputs/flow_regime/width_source_compare.csv; 1,544 edges): This run uses the legacy width times 0.75 (median lumen / legacy; its spread matches the lumen's, log-SD 0.257 against 0.254, segmenter 0.211) on every store edge that has one, and 0.83 times the segmenter width on the ~8 % without one. It gives 77.5 % within a factor of 2 (segmenter 78.0 %), KS 0.056 (0.050), and trail segments 86.1 % within a factor of 2 with bias 1.21 (86.9 %, 1.21). Model / measured by lumen-width tercile thin / mid / wide is 1.15 / 1.03 / 0.99 (segmenter 1.20 / 1.05 / 0.96). Within 1 mm of a tip the model gives 3.11 um/s (segmenter 2.84, measured 2.17), and beyond 8 mm 3.50 (3.50, measured 4.22). Legacy at the segmenter's level (times 0.92) gives 78.1 %, KS 0.052. With the video lumen on the 1,969 filmed edges, or with the OLS calibration (lumen = 4.39 + 0.376 legacy), the results are 76.9 % / 79.0 %, KS 0.056 / 0.068. So the Keras widths flatten the width bias slightly but leave the scores and the far-from-tip under-prediction unchanged; the shortfall beyond 8 mm is not from the compressed width contrast of the segmenter.
-% NOTE (15 Oct, to the note above): The '+ lumen' and OLS runs kept the ~8 % of edges without a legacy width at 1.0 times their segmenter width (no 0.83 rescale), as did a first legacy times 0.75 run (76.6 %, floor binding on 35 % of edges against 24 % with the rescale); compare them with care.
-% NOTE (15 Oct, shift only): This run uses legacy minus 2.8 um (median legacy minus lumen, 1,969 edges; floor 2 um on 4 % of store edges; fallback 0.83 times segmenter). It gives 76.2 % within a factor of 2, KS 0.051, and trail segments 88.0 % within a factor of 2 with bias 1.19 (the best of the width runs on the trails). Model / measured by lumen tercile is 1.13 / 1.00 / 1.01 (the flattest). Within 1 mm of a tip it gives 3.12 um/s and beyond 8 mm 3.44 (measured 2.17 / 4.22). The shift widens the relative width spread (log-SD 0.36 against the lumen's 0.25).
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_lumen_speed.png}
-\caption{[Caption to be written.]}
-\label{fig:width_lumen_speed}
-\end{figure}
-
-\namedsubsection{Tree and loop edges and network robustness}{subsec:si_tree_loop}
-% NOTE (16 Oct): The section text is to be written by Simon; new section on Simon's request (measured and modelled quantities on tree and loop edges against tip distance, and a robustness measure). Analysis: transport_paper feat/flow-regime tree_loop_si.py (0e6085d, b650104), figures manuscript_figures/figS_tree_loop_kappa.py; main model unchanged.
-% NOTE (1, tree vs loop, figure 'tree_loop', 1,544 filmed edges: 213 tree (bridge), 1,331 loop): Median tree / loop within 4 mm of a tip and beyond 4 mm. Measured rootward speed 2.74 / 3.18 and 3.50 / 4.09 um/s (both p < 0.03). Model rootward speed 2.97 / 3.30 (n.s.) and 3.09 / 3.91 um/s. Measured tipward speed 2.42 / 2.86 near tips, 3.08 / 3.08 beyond. Lumen width does not differ (8.8 / 8.9 and 9.2 / 9.4 um). Routed lipid demand is 0 on tree edges beyond 4 mm (median), against 1.45 on loop edges: in the model these tree branches carry no lipid (a = b) and return their motor flux only. The net (circulating) flux on loop edges is 25-29 % of the motor flux, and 0 on tree edges by construction.
-% NOTE (2, robustness kappa, definition): kappa is the fewest hyphae that must be cut to disconnect a section of the network (every node within 500 um along the network of an edge) from the root; by Menger's theorem it is the number of hypha-disjoint routes from the section to the root. Cuts count per arc (junction to junction), computed as a maximum flow on the arc graph. A tree section has kappa 1. The imaged network continues below the bottom edge of the image towards the root compartment, so every node within 1 mm of the bottom edge counts as connected to the root (open bottom); with the solver's 13 or so root nodes alone, kappa is 1 lower in median and its relation to speed is inconsistent between plates.
-% NOTE (3, kappa results, figure 'kappa', updated 16 Oct to the continuous kappa, 1,454 filmed edges): Simon asked for a more continuous kappa: the figure uses the open-bottom kappa averaged over sections of 250, 375, 500, 750 and 1,000 um (steps of 0.2, range 1-11, median 4; tree_loop_si.py --kappa-mean). It rises away from tips (rho +0.31). The measured rootward speed rises with it (rho +0.31; with the 500 um kappa alone +0.29, and +0.24 after removing tip distance, routed demand and width), on 4 of 5 plates within plate (EPY088 +0.24, LPD025 +0.46, PNF080 +0.27, STR112 +0.16, PNF072 +0.02). The model does not follow (rho +0.03): it over-predicts at kappa <= 2 and 2-4 (median log2 model / measured +0.28, +0.22) and under-predicts at 4-6 and above 6 (-0.14, -0.17). The section size matters little (250 / 500 / 1,000 um: rho +0.24 / +0.27 / +0.28 with the solver roots). (17 Oct) Is the kappa trend observational bias? Partly width: at fixed tip distance the kappa effect on the measured rootward speed drops from +0.24 to +0.15 when the video lumen is added (767 edges; +0.17 with demand too), and the model's error still falls with kappa at fixed lumen (-0.20); the model has no measured lumen. Not sparse flow: on full-flow edges alone (1,203) the trend holds (+0.29) and the model's error runs from +0.27 (log2, kappa <= 2) to -0.24 (> 6). Not motor speed: the tipward speed's rise with kappa (+0.19 after tip distance) vanishes with the lumen (+0.07), while rootward / tipward still rises with kappa (+0.21). What remains may be missing physics in meshed regions or selection of visibly flowing hyphae (filmed edges have higher betweenness, SI subsec:si_video_selection), which filmed edges alone cannot separate.
-% NOTE (4, open-bottom model variant, tested and not adopted; Simon: main model unchanged): Making every junction and end within 1 mm of the bottom edge a root of the global solve (58-399 roots per session, model_accuracy_throttle.py --open-bottom 1000) gives 76.7 % of edges within a factor of 2 (main 77.0 %), trail segments 82.8 % (82.2 %), and leaves the kappa trend of the error unchanged; within 3 mm of the bottom edge it lowers the model (0.89 against 0.99 of the measured) and the score (69.7 against 72.6 %). The faster backflow in robust sections is therefore not an artefact of the few roots of the solve.
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_tree_loop.pdf}
-\caption{[Caption to be written.]}
-\label{fig:tree_loop}
-\end{figure}
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_kappa.pdf}
-\caption{[Caption to be written.]}
-\label{fig:kappa}
-\end{figure}
-% NOTE (16 Oct, figure 'kappa' panels; continuous kappa): (a) EPY088 t55, every arc coloured by kappa, the section grown from its ends; dark grey: within the open bottom band at some section size; light grey: not connected to the root at some section size (kappa < 1). (b) distribution over the filmed edges (bins of three 0.2 steps); (c) kappa against tip distance, bin medians with 25th-75th percentile; (d) measured and model rootward speed per kappa class (<= 2: 249, 2-4: 480, 4-6: 515, > 6: 215 edges); (e) log2 model / measured per class, dashed at a factor of 2.
-
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_relations.pdf}
-\caption{[Caption to be written.]}
-\label{fig:relations}
-\end{figure}
-% NOTE (16 Oct, figure 'relations', Simon: a general figure on tip distance, diameter and kappa, with edge age, routed lipid demand and the measured rootward speed; Theta dropped because the model Theta follows the routed demand, rho 0.94, and piles up at the a = 0.8 b floor; 767 filmed edges with all six, 5 plates): Diameter is the video lumen. Edge age is in hours, from the time point the edge appeared to the session, from the store timestamps (time points ~2 h apart). kappa is made continuous by averaging the open-bottom kappa over sections of 250, 375, 500, 750 and 1,000 um (48 distinct values against 11; rho with the measured rootward speed +0.31 against +0.29 at 500 um; the model still +0.03). Diagonal: distributions; below: y against x in x deciles (median, 25th-75th percentile); above: Spearman rho pooled (median within plate). Rootward speed goes with lumen width +0.58 (+0.55), edge age +0.29 (+0.41), kappa +0.29 (+0.24), tip distance +0.26 (+0.25) and routed demand +0.25 (+0.33). Age goes with tip distance +0.61 (+0.80) and kappa +0.53 (+0.47); width with demand +0.32 (+0.43) and age +0.24 (+0.35). Tip distance does not relate to the routed demand (+0.05).
-
-\namedsubsection{Movement at the growing tips}{subsec:si_tips}
-% NOTE (10 Oct): The section text is to be written by Simon and filled with more data later (Simon: it does not lead to many conclusions yet). The sources are transport_paper explore/tip-diffusion (f4a8ba7, 37c25b3), manuscript/tip_diffusion_sketch.md, AMF_Transport#5 and transport_paper#132 Q1.
-% NOTE (1, streaks vs tip distance, bright-field, 654,711 streaks, 15 sessions): The median tipward streak duration is 1.20 s within 0.5 mm of a tip against 1.40-1.45 s beyond 1 mm, and the median length is 2.6 against 4.2-4.5 um (shorter because slower, not shorter-lived). Per kymograph, the median is 38 moving streaks within 0.5 mm against 118-149 beyond 2 mm; 20 % of kymographs within 1 mm have no moving streak, against 5-8 % beyond; the static share of streaks is 0.31 against 0.02-0.04. Structure-tensor coherence is flat (0.74-0.79). Many near-tip kymographs look clean but low-SNR (Simon). Caveats: the detector minimum of 15 frames (0.75 s) censors short or irregular movement; tip edges are short and counts are not length-normalised; streaks are pooled without bootstrap.
-% NOTE (2, videos with a tip in frame): the filmed positions rarely include a tip (selection, \nameref{subsec:si_video_selection}). In the first frames of the 96 videos nearest a tip (graph tip distance < 1.5 mm), 5 bright-field 20 fps videos have a free tip in frame (8 tip branches; STR2307A112, EPY2412A088, LPD2412A025, PNF2307A080, PNF2307A072); 2 more are 0.5 / 0.1 fps time-lapses.
-% NOTE (3, kymographs traced by hand from the apex, figure below): Within ~20 um of the apex, movement is sparse and slow (~0.5-1 um/s, read by eye), in both directions in some branches, with stalls, small steps back and oscillations (period ~2 s, no net motion). Much of the last 20 um is static, and there are no long straight ~3 um/s streaks as elsewhere in the network. The SNR is low, and one video's apex is uncertain.
-% NOTE (4, open): Still open: more tip videos (targeted recordings, or a scan of the other video sets), particle tracking for an MSD, and a link to the near-tip slowdown (Fig 5b) and to the main-text qualifier 'no sign of random or back-and-forth movement'.
 
 % -----------------------------------------------------------------------
-% FIGURE: kymographs along tip branches, traced by hand from the apex
-% Generated by transport_paper Working_notebooks/tip_crops_snellius.py (on Snellius) + tip_kymos_handtraced.py (explore/tip-diffusion 37c25b3)
-% NOTE (10 Oct, caption is Simon's to write; facts): one row per tip branch; left: first frame with the trace (red) and the apex (cyan);
-% middle: raw kymograph (x = distance from the apex along the hypha, um; y = time, s), mean over +/-3 px across the hypha;
-% right: same with the time-mean removed (moving features only). 0.069 um/px, 20 fps; 10 s videos except PNF2307A072 (30 s).
-% Rows: STR2307A112 2023-09-04 13:04:46 short and long branch; EPY2412A088 2025-01-22 12:12:01 branches a, b (trace off the hypha
-% beyond ~15 um in b); LPD2412A025 2025-01-12 18:27:52 curled and right branch; PNF2307A080 2023-08-13 21:42:19; PNF2307A072
-% 2023-08-10 14:35:58 (apex uncertain).
+% FIGURE S1
+% Actively referenced in main text (line 48):
+%   "method, SI Fig. \ref{fig:speed_flux_extraction_real_data}"
+% Content: pipeline for extracting directional (tip-ward / root-ward)
+%          speeds from bright-field kymographs.
 % -----------------------------------------------------------------------
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{suppfig/figS_tip_kymos.pdf}
-\caption{[Caption to be written.]}
-\label{fig:tip_kymos}
+\includegraphics[width=\textwidth]{suppfig/FigS_streak_pipeline.pdf}
+\caption{\textbf{Method for extracting directional speeds from kymographs.}
+\textbf{(A)} TODO.
+\textbf{(B)} TODO.
+}
+\label{fig:speed_flux_extraction_real_data}
 \end{figure}
 
 % -----------------------------------------------------------------------
@@ -502,23 +178,48 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 % \label{fig:tip_root_scatter}
 % \end{figure}
 
-% -----------------------------------------------------------------------
-% FIGURE: osmotic shock, examples, response against osmolarity, Nile Red
-% Referenced in main text (Results, osmotic paragraph): "SI Fig.~\ref{fig:salt_shock}D"
-% Generated by transport_paper Working_notebooks/figure3/salt_shock_me.py (figS_salt_shock)
-% -----------------------------------------------------------------------
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=0.9\textwidth,keepaspectratio]{suppfig/figS_salt_shock.pdf}
-\caption{\textbf{Osmotic shock: examples, dependence on the droplet and lipid movement.}
-\textbf{(A, B)} Two example kymographs after a drop of NaCl solution (100 mM and 200 mM) with the speed of the two streams below, rootward (pink) and tipward (blue); dotted line: onset of the response.
-\textbf{(C)} Change in the rootward speed, 4--15~s after the drop divided by $-10$ to $-1$~s before it, against the osmolarity of the droplet (medium-like drops at the left; NaCl in 2025 and 2026, sucrose in 2026).
-\textbf{(D)} The two Nile Red fluorescence movies of NaCl 100 mM drops: rootward (pink) and tipward (blue) speed divided by its mean before the drop.
-The lipids, like the bright-field flow, keep their tipward speed while the rootward speed rises.}
-\label{fig:salt_shock}
-\end{figure}
 
-\clearpage
+\section{Perturbations}\label{sec:si_perturbations}
+
+\namedsubsection{Growth-induced mass flow}{subsec:si_mass_flow}
+% NOTE (12 Oct): This section was moved from the main text (Results, 'Lipid transport across the network') as it stood, with the outline headings dropped and the first paragraph uncommented; its notes came with it. Its figure references (Fig 4D, Fig 1F,G, SI carbonflow b, d, e) are stale; see the notes.
+Hyphal extension as shown in Fig.~\ref{fig:schematic_model}D, in addition to consuming carbon, is also associated with the creation of new network volume.
+The corresponding demand for water has been shown to be the mechanism driving flows in colonies of other (non-mycorrhizal) fungal species~\cite{heaton_growth-induced_2010, heaton_advection_2012}.
+In those systems, the movement of matter within the network is well explained by the movement of water in a network of pipes with set sources and sinks. A hydraulic pressure gradient is established across the network, from inoculation roots to the tips, and the resulting flows are sufficient to explain the observed movement of matter.
+We wanted to investigate whether this explanation was compatible with our AM fungal system.
+Because volume creation and carbon demand are proportional, we use the same approach as for carbon, simply replacing the magnitude of the carbon source and sink, $\Delta C_k$, with the volume $\Delta V_k$.
+We keep a similar global source node corresponding to a water reservoir. {\color{blue} the word ``similar" suggests that a reader will know the other work which should not be assumed}
+
+We represented the growing network as a temporally evolving graph where each edge has an activation time corresponding to its first appearance.
+We call $N$ the set of all graph nodes, and $E$ the set of all graph edges.
+This labelling allowed the growth between two time steps to be established in a spatially resolved manner (Fig.~\ref{fig:schematic_model}D).
+For each growing node $k\in N$ we could establish the total biovolume {\color{blue} maybe ``network volume" since you have not used the term biovolume above} newly built from that node $\Delta V_k$.
+The demand for carbon at each node $\Delta C_k$ is proportional to the newly built biovolume. {\color{blue} maybe just write: The nodal demand for carbon  $\Delta C_k\propto\Delta V_k $
+} These are modeled as lipid effluxes out of the system, so the demand gets a negative sign. Lipids must be supplied from the root compartment, which is represented by adding one additional "source" node to the network, $S_{source} = - \sum_{k \in N} \Delta C_k$. The "source" node is connected to the nodes of the network closest to the plant (see Methods) through zero length junctions. Inevitably, because of loops created through anastomoses, there are multiple possible paths from the "source" node to a node with non-zero carbon demand. 
+
+These multiple paths require us to resolve ambiguities in the lipid distribution inside the network, while adhering to the growth constraints in the observed data.
+We assume, as in previous work \cite{heaton_growth-induced_2010}, that carbon flux would be distributed over those paths in a way that minimizes the dissipation of hydraulic energy. 
+
+We assign to each edge $(i,j)\in E$ a hydraulic resistance $\mathcal{R}_{i,j}$ associated with energy dissipation. {\color{blue} i think in network literature these are called resistances, so maybe write as ${\cal R}_{i,j}$, which are different than energy dissipation} We set $\mathcal{R}_{i,j} = \frac{8 \mu L_{i,j}}{\pi b_{i,j}^4}$ where $L_{i,j}$ is the length of the edge, $b_{i,j}$ is its radius, and $\mu$ is a viscosity that is treated as a constant in global energy minimization.
+With a carbon flux from $i$ to $j$ $\phi_{i,j}$ the power dissipation {\color{blue} maybe write as: the rate of energy consumption} is set to $\mathcal{R}_{i,j} \phi_{i,j}^2$.
+We minimize the objective function $\sum_{(i,j)\in E} \mathcal{R}_{i,j} \phi_{i,j}^2$ under the constraint that for all nodes $k$, $\sum_{i\in N} \phi_{i,k} = \Delta C_k$ (Methods).
+This model allows us to estimate, in each edge of the network, the expected direction and lower bound of lipid flux required for the observed growth of the tip (Fig. SI\ref{fig:carbonflow}b). 
+
+% When comparing these expected lipid fluxes with the one observed in each edge. We found that in 70\% of the cases, the direction of lipid flux could be predicted by our model. This percentage increased to more than 80\% when we considered only points in the network where both the modelled and measured absolute flux were high (Fig. \ref{fig:carbonflow}c).
+
+The calculation  yields the exact volumetric flow rate $Q_{i,j}$ in the hydraulic equivalent of the network.
+The speed $v_{i,j}$ was then set as $v_{i,j}=\frac{Q_{i,j}}{\pi b_{i,j}^2}$. {\color{blue} something is wrong with this sentence since model is referred to twice:} We found that this model did not explain the speed in the direction predicted by the model (Fig. SI\ref{fig:carbonflow}d).
+Such a model also does not explain the existence of fluid movement in the other direction.
+Indeed, the fluid flow always follows the pressure gradient and therefore cannot be bidirectional.
+% NOTE (7 Oct): Fig. SI carbonflow (d, e) is one of the wrong SI files (FigS2-S5, transport_paper#129), so the speed claim here and the peaked-distribution claim below have no figure behind them until it is replaced.
+
+Finally, as shown in Fig. \ref{fig:hyphal_profiling}F,G and \ref{fig:asymmetries}A, the flow speed in the modeled and observed direction of the lipid flux narrowly peaks around the value $v_0 = 3\mu m/s$.
+% NOTE (12 Oct): Fig 1 has panels A-E, so 'Fig. hyphal_profiling F,G' points to nothing; the tipward speed distribution is Fig 2A/B. The motor-speed range (2-6 um/s, howard_mechanics_2002) repeats the hypothesis section (steinberg_cell_2017).
+In addition to not being able to predict a speed of the right order of magnitude, the growth induced mass flow model does not yield such a peaked distribution (Fig. SI\ref{fig:carbonflow}e).
+The peaked distribution instead strongly suggests that the movement of lipids within the AM fungal colony is an active process driven by the movement of molecular motors on tracks walking at fixed speed.
+In fact, the speed of known molecular motors can typically be in the range $2-6\mu m/s$ for the faster ones \cite{howard_mechanics_2002}.
+This hypothesis is further motivated by the qualitative observation that the movement of lipids in the colony follows well established tracks. 
+
 
 % -----------------------------------------------------------------------
 % FIGURE S2
@@ -547,127 +248,333 @@ Model does not reproduce observed speeds.
 \label{fig:carbonflow}
 \end{figure}
 
-\clearpage
+\namedsubsection{Osmotic shock}{subsec:si_osmotic}
 
 % -----------------------------------------------------------------------
-% FIGURE S3
-% Referenced in commented-out text (line 64):
-%   "SI Fig.\ref{fig:replicates}"
-% Content: speed asymmetry dataset from 6 developmental time-points
-%          across 2 plates, ~2000 edges total.
-% Uncomment the section in main text (line 64) when this figure is ready.
+% FIGURE: osmotic shock, examples, response against osmolarity, Nile Red
+% Referenced in main text (Results, osmotic paragraph): "SI Fig.~\ref{fig:salt_shock}D"
+% Generated by transport_paper Working_notebooks/figure3/salt_shock_me.py (figS_salt_shock)
 % -----------------------------------------------------------------------
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=\textwidth]{suppfig/FigS3.pdf} % WRONG FILE (checked 2 Oct): shows d_L against [P]_0 (boxplots), not speed asymmetry. No current replacement: needs a per-plate/per-session version of Fig 2A (rootward vs tipward). figS_measurement_map.pdf shows where edges were measured, not the asymmetry.
-\caption{\textbf{Speed asymmetry replicated across developmental time-points.}
-\textbf{(A)} TODO: overview of all ~2000 measured edges across 6 time-points and 2 plates.
-\textbf{(B)} TODO.
-}
-\label{fig:replicates}
+\includegraphics[width=0.9\textwidth,keepaspectratio]{suppfig/figS_salt_shock.pdf}
+\caption{\textbf{Osmotic shock: examples, dependence on the droplet and lipid movement.}
+\textbf{(A, B)} Two example kymographs after a drop of NaCl solution (100 mM and 200 mM) with the speed of the two streams below, rootward (pink) and tipward (blue); dotted line: onset of the response.
+\textbf{(C)} Change in the rootward speed, 4--15~s after the drop divided by $-10$ to $-1$~s before it, against the osmolarity of the droplet (medium-like drops at the left; NaCl in 2025 and 2026, sucrose in 2026).
+\textbf{(D)} The two Nile Red fluorescence movies of NaCl 100 mM drops: rootward (pink) and tipward (blue) speed divided by its mean before the drop.
+The lipids, like the bright-field flow, keep their tipward speed while the rootward speed rises.}
+\label{fig:salt_shock}
 \end{figure}
 
-\clearpage
+\namedsubsection{Size of the isolated segment}{subsec:si_segment_size}
+% NOTE (10 Oct): The section text is to be written by Simon; it is cited from the main text (section cuts, "does not require the long range connectivity"). The facts are from docs log 2026-09-29-registering-the-cut-videos-shows-the-stage-coordinates-are-off-by-millimetres-and-the-smallest-isolated-piece-loses-the-most-flow.md. The analysis is transport_paper Working_notebooks/figure3/section_cut_registered.py (branch feat/section-cut-registered 4a34453), with outputs in fig_outputs/perturbations/section_cut_registered/videos.csv.
+% NOTE (1, data): Simon registered the cut-day videos by hand onto arc-unit STG stores anchored on the last frame before the cut: LPD2412A025_t77, EPY2412A104_t82, EPY2412A084_t73, LPD2412A009_t90. LPD2412A023 cannot be registered (its segmented frames miss the long hyphae around the cut site).
+% NOTE (2, piece size from the network): A piece is isolated when the cut splits it off its component (the cut mark severs every edge within max(50 um, 2.5 map px)). The stores have segmentation gaps, so the 24 and 73 mm pieces may still be joined in reality.
+% NOTE (3, post/pre speed on the same STG edges, 0-30 min / later): EPY2412A104, inside a 4.6 mm piece between two cuts (hand value 4.3 mm), has 0.74 / 0.18 at 35-68 min. LPD2412A025, a 24 mm piece, 1.4 mm from the cut, has 0.26 / 0.68 at 80-326 min. EPY2412A084, a 73 mm piece, 3 mm away, has 0.78 / 0.84 at 30-58 min. LPD2412A009, still connected, 1.9 mm along the network, has 0.80 / 0.66 at 93-119 min. At a cut stub (EPY104, LPD009) the values are 0.10-0.50 / ~0.10.
+% NOTE (4, reading in the log): the smallest isolated piece loses the most flow over time; whether the size dependence holds needs more than one small piece. Flow did not stop in any piece (main text), but at cut stubs it fell to ~0.1 of the pre-cut speed.
+% NOTE (5, caveats): Stage coordinates are unreliable on every cut plate (positions are off by 0.2-2.3 mm; videos were placed by frame matching and Coco's map labels instead). Registrations give the edge, not the position along it. EPY104 videos 22 and 28 may sit outside the piece (from comparing Coco's labels with the registration). The writeup science/section_cut_sites.typ (rhizosphere PR #240) still carries the older stage-position numbers.
 
 % -----------------------------------------------------------------------
-% FIGURE S4
-% Referenced in commented-out text (lines 83, 83):
-%   "Figure \ref{fig:lipid_flows}d"  /  "SI Fig showing all replicates"
-% Content: directional lipid kymographs and Fourier-filtered versions
-%          showing net tipward flux; all replicate panels.
-% Uncomment the section in main text (lines 82-84) when ready.
-% -----------------------------------------------------------------------
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth]{suppfig/FigS4.pdf} % WRONG FILE (checked 2 Oct): shows measured-radius histograms and r_predicted - r_real, not lipid direction. Closest: transport_paper manuscript/figures/figS_lipid_bias.pdf (per-plate share strongly to tip, fluorescence vs brightfield, vs tip distance); kymograph panels are already Fig 2D; caption needs rewriting.
-\caption{\textbf{Lipid movement is predominantly tipward across all replicates.}
-\textbf{(A)} TODO.
-\textbf{(B)} TODO.
-\textbf{(C)} TODO.
-\textbf{(D)} Aggregate net flux direction in fluorescence (red) and bright-field (black) for all measured trails.
-}
-\label{fig:lipid_flows}
-\end{figure}
-
-\clearpage
-
-% -----------------------------------------------------------------------
-% FIGURE S5
-% Referenced in commented-out text (line 165):
-%   "Fig. \ref{fig:hydraulic_proportionality}b"
-% Content: model prediction of C/P exchange proportionality emerging
-%          from lipid-induced backflow.
-% Uncomment the paragraph in main text (lines 164-167) when ready.
+% FIGURE: section cut, speed before and after, Bayesian post/pre ratio
+% Generated by transport_paper Working_notebooks/figure3/segment_cut_bayes.py (feat/fig3c-timing 3e9b578)
+% NOTE (10 Oct, caption is Simon's to write; facts): The boxes show per-video median speeds (one point per video and stream; marker = cut
+% position, as in Fig 3C), before vs after the cut, bright-field and Nile Red fluorescence, to tip (blue) and to root (pink).
+% Above each pair: posterior median of the population ratio after/before with its 95 % credible interval, and stars for the
+% posterior probability that the change has the sign shown (* >= 0.95, ** >= 0.99, *** >= 0.999; n.s. below 0.95).
+% Model (log speed): y = mu_position + delta_position * after + noise; noise sd = kappa x the video's own spread
+% ((log p75 - log p25) / 1.349 of its pixel speeds), kappa estimated, so noisier videos weigh less; positions partially pooled
+% (delta_position ~ Normal(Delta, sd_delta)); priors Delta ~ N(0, 0.5), sd's HalfNormal; Gibbs + Metropolis, 4 chains, R-hat <= 1.012.
+% Results (ratio [95 % CrI], P(decrease)): bright-field to tip 0.81 [0.66, 0.96], 0.986; to root 0.78 [0.57, 1.16], 0.91;
+% Nile Red to tip 0.83 [0.67, 1.06], 0.95; to root 0.77 [0.56, 1.04], 0.96. Videos: bright-field 24 before / 45 after,
+% Nile Red 17 / 39, 4 positions. Frequentist check (permutation within position): to tip p = 0.005 (BF), < 0.001 (NR).
+% Reading: both streams slow by about 20 % after the cut, with similar posterior ratios; the rootward decrease is less certain
+% because its speeds spread more, and one bright-field position rises (raw 1.97x) but is down-weighted by its large spread.
 % -----------------------------------------------------------------------
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=\textwidth]{suppfig/FigS5.pdf} % WRONG FILE (checked 2 Oct): shows hyphae thickening over 72 h (images, r vs time), not C/P exchange. No current replacement in transport_paper.
-\caption{\textbf{Lipid-backflow model predicts proportional C/P exchange.}
-\textbf{(A)} TODO.
-\textbf{(B)} Carbon flux from plant vs phosphorus flux from fungal colony under the backflow model, showing proportional scaling.
-}
-\label{fig:hydraulic_proportionality}
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_segment_cut_bayes.pdf}
+\caption{[Caption to be written.]}
+\label{fig:segment_cut_bayes}
 \end{figure}
 
-\clearpage
+% NOTE (10 Oct, distance to the cut and time after it; transport_paper feat/fig3c-timing 77aae55 / 40c1fae, Working_notebooks/figure3/section_cut_distance_time.py): The registered sessions are EPY084_t73, LPD009_t90, LPD025_t77 and EPY104_t82, with 106 videos per stream (78 after, 28 before) and 53 after-cut videos with a pre-cut reference on the same network edges (EPY084 15, LPD009 17, LPD025 19, EPY104 2). The stream is taken from the growth graph (the motor-like swap rule swapped no edge).
+% NOTE (model): The model is log(after/before) ~ a_plate + b log10(distance mm + 0.1) + c log10(minutes), with plate intercepts partially pooled and per-video noise = kappa x spread (post and pre spreads combined); R-hat <= 1.013. For time, the tipward coefficient is c = +0.47 [0.23, 0.69] per decade of minutes (P(c > 0) > 0.999), and the rootward one is +0.15 [-0.07, 0.38] (not credible). The distance coefficient b is not estimable, because distance is one value per plate among the modelled videos (EPY104 0.28, LPD025 1.2-1.4, LPD009 1.87, EPY084 2.99 mm); log distance and log time correlate at -0.05 to -0.30. Isolated against connected, and piece length, are constant within a plate (confounded with plate).
+% NOTE (reading): The tipward stream drops most just after the cut (ratio ~0.1-0.5) and recovers towards 0.7-0.8 over 1-5 h, mainly on LPD025. The rootward stream scatters widely (some above 1). Videos on a cut stub stay depressed in both streams (0.05-0.4). Caveats: registrations give the edge, not the position along it; stage coordinates are unreliable; there are only 4 sites.
+% NOTE (stream labels): Fig 3C assigns tipward / rootward by the order of the two directions in the flow file; on these re-run data that matches the growth direction for 93.5 % of 306 measurements and 100 % of the 58 at the Fig 3C positions (checked on the re-run, not on Fig 3C's original files, which are on Snellius only).
 
 % -----------------------------------------------------------------------
-% ADDITIONAL FIGURES (not yet labelled in main text)
-% Assign \label and add \ref in main text when ready to use.
+% FIGURE: section cut, after/before ratio vs distance to the cut and time after the cut
+% Generated by transport_paper Working_notebooks/figure3/section_cut_distance_time.py (feat/fig3c-timing 40c1fae)
+% NOTE (10 Oct, caption is Simon's to write; facts): The rows are to tip and to root. The left panels show the ratio after/before (same network edges) against network distance to the cut (log), coloured by log10 minutes after the cut; the right panels show the ratio against minutes after the cut (log), coloured by log10 distance. Circles are isolated pieces, squares connected ones, and red crosses are videos on a cut stub. The styling is exploratory and is to be redrawn.
 % -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_section_cut_distance_time.pdf}
+\caption{[Caption to be written.]}
+\label{fig:section_cut_distance_time}
+\end{figure}
+
+% -----------------------------------------------------------------------
+% FIGURE: section cut, speed time courses per plate and stream
+% Generated by the same script (40c1fae)
+% NOTE (10 Oct, caption is Simon's to write; facts): For each registered plate (LPD025, EPY104, EPY084, LPD009) and stream, the figure shows per-video speed (um/s) against minutes from the cut (symmetric log axis); the colours are blue for connected, orange for isolated and red for a cut stub. The styling is exploratory and is to be redrawn.
+% -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{suppfig/figS_section_cut_timecourse.pdf}
+\caption{[Caption to be written.]}
+\label{fig:section_cut_timecourse}
+\end{figure}
+
+
+\section{The tipward speed}\label{sec:si_tipward}
+
+\namedsubsection{Modelling the tipward speed}{subsec:si_forward_flow}
+% NOTE (15 Oct): The text below was drafted by Claude on Simon's request (fill out the forward model SI section), from the notes of this section and the current fits (transport_paper feat/flow-regime: forward_speed_bayes.py, edges.csv / posterior.csv / width_compare.csv; width_feasibility_stats.csv). The width numbers marked 873 edges are from the walls_v4 rebuild (note of 11 Oct below); the force-balance sentence needs Simon's check of the model's form.
+The transport model needs the tipward (motor) speed on every edge of the network (Methods), so we asked which properties of a hypha predict it.
+We used the bright-field videos only (\nameref{subsec:si_forward_choices}).
+For each edge we pooled the moving tipward streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,481 edges with 299,584 streaks in 15 sessions on 5 plates.
+
+\paragraph*{Distance to the nearest growing tip.}
+The tipward speed is lower close to the growing tips and levels off within a few millimetres (Fig.~\ref{fig:fig5_plug}b).
+We described this with a falloff to an offset,
+\[
+v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
+\]
+with $d$ the network distance to the nearest growing tip at the session.
+We fitted it with a hierarchical Bayesian model on the log median streak speed of each edge, $y_i = \log v(d_i) + w_p + u_i + \epsilon_i$, with an edge effect $u_i \sim N(0, \sigma_{\mathrm{edge}})$, a plate effect $w_p$ (summing to zero over plates) and a sampling error $\epsilon_i$ whose standard deviation was bootstrapped from the edge's own streaks, so that edges with few or scattered streaks count less.
+Priors were uniform on $v_\infty$ and $v_{\mathrm{tip}}$ (0.05 to 10~$\mu$m/s) and on $\log \ell$ (10~$\mu$m to 50~mm), half-normal on the standard deviations, and the posterior was sampled with adaptive Metropolis (4 chains, $\hat{R} \leq 1.01$).
+The posterior medians [95\% intervals] were $v_{\mathrm{tip}} = 2.18$ [1.92, 2.39]~$\mu$m/s, $v_\infty = 2.93$ [2.86, 3.03]~$\mu$m/s and $\ell = 1.85$ [1.11, 3.52]~mm.
+Edges scatter around the curve by 0.22 on the log scale (about 25\%), and the plates differ by $-6$ to $+7$\%.
+The speed at the tip rests on few edges: 82 lie within 1~mm of a tip and 7 within 250~$\mu$m.
+In least-squares fits on the edge medians, fitted on four plates and scored on the fifth, the offset form predicted the held-out edges better than a constant speed or an exponential rise from zero (median fold error 1.14, against 1.17 and 1.16), and a step at a fixed distance did worst.
+The transport model uses an earlier least-squares fit of the same form ($v_\infty = 3.10$, $v_{\mathrm{tip}} = 2.14~\mu$m/s, $\ell = 1.71$~mm; Methods), whose far-from-tip speed is 6\% above the Bayesian one.
+
+\paragraph*{Hyphal diameter.}
+The tipward speed also rises with the diameter extracted from the same videos (SI Fig.~\ref{fig:width_lumen_speed}), with a within-plate Spearman correlation of 0.54 (1,449 edges).
+The relation holds in each of the five plates and is unchanged when the tip distance is accounted for (log-log slope 0.53 [0.46, 0.60], partial within-plate $\rho = 0.53$; 873 edges).
+Adding a factor $(D/9~\mu\mathrm{m})^\beta$ to the Bayesian fit (1,434 edges with a video-extracted diameter) gave $\beta = 0.49$ [0.45, 0.54] without and $0.47$ [0.43, 0.52] with the tip term; with the diameter included the tip falloff remains ($v_{\mathrm{tip}} = 2.18$, $v_\infty = 2.92~\mu$m/s) and its length shortens to $\ell = 1.10$ [0.63, 1.98]~mm.
+Scored on held-out plates, the predictions from tip distance and diameter together, and from a force-balance form with a tip throttle, correlated best with the measured speeds (within-plate $\rho = 0.58$), diameter alone reached 0.50 and tip distance alone 0.22.
+The rootward speed rises more steeply with diameter (slope 1.16 [1.05, 1.27]).
+Because the network images do not resolve the diameter (\nameref{subsec:si_widths}), the transport model uses the tip distance only (\nameref{subsec:si_forward_choices}).
+
+% NOTE (10 Oct, sources): The section is cited from the main text (hypothesis section, tipward speed modulated by diameter and tip distance). Simon (9 Oct): the diameter dependence is an SI item, not main text. The sources are transport_paper#132 (comment of 7 Oct, constant against falloff; comment 6056041406, diameter), #134 (v0(D) in the model), science/forward_speed_models.typ (rhizosphere#259), the scripts forward_speed_compare.py / forward_speed_compare_fl.py (#133), and Working_notebooks/speed_vs_diameter.py (feat/fluorescence-detection-limit 7990008).
+% NOTE (1, models, fitted on four plates and scored on the fifth, 15 sessions): The models are constant, exponential v0(1 - e^(-d/lambda)), offset v_inf - (v_inf - v_tip) e^(-d/lambda) and step, plus width and force-balance variants. The data are 1,503 bright-field edges with both streams.
+% NOTE (2, tip distance): Speeds fall off at the tips gradually, not as a step. The median tipward speed within 1 mm of a tip / overall is 2.23 / 2.95 um/s (0.76) in bright-field. The held-out offset fit gives v_tip 1.9-2.2, v_inf 2.8-3.0 um/s and lambda 0.75-2.5 mm in bright-field. Near tips (< 1 mm), models without tip distance over-predict by a factor of 1.21-1.25. Offset beats exponential and constant held out (fold-change error 1.14 against 1.16 against 1.17, bright-field), and a step ranks worst.
+% NOTE (11 Oct, 3, diameter; walls_v4 rebuild, supersedes the earlier 874-edge numbers: 309-junction sandbox rerun on walls_v4, lumen widths = 2 x distance transform, 873 lumen edges; transport_paper ef5a3c1, the #141 merge commit): The tipward slope against U-Net lumen diameter is 0.53 [0.46, 0.60] for bright-field streaks, with within-plate rho 0.52 and 0.53 partial given tip distance, positive in all 5 plates; bright-field pixels give 0.63 [0.55, 0.72]; to root the slope is 1.16 [1.05, 1.27]. For the width effect, speed ~ width | tip distance is 0.51 and speed ~ tip distance | width is 0.17. In the model ranking (held out by plate, within-plate Spearman), tip distance x width and force x throttle reach 0.58 and are best, width-only reaches 0.50 and tip distance alone 0.22; every model has 96-97 % within a factor of 2.
+% NOTE (4, caveats): The bright-field lumen and speed come from the same videos. Store widths give a much weaker result (rho 0.09-0.30). The flow-table widths (widths.json, mean_width_um) were inverted before flow_analysis_comps#80 and are not used here. Fluorescence numbers were removed from these notes after Simon dropped speed comparisons with fluorescence (13 Oct); see \nameref{subsec:si_forward_choices}.
+
+\namedsubsection{Choices in the tipward speed model}{subsec:si_forward_choices}
+% NOTE (15 Oct): The text below was drafted by Claude on Simon's request, from the notes of this section and of the section above.
+Three choices shape the tipward speed used in the transport model.
+
+\paragraph*{Bright-field only.}
+The fits use the bright-field videos (20 frames per second) only.
+The Nile Red videos (1 or 2 frames per second) lose fast streaks: relative to 1--3~$\mu$m/s, the number of streaks found per bright-field streak drops to 0.22 at 4--5~$\mu$m/s and 0.11 at 6--7~$\mu$m/s at 2 frames per second, and to 0.07--0.08 at 6--8~$\mu$m/s at 1 frame per second, and the per-pixel medians at 1 frame per second level off at 4.4--4.5~$\mu$m/s (Methods, \nameref{subsec:fl_detection_limit}).
+Fluorescence speeds are therefore censored near 5~$\mu$m/s, and we do not compare them with the bright-field speeds.
+
+\paragraph*{A falloff to an offset, not to zero.}
+A falloff to zero at the tip, $v(d) = v_\infty (1 - e^{-d/\ell})$, fitted with the same hierarchical Bayesian model, gave $v_\infty = 2.79$ [2.75, 2.83]~$\mu$m/s and $\ell = 194$ [145, 241]~$\mu$m (SI Fig.~\ref{fig:tip_falloff_zero}).
+To reach zero at the tip and still pass the edges nearest to it, its falloff length shrinks to about 200~$\mu$m, after which the curve is flat: it reaches 2.0~$\mu$m/s at 250~$\mu$m and 2.8~$\mu$m/s from about 1~mm onwards.
+It therefore misses the gradual rise over 1--3~mm and lies about 10\% below the edges beyond 4~mm, while within 500~$\mu$m of a tip it fits as well as the offset form.
+By the widely applicable information criterion the offset form predicts better (expected log predictive density higher by 25.5 $\pm$ 7.3), with 10.6 of the difference from the 82 edges within 1~mm of a tip and 12.7 from those beyond 3~mm.
+A drop to near zero over the last tens of micrometres, as seen in the hand-traced tip kymographs (\nameref{subsec:si_tips}), is below what the edge data resolve and is not excluded.
+
+\paragraph*{Tip distance, not diameter.}
+Diameter predicts the tipward speed better than tip distance (\nameref{subsec:si_forward_flow}), but the transport model needs a speed on every edge of the network, and there only the network-image diameters are available.
+These track the video-extracted diameter poorly (within-plate $\rho$ 0.48--0.61) and correlate with the tipward speed at $\rho$ 0.30--0.36, against 0.54 for the video-extracted diameter (\nameref{subsec:si_widths}).
+The transport model therefore uses the tip-distance profile alone, with physical inputs only and no fitted diameter exponent.
+A constant motor speed scores worse in the transport model (Methods).
+
+% NOTE (13 Oct, 1, fluorescence left out; Simon): There is no speed comparison with fluorescence because Nile Red videos (1-2 fps) are censored above ~5 um/s (the text above; also 0.18 streaks per bright-field streak at 5-6 um/s at 2 fps; Methods, \nameref{subsec:fl_detection_limit}).
+% NOTE (2, what leaving it out removes): Leaving it out removes the fluorescence fits of the tipward section (offset fit v_tip 1.3-1.7, v_inf 2.5-2.7 um/s, lambda 1.5-3.3 mm; Nile Red diameter slope 0.54 [0.39, 0.69], walls_v4), which agreed in direction with bright-field. It also removes two SI figures, now commented out (figS_fl_forward_backward_density, fluorescence against bright-field density; figS_tip_root_scatter, tipward against rootward), and the fluorescence panels of the speed IQR figure (fig:speed_iqr).
+% NOTE (3, transport model link): the transport model keeps v0 constant with only the tip-distance term; a diameter-dependent v0(D) was under test (#134). The main model uses physical inputs only, with no fitted width exponent (Simon, 12 Oct). The diameter source and the walls_v4 ranking are in the notes of \nameref{subsec:si_forward_flow}.
+
+% NOTE (15 Oct, 4, falloff to zero vs offset, Simon: SI only): This is the same hierarchical Bayesian fit as Fig 5b with v_tip fixed at 0, v(d) = v_inf (1 - e^(-d/ell)), on 1,481 bright-field edges: v_inf 2.79 [2.75, 2.83] um/s, ell 194 [145, 241] um. The offset fit gives v_tip 2.18 [1.92, 2.39], v_inf 2.93 [2.86, 3.03] um/s, ell 1.85 [1.11, 3.52] mm. The zero curve reaches 2.0 um/s at 250 um and is flat at 2.8 um/s beyond ~1 mm, so it misses the rise over 1-3 mm and sits ~10 % below the edges beyond 4 mm; within 500 um it fits slightly better (median log residual -0.006 against -0.066). WAIC is higher for the offset fit by 25.5 +- 7.3 (10.6 from the 82 edges within 1 mm of a tip, 12.7 from those beyond 3 mm). Only 7 edges lie within 250 um of a tip, so a drop on the ~20 um scale of the tip kymographs (\nameref{subsec:si_tips}) is below what the edge data resolve. The source is transport_paper feat/flow-regime, forward_speed_bayes.py --zero (c2a9ca9).
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.7\textwidth,keepaspectratio]{suppfig/figS_tip_falloff_zero.png}
+\caption{[Caption to be written.]}
+\label{fig:tip_falloff_zero}
+\end{figure}
+% NOTE (15 Oct): The figure is Fig 5b with both fits: edge medians (grey), binned medians with IQR (black), falloff with offset (blue, 95 % band) and falloff to zero (vermillion, 95 % band).
+
+\namedsubsection{Movement at the growing tips}{subsec:si_tips}
+% NOTE (10 Oct): The section text is to be written by Simon and filled with more data later (Simon: it does not lead to many conclusions yet). The sources are transport_paper explore/tip-diffusion (f4a8ba7, 37c25b3), manuscript/tip_diffusion_sketch.md, AMF_Transport#5 and transport_paper#132 Q1.
+% NOTE (1, streaks vs tip distance, bright-field, 654,711 streaks, 15 sessions): The median tipward streak duration is 1.20 s within 0.5 mm of a tip against 1.40-1.45 s beyond 1 mm, and the median length is 2.6 against 4.2-4.5 um (shorter because slower, not shorter-lived). Per kymograph, the median is 38 moving streaks within 0.5 mm against 118-149 beyond 2 mm; 20 % of kymographs within 1 mm have no moving streak, against 5-8 % beyond; the static share of streaks is 0.31 against 0.02-0.04. Structure-tensor coherence is flat (0.74-0.79). Many near-tip kymographs look clean but low-SNR (Simon). Caveats: the detector minimum of 15 frames (0.75 s) censors short or irregular movement; tip edges are short and counts are not length-normalised; streaks are pooled without bootstrap.
+% NOTE (2, videos with a tip in frame): the filmed positions rarely include a tip (selection, \nameref{subsec:si_video_selection}). In the first frames of the 96 videos nearest a tip (graph tip distance < 1.5 mm), 5 bright-field 20 fps videos have a free tip in frame (8 tip branches; STR2307A112, EPY2412A088, LPD2412A025, PNF2307A080, PNF2307A072); 2 more are 0.5 / 0.1 fps time-lapses.
+% NOTE (3, kymographs traced by hand from the apex, figure below): Within ~20 um of the apex, movement is sparse and slow (~0.5-1 um/s, read by eye), in both directions in some branches, with stalls, small steps back and oscillations (period ~2 s, no net motion). Much of the last 20 um is static, and there are no long straight ~3 um/s streaks as elsewhere in the network. The SNR is low, and one video's apex is uncertain.
+% NOTE (4, open): Still open: more tip videos (targeted recordings, or a scan of the other video sets), particle tracking for an MSD, and a link to the near-tip slowdown (Fig 5b) and to the main-text qualifier 'no sign of random or back-and-forth movement'.
+
+% -----------------------------------------------------------------------
+% FIGURE: kymographs along tip branches, traced by hand from the apex
+% Generated by transport_paper Working_notebooks/tip_crops_snellius.py (on Snellius) + tip_kymos_handtraced.py (explore/tip-diffusion 37c25b3)
+% NOTE (10 Oct, caption is Simon's to write; facts): one row per tip branch; left: first frame with the trace (red) and the apex (cyan);
+% middle: raw kymograph (x = distance from the apex along the hypha, um; y = time, s), mean over +/-3 px across the hypha;
+% right: same with the time-mean removed (moving features only). 0.069 um/px, 20 fps; 10 s videos except PNF2307A072 (30 s).
+% Rows: STR2307A112 2023-09-04 13:04:46 short and long branch; EPY2412A088 2025-01-22 12:12:01 branches a, b (trace off the hypha
+% beyond ~15 um in b); LPD2412A025 2025-01-12 18:27:52 curled and right branch; PNF2307A080 2023-08-13 21:42:19; PNF2307A072
+% 2023-08-10 14:35:58 (apex uncertain).
+% -----------------------------------------------------------------------
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{suppfig/figS_tip_kymos.pdf}
+\caption{[Caption to be written.]}
+\label{fig:tip_kymos}
+\end{figure}
+
+\namedsubsection{Video-extracted and network-image diameters}{subsec:si_widths}
+% NOTE (15 Oct): The section text is to be written by Simon; this is a new section on Simon's request (lumen width against the network (STG) width, and the methods to extract them).
+% NOTE (1, methods): The lumen width comes from the bright-field videos (U-Net walls, walls_v4, 2 times the distance transform), on 1,454 of the 1,503 tipward edges after the 14 Oct extension (445 videos added). The network widths on the same edges come from the low-magnification network images: the flow-table width ('table'), the segmenter width ('seg', quantised at 0.125 um), the legacy Keras width ('legacy'), and three direct image measures (FWHM of the cross-section profile, gradient edges, integrated darkness).
+% NOTE (2, agreement with the lumen, figure 'estimators', 1,969-1,984 matched edges, 5 plates; transport_paper feat/width-feasibility, width_feasibility.py): The within-plate Spearman rho with the lumen width is legacy 0.61, table 0.48, seg 0.48, image darkness 0.41, FWHM 0.17 and gradient 0.02. Held out by plate, with a linear calibration to the lumen, the median |error| is legacy 1.17 um, table / seg 1.27, FWHM 1.48 and a constant 1.52 um. The network images do not resolve the lumen width: the best estimator calls 39 % of edges within 10 % of the lumen.
+% NOTE (3, relation to speed, figure 'lumen vs network width'): The within-plate Spearman of the tipward speed is 0.54 with lumen width (1,449 edges), 0.30-0.36 with the network widths (table 0.32, legacy 0.31, seg 0.31) and 0.18 with image FWHM. The log-log slope of tipward speed on width is 0.53 for the lumen (rho 0.58) and 0.29-0.33 for the STG width. The Bayesian tipward fit with a width term (forward_speed_bayes, lumen) gives beta 0.49 [0.45, 0.54]; with tip distance x width it gives beta 0.47, v_tip 2.18, v_inf 2.92 um/s and ell 1.10 mm.
+% NOTE (15 Oct, 4, model input; Simon): The transport model uses the network widths (it needs every edge, not only the filmed ones). The main model uses the scaled Keras width (legacy times 0.75, the median lumen / legacy; fallback 0.83 times the segmenter width on the ~8 % of edges without a legacy width), described as a Keras width model recalibrated on the measured hyphae (Methods, transport model).
+% NOTE (15 Oct, 5, caveat): five session frames have bad stitching in the network images (LPD2412A025_t36, STR2307A112_t38 / _t60 / _t73, PNF2307A080_t74). This affects only the image widths (bottom row of the estimators figure): there the nearest earlier frame within 20 um of the edge (2-6 h earlier) is imaged instead. The stored widths (top row) are not affected.
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_estimators.png}
+\caption{\textbf{Of the diameters measured in the network images, the legacy Keras diameter follows the video-extracted diameter best; diameters read directly from the image profile are limited by the blur.}
+Each point is a network edge filmed at high magnification, coloured by plate; y-axis: the diameter extracted from the bright-field flow videos (U-Net wall segmentation, twice the distance transform), x-axis: the diameter of the same edge in the network image of that session (1.725~$\mu$m per pixel).
+Top row: diameters stored with the network graph: the diameter used by the model tables (table; the segmenter diameter where present, else the legacy diameter), the legacy diameter from the earlier Keras diameter model on cross-sections of the network image, since replaced by the segmenter (legacy), and the diameter head of the segmenter (seg; stored in steps of 0.125~$\mu$m, hence the stripes).
+Bottom row: diameters read from cross-sections of the raw network image, median per edge: the full width at half maximum of the dark dip (img\_fwhm), the distance between the steepest falling and rising flanks (img\_grad), and the integral of the fractional darkness across the hypha (img\_area, in $\mu$m).
+Panel titles: Spearman correlation with the video-extracted diameter, the median over the five plates (within) and over all edges (pooled); median absolute error of the video-extracted diameter predicted by a linear calibration fitted on the other four plates (held-out $|$err$|$; 1.52~$\mu$m for a constant); number of edges.
+The legacy diameter is about 3~$\mu$m wider than the video-extracted diameter but tracks it best (within-plate $\rho$ 0.61, range 0.40--0.65 over plates; held-out error 1.17~$\mu$m, within 20\% of the video-extracted diameter on 65\% of edges).
+The dark band of a hypha in the network images is 15--20~$\mu$m wide against video-extracted diameters of 5--13~$\mu$m, so the full width at half maximum and the flank distance hardly follow the video-extracted diameter ($\rho$ 0.17 and 0.02).}
+\label{fig:width_estimators}
+\end{figure}
+% NOTE (15 Oct): The caption was drafted by Claude on Simon's request; the numbers are from transport_paper fig_outputs/width_feasibility/width_feasibility_stats.csv (width_feasibility.py, feat/width-feasibility). 'About 3 um wider' is the median legacy minus lumen, 2.8 um (medians 11.3 and 8.7 um, 1,969 edges); the log-log slope of lumen on legacy is 0.45.
+% NOTE (15 Oct, final model on the legacy Keras widths; transport_paper feat/flow-regime, theta_sweep_gimf.py --widths, fig_outputs/flow_regime/width_source_compare.csv; 1,544 edges): This run uses the legacy width times 0.75 (median lumen / legacy; its spread matches the lumen's, log-SD 0.257 against 0.254, segmenter 0.211) on every store edge that has one, and 0.83 times the segmenter width on the ~8 % without one. It gives 77.5 % within a factor of 2 (segmenter 78.0 %), KS 0.056 (0.050), and trail segments 86.1 % within a factor of 2 with bias 1.21 (86.9 %, 1.21). Model / measured by lumen-width tercile thin / mid / wide is 1.15 / 1.03 / 0.99 (segmenter 1.20 / 1.05 / 0.96). Within 1 mm of a tip the model gives 3.11 um/s (segmenter 2.84, measured 2.17), and beyond 8 mm 3.50 (3.50, measured 4.22). Legacy at the segmenter's level (times 0.92) gives 78.1 %, KS 0.052. With the video lumen on the 1,969 filmed edges, or with the OLS calibration (lumen = 4.39 + 0.376 legacy), the results are 76.9 % / 79.0 %, KS 0.056 / 0.068. So the Keras widths flatten the width bias slightly but leave the scores and the far-from-tip under-prediction unchanged; the shortfall beyond 8 mm is not from the compressed width contrast of the segmenter.
+% NOTE (15 Oct, to the note above): The '+ lumen' and OLS runs kept the ~8 % of edges without a legacy width at 1.0 times their segmenter width (no 0.83 rescale), as did a first legacy times 0.75 run (76.6 %, floor binding on 35 % of edges against 24 % with the rescale); compare them with care.
+% NOTE (15 Oct, shift only): This run uses legacy minus 2.8 um (median legacy minus lumen, 1,969 edges; floor 2 um on 4 % of store edges; fallback 0.83 times segmenter). It gives 76.2 % within a factor of 2, KS 0.051, and trail segments 88.0 % within a factor of 2 with bias 1.19 (the best of the width runs on the trails). Model / measured by lumen tercile is 1.13 / 1.00 / 1.01 (the flattest). Within 1 mm of a tip it gives 3.12 um/s and beyond 8 mm 3.44 (measured 2.17 / 4.22). The shift widens the relative width spread (log-SD 0.36 against the lumen's 0.25).
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_lumen_speed.png}
+\caption{[Caption to be written.]}
+\label{fig:width_lumen_speed}
+\end{figure}
+
+
+\section{The transport model}\label{sec:si_model}
+
+\namedsubsection{Spatial variation of the lipid volume fraction}{subsec:si_theta_spatial}
+% NOTE (15 Oct): This section was added on Simon's request (modelled and measured spatial variation of Theta); the text is Simon's to write. It replaces the main text's pointer to SI fig:carbonflow f, which is the wrong file. Source: transport_paper Working_notebooks/theta_spatial.py (feat/flow-regime), fig_outputs/flow_regime/theta_spatial.csv.
+% NOTE (15 Oct, model): In the main model the lipid volume fraction of the whole lumen is Theta = theta (b^2 - a^2) / b^2 = J / (pi b^2 v), where theta = 0.05 is the lipid share of the motor-driven condensate. The floor a >= 0.8 b caps Theta at 0.05 times 0.36 = 1.8 %, and 24 % of the 1,534 measured edges sit at that cap. The median Theta is 0.68 % (interquartile range 0.2 to 1.8 % in every tip-distance bin). Theta does not change with the distance to the nearest growing tip (Spearman rho 0.00; bin medians 0.85, 0.54, 0.65, 0.77 and 0.64 % at 0-1, 1-2, 2-4, 4-8 and beyond 8 mm): in the model it varies from edge to edge with the routed demand and the width, not with tip distance.
+% NOTE (15 Oct, measured): Nile Red gives no absolute volume fraction, only relative measures on 274 filmed junction legs (transport_paper lipid_tip_distance.py --moving, issue #94). The moving share of the lipid signal (moving over all lipid fluorescence of a leg, free of exposure) rises with tip distance, from a median 2.2 % within 1 mm of a tip to 4.7 % beyond 4 mm (rho +0.34). The moving tipward lipid per volume of the tipward lane, divided by its plate median, falls instead (rho -0.27; 1.12 within 1 mm, 0.56 at 4-8 mm, 21 legs); this measure depends on the lane share taken from the bright-field speeds, v_r / (v_t + v_r). Both are limited by the Nile Red detection limit near 5 um/s (Methods), which misses fast lipid.
+% NOTE (15 Oct, literature): Bago et al. 2002 (Nile Red and two-photon microscopy, G. intraradices in monoxenic root-organ culture; their Fig. 3) report the total lipid (moving and static) at about 24 % of the volume of extraradical runner hyphae near the root and 0.5 % at the growing front, so total lipid rises away from the front, in the same direction as the measured moving share. Their values are total lipid, an order of magnitude above the model's Theta of moving lipid.
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_theta_spatial.png}
+\caption{[Caption to be written.]}
+\label{fig:theta_spatial}
+\end{figure}
+% NOTE (15 Oct, figure; Simon: the spread of the measured legs is needed): (A) modelled Theta on every measured edge against the network distance to the nearest growing tip, with bin medians and interquartile ranges; dotted, the cap of 1.8 % set by a >= 0.8 b. (B) The moving share of the lipid signal on 274 junction legs (89 videos, 5 plates): 5th to 95th percentile 1.35 to 8.8 %, interquartile range 2.1 to 5.2 %, median 3.8 %; 69 % of the legs lie within 4 mm of a tip, so the far bins rest on few legs. (C) The moving tipward lipid concentration, divided by its plate median, on the 114 legs with both stream speeds (62 videos): 5th to 95th percentile 0.26 to 3.7, interquartile range 0.64 to 1.62; 78 % within 4 mm of a tip. Both show bin medians with interquartile ranges (bins with at least 5 legs); the few legs above the 98th percentile fall above the axis (6 in B, 3 in C). (D) The three trends, each divided by its median over bins.
+% NOTE (15 Oct, measured lipid against measured return; transport_paper theta_spatial.py --backflow, fig_outputs/flow_regime/theta_backflow.csv): 212 Nile Red junction legs (86 videos, 5 plates) have a bright-field return measured on a store edge of their own arc. The moving share of the lipid signal correlates with the measured return (Spearman rho +0.39 pooled, median +0.29 within plates) and stays correlated after removing tip distance (partial rho +0.41 on the 109 legs with a tip distance; tip distance itself correlates with the return at +0.38 and with the moving share at +0.36). It correlates as much with the measured tipward speed (+0.38), so part of it may be that faster flow makes moving lipid easier to detect. The total lipid per lumen volume (plate-normalised) does not correlate with the return (rho -0.08 pooled, +0.08 within plates). The model's Theta on the same edges correlates with the measured return at +0.39 pooled and +0.43 within plates (partial +0.23 given tip distance), and the model's return with the measured one at +0.53.
+% NOTE (15 Oct, moving tipward lipid): The moving tipward share of the lipid (moving share times the tipward share of the moving fluorescence streaks; median 2.3 %, interquartile range 1.4 to 4.6 %) correlates with the measured return slightly more strongly than the moving share: rho +0.42 pooled, +0.40 within plates, +0.38 after removing tip distance (109 legs). It also correlates with the measured tipward speed (+0.45), and the tipward share alone correlates with the return at +0.27.
+% NOTE (15 Oct, reading and the variable-theta test): The model keeps theta constant, so its Theta has no trend with tip distance, while the measured moving share of lipid roughly doubles from the tips to more than 4 mm away. In the model a smaller theta needs a thicker condensate to carry the same lipid, which narrows the core and speeds up the return, so a theta that rises away from the tips raises the modelled return near the tips (not lowers it, as an earlier reading had it). Test (transport_paper model_accuracy_throttle.py --theta-tip-ratio 0.47, theta following the motor speed's tip-distance profile, fig_outputs/flow_regime/theta_tip_compare.csv), against the main model (theta 0.05 everywhere: within a factor of 2 on 77.5 %, KS 0.056, trail segments 86.1 % with bias 1.21, 3.11 against 2.17 um/s within 1 mm of a tip, 3.50 against 4.22 um/s beyond 8 mm): theta 0.024 at the tips rising to 0.05 far gives 77.1 %, KS 0.053, 85.8 % with bias 1.26, 3.26 um/s near the tips and 3.50 um/s far, so the near-tip over-prediction grows slightly. Theta 0.05 at the tips rising to 0.107 far gives 77.4 %, KS 0.095, 87.6 % with bias 1.08, 2.90 um/s near the tips and 3.23 um/s far, so the near-tip over-prediction shrinks but the far under-prediction grows and the distribution fits worse. A theta that follows the measured moving lipid share therefore trades one bias for the other and does not improve the model.
+
+\namedsubsection{Lipid volume fraction needed for growth}{subsec:si_lipid_fraction}
+% NOTE (12 Oct): This section was moved from the main text (Results, after the mass-flow test) as it stood, with the outline headings dropped (Simon: not central to the paper; mention in the Discussion). Its lipid fluxes come from the dissipation-minimisation model of the section above (subsec:si_mass_flow), so it reads after that one; the numbers are from the old analysis (see the notes).
+Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
+To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
+We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
+% NOTE (12 Oct, 'why mm?'): 'by 10mm' means 'over 10 mm', and the fraction is the lipid volume fraction Theta of the old analysis. The numbers to reconcile are '4 %' here, '5 %' at the emulsion paragraph, theta 0.05 in the main model, and the measured moving lipid share of 2.4 % (< 2 mm from a tip) to 4.6 % (> 4 mm) (transport_paper#94; see \nameref{subsec:si_theta_spatial}). The next sentence says 'decrease away from the tip', against 'increased' here.
+The decrease away from the tip was due to a decrease in flux, which itself was due to the multiplication of alternative paths towards the root when moving closer to it.
+Similar spatial variation on similar length scales has previously been established in \emph{R. irregularis} \cite{bago_carbon_2000}.
+However, in that earlier research the magnitude of the maximum volume fraction was estimated to be $\sim$ 20\%. 
+% NOTE (7 Oct, Bago value and key): '~20 %' cites bago_carbon_2000, a review (Plant Physiol 124). The measurement is in bago_translocation_2002 (Plant Physiol 128, Fig. 3): ~24 % of hyphal volume near the root, 0.5 % at the front. The intro (L37) now uses that key and value, so the two disagree.
+
+% If carbon movement was only driven by diffusion, its average speed would be of the order of $v_{diff} = \frac{\lambda_{diff}}{L}$ with $\lambda_{diff}$ the diffusion coefficient of carbon in the cytoplasm and $L$ a typical length for the network. Using an upper bound $\lambda_{diff}=10^{-5}cm^2/s$ corresponding to diffusion of small ions and using the typical centimeter scale of the longest hyphae $L = 1cm$, we obtain $v_{diff}=0.1um/s$. Such low speed together with the observed growth would result in lipid volume fraction $\frac{\phi_{i,j}}{v_{diff}\pi R_{i,j}^2}$ larger than 100\% which is physically impossible.
+
+This could explain why active transport mechanisms at high speeds are necessary to allow expansion of the colony at sufficient rate while avoiding overloading hyphal edges. 
+
+\namedsubsection{Splitting the lipid demand between merging hyphae}{subsec:si_demand_split}
+% NOTE (12 Oct): The section text is to be written by Simon; it is cited from the Methods (transport model, demand split). Its purpose (Simon) is to show that the choice of split rule does not matter here, so the main model uses the simplest (even).
+% NOTE (1, set-up): The model of this comparison (the main model before 14 Oct: weakly coupled return, junction 10 mm, motors along the growth graph, a >= 0.8 b, theta 0.05, no return-width exponent) is run on 15 sessions and scored against the bright-field rootward speed (224 tree edges, 1,366 loop edges). A tip's demand passes back up the growth graph; where hyphae merge it is divided by conductance b^4/L of each parent hypha, by area b^2, or equally. Tree edges have one path, so the rule cannot act there.
+% NOTE (2, source): The source is transport_paper branch feat/demand-split-compare (commits 1173217, f89b893): fig_outputs/model_grid/run_grid_junction.sh split, and Working_notebooks/demand_split_compare.py, which writes fig_outputs/model_grid/junction/split_compare.csv (run 12 Oct).
+% NOTE (3, beyond the table): where the model puts lipid has no relation to the moving Nile Red signal under any split (within-plate Spearman rho 0.00-0.01, 1,678 fluorescence edges, ~30 % of them get no model lipid); 53-56 % of the growth demand reaches a root under all three (the rest is stranded at non-root growth sources, set by the motor direction, not the split).
+% NOTE (14 Oct): The final main model routes the lipid by the GIMF solve (lipid current = 0.256 times the GIMF flux) with GIMF-oriented motors, so this split comparison (growth-graph routing, junction coupling) is now about a variant. Its point stands: the split rule does not change the scores.
+\begin{table}
+\centering
+\begin{tabular}{lccc}
+\hline
+ & conductance ($b^4/L$) & area ($b^2$) & even \\
+\hline
+lipid current changed vs area ($>10\%$) & 44\% & -- & 26\% \\
+tree edges within $2\times$ & 87.9\% & 87.9\% & 87.9\% \\
+tree edges, Spearman $\rho$ & 0.41 & 0.41 & 0.41 \\
+loop edges within $2\times$ & 85.4\% & 85.9\% & 86.3\% \\
+loop edges within $1.5\times$ & 62.6\% & 63.0\% & 63.3\% \\
+loop edges, Spearman $\rho$ & 0.29 & 0.29 & 0.29 \\
+motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
+\hline
+\end{tabular}
+\caption{\textbf{[Title.]} [Caption.]}
+\label{tab:si_demand_split}
+\end{table}
+
+\namedsubsection{Model variants}{subsec:si_model_variants}
+% NOTE (2, demand split): Conductance, area and even splits give the same scores (section below, tab:si_demand_split).
+% NOTE (3, return coupling): The global solve (no cost to switch hyphae at junctions; Heaton 2010) and the conveyor (each edge returns its own stream) are the two limits of the junction resistance; the main model uses the global solve, and the 10 mm weak-coupling numbers are in note (7) below.
+% NOTE (4, return width exponent): The exponent entered as |q_c| / (pi r^2), with r^2 = a^2 (11.64 um / D)^0.7, fitted on the measured rootward speeds. It was dropped on 12 Oct (physical inputs only): 87.5 against 86.2 % within a factor of 2, rho 0.44 against 0.41 on tree edges and 0.34 against 0.29 on loop edges (1 Oct tables).
+% NOTE (5, motors as a force, in progress 13 Oct, transport_paper feat/force-motor-network): The motor speed comes from a force balance against the solved pressure, v = v_max (1 - pi b^2 dp / (L k b)), with one linear solve per network. The first grid cell (v_max 6 um/s, b_half 4 um, offset main model as reference) gives tipward speeds of ~4.2 um/s everywhere, flat with tip distance, and 0.65 / 0.77 within a factor of 2 on tree / loop edges; the rest of the grid is running. On single edges, the per-edge force balance with lumen widths predicts the tipward speed best of the forward models (section \nameref{subsec:si_forward_choices}).
+% NOTE (14 Oct, final model and the variants it was chosen over; all on the current tables, 1,574 bright-field edges, global pressure solve unless stated; transport_paper feat/flow-regime): The main model is GIMF motors + GIMF routing, a >= 0.8 b, theta 0.05: 77.6 % within a factor of 2, KS 0.045 (distribution matched; segmenter widths, 10 um minimum edge; with the recalibrated Keras widths and 20 um minimum edge the main model gives 77.5 % and KS 0.056 on 1,544 edges, see the 15 Oct notes in \nameref{subsec:si_widths}). (6, motor direction / routing) Growth-graph motors with GIMF, area or even routing give 75.5-75.8 % within a factor of 2, KS 0.25, and a 95th percentile of 4.7 against 6.8 um/s. Per edge, the gain of GIMF motors is on edges where both directions agree (3.87 against 3.17 um/s; in the fastest measured quarter, 70 against 51 % within a factor of 2), not on the 263 edges where they disagree (on 69 % of those the observed direction sides with growth); see motor_direction_tail.py. (7, return) Weak coupling at 10 mm with growth motors gives 87.2 % within a factor of 2, but the spread is too small (log-SD 0.18 against 0.47); the global solve with growth motors gives 73 %. (8, supply-set lane instead of the demand annulus, growth motors) A constant a/b of 0.80-0.93 gives 77.9-79.4 % on full flow, KS 0.16-0.25; the width law x = 0.30 (w/10 um)^gamma gives 80.1-81.4 %. None reproduces the rise of the measured rootward / tipward ratio with lumen width (0.93 to 1.80) or along trails; see supply_compare.py and fig5_variants.py. (9, core floor) a >= 0.9 b gives a trail bias of 1.10 (against 1.21) and a near-tip speed of 2.61 against 2.84 um/s (measured 2.13), but KS 0.093. (10, regimes) Sparse flow (streak density >= 0.27 / um / s, from Simon's blind labels; 13 % of filmed edges) is over-predicted by a factor of 1.6-1.7 by every variant; on full-flow edges the main model is 79.2 % within a factor of 2. (11, demand against measured lipid transport) The Nile Red tipward flux barely follows the routed demand (elasticity 0.02-0.04 over 2.7 decades of demand).
+% NOTE (14 Oct, theta on the final model; theta_sweep_gimf.py, 1,574 edges, 10 um minimum edge): For theta 0.02 / 0.05 / 0.1 / 0.15 / 0.2 / 0.3, the share within a factor of 2 is 75.9 / 77.6 / 77.4 / 76.9 / 76.0 / 75.4 %; KS is 0.086 / 0.045 / 0.097 / 0.133 / 0.154 / 0.172; the trail bias is 1.36 / 1.21 / 1.06 / 1.02 / 0.99 / 0.96; the speed within 1 mm of a tip is 3.28 / 2.85 / 2.53 / 2.50 / 2.43 / 2.38 um/s (measured 2.13); beyond 8 mm it is 3.87 / 3.52 / 3.20 / 3.10 / 3.10 / 3.10 (measured 4.14); the floor binds on 49 / 23 / 6 / 1 / 0.4 / 0.1 % of edges. theta 0.05 gives the best distribution and accuracy; larger theta trades the far-from-tip level for the near-tip bias.
+% NOTE (15 Oct, demand window; transport_paper model_accuracy_throttle.py --demand-window, feat/flow-regime, fig_outputs/flow_regime/demand_window_common.csv): The main model takes the lipid demand from the hypha grown in the 4 frames after the session. The alternative takes it from the growth before the session (network at the earlier frame, so edges grown in the window have no model output). Scored on the 1,263 edges every run covers, next 4 (main) gives 75.5 % within a factor of 2, median fold error 1.48, KS 0.067, trail segments 84.8 % with bias 1.19, and 3.38 within 1 mm of a tip against 2.82 um/s measured (22 edges). Previous 4 gives 76.6 %, 1.46, 0.070, 86.5 % / 1.11, 2.81. Centred (-2, 2] gives 76.9 %, 1.46, 0.067, 88.2 % / 1.18, 3.19. Previous 8 gives 78.2 %, 1.42, 0.082, 90.4 % / 0.97, 3.00. Past growth predicts the rootward speed slightly better, consistent with backflow lagging growth. It does not fix PNF080 t91 LeftMiddle at 9-17 mm (model 1.8-2.9 against 6.5 um/s measured), where the tip region grew 60 mm within 3 mm of the trail in the 10 frames before the session and 9 mm in the 3 after. The cost is that 281 of 1,544 edges (the newest hyphae) drop out with the 8-frame window.
+% NOTE (15 Oct, past demand on the session network; transport_paper past_demand.py, model_accuracy_throttle.py --past-demand K, fig_outputs/flow_regime/past_demand_compare.csv): Here the network stays at the session, so all 1,544 edges keep a prediction, and the lipid demand comes from the hypha grown in the K frames before the session, placed at the free ends of the grown pieces (pieces that have fused into the mesh keep it at their attachment nodes). Against the main model (next 4 frames: within a factor of 2 on 77.5 %, KS 0.056, trail segments 86.1 % with bias 1.21, 3.11 against 2.17 um/s within 1 mm of a tip, 3.50 against 4.22 um/s beyond 8 mm), the past 4, 8 and 12 frames give within a factor of 2 on 78.7, 79.1 and 79.8 %, KS 0.068, 0.070 and 0.072, trail segments 85.0, 86.9 and 88.3 % with bias 1.23, 1.16 and 1.13, 2.66, 2.62 and 2.58 um/s within 1 mm of a tip, and 3.88, 3.76 and 3.73 um/s beyond 8 mm. Past growth therefore reduces both the near-tip over-prediction and the far-from-tip under-prediction and raises the accuracy slightly, at the cost of a slightly worse distribution match. It weakens the growth step of Fig 6d: on EPY088 Main the model rises 1.34- to 1.37-fold from t28 to t55 (main model 1.51-fold, measured 1.71-fold), because the demand at t28 already includes the growth before it. On PNF080 t91 LeftMiddle at 9-17 mm the model rises from 1.8 to 2.4, 2.5 and 2.7 um/s against 6.3 um/s measured.
+% NOTE (17 Oct, model inputs; moved from the main-text Discussion 18 Oct, Simon: SI): Network widths are noisy (rho 0.49 with the lumen), which also exaggerates loop-arm differences, and the data keep a width effect at fixed demand that the model lacks; theta is constant although the Nile Red moving share varies (tip/far 0.47); the motor direction comes from the growth-induced mass flow; far from tips the model under-predicts (3.5 against 4.2 um/s).
+% NOTE (18 Oct, width term in the motors; moved from the main-text Discussion, Simon: SI; text to be written): The model's motors have no width dependence, whereas the measured tipward speed rises as $D^{0.48}$. Giving the motors a width term $(b/b_\mathrm{ref})^{p}$ (with $b_\mathrm{ref}$ the median radius of the filmed edges) with $p = 0.5$ brings the model's rootward width dependence to $D^{0.97}$, close to the measured $D^{1.07}$, at an unchanged overall fit (76.9 against 77.5\% within a factor 2, KS 0.056, loop $\rho$ 0.40); $p = 1$ overshoots ($D^{1.19}$, 75.6\%, KS 0.064). Neither variant changes the model's insensitivity to $\kappa$ ($\rho$ $-0.03$ and $-0.04$ against $+0.31$ measured), so the missing robustness effect is not a missing width term in the motors (SI, \nameref{subsec:si_model_variants}). On the tipward speeds themselves (1,452 edges), the square-root term ranks the measured speeds best ($\rho$ 0.35 against 0.29 without a width term) but, measured against the video lumen, gives only $D^{0.25}$, because the network widths it uses track the lumen only partly ($\rho$ 0.49); the linear term reproduces the measured $D^{0.48}$ (0.49) but then overshoots the rootward width dependence. With these widths no single exponent fits both streams, so width noise, not the form of the width term, limits the model here.
+
+
+\section{The model against the measurements}\label{sec:si_model_data}
+
+\namedsubsection{Tree and loop edges and network robustness}{subsec:si_tree_loop}
+% NOTE (16 Oct): The section text is to be written by Simon; new section on Simon's request (measured and modelled quantities on tree and loop edges against tip distance, and a robustness measure). Analysis: transport_paper feat/flow-regime tree_loop_si.py (0e6085d, b650104), figures manuscript_figures/figS_tree_loop_kappa.py; main model unchanged.
+% NOTE (1, tree vs loop, figure 'tree_loop', 1,544 filmed edges: 213 tree (bridge), 1,331 loop): Median tree / loop within 4 mm of a tip and beyond 4 mm. Measured rootward speed 2.74 / 3.18 and 3.50 / 4.09 um/s (both p < 0.03). Model rootward speed 2.97 / 3.30 (n.s.) and 3.09 / 3.91 um/s. Measured tipward speed 2.42 / 2.86 near tips, 3.08 / 3.08 beyond. Lumen width does not differ (8.8 / 8.9 and 9.2 / 9.4 um). Routed lipid demand is 0 on tree edges beyond 4 mm (median), against 1.45 on loop edges: in the model these tree branches carry no lipid (a = b) and return their motor flux only. The net (circulating) flux on loop edges is 25-29 % of the motor flux, and 0 on tree edges by construction.
+% NOTE (2, robustness kappa, definition): kappa is the fewest hyphae that must be cut to disconnect a section of the network (every node within 500 um along the network of an edge) from the root; by Menger's theorem it is the number of hypha-disjoint routes from the section to the root. Cuts count per arc (junction to junction), computed as a maximum flow on the arc graph. A tree section has kappa 1. The imaged network continues below the bottom edge of the image towards the root compartment, so every node within 1 mm of the bottom edge counts as connected to the root (open bottom); with the solver's 13 or so root nodes alone, kappa is 1 lower in median and its relation to speed is inconsistent between plates.
+% NOTE (3, kappa results, figure 'kappa', updated 16 Oct to the continuous kappa, 1,454 filmed edges): Simon asked for a more continuous kappa: the figure uses the open-bottom kappa averaged over sections of 250, 375, 500, 750 and 1,000 um (steps of 0.2, range 1-11, median 4; tree_loop_si.py --kappa-mean). It rises away from tips (rho +0.31). The measured rootward speed rises with it (rho +0.31; with the 500 um kappa alone +0.29, and +0.24 after removing tip distance, routed demand and width), on 4 of 5 plates within plate (EPY088 +0.24, LPD025 +0.46, PNF080 +0.27, STR112 +0.16, PNF072 +0.02). The model does not follow (rho +0.03): it over-predicts at kappa <= 2 and 2-4 (median log2 model / measured +0.28, +0.22) and under-predicts at 4-6 and above 6 (-0.14, -0.17). The section size matters little (250 / 500 / 1,000 um: rho +0.24 / +0.27 / +0.28 with the solver roots). (17 Oct) Is the kappa trend observational bias? Partly width: at fixed tip distance the kappa effect on the measured rootward speed drops from +0.24 to +0.15 when the video lumen is added (767 edges; +0.17 with demand too), and the model's error still falls with kappa at fixed lumen (-0.20); the model has no measured lumen. Not sparse flow: on full-flow edges alone (1,203) the trend holds (+0.29) and the model's error runs from +0.27 (log2, kappa <= 2) to -0.24 (> 6). Not motor speed: the tipward speed's rise with kappa (+0.19 after tip distance) vanishes with the lumen (+0.07), while rootward / tipward still rises with kappa (+0.21). What remains may be missing physics in meshed regions or selection of visibly flowing hyphae (filmed edges have higher betweenness, SI subsec:si_video_selection), which filmed edges alone cannot separate.
+% NOTE (4, open-bottom model variant, tested and not adopted; Simon: main model unchanged): Making every junction and end within 1 mm of the bottom edge a root of the global solve (58-399 roots per session, model_accuracy_throttle.py --open-bottom 1000) gives 76.7 % of edges within a factor of 2 (main 77.0 %), trail segments 82.8 % (82.2 %), and leaves the kappa trend of the error unchanged; within 3 mm of the bottom edge it lowers the model (0.89 against 0.99 of the measured) and the score (69.7 against 72.6 %). The faster backflow in robust sections is therefore not an artefact of the few roots of the solve.
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_tree_loop.pdf}
+\caption{[Caption to be written.]}
+\label{fig:tree_loop}
+\end{figure}
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_kappa.pdf}
+\caption{[Caption to be written.]}
+\label{fig:kappa}
+\end{figure}
+% NOTE (16 Oct, figure 'kappa' panels; continuous kappa): (a) EPY088 t55, every arc coloured by kappa, the section grown from its ends; dark grey: within the open bottom band at some section size; light grey: not connected to the root at some section size (kappa < 1). (b) distribution over the filmed edges (bins of three 0.2 steps); (c) kappa against tip distance, bin medians with 25th-75th percentile; (d) measured and model rootward speed per kappa class (<= 2: 249, 2-4: 480, 4-6: 515, > 6: 215 edges); (e) log2 model / measured per class, dashed at a factor of 2.
 
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{suppfig/FigS_replicate_4A.pdf}
-% TRIAGED 2 Oct: Phi_C vs Phi_P (ug/h), 8 replicates A-H with linear fits: the C-P proportionality data (Bisot et al.). Goes with transport_paper#128 (C/P framing): keep if that framing stays, or cite if published.
-\caption{\textbf{TODO: Replicate 4A.}
-TODO caption.}
-% \label{fig:replicate_4A}
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_relations.pdf}
+\caption{[Caption to be written.]}
+\label{fig:relations}
 \end{figure}
+% NOTE (16 Oct, figure 'relations', Simon: a general figure on tip distance, diameter and kappa, with edge age, routed lipid demand and the measured rootward speed; Theta dropped because the model Theta follows the routed demand, rho 0.94, and piles up at the a = 0.8 b floor; 767 filmed edges with all six, 5 plates): Diameter is the video lumen. Edge age is in hours, from the time point the edge appeared to the session, from the store timestamps (time points ~2 h apart). kappa is made continuous by averaging the open-bottom kappa over sections of 250, 375, 500, 750 and 1,000 um (48 distinct values against 11; rho with the measured rootward speed +0.31 against +0.29 at 500 um; the model still +0.03). Diagonal: distributions; below: y against x in x deciles (median, 25th-75th percentile); above: Spearman rho pooled (median within plate). Rootward speed goes with lumen width +0.58 (+0.55), edge age +0.29 (+0.41), kappa +0.29 (+0.24), tip distance +0.26 (+0.25) and routed demand +0.25 (+0.33). Age goes with tip distance +0.61 (+0.80) and kappa +0.53 (+0.47); width with demand +0.32 (+0.43) and age +0.24 (+0.35). Tip distance does not relate to the routed demand (+0.05).
 
-\clearpage
-
+\namedsubsection{Full and sparse flow}{subsec:si_flow_regimes}
+% NOTE (15 Oct): The section text is to be written by Simon; this is a new section on Simon's request (sparse against full flow moved out of Fig 5, as an observational difference).
+% NOTE (1, classification): Each bright-field edge is classified by the streak density in its tipward kymograph, with a threshold of 0.27 streaks per um per s, calibrated on Simon's blind labels (60 kymographs, two rounds; full flow / sparse flow / dormant / artifact). Sparse flow has few thin streaks, slow and about symmetric, ~1.8 um/s in both directions. Of 1,481 classified edges, 1,284 are full and 197 sparse (~13 %) (transport_paper fig_outputs/flow_regime/edges.csv).
+% NOTE (15 Oct, 2, main model by regime, recalibrated Keras widths, 1,544 edges; transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb, feat/flow-regime; supersedes the segmenter-width numbers): On all edges, full flow has 1,273 edges, 78.9 % within a factor of 2, bias (model / measured) 1.01, measured median 3.86 um/s and model 3.48; sparse has 179 edges, 65.9 %, bias 1.60, measured 1.85 and model 3.10; unclassified has 92, 80.4 %. On trail segments within 10 mm (figure below), full is 88 % within a factor of 2 with bias 1.20 (245 segments), and sparse 53 % with bias 1.79 (15).
+% NOTE (3, width, 14 Oct regime analysis): Sparse-flow edges are thinner, with a median lumen of 6.2 against 8.4 um for full flow. The model has no sparse state: it gives these edges the full motor stream, so it over-predicts their backflow.
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=\textwidth]{suppfig/FigSradius_speed.pdf}
-% TRIAGED 2 Oct: tip radius vs tip growth speed, <r> vs travelling-wave speed: from the travelling-wave work (Oyarte Galvez 2025), not transport. Suggest drop unless a width-speed argument needs it (transport_paper#129).
-\caption{\textbf{TODO: Radius vs speed.}
-TODO caption.}
-% \label{fig:radius_speed}
+\includegraphics[width=0.6\textwidth,keepaspectratio]{suppfig/figS_flow_regimes.png}
+\caption{[Caption to be written.]}
+\label{fig:flow_regimes}
 \end{figure}
+% NOTE (15 Oct): The figure is Fig 5c, on the main model with recalibrated Keras widths, with each trail segment coloured by the flow regime of its edge (model_accuracy_two_models.py --layout regimes): full flow 245, sparse 15, no regime 14 segments. The grey wedge marks within a factor of 2, and the line is the identity.
 
-\clearpage
 
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth]{suppfig/FigureComparison.pdf}
-% TRIAGED 2 Oct: network length, ML vs classic segmentation (~25 points): an older segmentation check. Suggest replace with transport_paper manuscript/figures/S_segmenter.png (current pipeline) or drop (transport_paper#129).
-\caption{\textbf{TODO: Comparison figure.}
-TODO caption.}
-% \label{fig:comparison}
-\end{figure}
+\section{Trade}\label{sec:si_trade}
 
-\clearpage
+\namedsubsection{Phosphorus concentration needed for the exchange rate}{subsec:si_cp_exchange}
+% NOTE (18 Oct): New section on Simon's request (moved from the main-text C/P subsection); text to be written by Simon.
+% NOTE (18 Oct, C/P facts, merged from the 9 and 17 Oct main-text notes; transport_paper#128, feat/cp-production fb436c6): In the global solve the return into the roots equals the motor stream leaving them in all 15 sessions (log-log slope 1.000), so P out at constant [P] is proportional to motor-carried carbon by construction; against growth carbon the slope is 0.19 (95 % CI -0.47 to 0.86, R2 0.03); on STR2307A112 growth carbon rises 4.7-fold over 5 sessions while the return stays at 0.0050-0.0066 uL/h. The required [P] scales with theta: 0.19 mol/L at theta 0.025, 0.29-0.38 at 0.05, 0.76 at 0.10 (P:C 1/3-1/4 ug P per ug C); plant cells 5-20 mmol/L (bieleski_phosphate_1973, range not re-checked); at theta 0.0026 (20 mmol/L) the motors carry ~0.19 times the carbon growth uses, against 3.7 times at theta 0.05. Bisot et al. (full text checked, PMC12891005): the exchange rate is by mass, ~3-4 ug C per ug P, set by host genotype; their carbon is expended carbon (carbon use efficiency 50 %, twice the carbon built into biomass, spores included), a growth-based quantity; >= 85 % of absorbed P reaches the root within ~100 h (absorbed P would be ~30 % of fungal dry mass if none were transferred, against <= 4-5 % P measured in hyphae).
 
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=\textwidth]{suppfig/FigureSRspeeddrag.pdf}
-% TRIAGED 2 Oct: r_eff vs travelling-wave speed: travelling-wave work, not transport. Suggest drop (transport_paper#129).
-\caption{\textbf{TODO: Speed-drag figure.}
-TODO caption.}
-% \label{fig:speed_drag}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=0.9\textwidth]{suppfig/symbiotic-hard-comparison.png}
-% TRIAGED 2 Oct: dense network with a segmentation overlay: an older segmentation check. Suggest replace with the current pipeline SI figures (S_segmenter, S_graph_repair) or drop (transport_paper#129).
-\caption{\textbf{TODO: Symbiotic hard comparison.}
-TODO caption.}
-% \label{fig:symbiotic_comparison}
-\end{figure}
 
 % chapterbib gives every \include'd file its own reference list; the SI needs its own since it cites (12 Oct, mass-flow section).
 \subsection*{Supplementary references}
