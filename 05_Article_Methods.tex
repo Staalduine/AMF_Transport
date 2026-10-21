@@ -285,10 +285,14 @@ Every kymograph was inspected; 17 bright-field movies on 9 plates and 2 Nile Red
 
 \paragraph{Root cut.}
 A scalpel was pulled along the divider of LPD2412A022, separating the network from the root compartment, and one trail was filmed 5~min before and 5 and 30~min after the cut.
-As the three windows film mostly different positions, speeds are compared on the same 2~mm stretches of trail.
-Four videos whose analysis stopped after the kymograph, so that the registrator never placed them, are put on the trail by their stage position: a similarity transform from stage to network coordinates fitted on the registered videos of the same time window (the plate left the stage for the cut), and the nearest trail segment.
+Per kymograph and direction, the length-weighted speeds of the bright-field streaks are split into modes by a kernel-density mode tree on log speed (bandwidth 0.3, minimum mode mass 0.1), and the direction is represented by its dominant mode: a single median switches between speed families from one video to the next.
+Which direction is tipward is taken from the trail annotation (the source edge and its orientation).
+Speeds are compared per trail edge: an edge's speed in a window is the median over its kymographs, and each pairing of a kymograph before with one after the cut counts once.
+Three videos without an extracted hypha were re-extracted with the video wall segmenter (walls\_v4).
+Nine runs whose analysis stopped after the kymograph, so that the registrator never placed them, are put on the trail by their stage position: a similarity transform from stage to network coordinates fitted on the registered videos of the same time window (the plate left the stage for the cut), and the nearest trail segment.
 Their streams are told apart by the direction rule above (\nameref{subsec:videos_on_network}, Direction).
 Held out one at a time, the registered videos are placed this way within a median 116~$\mu$m of their registered position, and the rule gives their registered direction on 39 of the 41 hyphae it decides, reversing none.
+% NOTE (21 Oct, root cut rebuilt by the FLW session, transport_paper feat/fl-20fps 0ba8708, figure3/rootcut_families.py; Fig 3 v4 on fig/fig3-rootcut bd58825): 60 kymographs (was 55; two +5 / +30 min stretches of 18.8 and 12.3 mm processed on Snellius in August were added). The held-out placement numbers (116 um, 39 of 41) are from the earlier four placed videos; recheck them for the nine, and whether the direction rule or the trail annotation orients the placed runs. Neighbouring edges can share a kymograph, so the Wilcoxon p-values are somewhat optimistic. A slower rootward family at 2.3-2.9 um/s (13-32 % of rootward streak length, before and after the cut) is left out on purpose (Simon).
 
 \paragraph{Section cut.}
 Cuts round a patch of network isolated it from both its source and its sinks; 4 positions were filmed before and after, in bright-field and with Nile Red.
