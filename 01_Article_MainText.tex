@@ -1,7 +1,7 @@
 \leadauthor{Bisot}
 \title{Carbon supply for growth drives network-wide bidirectional flows in mycorrhizal fungi}
 
-\shorttitle{Nutrient circulation in Mycorrhizal fungi}
+\shorttitle{Nutrient circulation in mycorrhizal fungi}
 \author[a,b,c,*]{Corentin Bisot}
 \author[b,*]{Simon van Staalduine}
 \author[b]{Achille Joliot}
@@ -24,13 +24,13 @@
 
 \begin{abstract}
  
- Plant-mycorrhizal symbiosis is fundamental to terrestrial ecosystems as it is responsible for large flows of nutrients on a planetary scale.
+ The symbiosis between plants and arbuscular mycorrhizal (AM) fungi is fundamental to terrestrial ecosystems as it is responsible for large flows of nutrients on a planetary scale.
 In this symbiosis, two distinct organisms trade phosphorus (P) for energy in the form of carbon (C).
 However, the mechanism behind the bidirectional transport of resources within their microscopic hyphae has not been entirely elucidated.
 We imaged transport dynamics of nutrient flows in high resolution in different positions in growing networks, and also perturbed flows through section cuts and osmotic shocks.
-We find that carbon likely moves across the fungus on a directed network of molecular motor filaments.
+Our data suggest that carbon, as lipid, travels towards the growing tips within a condensate that molecular motors carry in one direction.
 Our findings also suggest a tight coupling between network growth, internal carbon (lipid) transport dynamics, and bidirectional fluid movement within the network.
-The movement of lipids in the open pipe system inherently produces a backflow of cytoplasmic fluid, which may be responsible for the movement of phosphorus.
+In an open pipe system, moving this condensate towards the tips pushes cytoplasmic fluid back towards the root, a backflow that may carry phosphorus.
 Our model provides an intuitive understanding for the observed proportionality in resource exchange between the two organisms.
 % NOTE (15 Oct, main-text review): According to the C/P note in the Discussion, the model makes the returning volume proportional to the motor-carried carbon by construction (slope 1.000), but not to growth carbon (slope 0.19, 95 % CI -0.47 to 0.86, 15 sessions), so 'understanding of the observed proportionality' needs that qualifier. Also, the perturbations listed are segment cuts and osmotic shocks, and the root cut is missing.
 \end{abstract}
@@ -204,12 +204,12 @@ These experiments demonstrate that the mechanical origin of flows in the two dir
 % NOTE (15 Oct, Simon): The repeated isolated-segment paragraph in the single-pipe section ('An isolated segment keeps bidirectional flow, as the model predicts') was removed. Three pieces of it may be worth reusing here: the model's prediction that a pipe closed at both ends (net water flux zero, small lipid fraction) keeps a return at about v0 (eq. max_speed); the clotting after cutting, with the gellin precedent (nguyen_fungal_2021); and the link to SI video 3 (https://www.dropbox.com/scl/fi/ors0lqpopi5yymh6e79o9/SIvideo3.avi). Its claim that both speeds stay close to 3 um/s did not match Fig 3C, where both streams are about a fifth slower.
 
 \namedsubsection{Our hypothesis on the flow mechanics, given the evidence}{subsec:res_hypothesis}
-\subsubsection*{Tipward flow: pressure-insensitive and local, consistent with motors on microtubules}
+\subsubsection*{Tipward stream: pressure-insensitive and local, consistent with a condensate carried by motors}
 For tipward flows, evidence points to a mechanism that is insensitive to pressure gradients and capable of maintaining a speed that is modulated by both hyphal diameter and distance to tip, but is otherwise robust to perturbations (SI, \nameref{subsec:si_forward_flow}).
 The lack of response to osmotic shocks, the lack of response to root cuts, and little response to segment isolation all suggest that the mechanism is not pressure driven and that there is something local to the hypha that is responsible for the tipward flows.
-We have ruled out diffusion, mass flow, and peristaltic streaming in the previous section as drivers of network-wide flows, and the evidence points to a mechanism that is consistent with molecular motors moving along microtubules, which are known to be present in AM fungi~\cite{timonen_microtubules_2001}.
+We have ruled out diffusion, mass flow, and peristaltic streaming in the previous section as drivers of network-wide flows, and the evidence is consistent with cargo carried by molecular motors along microtubules, which are present throughout AM fungal hyphae~\cite{timonen_microtubules_2001}.
 
-\subsubsection*{The lipid cargo supports motors; the rootward flow is pressure driven}
+\subsubsection*{The cargo contains lipid, which fits motor transport; the rootward stream is pressure driven}
 This hypothesis is supported by the characteristics of its likely cargo, lipid droplets.
 In some way, these lipid droplets have to arrive at the tips to facilitate growth.
 These lipid droplets are believed to be transported by molecular motors in AM fungi~\cite{bago_translocation_2002}, it has been shown that other fungal species transport lipids along microtubules~\cite{guimaraes_peroxisomes_2015, lin_active_2016}, and the speed of the tipward flows is consistent with the range of speeds of molecular motors~\cite{steinberg_cell_2017}.
@@ -220,7 +220,7 @@ The flows towards the root are also more variable in speed.
 This suggests that the mechanism driving these flows is different from the mechanism driving the tipward flows and is likely pressure driven.
 
 We synthesize the above results into a minimal model that explains the observed bidirectional transport of resources in the network and its modulation over space and time.
-Namely that a motor-driven condensate containing lipids moves towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC).
+Namely that motors carry a condensate of lipid droplets in water towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC).
 This model is consistent with the observed flows in both directions, and with the perturbation experiments that we performed.
 
 % \subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
@@ -232,7 +232,7 @@ This model is consistent with the observed flows in both directions, and with th
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{figures/Figure_4_v6.pdf}
- \caption{\textbf{Our model, showing motor flows moving towards the tip, and turning back as pressure-based flows.
+ \caption{\textbf{Our model: motors carry a lipid-containing condensate towards the tip, and the displaced cytoplasm returns as a pressure-driven flow.
 Model qualities are shown in the second row.}
 \textbf{(A)} Schematic of the model: tipward flow (blue) returns as rootward flow (pink).
 \textbf{(B)} The motor-driven condensate layer (light blue) along the hyphal wall, lipid droplets (yellow) in water, moves as a whole at speed $v_m$ (blue arrows), with a backflow of cytoplasm (pink) in the core, which can also carry some lipid. 
@@ -243,7 +243,7 @@ Top row: network schematics; bottom row: rootward speed $v$ ($\mu$m/s) from the 
 
 \subsubsection*{Single-pipe model: a moving condensate layer drives a central backflow}
 % SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): check the single-pipe and network-model derivations here (eq:speed_profile_main, eq:net_inner_flow, eq:max_speed) against Methods notation. Open contradiction: the network paragraph says growth volume is a sink with a global source; Methods says growth volume is not a sink in the pressure solve.
-We imagine that a flux of condensate containing lipid driven by motors throughout the aseptate mycelium could trigger large movement of the cytoplasmic fluid in both the direction of the lipid due to viscous friction and the other direction due to the incompressibility of the fluid in the case where no water could flow out of the hyphae.
+As this condensate moves towards the tips throughout the aseptate mycelium, it could drag cytoplasmic fluid along by viscous friction and, because no water can leave the hyphae, push an equal volume back towards the root.
 As such, the condensate, a water-oil-like emulsion of lipid droplets of higher viscosity, forms a layer that uniformly coats the internal surface of the hyphal pipe.
 We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae.
 The condensate layer has a volumetric proportion $\theta$ of lipids and $(1-\theta)$ of water, and moves at a speed $v_m$.
@@ -447,6 +447,7 @@ We show that in most hyphae, there are at least two opposing streams: a tipward 
 We also imaged lipid movement using Nile Red staining, and found that the lipid moves mostly tipward (median direction bias 0.71, 84\% of edges tipward), while bright-field movement is roughly even.
 
 In trying to differentiate the mechanisms behind these two streams, we found that an osmotic shock changes only the rootward stream, which is therefore pressure-driven.
+The tipward stream, which carries most of the lipid, is insensitive to the shock. We interpret it as a lipid-containing condensate carried by molecular motors, but we did not test the motors directly; blocking microtubules or motors and checking whether the tipward stream stops, and the rootward stream with it, would be the decisive experiment.
 After a root cut both streams continue, so neither needs the plant.
 Isolated segments of a few millimeters keep both streams, about a fifth slower, so both are driven locally. 
 
@@ -465,8 +466,8 @@ While some aspects of the model were validated with the more accurate diameters 
 
 \subsection*{The model: what it explains and where it falls short}
 
-With these data, we were able to present a model based on the motor flow of condensate along the hyphal wall, inducing a pressure flow back through the network.
-Both the insensitivity to pressure of the motor flows and the whole pressure field are important to capture the breadth of tipward and rootward measurements.
+With these data, we were able to present a model in which motors carry a lipid-containing condensate along the hyphal wall towards the tips, and the displaced fluid returns through the network as a pressure-driven flow.
+Both the insensitivity to pressure of the motor-carried stream and the whole pressure field are important to capture the breadth of tipward and rootward measurements.
 Key model characteristics like demand dependence (Fig.~\ref{fig:schematic_model}D), to a lesser extent diameter dependence (Fig.~\ref{fig:schematic_model}E), concentration of backflow into the better-conducting arm of a loop (Fig.~\ref{fig:schematic_model}F) and backflow increases due to growth (Fig.~\ref{fig:schematic_model}G) were captured in the measured data as well. 
 
 The perturbation experiments are also explained by the broader implications of the model.
@@ -516,9 +517,9 @@ Sparse particles could still be moving with motors along microtubules, just not 
 \subsubsection*{Motor tracks form an oriented network}
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): review and extend (with references) this subsection and "Growth may follow supply": the oriented track graph, Kirchhoff violations, supply-driven growth and the information bottleneck.
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
-Taking the steady $\sim$3~$\mu$m/s stream as the motor flow, on loop edges, where the direction is not fixed by the tree structure, its direction matches the growth direction on 86\% of 677 edges.
+Taking the steady $\sim$3~$\mu$m/s tipward stream as the motor-carried condensate, on loop edges, where the direction is not fixed by the tree structure, its direction matches the growth direction on 86\% of 677 edges.
 It is likely that part of the network of transport filaments simply orients in the direction of tip growth at the moment of its creation and persists in that direction over longer timescales.
-The tipward stream's insensitivity to pressure, its locality and its steady speed are consistent with the idea that this movement of lipids is actively driven by molecular motors moving in one direction on polar cytoskeletal filaments.
+The tipward stream's insensitivity to pressure, its locality and its steady speed are consistent with the condensate holding this lipid being carried by molecular motors that move in one direction on polar cytoskeletal filaments.
 This network of filaments inside the fungal network is mathematically equivalent to a weighted oriented graph, where the weight of a given edge can represent the number of cytoskeletal filaments, allowing molecular motor movement.
 It is unclear how this oriented network organizes to maintain a coherent intensity and polarity with growth. 
 
@@ -565,7 +566,7 @@ The framework developed here can also be flexibly expanded to include the effect
 By adding sources and sinks of water where aquaporins exchange it with the surroundings, it is also possible to account for additional transport mechanisms.
 
 \section*{Conclusion}
-In short, we have shown that within AM fungi, a minimal model relying on motor-based tipward flow and pressure-based backflow recreates the range and dynamics of measured flows. Its limitations are in the noise of the measured parameters, and certain unrepresented flow regimes. One consequence of this model is its physical result of carbon-phosphorus exchange, which in the model can be described as a linear relationship. In the future, phosphorus packing and the role of water in AM fungal transport should be investigated to see further effects. Microtubule dynamics in AM fungi are also an open field to investigate, as they have not been widely imaged in vivo before. 
+In short, we have shown that within AM fungi, a minimal model in which motors carry a lipid-containing condensate towards the tips and a pressure-driven backflow returns cytoplasm to the root recreates the range and dynamics of measured flows. Its limitations are in the noise of the measured parameters, and certain unrepresented flow regimes. One consequence of this model is its physical result of carbon-phosphorus exchange, which in the model can be described as a linear relationship. In the future, phosphorus packing and the role of water in AM fungal transport should be investigated to see further effects. Microtubule dynamics in AM fungi are also an open field to investigate, as they have not been widely imaged in vivo before. 
 
 \section*{Bibliography}
 \bibliographystyle{bxv_abbrvnat}
