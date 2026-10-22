@@ -378,6 +378,7 @@ We assume that this emulsion is phase-separated from the bulk cytoplasm.
 
 \namedsubsection{Lipid generated backflow}{subsec:res_backflow}
 
+% NOTE (22 Oct, Simon): old panel F (PNF080 t91 LeftMiddle, rerouted backflow) moved to the SI (subsec:si_rerouting) and the Discussion; the figure still has to be rebuilt without it, with old G relabelled F (fig6_examples.py, worktree min-edge, feat/flow-regime).
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth,height=0.64\textheight,keepaspectratio]{figures/fig6_model_examples.png}
@@ -388,9 +389,7 @@ Model as in Fig.~\ref{fig:fig5_plug} (blue); measured bright-field rootward spee
 \textbf{(C)} Network of EPY088 at session t55, every hypha coloured by whether it was present at t28 (grey) or grew since (green), with measured trail in bold and its tip (star).
 \textbf{(D)} Rootward speed along measured trail against the distance from the root, model at t28 (light blue) and t55 (blue; running median over 5 segments), measured at t28 (open) and t55 (filled); green: grown since t28.
 \textbf{(E)} One trail on each of the other plates: PNF072 t37 Middle (26 segments, 92\% within a factor 2), LPD025 t50 Middle (32, 94\%) and STR112 t60 LeftMiddle (21, 86\%).
-\textbf{(F)} Where the model sends a hypha's return elsewhere: trail LeftMiddle of PNF080 at t91, 8 to 19~mm from the root, every edge coloured by the modelled rootward speed (line width proportional to hyphal diameter) and the 16 measured segments by the measured one, on the same scale.
-Measured: median 6.3~$\mu$m/s to the root and 3.3~$\mu$m/s to the tip; model: 2.1~$\mu$m/s, because the pressure solve returns only 0.66 (interquartile range 0.47--0.79) of the trail's motor stream through its own core and sends the rest back through neighboring hyphae.
-\textbf{(G)} Full and sparse flow: bright-field kymographs of two edges of PNF080 at t81, both more than 6~mm from a growing tip (moving signal only, time mean removed; 20 frames per second).
+\textbf{(F)} Full and sparse flow: bright-field kymographs of two edges of PNF080 at t81, both more than 6~mm from a growing tip (moving signal only, time mean removed; 20 frames per second).
 Left, full flow (video-extracted diameter 10.2~$\mu$m): tipward 3.3, rootward 5.5, model 6.4~$\mu$m/s; right, sparse flow (video-extracted diameter 4.6~$\mu$m): few, faint streaks at 1.8~$\mu$m/s in both directions, model 3.1~$\mu$m/s (SI, \nameref{subsec:si_flow_regimes}).}\label{fig:fig6_examples}
 \end{figure}
 
@@ -398,7 +397,7 @@ Left, full flow (video-extracted diameter 10.2~$\mu$m): tipward 3.3, rootward 5.
     
 % NOTE (17 Oct, facts behind this subsection not in the prose): (A) 94 % of the 111 tree edges are within a factor of 2 (rank correlation 0.65); at fixed demand no width effect is detectable on tree edges (measured +0.21 [-0.42, 0.84], model -0.05), but over all filmed edges the video lumen keeps a width effect at fixed demand (within-plate rho 0.43 measured, 0.16 model). (B) The model exaggerates the arm difference (SD of the log ratio 0.89 against 0.53), mostly from width noise (network widths agree with the video lumen at rho 0.49); a lower conductance exponent does not fix it (K ~ a^3/L: 0.77, loop rho 0.37; a^2/L: 0.73, rho 0.29, KS 0.105), so Poiseuille stays; SI figures for the loop density plot and the side branches are built, not yet placed. (C-D) 70 % of the t55 network length grew after t28. (F) With the betweenness/kappa split at the medians, the model is low on high-kappa, low-betweenness edges (log2 model/measured -0.35; 2.97 against 3.80 um/s, 364 edges) and high on low-kappa, high-betweenness edges (+0.31; 4.47 against 3.53, 427 edges). (G) Sparse-flow edges: median lumen 6.2 against 8.4 um for full flow.
 
-We compare the model's characteristics, listed in Fig.~\ref{fig:schematic_model}D-G, with the measured flows in the network (Fig.~\ref{fig:fig6_examples}A-G).
+We compare the model's characteristics, listed in Fig.~\ref{fig:schematic_model}D-G, with the measured flows in the network (Fig.~\ref{fig:fig6_examples}A-F).
 The first is the claim that in tree-like parts of the network, lipid demand accumulates towards the root, and that this accumulation increases the backflow speed.
 We find that in the 111 tree-like edges (on no loop) that carry routed lipid demand, the measured rootward speed rises with the demand as the model predicts: effect of log demand on log speed 0.11 [0.05, 0.18] measured against 0.13 [0.10, 0.15] in the model (Fig.~\ref{fig:fig6_examples}A).  
 
@@ -416,17 +415,12 @@ Over the 30 trails with $\geq$5 segments, the model ranks the trails by their me
 
 % NOTE (16 Oct, summarized 17 Oct, Fig 4F, other tests): Side branches along the trunks (62 filmed junctions, junction_side_branches.py): the model ranks the side / through speed ratio (rho +0.35, +0.30 beyond width), but its sign (46/62) does not beat the rule 'the side branch is slower' (49/62). Null: the trail's share of local conductance over 1 mm (rho -0.07 after tip distance and demand); 19 junctions with two rootward legs (9-10 of 19 right).
 
-One reason the model sometimes shows different rootward speeds than measured is that the global pressure solve can send part of a hypha's return elsewhere.
-On PNF080 t91 LeftMiddle (8--19~mm from the root) the model returns only 0.66 (interquartile range 0.47--0.79) of the trail's motor stream through its own core and circulates the rest through side hyphae, giving 2.1 against 6.3~$\mu$m/s measured (Fig.~\ref{fig:fig6_examples}F).
-This is the other face of the betweenness/$\kappa$ result above: the model concentrates the return on main routes and misses the faster flow through well-connected sections.
-
-Finally, one state of flows that is not representable by the model is sparse flow (13\% of edges, thin, $\sim$1.8~$\mu$m/s both ways); the model over-predicts these edges (bias 1.60; SI, \nameref{subsec:si_flow_regimes}; Fig.~\ref{fig:fig6_examples}G).
+Finally, one state of flows that is not representable by the model is sparse flow (13\% of edges, thin, $\sim$1.8~$\mu$m/s both ways); the model over-predicts these edges (bias 1.60; SI, \nameref{subsec:si_flow_regimes}; Fig.~\ref{fig:fig6_examples}F).
 In the kymographs, these sparse flows largely show long straight trajectories of single particles, not part of a condensate.
 This violates the model's assumption of particles moving together in tight flows. 
 
 % NOTE (16 Oct, summarized 17 Oct, Fig 4F and circulation): In the 2x toy loop a third of the motor flux circulates (up the long arm, down the short one), while the long arm's core still flows rootward; the core reverses only from ~4x. In the real networks (main model) the core flows tipward on 0.5-2.6 % of edge length, although loop arms carry a median net flux of 30 % of their motor flux. No data in the paper show loop circulation itself; the circulation point is for the Discussion (note there).
 % NOTE (15 Oct, summarized 17 Oct, Fig 6D): On the t28 stretch of EPY088 Main, demand rose 3.3-fold, the lumen area b^2 1.36-fold and the core area a^2 1.06-fold, so the extra cross-section went mostly to the condensate layer and the return rose 1.56-fold. Caveat: our data do not show widening following demand (lagged demand-width correlation ~0 at every lag; demand_rise.py, demand_widening.py). LPD025 Middle is the only other trail with enough segments in several sessions (7-10 each).
-% NOTE (15 Oct, summarized 17 Oct, Fig 6F; fig_outputs/flow_regime/pnf080_investigation): In the model the trail's net flux points tipward on 9-18 mm, a ~10 mm circulation loop (volume enters at ~8.8 mm through a side branch and leaves into side hyphae at 17-21 mm); measured, the return there (6.5 um/s) exceeds even a full return of the motor stream (~3.5 um/s). Not explained by nearby growth; past demand raises the model to 2.9 um/s, splitting crossings to 2.2, idle motors change nothing.
 
 \subsubsection*{One physical model from pipe to network, with consequences for trade}
 Our simple physical model can therefore explain a wide variety of our experimental observations.
@@ -498,6 +492,7 @@ Full control would probably require an additional ingredient of radial shrinkage
 \subsubsection*{Where the model falls short}
 
 Where the model does fall short is its overprediction on high edge-betweenness sections, and underprediction on low edge-betweenness edges which are deep inside the network.
+Some high edge-betweenness hyphae are instead under-predicted, which we attribute to faults in the network extraction: because the pressure is solved over the whole network, a wrongly connected or missing hypha lets the solve pool the backflow in neighbouring edges rather than in the hypha that carries it (SI, \nameref{subsec:si_rerouting}).
 Additionally, with enough of a conductance imbalance, we can see pressure flows move in the same direction of the motor flows due to recirculation.
 We have seen no clear case of this.
 Only a pressure field spanning the whole network concentrates backflow into central hyphae and reproduces the high measured rootward speeds. 
