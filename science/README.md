@@ -3,7 +3,9 @@
 One document per biological result behind the transport paper: what the fungus does, measured
 with the AMF pipeline. These moved here from
 [rhizosphere](https://github.com/Staalduine/rhizosphere) on 2026-10-23, so that the science
-lives with the paper that argues it. How the pipeline itself was validated stays in rhizosphere's
+lives with the paper that argues it. Two general documents went back on 2026-10-26, since they are not the
+paper's argument: hyphal growth speeds and microtubule motors in lipid transport, now in
+[rhizosphere/science](https://github.com/Staalduine/rhizosphere/tree/main/science). How the pipeline itself was validated stays in rhizosphere's
 [`findings/`](https://github.com/Staalduine/rhizosphere/tree/main/findings).
 
 [`transport_model_decisions.typ`](transport_model_decisions.typ) is the decision record for the
@@ -27,7 +29,6 @@ this; nothing here checks it yet, so keep the status column below in step by han
 
 | document | the question it answers | status |
 |---|---|---|
-| [hyphal_speed_profiles.typ](hyphal_speed_profiles.typ) | How fast does a hypha actually grow, once the metric — paused or moving — and the measurement window — arc or growth-directed-acyclic-graph (DAG) trail — are made explicit, and what does that reveal about growth modes and the colony growth curve? | open |
 | [direction_resolved_backflow.typ](direction_resolved_backflow.typ) | In a hypha carrying material in both directions at once, is the flow running back toward the colony's origin the same speed as the flow running outward, or is there a subset of hyphae where the two differ? | open |
 | [backflow_model_accuracy.typ](backflow_model_accuracy.typ) | The transport model predicts, for every hypha in a growing colony, how fast material flows back towards the colony's origin. Measured against video on twelve sessions, does the pressure-driven flow, shaped by network geometry, remain accurate beyond the last centimetre behind a growing tip, where does each interpretation fail, can a simpler local model do as well, and does it at least get the range of backflow speeds right? | open |
 | [throttled_core_speed_model.typ](throttled_core_speed_model.typ) | Forward flow is motor-based and backflow is pressure-based. Can a model respect that division, derive the backflow from the network's geometry and growth, and show which assumptions control its prediction? | open |
@@ -39,5 +40,4 @@ this; nothing here checks it yet, so keep the status column below in step by han
 | [section_cut_sites.typ](section_cut_sites.typ) | When a scalpel cuts hyphae in a living colony, how much does cytoplasmic flow slow at a given filming site, and does that depend on whether the site ends up in a piece of network the cuts closed off, on its distance to the cut, on the time since the cut, and on how much hypha the closed-off piece contains? | open |
 | [loop_circulation_global_model.typ](loop_circulation_global_model.typ) | The paper's backflow model sends the to-root flow through the whole hyphal network with one pressure solve, so on loops a hypha can return more or less than its own to-tip stream. Where does that routing go wrong, does anything in the measured flows show the circulation it predicts, and can the solve be changed so that it matches them? | open |
 | [motor_direction_and_lipid_distribution.typ](motor_direction_and_lipid_distribution.typ) | The backflow model has to decide which way the motors run on every hypha and how the lipid that growth consumes is shared where streams meet. Do the motors follow the hydraulic solve or the way the hyphae grew, does the sharing rule matter, and can anything in the videos tell the options apart? | open |
-| [microtubule_motors_and_lipid_transport.typ](microtubule_motors_and_lipid_transport.typ) | In arbuscular mycorrhizal fungi lipid moves towards the hyphal tips in a steady stream near 3 µm/s while material returns towards the root faster and more variably; neurons and model fungi move cargo both ways with kinesins and dynein on polarised microtubules, so which of their rules can a model of these hyphae borrow, and are the motors and their regulators conserved in the arbuscular mycorrhizal genomes? | open |
 
