@@ -34,6 +34,7 @@
 % NOTE (1, definition): an edge is tree-like when it is a bridge of the network graph (removing it disconnects the network; networkx bridges on the simple graph, degree-2 nodes dissolved), as in the model tables' `bridge` column; otherwise it lies on a loop. Methods, \nameref{subsec:dated_graph}, paragraph "Tree and loop edges", has the definition and a \todo for these bins.
 % NOTE (2, edges): The edges are the filmed edges of the main model tables, 15 sessions (loop_density_curve.prepare_edges): 1,590 edges, 1,579 of them with a tip distance. The tip distance is the network distance to the nearest growing tip (d_tip, model_accuracy/features_edges.csv).
 % NOTE (3, numbers, bins by tip distance in mm, n edges / % tree-like): The bins give these edge counts and tree-like shares: <1 mm, 86 edges and 39.5 %; 1-2 mm, 201 and 20.4 %; 2-4 mm, 438 and 10.5 %; 4-8 mm, 568 and 10.7 %; >8 mm, 286 and 14.3 %. The main text states 40 % within 1 mm against 11-14 % beyond 2 mm.
+% NOTE (29 Oct, Figs 1 and 2 rebuilt on the current main model, split_even_j10000 with 20 um minimum video edge; PR #12): these bin numbers are now <1 mm 85 edges and 38.8 %; 1-2 mm 199 and 20.6 %; 2-4 mm 436 and 10.6 %; 4-8 mm 562 and 10.7 %; >8 mm 282 and 13.8 %.
 % NOTE (4, context): Over all edges of the same networks, 36 % are tree-like, against 15 % of the filmed edges (\nameref{subsec:si_video_selection}), so the filmed set under-samples tree-like edges.
 % NOTE (5, open): Still open: a figure (share by tip distance, filmed against all edges) if wanted, and the per-session spread.
 
