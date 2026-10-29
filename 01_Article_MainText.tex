@@ -83,11 +83,12 @@ Fungal networks grow through the extension of fungal tips away from the root of 
 Over time, these elongated hyphae develop into a branched mycelial structure.
 The network's topological context therefore varies along the length of a hypha.
 Close to a growing tip, the network is more tree-like: 40\% of the edges within 1~mm of a tip are bridges, that is, not part of any loop, versus 11--14\% of the edges further than 2~mm from a tip (Fig.~\ref{fig:hyphal_profiling}A, inset).
+% NOTE (29 Oct, Figs 1 and 2 rebuilt on the current main model, split_even_j10000 with 20 um minimum video edge; PR #12): the Fig 1A inset now gives 85/199/436/562/282 edges per bin (was 86/201/438/568/286) and tree-like shares 38.8 / 20.6 / 10.6 / 10.7 / 13.8 % (was 39.5 / 20.4 / 10.5 / 10.7 / 14.3), so 40 % within 1 mm rounds to 39 %; 11--14 % beyond 2 mm still holds.
 Moving away from the tip, more growing hyphae depend on the same runner hypha, and anastomosis (fusion between a hyphal tip and a hyphal segment) creates loops, which give many alternative paths from the tip towards the root~\cite{oyarte_galvez_travelling-wave_2025}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/Figure_1_v4.pdf} 
+    \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/Figure_1_v5.pdf} 
     \caption{\textbf{AM fungi produce robust patterns of asymmetric bidirectional flows across time and space.}
 \textbf{(A)} Network graph where a hyphal transect has been highlighted with dots where measurements took place.
 Green edges are tree-like, grey edges lie on a loop; line weight is exaggerated hyphal diameter.
@@ -118,7 +119,7 @@ This result was confirmed by repeating a similar experiment on various plates ov
 
 \begin{figure}
  \centering
- \includegraphics[width=\textwidth]{figures/Figure_2_v2.pdf}
+ \includegraphics[width=\textwidth]{figures/Figure_2_v3.pdf}
  \caption{\textbf{Tipward and rootward flows differ in speed and in cargo: the tipward flow is concentrated around $3 ~\mu m /s$ and carries most of the lipid, the rootward flow is more variable.}
 \textbf{(A)} Density of the absolute tipward speed against the absolute rootward speed at the same location, in bright-field.
 Marginal histograms along the edges.
@@ -137,6 +138,7 @@ The lipids moved to the tip at a median of 2.42~$\mu m/s$ (879 edges with both d
 In the other direction, fewer fluorescence streams were detected (989 against 1,396 tipward), at a median of 2.20~$\mu m/s$ against 2.91~$\mu m/s$ in bright-field.
 
 By comparing bright-field and fluorescence videos of the same position, recorded about 15 seconds apart, it is clear that only a subset of trails visible in bright-field kymographs appear also in the fluorescence version (Fig.~\ref{fig:asymmetries}C, D): fluorescence gives 625 videos and 879 edges with both directions measured, bright-field 731 videos and 1,513 edges.
+% NOTE (29 Oct, Figs 1 and 2 rebuilt on the current main model, split_even_j10000 with 20 um minimum video edge; PR #12): Fig 2A now has 1,498 bright-field edges with both directions (was 1,513), with shares rootward faster / similar / tipward faster 46 / 43 / 12 % (687 / 638 / 173 edges; was 45 / 43 / 12 %) and medians 2.96 tipward and 3.56 rootward um/s (was 2.95 / 3.55). The 1,513 here and in Methods may need updating to 1,498, if they refer to the Fig 2A edges.
 We set out to find whether there was a directional bias in the movement of lipids.
 For each video we computed the share of the moving signal that travels towards the tip, from 0 (all to the root) to 1 (all to the tip) (Methods, \nameref{subsec:direction_bias}).
 Together, these results show that lipids generally move in the direction of the tips (Fig.~\ref{fig:asymmetries}D): we found a median direction bias of 0.71 towards the tips, with 84\% of edges having lipids with a tipward direction bias, against roughly even for bright-field in both metrics. 
@@ -144,7 +146,7 @@ Together, these results show that lipids generally move in the direction of the 
 \namedsubsection{Perturbations show that cytoplasmic flow towards the root is pressure driven while tipward flows are likely locally driven and pressure-insensitive}{subsec:res_perturbations}
 \begin{figure} 
 \centering
-\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{figures/Figure_3_v4.pdf} 
+\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{figures/Figure_3_v5.pdf} 
 \caption{\textbf{Flows are driven by local elements, with limited whole-network influence.}
 \textbf{(A)} Osmotic shock: a drop of solute solution (mostly NaCl, 50 to 400 mOsm) placed on the substrate at the base of the network, a few centimeters behind the growing front, while a hypha near the growth edge is imaged.
 Speed divided by its mean before the drop, tipward (blue) and rootward (pink): thin lines are single droplets, thick lines the median of the 14 solute droplets; the black dashed line is the median rootward speed of 3 medium-like control drops.
@@ -224,7 +226,7 @@ This model is consistent with the observed flows in both directions, and with th
 
 \begin{figure}
  \centering
- \includegraphics[width=\textwidth]{figures/Figure_4_v6.pdf}
+ \includegraphics[width=\textwidth]{figures/Figure_4_v7.pdf}
  \caption{\textbf{Our model: motors carry a lipid-containing condensate towards the tip, and the displaced cytoplasm returns as a pressure-driven flow.
 Model qualities are shown in the second row.}
 \textbf{(A)} Schematic of the model: tipward flow (blue) returns as rootward flow (pink).
