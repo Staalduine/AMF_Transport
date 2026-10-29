@@ -36,7 +36,7 @@ Our model provides an intuitive understanding for the observed proportionality i
 \end{abstract}
 
 \section*{Introduction}
-\subsubsection*{Why bidirectional transport matters}
+
 The symbiosis between arbuscular mycorrhizal (AM) fungi and their host plants has existed for 400 million years~\cite{remy_four_1994,brundrett_evolutionary_2018}.
 For the symbiosis to endure this long, robust mechanisms must be in place to ensure its stability.
 Indeed, symbiosis can be a many to many relationship, which means that the plant can interact with multiple independent fungal colonies and one fungal network can interact with multiple plant hosts~\cite{kiers_reciprocal_2011,walder_mycorrhizal_2012}.
@@ -51,7 +51,6 @@ The mechanisms that could explain such bidirectional transport in a network of o
 Our group had previously estimated that, when a single AM fungus was attached to a single plant, the fungal use of carbon for growth was proportional to the flux of phosphorus towards the plant~\cite{bisot_carbon-phosphorous_2025}.
 In addition, it has been observed in the past that, when a single AM network was connected to two different plant hosts that differed in their carbon supply, more phosphorus was directed towards the plant that provided more carbon~\cite{kiers_reciprocal_2011}. 
 
-\subsubsection*{What is known about flows in AM fungi}
 Past research has quantified the flow speed in both directions in networks of different ages~\cite{oyarte_galvez_travelling-wave_2025}.
 However, without staining the lipids and/or phosphorus, it is difficult to understand the organization of resource flow across the network and the underlying transport mechanisms.
 Resource specific staining can shed light on the distribution of resource flux within the network.
@@ -67,7 +66,6 @@ Because AM fungi are coenocytic, the colony can be represented as a hydraulic ne
 This hydraulic coupling between all elements of the network could generate spatial correlation in ways that can be physically framed.
 Such a mechanical framework, validated against measurements, for growing AM colonies is still missing.
 
-\subsubsection*{Questions and approach}
 What mechanisms explain the bidirectional transport of resources in the mycorrhizal colony and its modulation over space and time?
 How can the transport mechanisms in place maintain a form of bidirectional transport in which the magnitudes of resource flux in opposite directions are maintained proportional? 
 To answer these questions, we acquired image data at two different spatial and temporal resolutions to quantify the flow speed in specific edges of growing networks.
@@ -80,7 +78,7 @@ From these data and findings, we construct a minimal model that explains the obs
 
 \section*{Results}
 \namedsubsection{Asymmetric bidirectional speeds}{subsec:res_speeds}
-\subsubsection*{Topological context changes along a hypha}
+
 Fungal networks grow through the extension of fungal tips away from the root of the host plant.
 Over time, these elongated hyphae develop into a branched mycelial structure.
 The network's topological context therefore varies along the length of a hypha.
@@ -103,7 +101,6 @@ Each point is one video: the median of its extracted tipward (blue) or rootward 
 Marker shape gives the day, with the number of videos tipward/rootward in the key; dashed lines mark $\pm 3~\mu m/s$.}\label{fig:hyphal_profiling}
 \end{figure}
 
-\subsubsection*{Tipward and rootward speeds along runner hyphae}
 We asked how this change in topological context affected the speeds of the flows in the two directions along a hypha: towards the growing tip (tipward) and towards the root (rootward), as defined by the growth direction of the network.
 We imaged flows at high resolution in 731 bright-field videos along the hyphae of five colonies (SI Fig.~\ref{fig:video_positions}) and, mostly at the same positions, in 625 videos of Nile Red fluorescence; for the example network of Fig.~\ref{fig:hyphal_profiling}, the videos were taken over three consecutive days.
 We chose runner hyphae, the main routes to the root and the edges of high betweenness centrality~\cite{kirkley_betweenness_2018}, where the tipward and rootward flows could be distinguished by eye (SI, \nameref{subsec:si_video_selection}; SI Fig.~\ref{fig:bc_selection}). 
@@ -133,7 +130,6 @@ Dashed lines: medians; triangles: the example shown in C.}\label{fig:asymmetries
 \end{figure}
 % NOTE (16 Oct): The fluorescence speed sentences of the next subsection (lipids at 2.42 against 2.95 um/s; 989 against 1,396 rootward streams at 2.20 against 2.91 um/s; the video and edge counts in the bias paragraph) compare fluorescence and bright-field speeds, which Simon decided to drop on 13 Oct (detection limit; the SI comparisons are out). The direction bias (Fig 2D) does not depend on speeds and stays.
 
-\subsubsection*{The lipid cargo moves mostly to the tip}
 We asked if the asymmetry in the directional speeds could be due to the difference in cell components that would be moving in the two directions, which could inform the mechanism of movement.
 We stained neutral lipids with Nile Red fluorescent dye~\cite{bago_tracking_2002} and imaged the same positions with both bright-field and fluorescence setups (Fig.~\ref{fig:asymmetries}C, D).
 At the resolution of the fluorescence videos (0.14~$\mu$m per pixel, 0.5 or 1~s per frame, 10 to 20~s per video), we saw no evidence of lipid particles randomly switching direction, as they would in the random walk underlying diffusive motion (Fig.~\ref{fig:asymmetries}C).
@@ -167,7 +163,6 @@ Significance of the posterior median ratio after/before is indicated by stars: P
 Pre-cut data were acquired up to 40 minutes before the cut, post-cut data from 4 minutes to 2 hours after.}\label{fig:perturbations}
 \end{figure}
 
-\subsubsection*{Diffusion, mass flow and peristalsis do not explain two opposing steady streams}
 In the past, pressure gradients and molecular motors have been suggested to be potential mechanisms driving flows in fungal hyphae~\cite{steinberg_cell_2017,kokkoris_mycelial_2026}. 
 It is also important to discuss other potential mechanisms that could drive flows in fungal hyphae, and to evaluate whether our data support or contradict each of them. 
 Diffusion as a mechanism could be present close to the tips, as that is where we observe the most random movement of particles (Fig.~\ref{fig:hyphal_profiling}D4), but the directed, unbroken flow in the rest of the network is not consistent with diffusion alone. 
@@ -175,7 +170,6 @@ Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_20
 Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}). {\color{blue} is it helpful to remark that periodic radial variations are observed in 
 \textit{Physarum}, but at the resolution we can image we do not observe such radial oscillations?}
 
-\subsubsection*{Perturbations separate the two directions}
 The difference in flow behavior, both within an edge and along an edge, with distance to tip suggests that flow in each direction could be associated with a different mechanism.
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
 This experiment has been performed in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
@@ -205,12 +199,11 @@ These experiments demonstrate that the mechanical origin of flows in the two dir
 % NOTE (15 Oct, Simon): The repeated isolated-segment paragraph in the single-pipe section ('An isolated segment keeps bidirectional flow, as the model predicts') was removed. Three pieces of it may be worth reusing here: the model's prediction that a pipe closed at both ends (net water flux zero, small lipid fraction) keeps a return at about v0 (eq. max_speed); the clotting after cutting, with the gellin precedent (nguyen_fungal_2021); and the link to SI video 3 (https://www.dropbox.com/scl/fi/ors0lqpopi5yymh6e79o9/SIvideo3.avi). Its claim that both speeds stay close to 3 um/s did not match Fig 3C, where both streams are about a fifth slower.
 
 \namedsubsection{Our hypothesis on the flow mechanics, given the evidence}{subsec:res_hypothesis}
-\subsubsection*{Tipward stream: pressure-insensitive and local, consistent with a condensate carried by motors}
+
 For tipward flows, evidence points to a mechanism that is insensitive to pressure gradients and capable of maintaining a speed that is modulated by both hyphal diameter and distance to tip, but is otherwise robust to perturbations (SI, \nameref{subsec:si_forward_flow}).
 The lack of response to osmotic shocks, the lack of response to root cuts, and little response to segment isolation all suggest that the mechanism is not pressure driven and that there is something local to the hypha that is responsible for the tipward flows.
 We have ruled out diffusion, mass flow, and peristaltic streaming in the previous section as drivers of network-wide flows, and the evidence is consistent with cargo carried by molecular motors along microtubules, which are present throughout AM fungal hyphae~\cite{timonen_microtubules_2001}.
 
-\subsubsection*{The cargo contains lipid, which fits motor transport; the rootward stream is pressure driven}
 This hypothesis is supported by the characteristics of its likely cargo, lipid droplets.
 In some way, these lipid droplets have to arrive at the tips to facilitate growth.
 These lipid droplets are believed to be transported by molecular motors in AM fungi~\cite{bago_translocation_2002}, it has been shown that other fungal species transport lipids along microtubules~\cite{guimaraes_peroxisomes_2015, lin_active_2016}, and the speed of the tipward flows is consistent with the range of speeds of molecular motors~\cite{steinberg_cell_2017}.
@@ -229,7 +222,6 @@ This model is consistent with the observed flows in both directions, and with th
 % In a network with loops and many different tips growing in different directions at different speeds, the idea that lipids move on molecular motors toward the tip is ambiguous.
 % We wanted to characterize more precisely how the growth of different tips could collectively contribute to overall lipid flow patterns. 
 
-
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{figures/Figure_4_v6.pdf}
@@ -242,7 +234,6 @@ Model qualities are shown in the second row.}
 Top row: network schematics; bottom row: rootward speed $v$ ($\mu$m/s) from the root to the tip; in (G) the network at $t_1$, with the hyphae grown since $t_0$ in green, and the profile at $t_0$ and $t_1$ with the growth in between shaded.}\label{fig:schematic_model}
 \end{figure}
 
-\subsubsection*{Single-pipe model: a moving condensate layer drives a central backflow}
 % SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): check the single-pipe and network-model derivations here (eq:speed_profile_main, eq:net_inner_flow, eq:max_speed) against Methods notation. Open contradiction: the network paragraph says growth volume is a sink with a global source; Methods says growth volume is not a sink in the pressure solve.
 As this condensate moves towards the tips throughout the aseptate mycelium, it could drag cytoplasmic fluid along by viscous friction and, because no water can leave the hyphae, push an equal volume back towards the root.
 As such, the condensate, a water-oil-like emulsion of lipid droplets of higher viscosity, forms a layer that uniformly coats the internal surface of the hyphal pipe.
@@ -278,7 +269,6 @@ It also suggests a possible explanation for the spatial and temporal variation o
 The spatial variation of $\Theta$ (SI Fig.~\ref{fig:theta_spatial}) indeed directly contributes to the magnitude of the rootward speed.
 Where a larger share of the lipid moves to the tip, the rootward stream is faster (Spearman $\rho = 0.40$ within plates, also after accounting for tip distance), as the model predicts (Eq.~\ref{eq:max_speed}: the backflow rises with $\Theta$).
 
-\subsubsection*{Network model: pipes as circuit elements}
 Our conceptual model seemed to be supported by the data at the individual pipe level.
 Cutting a segment out of the network brings the nearest tip closer, which in the model lowers the motor speed and with it the backflow, as observed after section cuts, where both streams slowed by about a fifth (Fig.~\ref{fig:perturbations}C).
 However, we wanted to know what its consequences would be at the network level.
@@ -367,7 +357,6 @@ This is consistent with the observed correlation between hyphal diameter and roo
 This result was obtained with the video-extracted diameters, which are more accurate than the diameters from the 2x network images.
 % NOTE (17 Oct): Check the magnification of the network imaging ('2x'). 
 
-\subsubsection*{The lipids form an emulsion separate from the bulk cytoplasm}
 Even our estimate of 5\% of the cytoplasm filled with lipids suggests that a significant proportion of the volume of the hyphal is filled with lipids.
 Such a proportion could easily lead to clogging if all of the lipids coalesce into a single phase.
 What then is this large fraction of neutral lipid packaged within the cytoplasm?
@@ -394,7 +383,6 @@ Model as in Fig.~\ref{fig:fig5_plug} (blue); measured bright-field rootward spee
 Left, full flow (video-extracted diameter 10.2~$\mu$m): tipward 3.3, rootward 5.5, model 6.4~$\mu$m/s; right, sparse flow (video-extracted diameter 4.6~$\mu$m): few, faint streaks at 1.8~$\mu$m/s in both directions, model 3.1~$\mu$m/s (SI, \nameref{subsec:si_flow_regimes}).}\label{fig:fig6_examples}
 \end{figure}
 
-\subsubsection*{The model reproduces characteristic features of the measured flows}
     
 % NOTE (17 Oct, facts behind this subsection not in the prose): (A) 94 % of the 111 tree edges are within a factor of 2 (rank correlation 0.65); at fixed demand no width effect is detectable on tree edges (measured +0.21 [-0.42, 0.84], model -0.05), but over all filmed edges the video lumen keeps a width effect at fixed demand (within-plate rho 0.43 measured, 0.16 model). (B) The model exaggerates the arm difference (SD of the log ratio 0.89 against 0.53), mostly from width noise (network widths agree with the video lumen at rho 0.49); a lower conductance exponent does not fix it (K ~ a^3/L: 0.77, loop rho 0.37; a^2/L: 0.73, rho 0.29, KS 0.105), so Poiseuille stays; SI figures for the loop density plot and the side branches are built, not yet placed. (C-D) 70 % of the t55 network length grew after t28. (F) With the betweenness/kappa split at the medians, the model is low on high-kappa, low-betweenness edges (log2 model/measured -0.35; 2.97 against 3.80 um/s, 364 edges) and high on low-kappa, high-betweenness edges (+0.31; 4.47 against 3.53, 427 edges). (G) Sparse-flow edges: median lumen 6.2 against 8.4 um for full flow.
 
@@ -423,7 +411,6 @@ This violates the model's assumption of particles moving together in tight flows
 % NOTE (16 Oct, summarized 17 Oct, Fig 4F and circulation): In the 2x toy loop a third of the motor flux circulates (up the long arm, down the short one), while the long arm's core still flows rootward; the core reverses only from ~4x. In the real networks (main model) the core flows tipward on 0.5-2.6 % of edge length, although loop arms carry a median net flux of 30 % of their motor flux. No data in the paper show loop circulation itself; the circulation point is for the Discussion (note there).
 % NOTE (15 Oct, summarized 17 Oct, Fig 6D): On the t28 stretch of EPY088 Main, demand rose 3.3-fold, the lumen area b^2 1.36-fold and the core area a^2 1.06-fold, so the extra cross-section went mostly to the condensate layer and the return rose 1.56-fold. Caveat: our data do not show widening following demand (lagged demand-width correlation ~0 at every lag; demand_rise.py, demand_widening.py). LPD025 Middle is the only other trail with enough segments in several sessions (7-10 each).
 
-\subsubsection*{One physical model from pipe to network, with consequences for trade}
 Our simple physical model can therefore explain a wide variety of our experimental observations.
 At the single hypha level, it provides an explanation for bidirectional fluid flow.
 At the growing network level, it is compatible with the observed non-trivial spatio-temporal variations in flow speeds.
@@ -474,7 +461,6 @@ It has been shown AM fungal networks can still survive with myristate~\cite{klei
 A series of cuts isolating a small segment also brings the flows down, because the tip is suddenly moved much closer to the point of measurement, leading to lower motor movement, leading to lower rootward movement.
 This is assuming that tip slowdown is a combination of friction and bunching near a network terminus, and not connected to local anatomy that actively sets motor speed. 
 
-\subsubsection*{Mechanical coupling through radius adaptation could make trade proportional}
 In broader context, AM fungi trade with their plant hosts for carbon, and have been shown to have preference for favorable exchange rates~\cite{kiers_reciprocal_2011,bisot_carbon-phosphorous_2025}.
 The model in this work as shown, could be a starting point to think of this preference not as an active process, but a result of physical processes in a flow network.
 We can recreate the proportionality by thinking of P as being harvested by fungal tips as the network grows into the soil.
@@ -490,8 +476,6 @@ Radial adaptation could constitute a flow control mechanism.
 However, we never observed hyphal external radii diminishing.
 Full control would probably require an additional ingredient of radial shrinkage. 
 
-\subsubsection*{Where the model falls short}
-
 Where the model does fall short is its overprediction on high edge-betweenness sections, and underprediction on low edge-betweenness edges which are deep inside the network.
 Some high edge-betweenness hyphae are instead under-predicted, which we attribute to faults in the network extraction: because the pressure is solved over the whole network, a wrongly connected or missing hypha lets the solve pool the backflow in neighbouring edges rather than in the hypha that carries it (SI, \nameref{subsec:si_rerouting}).
 Additionally, with enough of a conductance imbalance, we can see pressure flows move in the same direction of the motor flows due to recirculation.
@@ -502,7 +486,6 @@ Finally, the model is hampered by its noisy diameter measurements.
 Every comparison with video-extracted diameters shows that much stronger correlations can be found if diameters were extracted with more precision and accuracy.
 Future work has to see how this can be done while also imaging the growth of an entire network (SI, \nameref{subsec:si_widths}; SI, \nameref{subsec:si_model_variants}). 
 
-
 One element that the model does not take into account is the observed phenomenon of sparse flows.
 These are regions with sparse particles moving through the hyphae, without evidence of being moved by back-to-back traffic.
 These occur mostly in poorly connected (low-$\kappa$), low edge-betweenness regions of the network, and are likely the result of both low demand and routing for motors, and low pressure differences.
@@ -510,7 +493,7 @@ This points to the idea that the cytoplasm could be a yield stress fluid, which 
 Sparse particles could still be moving with motors along microtubules, just not as much as in central hyphae. 
 
 \subsection*{Relation to other systems and to the symbiosis}
-\subsubsection*{Motor tracks form an oriented network}
+
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): review and extend (with references) this subsection and "Growth may follow supply": the oriented track graph, Kirchhoff violations, supply-driven growth and the information bottleneck.
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
 Taking the steady $\sim$3~$\mu$m/s tipward stream as the motor-carried condensate, on loop edges, where the direction is not fixed by the tree structure, its direction matches the growth direction on 86\% of 677 edges.
@@ -525,7 +508,6 @@ Our tipward stream likewise rises with diameter (as $D^{0.48}$; SI, \nameref{sub
 AM fungi would thus combine both solutions, motors in one direction and pressure in the other.
 The comparison has limits: \textit{Filoreta} is a wall-less amoeba without turgor, and it moves single organelles rather than a lipid condensate.
 
-\subsubsection*{Growth may follow supply}
 One way of thinking about the system is that it is mainly driven by supply.
 Although in this paper our approach was to estimate what the flux of carbon was in each edge of the network from growth observation, it is possible that from the fungal point of view things work the other way around.
 Growth would mainly emerge from the network's underlying molecular motor track organization.
@@ -543,7 +525,6 @@ Because lipids are incompressible and cannot accumulate in a node, this means th
 This phenomenon could explain the observation that lipids can also move in two directions in fungal hyphae.
 In \textit{Filoreta}, Guest and Dawson infer antiparallel microtubule arrays where branches growing from opposite directions fused~\cite{guest_multiple_2026}, another lineage in which anastomosis would leave tracks pointing both ways in one branch.
 
-\subsubsection*{Aquaporins and osmotic pumping would extend the model, not contradict it}
 In our model, we assumed that water could not flow out of the hyphae except at the hyphal-root interface.
 However, AM fungi express functional aquaporins~\cite{li_first_2013,kikuchi_aquaporin-mediated_2016}, which could let water in and out along the hyphae.
 Any water potential gradient between the inside and outside of the hyphae could then produce influx or outflux of water at any point of the network.

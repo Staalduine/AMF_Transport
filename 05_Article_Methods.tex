@@ -35,14 +35,11 @@
 
 \namedsubsection{Resource availability}{subsec:resource_availability}
 
-\paragraph{Lead contact.}
 Requests for further information and resources should be directed to and will be fulfilled by the lead contact, Thomas S. Shimizu (shimizu@amolf.nl).
 
-\paragraph{Materials availability.}
 This study did not generate new unique reagents.
 The fungal strains are available from the sources listed in the key resources table.
 
-\paragraph{Data and code availability.}
 \begin{itemize}
   \item The per-hypha dataset is deposited at \todo{repository, DOI} and is publicly available as of the date of publication: per edge and session, the network's properties (length, diameter, age, growth downstream, tree or loop, distance to the root and to the nearest growing tip) with the measured tipward and rootward speeds, their quartiles and streak counts, and the model's prediction.
 The raw network images and flow videos are available from the lead contact on request.
@@ -86,7 +83,6 @@ Cellophane sheets & Hoefer & TE73 \\
 
 \namedsubsection{Fungal strains, root-organ cultures and plates}{subsec:strains}
 
-\paragraph{Fungal strains and root-organ cultures.}
 Colonies of \textit{Rhizophagus irregularis} strain C2 (DAOM 664346; four plates) and strain A5 (DAOM 664344; plate STR2307A112) were grown with Ri T-DNA transformed carrot roots (\textit{Daucus carota}, clone DC1) in two-compartment split Petri dishes (94~mm), as described~\cite{oyarte_galvez_travelling-wave_2025}.
 Briefly, fungal stocks were cultivated on modified Strullu--Romand (MSR) medium with transformed carrot roots for 2--6 months, and a plug of mycelium and spores from a stock was placed on 2--3~cm of fresh root in one compartment.
 That compartment held MSR with phosphate reduced to 1\%; the other, the fungal compartment, held regular MSR under a sheet of cellophane.
@@ -95,7 +91,6 @@ An acrylic frame against the central barrier, covered by a nylon mesh (50~$\mu$m
 Plates were sealed with parafilm and kept in the dark at 25~\textdegree C. The fungus crossed about 5--6 weeks after inoculation, and time-lapse imaging started at the crossing.
 \todo{confirm that the five plates followed this protocol unchanged}
 
-\paragraph{Plates and sessions.}
 Five plates were imaged, each in one or more sessions of flow videos at a frame of the time-lapse (the session's frame index, tNN):
 
 \begin{center}
@@ -144,17 +139,16 @@ The frames of a time-lapse are registered onto one another, and the graph of the
 Each segment is dated by the frame in which it first appears (its activation), which gives a spatio-temporal graph: one network in which every segment carries the time it grew (STHype).
 The edges used throughout are the anchor graph's junction-to-junction runs of segments.
 
-\paragraph{Roots} are the places where the network enters the fungal compartment from the root side.
+Roots are the places where the network enters the fungal compartment from the root side.
 They were annotated by hand on each plate (registrator) and advanced along their hyphae to the session.
 
-\paragraph{The growth graph} orients every segment from the end that appeared first to the end that appeared later, so each hypha points the way it grew.
+The growth graph orients every segment from the end that appeared first to the end that appeared later, so each hypha points the way it grew.
 Four rules settle what dates alone cannot (SI, \nameref{subsec:si_motor_direction}): a root-free stretch dated older than all its neighbours takes its oldest neighbour's date; a later-dated segment on the best-dated path from a root into such an island is backdated to the island's date; ties are broken by network distance along paths whose dates never decrease; and edges at a root point away from it.
 With these rules 97.6\% of the network traces its growth back to a root.
 
-\paragraph{Growing tips} are degree-1 nodes of the session's graph, other than roots, from which the network extends within the next four frames (8~h).
+Growing tips are degree-1 nodes of the session's graph, other than roots, from which the network extends within the next four frames (8~h).
 The distance to the nearest growing tip is measured along the network.
 
-\paragraph{Tree and loop edges.}
 An edge is a tree edge (tree-like) when removing it disconnects the network (a bridge), and a loop edge when it lies on a cycle.
 Local loop density is the cycle rank per mm of hypha within 500~$\mu$m of the edge.
 \todo{bins and script for the share of bridges by distance to the nearest growing tip (Fig.~\ref{fig:hyphal_profiling}A, inset)}
@@ -197,7 +191,6 @@ The moving streaks are split by direction, and a direction needs at least 5 of t
 A fluorescence video has 10 frames at 1 frame per second or 20 frames at 2 frames per second, against 200 frames at 20 frames per second in bright-field, and a streak must span at least 5 of them.
 The speeds at which the detector still finds streaks were measured in two ways (SI Fig.~\ref{fig:fl_detection_limit}).
 
-\paragraph{Synthetic kymographs.}
 Particles of 0.4 or 0.8~$\mu$m FWHM, moving at 0.5 to 14~$\mu$m/s in one or both directions, were drawn with the frame counts, frame periods and exposure of each imaging mode (exposure 0.9 of the frame period in every mode, see \emph{Flow videos}), at a noise level and particle density calibrated to the standard deviation and pixel-value percentiles of real kymographs, and passed through the same normalisation, position resampling, orientation filter (centre estimated automatically) and streak detection as the data.
 Exposure had no effect on detection: the curves for exposure fractions 0.01, 0.1, 0.5 and 0.9 coincide, since the resampling to 2.5~$\mu$m/s leaves the blur at about $0.9\,v/2.5$ resampled pixels in every mode.
 Detection fell steadily with speed in fluorescence.
@@ -207,19 +200,16 @@ Fixed filter centres (0.1 to 0.45 cycles per pixel, or feature sizes of 0.5 to 4
 Pure-noise fluorescence kymographs gave 40 (2 frames per second) and 7 (1 frame per second) streaks each, with speeds below 5 to 6~$\mu$m/s.
 % NOTE (10 Oct (transport_paper#132 comment 6088415445; feat/fl-numbers-limits 8391a7e, manuscript/fl_numbers_limits.md)): The real 99th percentiles quoted here (7.9 / 5.6 / 5.1) are 8-frame production values; with the 5-frame streaks they are 8.1 / 6.1 / 5.3 um/s. The pure-noise counts (40 and 7 streaks) are 8-frame values and were not rerun for 5 frames.
 
-\paragraph{Subsampled bright-field kymographs.}
 Because the synthetic calibration is weak (the normalisation removes the absolute noise level, and the particles are idealised), the efficiency was also measured on real content: 1,296 bright-field kymographs from three plates (263,764 streaks) were averaged over 0.9 of the new frame period, decimated to 2 and 1 frames per second, and run through the fluorescence settings.
 Streaks found per bright-field streak, relative to the 1 to 3~$\mu$m/s level, were 0.22 at 4 to 5, 0.18 at 5 to 6 and 0.11 at 6 to 7~$\mu$m/s at 2 frames per second (0.49 at 5 to 6~$\mu$m/s in the synthetic model), and 0.22 at 5 to 6 and 0.07 to 0.08 at 6 to 8~$\mu$m/s at 1 frame per second (0.51 at 5 to 6~$\mu$m/s in the synthetic model; the absolute transfers at 1 frame per second are 0.03 at 5 to 6 and 0.01 at 6 to 8~$\mu$m/s).
 Individual bright-field streaks were not followed (matching was at chance level), so the efficiency is a histogram transfer.
 The kymograph-domain emulation was not checked against one made from raw videos, which are not stored locally.
 
-\paragraph{Forward model.}
 The expected fluorescence streaks of an edge were predicted from its bright-field streaks with the emulated response, with one scale factor fitted below 3~$\mu$m/s.
 Above 5~$\mu$m/s at 2 frames per second (186 edges), observed over predicted streaks were 1.90 (95\% interval 0.86 to 3.76) to the tip and 1.89 (1.20 to 3.54) to the root, a ratio of 1.00 (0.50 to 2.64); at 1 frame per second (437 edges) 1.41 (0.91 to 2.12) and 1.50 (1.01 to 2.25), a ratio of 1.06 (0.61 to 1.80).
 In the streak analysis the fluorescence shortfall at speed is therefore explained by the detection limit, with no deficit specific to the rootward stream, although the intervals do not exclude a twofold one at 2 frames per second (few plates: two at 2 frames per second, one at 1 frame per second).
 % NOTE (13 Oct): this Forward model paragraph compares fluorescence and bright-field streak counts at speed; Simon (13 Oct) dropped speed comparisons with fluorescence, so it may go or shrink to the detection-limit statement. SI \nameref{subsec:si_forward_choices} collects the decisions.
 
-\paragraph{Per-pixel speeds.}
 The speed of every pixel of the orientation filter output does not depend on linking pixels into streaks or on a minimum streak length.
 Its behaviour was tested on the same synthetic kymographs (calibrated noise, 30 fluorescence and 100 bright-field particles, exposure 0.9 of the frame period).
 The per-direction pixel median followed the true speed within 0.3~$\mu$m/s up to 8 to 9~$\mu$m/s for fluorescence at 2 frames per second and up to 10~$\mu$m/s in bright-field, but only up to about 4~$\mu$m/s for fluorescence at 1 frame per second, where it plateaus at 4.4 to 4.5~$\mu$m/s and falls to the noise level beyond 8~$\mu$m/s.
@@ -242,12 +232,11 @@ Each video is registered onto the edge it shows in the session's graph (registra
 A few videos per session are anchored to graph nodes by hand, and a similarity transform fitted to them (rotation, scale and translation, with a reflection check) places every other video from its stage coordinates.
 The hyphae in each video are then matched to the edges of the surrounding graph by an optimal assignment on their positions, directions and connectivity, and hand pins overrule the match where it is ambiguous.
 
-\paragraph{Direction.}
 A stream runs to the tip when it runs the way its edge grew in the growth graph.
 Where a stretch of hypha appeared within one frame, so that its dates tie, it takes the direction its motor stream points to.
 Where the stream labelled rootward is motor-like (within 25\% of 3.06~$\mu$m/s, with a quartile ratio of streak speeds of at most 1.25) and the stream labelled tipward is not, the direction is taken to be reversed and the two are swapped (58 edges).
 
-\paragraph{Trails} were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); STR2307A112 t73 LeftMiddle was dropped whole.
+Trails were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); STR2307A112 t73 LeftMiddle was dropped whole.
 Along a trail, each measured edge is placed at its distance from the trail's root end.
 
 \namedsubsection{Direction bias}{subsec:direction_bias}
@@ -266,7 +255,6 @@ The index is based on the orientation of all moving pixels, and not on the detec
 
 \namedsubsection{Perturbations}{subsec:perturbations}
 
-\paragraph{Solute droplets} (SI Fig.~\ref{fig:salt_shock}).
 Achille Joliot placed a 5~$\mu$l droplet \todo{confirm $\mu$l; one of 10} of NaCl (50--200~mM), sucrose (5--50~mM) or growth medium at the base of the network, by the divider to the root compartment, while filming a hypha near the network's edge in bright-field (July 2025 and March 2026) or with Nile Red (July 2025).
 The July 2025 movies were recorded on an Andor iXon camera at 50$\times$ (0.32~$\mu$m per pixel), bright-field and Nile Red together through an image splitter \todo{confirm; this applies to the droplet movies only, the static-flow bright-field and Nile Red videos were recorded about 15~s apart}; the March 2026 movies on a Hamamatsu ORCA Flash behind a Nikon LPlan 20$\times$ objective (NA 0.3; 0.325~$\mu$m per pixel before binning), with frame rates taken from the timestamps.
 A rush is a smeared band of moving material rather than sharp tracks, so these movies were read by the kymograph's motion energy instead of streaks: in each 2~s window, stepped by 0.5~s, each position's mean is removed, the window is sheared at every trial speed up to $\pm$60~$\mu$m/s, and the energy of the time-averaged result peaks at the speed at which the pattern moves coherently.
@@ -283,7 +271,6 @@ Every kymograph was inspected; 17 bright-field movies on 9 plates and 2 Nile Red
 % not 100-400 as in the main text and the Fig 3 caption (the two sucrose droplets are 50 mOsm); 'sucrose 5-50 mM' here
 % includes a 5 mM movie that is excluded as a read-out artefact. Correction to my 2 Oct note: two sucrose droplets, not one.
 
-\paragraph{Root cut.}
 A scalpel was pulled along the divider of LPD2412A022, separating the network from the root compartment, and one trail was filmed 5~min before and 5 and 30~min after the cut.
 Per kymograph and direction, the length-weighted speeds of the bright-field streaks are split into modes by a kernel-density mode tree on log speed (bandwidth 0.3, minimum mode mass 0.1), and the direction is represented by its dominant mode: a single median switches between speed families from one video to the next.
 Which direction is tipward is taken from the trail annotation (the source edge and its orientation).
@@ -294,7 +281,6 @@ Their streams are told apart by the direction rule above (\nameref{subsec:videos
 Held out one at a time, the registered videos are placed this way within a median 116~$\mu$m of their registered position, and the rule gives their registered direction on 39 of the 41 hyphae it decides, reversing none.
 % NOTE (21 Oct, root cut rebuilt by the FLW session, transport_paper feat/fl-20fps 0ba8708, figure3/rootcut_families.py; Fig 3 v4 on fig/fig3-rootcut bd58825): 60 kymographs (was 55; two +5 / +30 min stretches of 18.8 and 12.3 mm processed on Snellius in August were added). The held-out placement numbers (116 um, 39 of 41) are from the earlier four placed videos; recheck them for the nine, and whether the direction rule or the trail annotation orients the placed runs. Neighbouring edges can share a kymograph, so the Wilcoxon p-values are somewhat optimistic. A slower rootward family at 2.3-2.9 um/s (13-32 % of rootward streak length, before and after the cut) is left out on purpose (Simon).
 
-\paragraph{Section cut.}
 Cuts round a patch of network isolated it from both its source and its sinks; 4 positions were filmed before and after, in bright-field and with Nile Red.
 
 \namedsubsection{The transport model}{subsec:transport_model}
@@ -351,14 +337,12 @@ The force-balance motor model, in which the motors pull against the drag of thei
 
 \namedsubsection{Quantification and statistical analysis}{subsec:statistics}
 
-\paragraph{Units of analysis.}
 An edge is a junction-to-junction run of the session's graph with at least one registered video; a session is one plate at one frame; the five plates are the independent biological replicates. $n$ in the text and captions counts edges unless stated.
 Of 1,683 videos over 15 sessions, 1,404 were registered onto the graph (279 not, 126 of them on PNF2307A080 t81).
 They give 7,906 measurements, one per video, hypha and direction, of which 5,975 keep at least 5 moving streaks: 3,587 of 4,400 in bright-field and 2,388 of 3,506 in Nile Red fluorescence.
 % NOTE (10 Oct (transport_paper#132 comment 6088415445; feat/fl-numbers-limits 8391a7e, manuscript/fl_numbers_limits.md)): The stream counts 3,587 / 2,388 do not reproduce after deduplication; they become 3,583 / 2,385 (the Nile Red 2,388 includes 3 duplicate entries; the SI speed_iqr caption already says 3,583 / 2,385). The count of 879 Nile Red edges with both streams stands.
 Bright-field streaks give 1,600 edges with a rootward stream and 1,513 with both streams (\texttt{registration\_census.py}), and fluorescence streaks 879 edges with both streams (\texttt{figS\_video\_positions.py}).
 
-\paragraph{Scores.}
 With $m$ the modelled and $x$ the measured speed on an edge:
 \begin{itemize}
   \item the median fold error, $\exp(\mathrm{median}\,|\ln(m/x)|)$, the typical factor by which a prediction is off in either direction;
@@ -369,10 +353,8 @@ With $m$ the modelled and $x$ the measured speed on an edge:
 \end{itemize}
 The baseline is a constant: the median measured speed of the other sessions, held out one session at a time.
 
-\paragraph{Held-out fits.}
 Every parameter fitted on the measured speeds is scored on data it was not fitted on: the tip slowing and the linear terms on the tree-edge residual leave one session out; the core floor and the force-balance motor parameters leave one plate out.
 
-\paragraph{Tests and intervals.}
 Groups are compared with two-sided Mann--Whitney U tests and Wilcoxon tests; intervals are 95\% bootstrap intervals, resampled over streaks or edges as stated.
 Analyses used Python 3.11 with NumPy, SciPy, pandas and NetworkX (key resources table); the script behind each number is named in the supplement next to it.
 
