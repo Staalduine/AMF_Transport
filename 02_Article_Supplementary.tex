@@ -354,6 +354,8 @@ The transport model needs the tipward (motor) speed on every edge of the network
 We used the bright-field videos only (\nameref{subsec:si_forward_choices}).
 For each edge we pooled the moving tipward streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,481 edges with 299,584 streaks in 15 sessions on 5 plates.
 
+% NOTE C15 (30 Oct, per-video measurements, transport_paper PR #167): question. This to-tip fit (forward_speed_bayes) still pools the streaks of all videos on an edge, which the model tables no longer do. Switch it to one value per video as well?
+
 The tipward speed is lower close to the growing tips and levels off within a few millimetres (Fig.~\ref{fig:fig5_plug}b).
 We described this with a falloff to an offset,
 \[

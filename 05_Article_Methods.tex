@@ -237,6 +237,8 @@ A stream runs to the tip when it runs the way its edge grew in the growth graph.
 Where a stretch of hypha appeared within one frame, so that its dates tie, it takes the direction its motor stream points to.
 Where the stream labelled rootward is motor-like (within 25\% of 3.06~$\mu$m/s, with a quartile ratio of streak speeds of at most 1.25) and the stream labelled tipward is not, the direction is taken to be reversed and the two are swapped (58 edges).
 
+% NOTE C14 (30 Oct, per-video measurements, transport_paper PR #167): the swap rule now acts on each video measurement on its own (its own streak quartiles), not on an edge's pooled streams. On the paper's tables it swaps 61 video measurements (46 edges before; the text says 58 edges, from an older table).
+
 Trails were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); STR2307A112 t73 LeftMiddle was dropped whole.
 Along a trail, each measured edge is placed at its distance from the trail's root end.
 
