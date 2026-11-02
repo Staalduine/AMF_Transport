@@ -24,7 +24,7 @@
 
 \begin{abstract}
  
- The symbiosis between plants and arbuscular mycorrhizal (AM) fungi is fundamental to terrestrial ecosystems as it is responsible for large flows of nutrients on a planetary scale.
+The symbiosis between plants and arbuscular mycorrhizal (AM) fungi is fundamental to terrestrial ecosystems as it is responsible for large flows of nutrients on a planetary scale.
 In this symbiosis, two distinct organisms trade phosphorus (P) for energy in the form of carbon (C).
 However, the mechanism behind the bidirectional transport of resources within their microscopic hyphae has not been entirely elucidated.
 We imaged transport dynamics of nutrient flows in high resolution in different positions in growing networks, and also perturbed flows through section cuts and osmotic shocks.
@@ -139,11 +139,7 @@ At the resolution of the fluorescence videos (0.14~$\mu$m per pixel, 0.5 or 1~s 
 The lipids moved to the tip at a median of 2.42~$\mu m/s$ (879 edges with both directions measured in fluorescence), insignificantly different from the 2.95~$\mu m/s$ of the bright-field tipward stream.
 In the other direction, fewer fluorescence streams were detected (989 against 1,396 tipward), at a median of 2.20~$\mu m/s$ against 2.91~$\mu m/s$ in bright-field.
 
-By comparing bright-field and fluorescence videos of the same position, recorded about 15 seconds apart, it is clear that only a subset of trails visible in bright-field kymographs appear also in the fluorescence version (Fig.~\ref{fig:asymmetries}C, D): fluorescence gives 625 videos and 879 edges with both directions measured, bright-field 731 videos and 1,513 edges.
-% NOTE (29 Oct, Figs 1 and 2 rebuilt on the current main model, split_even_j10000 with 20 um minimum video edge; PR #12): Fig 2A now has 1,498 bright-field edges with both directions (was 1,513), with shares rootward faster / similar / tipward faster 46 / 43 / 12 % (687 / 638 / 173 edges; was 45 / 43 / 12 %) and medians 2.96 tipward and 3.56 rootward um/s (was 2.95 / 3.55). The 1,513 here and in Methods may need updating to 1,498, if they refer to the Fig 2A edges.
-We set out to find whether there was a directional bias in the movement of lipids.
-For each video we computed the share of the moving signal that travels towards the tip, from 0 (all to the root) to 1 (all to the tip) (Methods, \nameref{subsec:direction_bias}).
-Together, these results show that lipids generally move in the direction of the tips (Fig.~\ref{fig:asymmetries}D): we found a median direction bias of 0.71 towards the tips, with 84\% of edges having lipids with a tipward direction bias, against roughly even for bright-field in both metrics. 
+Lipids are an integral part of growth within the network, as they are the main form of carbon that the plant provides to the fungus~\cite{luginbuehl_fatty_2017}. We imaged these lipids with Nile Red fluorescent dye~\cite{bago_tracking_2002} and compared the fluorescence videos to bright-field videos of the same positions. In edges where both tipward and rootward flows were detected, the direction bias of detected elements was calculated as the share of the speed-weighted moving signal going to the tip (Methods, \nameref{subsec:direction_bias}). Most brightfield videos show a balanced distribution of tipward and rootward flows, with a median direction bias of 0.50 (Fig.~\ref{fig:asymmetries}D). Lipid videos also mostly show a balanced distribution of tipward and rootward flows, with a broader tail towards tipward flows. From this we can state that lipids appear in both flows, but are more likely to be found in the tipward flow than in the rootward flow (Fig.~\ref{fig:asymmetries}D).
 
 \namedsubsection{Perturbations show that cytoplasmic flow towards the root is pressure driven while tipward flows are likely locally driven and pressure-insensitive}{subsec:res_perturbations}
 \begin{figure} 
@@ -430,7 +426,7 @@ The exchange ratio $C : P = \theta c_{lipid} / [P]$ is then set by two local qua
 \subsection*{Measured flows and how far they can be trusted}
 In this work, we have shown extensive analysis of flows in the hyphal network of AM fungi.
 We show that in most hyphae, there are at least two opposing streams: a tipward stream narrowly around 3~$\mu$m/s, slower near the tips, and a rootward stream that is more variable and rises with distance from the tip (1,544 bright-field edges in 15 sessions on 5 plates).
-We also imaged lipid movement using Nile Red staining, and found that the lipid moves mostly tipward (median direction bias 0.71, 84\% of edges tipward), while bright-field movement is roughly even.
+We also imaged lipid movement using Nile Red staining, and found that the lipid moves in both flows, but is more likely to be found on the tipward stream, which is also more uniform in speed.
 
 In trying to differentiate the mechanisms behind these two streams, we found that an osmotic shock changes only the rootward stream, which is therefore pressure-driven.
 The tipward stream, which carries most of the lipid, is insensitive to the shock. We interpret it as a lipid-containing condensate carried by molecular motors, but we did not test the motors directly; blocking microtubules or motors and checking whether the tipward stream stops, and the rootward stream with it, would be the decisive experiment.
