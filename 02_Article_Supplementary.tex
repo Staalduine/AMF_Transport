@@ -193,6 +193,14 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 % \label{fig:tip_root_scatter}
 % \end{figure}
 
+\namedsubsection{Directed transport against diffusion}{subsec:si_peclet}
+% NOTE (2 Nov): section text to be written by Simon (estimate for the main-text claim that the slope of a streak is its speed); facts:
+% NOTE (1) Inputs: lipid droplet diameter about 1 um (r = 0.5 um, Sajitha); viscosity eta = 1e-3 Pa s (water; transport_paper compute_funcs/constants.py, mu); T = 295 K.
+% NOTE (2) Stokes-Einstein: D = k_B T / (6 pi eta r) = 0.43 um^2/s.
+% NOTE (3) Over one 10 s kymograph: diffusive displacement sqrt(2 D t) = 2.9 um, against 30 um of transport at 3 um/s (about 10x).
+% NOTE (4) Peclet number Pe = v L / D at v = 3 um/s: 69 for L = 10 um, 208 for L = 30 um (the distance moved in 10 s); over the full 50x field of view (2048 x 1500 binned pixels at 0.138 um, about 283 x 207 um; Basler acA4112 sensor, Methods) 1,400-2,000.
+% NOTE (5) Caveats: cytoplasm is more viscous than water, which lowers D and raises Pe (10x water: D = 0.043 um^2/s, Pe 690 at 10 um, displacement 0.9 um in 10 s), so water is the conservative case; near growing tips the flow is slower (about 2 um/s), so the margin is smaller there (issue #5).
+
 \namedsubsection{Stitching and graph repair}{subsec:si_stitching}
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): text and the two captions.
 % NOTE (20 Oct): Section text to be written; cited from Methods (Stitching, segmentation and network extraction). Figures from transport_paper feat/flow-regime manuscript/figures (S_stitching.png: stitch_shear_by_station.py; S_graph_repair.png: graph_repair_figure.py; both 21 Sep), captions in the Typst supplement (manuscript/09_supplement.typ, "Acquisition and network").

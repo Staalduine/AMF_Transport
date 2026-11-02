@@ -32,7 +32,6 @@ Our data suggest that carbon, as lipid, travels towards the growing tips within 
 Our findings also suggest a tight coupling between network growth, internal carbon (lipid) transport dynamics, and bidirectional fluid movement within the network.
 In an open pipe system, moving this condensate towards the tips pushes cytoplasmic fluid back towards the root, a backflow that may carry phosphorus.
 Our model provides an intuitive understanding for the observed proportionality in resource exchange between the two organisms.
-% NOTE (15 Oct, main-text review): According to the C/P note in the Discussion, the model makes the returning volume proportional to the motor-carried carbon by construction (slope 1.000), but not to growth carbon (slope 0.19, 95 % CI -0.47 to 0.86, 15 sessions), so 'understanding of the observed proportionality' needs that qualifier. Also, the perturbations listed are segment cuts and osmotic shocks, and the root cut is missing.
 \end{abstract}
 
 \section*{Introduction}
@@ -82,8 +81,8 @@ From these data and findings, we construct a minimal model that explains the obs
 Fungal networks grow through the extension of fungal tips away from the root of the host plant.
 Over time, these elongated hyphae develop into a branched mycelial structure.
 The network's topological context therefore varies along the length of a hypha.
-Close to a growing tip, the network is more tree-like: 40\% of the edges within 1~mm of a tip are bridges, that is, not part of any loop, versus 11--14\% of the edges further than 2~mm from a tip (SI Fig.~\ref{fig:tree_like_share}).
-% NOTE (29 Oct, Figs 1 and 2 rebuilt on the current main model, split_even_j10000 with 20 um minimum video edge; PR #12): the Fig 1A inset now gives 85/199/436/562/282 edges per bin (was 86/201/438/568/286) and tree-like shares 38.8 / 20.6 / 10.6 / 10.7 / 13.8 % (was 39.5 / 20.4 / 10.5 / 10.7 / 14.3), so 40 % within 1 mm rounds to 39 %; 11--14 % beyond 2 mm still holds.
+Close to a growing tip, the network is more tree-like: 40\% of the edges within 1~mm of a tip are bridges, that is, not part of any loop, versus 10--14\% of the edges further than 2~mm from a tip (SI Fig.~\ref{fig:tree_like_share}).
+% NOTE (2 Nov, figS_tree_like_share rebuilt on the per-video no-cut tables): tree-like share by tip distance <1 / 1-2 / 2-4 / 4-8 / >8 mm = 40.2 / 20.6 / 9.9 / 10.7 / 13.7 % (n 82 / 189 / 423 / 540 / 263 edges). "40%" holds; "11--14%" beyond 2 mm should read 10--14%.
 Moving away from the tip, more growing hyphae depend on the same runner hypha, and anastomosis (fusion between a hyphal tip and a hyphal segment) creates loops, which give many alternative paths from the tip towards the root~\cite{oyarte_galvez_travelling-wave_2025}.
 
 \begin{figure}
@@ -106,15 +105,15 @@ We imaged flows at high resolution in 731 bright-field videos along the hyphae o
 We chose runner hyphae, the main routes to the root and the edges of high betweenness centrality~\cite{kirkley_betweenness_2018}, where the tipward and rootward flows could be distinguished by eye (SI, \nameref{subsec:si_video_selection}; SI Fig.~\ref{fig:bc_selection}). 
 
 In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}E;\@SI Fig.~\ref{fig:kymograph_examples}).
-In the field of view, the directed movement exceeds diffusion by more than two orders of magnitude, so the slope of a streak is its speed.
-% NOTE (6 Oct, answers Coco's 'why is there little diffusive movement?'): This is a Peclet estimate, to order of magnitude only. It assumes a lipid droplet of 0.5 um diameter, a cytoplasm viscosity 10 times that of water (0.01 Pa s) and T = 295 K, which give D = kT/(6 pi eta r) = 0.09 um^2/s. Over a 10 s kymograph, diffusion covers sqrt(2Dt) = 1.3 um, against 30 um of transport at 3 um/s. With L = 10 um, Pe = vL/D = 350. Check the droplet size and viscosity before submission. The argument is weaker near the tips (Fig 1D kymograph 4); see issue #5.
+In the field of view, the directed movement exceeds diffusion by one to  two orders of magnitude, so the slope of a streak is its speed (SI, \nameref{subsec:si_peclet}).
+% NOTE (2 Nov): cite the estimate here: (SI, \nameref{subsec:si_peclet}); 'more than two orders' -> one to two orders of magnitude (Pe ~ 70 over 10 um, ~ 210 over the 30 um moved in 10 s).
+% NOTE (2 Nov, Peclet estimate redone; Sajitha: droplet ~1 um diameter, viscosity from the constants): eta = 1e-3 Pa s (transport_paper/compute_funcs/constants.py, mu = 1e-3 kg m^-1 s^-1, water; the manuscript has no viscosity in its Methods/SI tables), r = 0.5 um, T = 295 K: D = kT/(6 pi eta r) = 0.43 um^2/s. Over a 10 s kymograph diffusion covers sqrt(2Dt) = 2.9 um against 30 um of transport at 3 um/s (about 10x). Pe = vL/D = 69 for L = 10 um, 208 for L = 30 um (the distance moved in 10 s). So 'more than two orders of magnitude' (l.108) holds only for the 30 um scale; over 10 um or by displacement it is one to two orders (x10-70). The argument is weaker near the tips (slower flow); see issue #5.
 Each streak gives one speed, and each kymograph was reduced to a set of tipward and rootward speeds (SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
 In the histogram of the extracted speeds from a video, the tipward speeds (positive) and the rootward speeds (negative) each form a peak.
 We took the median of each of the two groups as the speed of that direction in that video (Fig.~\ref{fig:hyphal_profiling}E). 
 The tipward speeds slow down near the tip, but stay close to 3~$\mu m / s$ further away (Fig.~\ref{fig:hyphal_profiling}D).
 Rootward speeds generally increase with distance from the tip (Fig.~\ref{fig:hyphal_profiling}D), and have a wide range: the median interquartile range of a hypha's speeds is 1.6~$\mu m / s$ rootward, against 0.6~$\mu m / s$ tipward (SI Fig.~\ref{fig:speed_iqr}).
-This result was confirmed by repeating a similar experiment on various plates over 15 repetitions over 5 plates showing a consistent phenomenology (Fig.~\ref{fig:asymmetries} A, B). 
-% NOTE (15 Oct, main-text review): '15 repetitions over 5 plates' means 15 sessions on 5 plates.
+This result was confirmed by repeating a similar experiment on various plates imaging 15 sessions over 5 plates showing a consistent phenomenology (Fig.~\ref{fig:asymmetries} A, B). 
 
 \begin{figure}
  \centering
@@ -125,21 +124,9 @@ Marginal histograms along the edges.
 Hexagons are coloured by their ratio to 1:1 within a factor 1.3: rootward faster (black), similar (green) or tipward faster (orange); percentages give the share of the data in each class.
 \textbf{(B)} Density of the measured speeds against the distance to the nearest growing tip: tipward (blue) and rootward (pink), with the median per column (dashed) and $\pm 3 ~\mu m/s$ (dotted).
 \textbf{(C)} The same position imaged in bright-field (left) and Nile Red fluorescence (right), 15 seconds apart; bars give the share of the speed-weighted moving signal going to the tip (blue) and to the root (pink).
-\textbf{(D)} Direction bias per video, the share of the speed-weighted moving signal going to the tip (median over the edges of the video; videos with too little directed signal left out), from bright-field (grey, median 0.49) and Nile Red fluorescence (yellow, median 0.57). Due to weak signal in videos, frame rate in fluorescence videos is lower than in bright-field videos, limiting the upper bound on the observed speeds. Therefore, only a subset of the data is shown where the brightfield video carried no fast rootward flows $> 5 \mu m / s$ (Methods, \nameref{subsec:fl_detection_limit}).
+\textbf{(D)} Direction bias per video, the share of the speed-weighted moving signal going to the tip (median over the edges of the video; videos with too little directed signal left out), from bright-field (grey, median 0.49) and Nile Red fluorescence (yellow, median 0.57). Due to weak signal in videos, frame rate in fluorescence videos is lower than in bright-field videos, limiting the upper bound on the observed speeds. Therefore, only a subset of the data (n = 160 pairs) is shown where the brightfield video carried no fast rootward flows $> 5 \mu m / s$ (Methods, \nameref{subsec:fl_detection_limit}).
 Dashed lines: medians; triangles: the example shown in C.}\label{fig:asymmetries}
 \end{figure}
-% NOTE (2 Nov, review of the slow-only Fig 2 v5; transport_paper fig/lipid-bias-slow-only):
-% (1) The lipid paragraph below gives the bright-field median as 0.50; on the slow-only subset of panel D it is 0.49 (Nile Red 0.57).
-% (2) "Dashed lines: medians": in v5 the bright-field median is grey dashed, the Nile Red median black dotted; caption or line style to align.
-% (3) "SI [Lipid bias SI section]" is a placeholder: the part is now an outline at the end of Methods, \nameref{subsec:fl_detection_limit}.     
-% (4) Subset rule as built: both bright-field directions a single slow stream (dominant mode below 5 um/s) AND < 5 % of the bright-field C(v) above 4.5 um/s; "> 5 um/s" in the caption is the short form.
-% (5) No n for the subset in the caption: 160 pairs, 140 Nile Red / 139 bright-field videos, 5 plates (83 pairs at 2 fps, 77 at 1 fps); difference +0.07 [0.04, 0.12], p < 0.001.
-% (6) Panel D in v5 has no on-trail filter (all slow-only pairs), unlike the earlier panel; the triangles mark the new C example (EPY088 t55, pair 14 s apart, so "15 seconds" holds).
-% (7) Nile Red staining is introduced twice (the paragraph ending on direction switching, and "We imaged these lipids with Nile Red ... same positions").
-% (8) The body paragraph does not say that panel D is a subset; the frame-rate reason is only in the caption.
-% NOTE (16 Oct): The fluorescence speed sentences of the next subsection (lipids at 2.42 against 2.95 um/s; 989 against 1,396 rootward streams at 2.20 against 2.91 um/s; the video and edge counts in the bias paragraph) compare fluorescence and bright-field speeds, which Simon decided to drop on 13 Oct (detection limit; the SI comparisons are out). The direction bias (Fig 2D) does not depend on speeds and stays.
-
-% NOTE C12 (30 Oct, per-video measurements, transport_paper PR #167): Fig 2A per video instead of per edge, tipward speed from the same video, on the paper's streak settings: 1,469 edges -> 1,572 video measurements; within 2x of each other 89.9% -> 89.6%; 1:1 / rootward faster / tipward faster 42.3 / 46.4 / 11.3% -> 42.3 / 46.4 / 11.3%; median tipward 2.96 -> 2.97, rootward 3.61 -> 3.62 um/s. The figure itself has not been redrawn for the manuscript yet.
 
 We asked if the asymmetry in the directional speeds could be due to the difference in cell components that would be moving in the two directions, which could inform the mechanism of movement.
 We stained neutral lipids with Nile Red fluorescent dye~\cite{bago_tracking_2002} and imaged the same positions with both bright-field and fluorescence setups (Fig.~\ref{fig:asymmetries}C, D).
@@ -337,7 +324,7 @@ The model allows us to predict on each edge what the net volumetric rate of flui
 We found that our model captures salient features of the bidirectionality of flow observed across all edges.
 One important result is that we are able to capture the distribution of rootward speeds across the network (Fig.~\ref{fig:fig5_plug}A), with 77.5\% of the 1,544 measured rootward speeds within a factor of 2 of the modelled speeds, and a median ratio of modelled to measured speed of 1.05. This was achieved by fitting only one parameter ($\theta$; SI, \nameref{subsec:si_model_variants}) to the measured rootward speeds, and only using physical inputs and the measured tipward speeds.
 
-% NOTE C13 (30 Oct, per-video measurements, transport_paper PR #167): the model tables now keep one row per video (rootward and tipward from the same video) instead of the median over all videos on an edge. On the paper's streak settings and the final model table (model_old_streaks, motor flip off as in the paper reproduction): 1,544 edges -> 1,654 video measurements; within a factor 2 of the model 78% -> 78%; median modelled/measured ratio 1.06 -> 1.05. Trail segments within 10 mm of the tip (Fig 5 caption C, D): 274 -> 283 measurements, within 2x 86% -> 86%, ratio 1.21 -> 1.21; bin counts 3, 14, 19, 65, 73, 100, 130, 88 -> 3, 14, 19, 67, 76, 104, 142, 94. The median fold error in the paragraph ending '1.45' was not recomputed. With the 1.0 um/s bright-field slow-streak cut on top (not yet in the paper): 1,633 measurements, 81%, ratio 0.99.
+% NOTE (2 Nov, Fig 5 rebuilt on the per-video no-cut measurements; transport_paper fig/fig5-per-video fa2bbd7, replaces C13): same Fig 5 model (global solve), one row per video measurement. Edges -> measurements 1,544 -> 1,616 (15 sessions, 5 plates); within 2x 77.5 -> 76.4 %; median model/measured 1.05 -> 1.05; median fold error 1.45 -> 1.46 (l.303); KS 0.056 -> 0.061. Fig 5C trail segments within 10 mm 274 -> 281, within 2x 88 -> 88 %, ratio 1.17 -> 1.16; Fig 5D bins 3/14/19/65/73/100/130/88 -> 3/14/19/65/76/104/141/93; Fig 5B unchanged. Trail stats (>= 5 segments): 35 trails, rho 0.43, p 0.011, median within-trail rho 0.19, rise sign 19/24 (per-edge table: 35 trails, rho 0.39, p 0.022); the trail sentence in the model section ("30 trails ... rho 0.50, p 0.005 ... 0.15") and any other trail-rho statement need these values.
 
 Other model candidates have also been tried out, including one that assumes zero flux within each edge individually, meaning that the pressure field only affects one hypha at a time.
 This would be the case if switching hyphae at junctions carried a resistance penalty.
@@ -345,6 +332,7 @@ The range of backflow speed that can be obtained from such a model failed to enc
 The model also captures the rise in rootward speed with distance from the nearest growing tip (Fig.~\ref{fig:fig5_plug}D), which is a key feature of the observed flows (Fig.~\ref{fig:asymmetries}B).
 An important element of this rise is also the tipward speed falloff, which was estimated with a hierarchical Bayesian model (Fig.~\ref{fig:fig5_plug}B\@; SI, \nameref{subsec:si_forward_flow}).
 Along the filmed trails, the model predicts which trails carry faster rootward flow (Spearman $\rho = 0.39$ between modelled and measured trail medians, 35 trails, $p = 0.022$; Fig.~\ref{fig:fig5_plug}C).
+% NOTE (2 Nov, Fig 5 per video): rho 0.39 / 35 trails / p 0.022 is the per-edge table; on the per-video Fig 5: rho 0.43, p 0.011 (35 trails), median within-trail rho 0.19.
 
 A number of other correlations also emerge from the model (SI, \nameref{subsec:si_tree_loop}; SI Fig.~\ref{fig:relations}). 
 The network structure is a key determinant of the rootward speed, with the model predicting that edges with a higher betweenness centrality have a faster backflow.
@@ -362,7 +350,6 @@ Tipward speeds rise with about the square root of the video-extracted diameter, 
 % DRAFT (18 Oct, for Simon, Results diameter paragraph; 774 filmed edges with the video-extracted diameter, OLS of log speed on log diameter with plate effects and the tip falloff, errors clustered by session): The two streams scale differently with video-extracted diameter: the tipward speed as $D^{0.48}$ (95\% CI 0.43--0.54) and the rootward speed as $D^{1.07}$ (0.94--1.19), twice as steeply. The model reaches $D^{0.83}$ (0.61--1.05) for the rootward speed although its motor speed does not depend on diameter, because wider hyphae carry more routed lipid demand.
 This is consistent with the observed correlation between hyphal diameter and rootward speed (Spearman $\rho = 0.53$ within plates, also after accounting for tip distance) (SI, \nameref{subsec:si_widths}; SI Fig.~\ref{fig:relations}).
 This result was obtained with the video-extracted diameters, which are more accurate than the diameters from the 2x network images.
-% NOTE (17 Oct): Check the magnification of the network imaging ('2x'). 
 
 Even our estimate of 5\% of the cytoplasm filled with lipids suggests that a significant proportion of the volume of the hyphal is filled with lipids.
 Such a proportion could easily lead to clogging if all of the lipids coalesce into a single phase.
@@ -375,7 +362,6 @@ We assume that this emulsion is phase-separated from the bulk cytoplasm.
 
 \namedsubsection{Lipid generated backflow}{subsec:res_backflow}
 
-% NOTE (22 Oct, Simon): old panel F (PNF080 t91 LeftMiddle, rerouted backflow) moved to the SI (subsec:si_rerouting) and the Discussion; the figure still has to be rebuilt without it, with old G relabelled F (fig6_examples.py, worktree min-edge, feat/flow-regime).
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth,height=0.64\textheight,keepaspectratio]{figures/fig6_model_examples.png}
@@ -410,6 +396,7 @@ We also show other examples of the model's predictions on other plates (Fig.~\re
 One trail on each of the other plates: PNF072 t37 Middle (26 segments, 92\% within a factor of 2), LPD025 t50 Middle (32, 94\%), STR112 t60 LeftMiddle (21, 86\%).
 % NOTE (2 Nov, plate labels): as the Fig 6E caption: plate 1, session 1; plate 4, day 12; plate 3, session 4.
 Over the 30 trails with $\geq$5 segments, the model ranks the trails by their median rootward speed ($\rho = 0.50$, $p = 0.005$), but orders segments within a trail only weakly (median within-trail $\rho = 0.15$).
+% NOTE (2 Nov, Fig 5 per video): does not reproduce; per-video Fig 5: 35 trails with >= 5 segments, rho 0.43, p 0.011, median within-trail rho 0.19 (also update the sentence near l.339).
 
 % NOTE (16 Oct, summarized 17 Oct, Fig 4F, other tests): Side branches along the trunks (62 filmed junctions, junction_side_branches.py): the model ranks the side / through speed ratio (rho +0.35, +0.30 beyond width), but its sign (46/62) does not beat the rule 'the side branch is slower' (49/62). Null: the trail's share of local conductance over 1 mm (rho -0.07 after tip distance and demand); 19 junctions with two rootward legs (9-10 of 19 right).
 
@@ -429,6 +416,7 @@ Because the movement of lipids generates fluid flow in the reverse direction, th
 Our model is by design a closed hydraulic circuit, where the volume returning into the roots equals the motor stream leaving them.
 If phosphorus is taken up at the tips, where the condensate turns back, at a concentration [P], the phosphorus delivered to the plant is [P] times the motor volume stream and the carbon carried out is $\theta$ times the motor stream times the carbon density of lipid.
 The exchange ratio $C : P = \theta c_{lipid} / [P]$ is then set by two local quantities and does not depend on network size, shape or growth rate: proportional trade follows from the transport itself, without regulation.
+% NOTE (2 Nov, from abstract review): add qualifier here: return volume is proportional to motor-carried carbon by construction (slope 1.000), not to growth carbon (slope 0.19, 95% CI -0.47 to 0.86; 15 Oct, older model, recheck on the Fig 5 model).
 
 \section*{Discussion}
 
@@ -439,7 +427,6 @@ We also imaged lipid movement using Nile Red staining, and found that the lipid 
 
 In trying to differentiate the mechanisms behind these two streams, we found that an osmotic shock changes only the rootward stream, which is therefore pressure-driven.
 The tipward stream is insensitive to the shock. We interpret it as a lipid-containing condensate carried by molecular motors, but we did not test the motors directly; blocking microtubules or motors and checking whether the tipward stream stops, and the rootward stream with it, would be the decisive experiment.
-% NOTE (2 Nov, lipid bias review): "carries most of the lipid" holds only weakly on the slow-only subset (Nile Red median 0.57, paired shift +0.07); "more of the lipid" is safer. The Fig 2 caption title already dropped it.
 After a root cut both streams continue, so neither needs the plant.
 Isolated segments of a few millimeters keep both streams, about a fifth slower, so both are driven locally. 
 
@@ -447,7 +434,6 @@ For most of the analysis, we rely on bright-field imaging, where the 20 Hz frame
 Because the lid had to stay on during imaging to avoid flows reacting to air flow (SI, \nameref{subsec:si_lid}), a lot of optical resolution was lost between the hyphae and the objective.
 This is exacerbated in fluorescence imaging, where the exposure requirements forced us to image most of those videos at 2 or 1 Hz.
 This put limits on the velocity sample space (SI, \nameref{subsec:si_forward_choices}; Methods, \nameref{subsec:fl_detection_limit}), so a thorough bright-field to fluorescence comparison had to be done on a subset of the videos.
-% NOTE (17 Oct): Removed from the text: 'Perhaps we will add more results from 3D confocal later' (the confocal theta measurement is parked until after submission). 
 
 We also have to be careful about extrapolating the model results to the entirety of the network graph, as there were biases in how the videos were made (SI, \nameref{subsec:si_video_selection}).
 High edge-betweenness edges were favoured to be filmed as opposed to low edge-betweenness edges.
