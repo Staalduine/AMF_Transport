@@ -55,6 +55,7 @@ Each panel shows the network of one filmed session (5 colonies, 15 sessions, in 
 Dots mark the 804 stage positions at which the 1,683 videos were taken (a bright-field video, mostly followed by a Nile Red video at the same position).
 Filled dots are placed at the hyphae their videos were registered to; open dots (74 positions without a registered video) are placed from the microscope stage coordinates.
 The LPD2412A025 sessions (10--12 Jan 2025) are days 10--12 of Fig.~\ref{fig:hyphal_profiling}B. All panels share the 10~mm scale bar.}\label{fig:video_positions}
+% NOTE (2 Nov, plate labels): "The LPD2412A025 sessions (10--12 Jan 2025)" -> "the plate 4 sessions" (calendar dates internal too).
 \end{figure}
 
 % NOTE (10 Oct): The section text is to be written by Simon; the facts are below (sources: transport_paper feat/bc-selection-bias d2054b7, manuscript/bc_selection_bias.md, #130).
@@ -278,6 +279,7 @@ This hypothesis is further motivated by the qualitative observation that the mov
 \caption{\textbf{Growth-induced mass flow alone is far slower than the measured streams.}
 The flow needed to supply the volume added by the growing tips, routed through the network from the roots with minimal dissipation (Methods), divided by the lumen area of each edge.
 \textbf{(A)} EPY2412A088 at t55, every edge coloured by this mass-flow speed (colour scale capped at 0.3~$\mu$m/s).
+% NOTE (2 Nov, plate labels): "EPY2412A088 at t55" -> "plate 5, session 2".
 \textbf{(B)} Distributions over the 1,684 filmed edges (15 sessions) of the measured tipward (blue) and rootward (pink) speeds and of the mass-flow speed (orange; median 0.075~$\mu$m/s).
 \textbf{(C)} Measured tipward speed against the mass-flow speed on the same edge; grey: identity. The measured speed is a median 31 times the mass-flow speed.}\label{fig:carbonflow}
 \end{figure}
@@ -600,6 +602,7 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 % NOTE (22 Oct, Simon): moved here from main-text Fig 6F. Point to make: faults in the network extraction let the network-wide pressure solve pool the backflow in the wrong edges, so the model sometimes under-predicts on high-betweenness hyphae. Text below is a first draft; the extraction faults on this stretch are not yet shown (check the graph against the images, and ideally a corrected graph re-solved).
 Because the pressure in the model is solved over the whole network, the backflow of a hypha does not have to return through that hypha: where the extracted network offers parallel routes, the solve can send part of it through neighbouring edges.
 On trail LeftMiddle of PNF080 at t91, 8 to 19~mm from the root, the model returns only 0.66 (interquartile range 0.47--0.79) of the trail's motor stream through the trail itself and sends the rest back through side hyphae, giving a rootward speed of 2.1~$\mu$m/s against 6.3~$\mu$m/s measured (16 segments; 3.3~$\mu$m/s measured tipward).
+% NOTE (2 Nov, plate labels): "trail LeftMiddle of PNF080 at t91" -> "a trail of plate 2, session 3".
 In the model the trail's net flux points tipward on 9 to 18~mm: volume enters at about 8.8~mm through a side branch and leaves into side hyphae at 17 to 21~mm, a circulation loop of about 10~mm.
 Measured, the rootward speed on this stretch (6.5~$\mu$m/s) exceeds even a full return of the trail's own motor stream ($\sim$3.5~$\mu$m/s).
 The difference is not explained by growth nearby; routing past demand raises the model only to 2.9~$\mu$m/s, splitting the demand at crossings lowers it to 2.2~$\mu$m/s, and idle motors change nothing.
@@ -627,6 +630,7 @@ The difference is not explained by growth nearby; routing past demand raises the
 % NOTE (30 Oct): caption text moved unchanged from the old Fig 6F caption.
 \includegraphics[width=0.8\textwidth,keepaspectratio]{suppfig/figS_full_vs_sparse_flow.pdf}
 \caption{Full and sparse flow: bright-field kymographs of two edges of PNF080 at t81, both more than 6~mm from a growing tip (moving signal only, time mean removed; 20 frames per second).
+% NOTE (2 Nov, plate labels): "PNF080 at t81" -> "plate 2, session 2".
 Left, full flow (video-extracted diameter 10.2~$\mu$m): tipward 3.3, rootward 5.5, model 6.4~$\mu$m/s; right, sparse flow (video-extracted diameter 4.6~$\mu$m): few, faint streaks at 1.8~$\mu$m/s in both directions, model 3.1~$\mu$m/s (SI, \nameref{subsec:si_flow_regimes}).}\label{fig:full_vs_sparse}
 \end{figure}
 % NOTE (15 Oct): The figure is Fig 5c, on the main model with recalibrated Keras widths, with each trail segment coloured by the flow regime of its edge (model_accuracy_two_models.py --layout regimes): full flow 245, sparse 15, no regime 14 segments. The grey wedge marks within a factor of 2, and the line is the identity.

@@ -84,6 +84,7 @@ Cellophane sheets & Hoefer & TE73 \\
 \namedsubsection{Fungal strains, root-organ cultures and plates}{subsec:strains}
 
 Colonies of \textit{Rhizophagus irregularis} strain C2 (DAOM 664346; four plates) and strain A5 (DAOM 664344; plate STR2307A112) were grown with Ri T-DNA transformed carrot roots (\textit{Daucus carota}, clone DC1) in two-compartment split Petri dishes (94~mm), as described~\cite{oyarte_galvez_travelling-wave_2025}.
+% NOTE (2 Nov, plate labels): "plate STR2307A112" -> "plate 3".
 Briefly, fungal stocks were cultivated on modified Strullu--Romand (MSR) medium with transformed carrot roots for 2--6 months, and a plug of mycelium and spores from a stock was placed on 2--3~cm of fresh root in one compartment.
 That compartment held MSR with phosphate reduced to 1\%; the other, the fungal compartment, held regular MSR under a sheet of cellophane.
 Both media carried 10~g\,l$^{-1}$ sucrose and 3~g\,l$^{-1}$ Phytagel.
@@ -92,24 +93,53 @@ Plates were sealed with parafilm and kept in the dark at 25~\textdegree C. The f
 \todo{confirm that the five plates followed this protocol unchanged}
 
 Five plates were imaged, each in one or more sessions of flow videos at a frame of the time-lapse (the session's frame index, tNN):
+% NOTE (2 Nov, plate table): no longer matches the 13-row table below (plates 1-5 flow survey, 6 root cut, 4/7/8/9 section cut, 10-13 droplets).
 
 \begin{center}
 {\small
-\begin{tabular}{llll}
+\begin{tabular}{llllll}
 \hline
-\textbf{plate} & \textbf{strain} & \textbf{sessions} & \textbf{days after crossing} \\
+\textbf{plate} & \textbf{internal ID} & \textbf{strain} & \textbf{purpose} & \textbf{sessions} & \textbf{days after crossing} \\
 \hline
-EPY2412A088 & C2 & t28, t55 & \todo{} \\
-LPD2412A025 & C2 & t25, t36, t50 & 10, 11, 12 \\
-PNF2307A072 & C2 & t37, t49 & \todo{} \\
-PNF2307A080 & C2 & t74, t81, t91 & \todo{} \\
-STR2307A112 & A5 & t25, t38, t49, t60, t73 & \todo{} \\
+1 & PNF2307A072 & C2 & flow survey & t37, t49 & \todo{} \\
+2 & PNF2307A080 & C2 & flow survey & t74, t81, t91 & \todo{} \\
+3 & STR2307A112 & A5 & flow survey & t25, t38, t49, t60, t73 & \todo{} \\
+4 & LPD2412A025 & C2 & flow survey, section cut & t25, t36, t50; cut at t77 & 10, 11, 12 \\
+5 & EPY2412A088 & C2 & flow survey & t28, t55 & \todo{} \\
+6 & LPD2412A022 & C2 & root cut & t95 & \todo{} \\
+7 & EPY2412A104 & C2 & section cut & t82 & \todo{} \\
+8 & LPD2412A009 & C2 & section cut & t90 & \todo{} \\
+9 & EPY2412A084 & C2 & section cut & t73 & \todo{} \\
+10 & CER2506A058 & \todo{} & osmotic droplet & -- & \todo{} \\
+11 & SAL2506A063 & \todo{} & osmotic droplet & -- & \todo{} \\
+12 & SAL2506A071 & \todo{} & osmotic droplet & -- & \todo{} \\
+13 & SAL2506A073 & \todo{} & osmotic droplet & -- & \todo{} \\
+% NOTE (2 Nov, plate table): strain and days after crossing of plates 10-13 are not in the plate inventory: ask Achille.
 \hline
 \end{tabular}
 }
 \end{center}
+% NOTE (2 Nov, plate labels): the table now lists plates 6-13 too, so the lead-in "Five plates were imaged ..." and the perturbation sentence below need rewording. Sajitha: the internal IDs appear only in this table; everywhere else plate numbers: 1-5 the flow survey (by date, 2023 plates first), 6+ the perturbation plates (by experiment, then date). Sessions as "session j" of that plate (until agreed with the co-authors), trails without their internal names. Add a "purpose" column (Sajitha).
+% OUTLINE (2 Nov, colony table, columns to consider; numbers from transport_paper fig_outputs/fl_fast/video_edge_spectra.csv, registered videos with a mapped edge):
+%   plate | internal ID | strain | purpose                      | sessions (t-code, date)                   | days after crossing | BF / NR videos
+%   1     | PNF2307A072 | C2     | flow survey                  | t37 10 Aug 2023, t49 11 Aug 2023           | todo                | 175 / 100
+%   2     | PNF2307A080 | C2     | flow survey                  | t74 13 Aug, t81 14 Aug, t91 15 Aug 2023    | todo                | 170 / 149
+%   3     | STR2307A112 | A5     | flow survey                  | t25, t38, t49, t60, t73 = 1-5 Sep 2023     | todo                | 251 / 246
+%   4     | LPD2412A025 | C2     | flow survey; section cut     | t25 10 Jan, t36 11 Jan, t50 12 Jan 2025; cut at t77 | 10, 11, 12 | 107 / 104
+%   5     | EPY2412A088 | C2     | flow survey                  | t28 22 Jan, t55 24 Jan 2025                | todo                | 51 / 51
+%   6     | LPD2412A022 | C2     | root cut                     | t95, 7 Jan 2025                            | todo                | 53 / -
+%   7     | EPY2412A104 | C2     | section cut                  | t82, 13 Jan 2025                           | todo                | 21 / 16
+%   8     | LPD2412A009 | C2     | section cut                  | t90, 17 Jan 2025                           | todo                | 34 / 34
+%   9     | EPY2412A084 | C2     | section cut                  | t73, 26 Jan 2025                           | todo                | 20 / 20
+%   10    | CER2506A058 | todo   | osmotic droplet              | 22 Jul 2025                                | todo                | todo
+%   11    | SAL2506A063 | todo   | osmotic droplet              | 24 Jul 2025                                | todo                | todo
+%   12    | SAL2506A071 | todo   | osmotic droplet              | Jul 2025                                   | todo                | todo
+%   13    | SAL2506A073 | todo   | osmotic droplet              | 24 Jul 2025                                | todo                | todo
+%   (plate 4 is the same colony, cut after its flow sessions; droplets: the July 2025 movies only, the March 2026 SAL2601 plates are out (Simon, 28 Oct); "9 plates" in the droplet paragraph needs checking against this)
 
 The perturbation experiments used further plates prepared the same way: the root cut on LPD2412A022 (session t95), the section cut on \todo{plates}, and the droplets on 9 plates (SAL series).
+% NOTE (2 Nov, plate table): with plates 6-13 in the table this sentence is redundant or must use the numbers (root cut plate 6; section cut plates 4, 7, 8, 9; droplets plates 10-13).
+% NOTE (2 Nov, plate labels): "LPD2412A022 (session t95)" -> "plate 6"; section cut on plates 4, 7, 8 and 9; droplets on plates 10-13 (July 2025 only; the text says 9 plates).
 
 \namedsubsection{Network imaging}{subsec:network_imaging}
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): review and correct the pipeline text (this subsection, Stitching/segmentation/network extraction, The dated network graph) and resolve its \todo items (station per plate, segmenter checkpoint, Fig 1A inset bins).
@@ -249,6 +279,7 @@ With these rules the per-pixel tipward against rootward comparison on 595 fluore
 % NOTE (13 Oct): The sentence above compares fluorescence and bright-field per-pixel speeds (2.42 / 2.20 um/s; rootward faster on 20 % against 42 %). It falls under Simon's 13 Oct decision to drop speed comparisons with fluorescence.
 The pixel median in the fluorescence regime (100 to 1,000 pixels) was within 0.1~$\mu$m/s of the true speed from 1 to 6~$\mu$m/s and 0.2 to 0.5~$\mu$m/s low at 7 to 8~$\mu$m/s in the synthetic test; the third quartile ran 0.2 to 0.7~$\mu$m/s high, so the median is used.
 Where the per-direction pixel statistics were empty in the stored plate tables (LPD2412A025, PNF2307A072 and most of STR2307A112 bright-field, stored with an undefined filter value), the pixel counts, medians and quartiles carried by the mapping entries of each store were used instead; they agree with the plate tables where both exist (Spearman 0.95 in bright-field and 0.80 in fluorescence).
+% NOTE (2 Nov, plate labels): "LPD2412A025, PNF2307A072 and most of STR2307A112" -> "plates 4 and 1 and most of plate 3".
 
 Fluorescence streak speeds above about 5~$\mu$m/s are therefore censored, not absent, and fluorescence streak speed distributions are compared with bright-field below that speed only.
 The per-pixel speeds at 2 frames per second extend the comparison above it, and still show a smaller rootward branch in fluorescence than in bright-field.
@@ -268,6 +299,7 @@ Where the stream labelled rootward is motor-like (within 25\% of 3.06~$\mu$m/s, 
 % NOTE C14 (30 Oct, per-video measurements, transport_paper PR #167): the swap rule now acts on each video measurement on its own (its own streak quartiles), not on an edge's pooled streams. On the paper's tables it swaps 61 video measurements (46 edges before; the text says 58 edges, from an older table).
 
 Trails were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); STR2307A112 t73 LeftMiddle was dropped whole.
+% NOTE (2 Nov, plate labels): "STR2307A112 t73 LeftMiddle" -> "one trail of plate 3 (session 5)"; trail names are internal.
 Along a trail, each measured edge is placed at its distance from the trail's root end.
 
 \namedsubsection{Direction bias}{subsec:direction_bias}
@@ -294,6 +326,7 @@ The droplet's time is the onset of the change, placed on the kymograph and refin
 Each stream's response is its mean speed 4--15~s after the droplet over its mean 10 to 1~s before.
 The movies are not registered on the network, so the stream at motor speed is taken as the tipward one.
 Every kymograph was inspected; 17 bright-field movies on 9 plates and 2 Nile Red movies were kept.
+% NOTE (2 Nov, plate labels): with the March 2026 movies out (Simon, 28 Oct), the droplet movies come from plates 10-13 (CER2506A058, SAL2506A063/071/073, July 2025); "17 bright-field movies on 9 plates" (and the counts in the 7 Oct note below, which include 2026) need re-checking against salt_shock_me with DATASETS = ("2025",).
 % NOTE (7 Oct, Simon: the droplet details from the main-text osmotic paragraph (L81) belong here). The droplet movies
 % in Fig 3A after review (transport_paper figure3/salt_shock_me.load, artefact movies excluded): 17 bright-field +
 % 2 Nile Red. Solute (14): NaCl 50 mM (100 mOsm) x2, 100 mM (200 mOsm) x7, 200 mM (400 mOsm) x3, sucrose 50 mM
@@ -303,6 +336,7 @@ Every kymograph was inspected; 17 bright-field movies on 9 plates and 2 Nile Red
 % includes a 5 mM movie that is excluded as a read-out artefact. Correction to my 2 Oct note: two sucrose droplets, not one.
 
 A scalpel was pulled along the divider of LPD2412A022, separating the network from the root compartment, and one trail was filmed 5~min before and 5 and 30~min after the cut.
+% NOTE (2 Nov, plate labels): LPD2412A022 -> "plate 6".
 Per kymograph and direction, the length-weighted speeds of the bright-field streaks are split into modes by a kernel-density mode tree on log speed (bandwidth 0.3, minimum mode mass 0.1), and the direction is represented by its dominant mode: a single median switches between speed families from one video to the next.
 Which direction is tipward is taken from the trail annotation (the source edge and its orientation).
 Speeds are compared per trail edge: an edge's speed in a window is the median over its kymographs, and each pairing of a kymograph before with one after the cut counts once.
@@ -370,6 +404,7 @@ The force-balance motor model, in which the motors pull against the drag of thei
 
 An edge is a junction-to-junction run of the session's graph with at least one registered video; a session is one plate at one frame; the five plates are the independent biological replicates. $n$ in the text and captions counts edges unless stated.
 Of 1,683 videos over 15 sessions, 1,404 were registered onto the graph (279 not, 126 of them on PNF2307A080 t81).
+% NOTE (2 Nov, plate labels): "PNF2307A080 t81" -> "plate 2, session 2".
 They give 7,906 measurements, one per video, hypha and direction, of which 5,975 keep at least 5 moving streaks: 3,587 of 4,400 in bright-field and 2,388 of 3,506 in Nile Red fluorescence.
 % NOTE (10 Oct (transport_paper#132 comment 6088415445; feat/fl-numbers-limits 8391a7e, manuscript/fl_numbers_limits.md)): The stream counts 3,587 / 2,388 do not reproduce after deduplication; they become 3,583 / 2,385 (the Nile Red 2,388 includes 3 duplicate entries; the SI speed_iqr caption already says 3,583 / 2,385). The count of 879 Nile Red edges with both streams stands.
 Bright-field streaks give 1,600 edges with a rootward stream and 1,513 with both streams (\texttt{registration\_census.py}), and fluorescence streaks 879 edges with both streams (\texttt{figS\_video\_positions.py}).

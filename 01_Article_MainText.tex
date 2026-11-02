@@ -106,7 +106,7 @@ We asked how this change in topological context affected the speeds of the flows
 We imaged flows at high resolution in 731 bright-field videos along the hyphae of five colonies (SI Fig.~\ref{fig:video_positions}) and, mostly at the same positions, in 625 videos of Nile Red fluorescence; for the example network of Fig.~\ref{fig:hyphal_profiling}, the videos were taken over three consecutive days.
 We chose runner hyphae, the main routes to the root and the edges of high betweenness centrality~\cite{kirkley_betweenness_2018}, where the tipward and rootward flows could be distinguished by eye (SI, \nameref{subsec:si_video_selection}; SI Fig.~\ref{fig:bc_selection}). 
 
-In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}E; SI Fig.~\ref{fig:kymograph_examples}).
+In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}E;\@SI Fig.~\ref{fig:kymograph_examples}).
 In the field of view, the directed movement exceeds diffusion by more than two orders of magnitude, so the slope of a streak is its speed.
 % NOTE (6 Oct, answers Coco's 'why is there little diffusive movement?'): This is a Peclet estimate, to order of magnitude only. It assumes a lipid droplet of 0.5 um diameter, a cytoplasm viscosity 10 times that of water (0.01 Pa s) and T = 295 K, which give D = kT/(6 pi eta r) = 0.09 um^2/s. Over a 10 s kymograph, diffusion covers sqrt(2Dt) = 1.3 um, against 30 um of transport at 3 um/s. With L = 10 um, Pe = vL/D = 350. Check the droplet size and viscosity before submission. The argument is weaker near the tips (Fig 1D kymograph 4); see issue #5.
 Each streak gives one speed, and each kymograph was reduced to a set of tipward and rootward speeds (SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
@@ -336,7 +336,7 @@ Paler points have a larger uncertainty (the measured interquartile range and the
 
 The model allows us to predict on each edge what the net volumetric rate of fluid movement $q_w$ would be and then the direction and magnitude of the flow speed in the inner tube of each edge of the network (Fig.~\ref{fig:fig5_plug}).
 We found that our model captures salient features of the bidirectionality of flow observed across all edges.
-One important result is that we are able to capture the distribution of rootward speeds across the network (Fig.~\ref{fig:fig5_plug}A), with 77.5\% of the 1,544 measured rootward speeds within a factor of 2 of the modelled speeds, and a median ratio of modelled to measured speed of 1.06. This was achieved by fitting only one parameter ($\theta$; SI, \nameref{subsec:si_model_variants}) to the measured rootward speeds, and only using physical inputs and the measured tipward speeds.
+One important result is that we are able to capture the distribution of rootward speeds across the network (Fig.~\ref{fig:fig5_plug}A), with 77.5\% of the 1,544 measured rootward speeds within a factor of 2 of the modelled speeds, and a median ratio of modelled to measured speed of 1.05. This was achieved by fitting only one parameter ($\theta$; SI, \nameref{subsec:si_model_variants}) to the measured rootward speeds, and only using physical inputs and the measured tipward speeds.
 
 % NOTE C13 (30 Oct, per-video measurements, transport_paper PR #167): the model tables now keep one row per video (rootward and tipward from the same video) instead of the median over all videos on an edge. On the paper's streak settings and the final model table (model_old_streaks, motor flip off as in the paper reproduction): 1,544 edges -> 1,654 video measurements; within a factor 2 of the model 78% -> 78%; median modelled/measured ratio 1.06 -> 1.05. Trail segments within 10 mm of the tip (Fig 5 caption C, D): 274 -> 283 measurements, within 2x 86% -> 86%, ratio 1.21 -> 1.21; bin counts 3, 14, 19, 65, 73, 100, 130, 88 -> 3, 14, 19, 67, 76, 104, 142, 94. The median fold error in the paragraph ending '1.45' was not recomputed. With the 1.0 um/s bright-field slow-streak cut on top (not yet in the paper): 1,633 measurements, 81%, ratio 0.99.
 
@@ -385,8 +385,10 @@ Model as in Fig.~\ref{fig:fig5_plug} (blue); measured bright-field rootward spee
 \textbf{(A)} Tree-like hyphae: rootward speed against the routed lipid demand (lipid volume per second routed through the hypha, $\mu$m$^3$/s), medians of the five demand quintiles with 25th--75th percentile, measured (black) and model (blue); the model is within a factor 2 of the measurement on 94\% of these edges.
 \textbf{(B)} Loops with both arms filmed (n=421): rank correlation with the measured rootward speed ratio of the two arms, for the model, for the model with the arms' diameter ratio removed from both ratios (partial correlation), and for the diameter, conductance and length ratios of the two arms, with bootstrap 95\% intervals.
 \textbf{(C)} Network of EPY088 at session t55, every hypha coloured by whether it was present at t28 (grey) or grew since (green), with measured trail in bold and its tip (star).
+% NOTE (2 Nov, plate labels): "EPY088 at session t55 ... at t28" -> "plate 5 at session 2 ... at session 1" (2 days apart).
 \textbf{(D)} Rootward speed along measured trail against the distance from the root, model at t28 (light blue) and t55 (blue; running median over 5 segments), measured at t28 (open) and t55 (filled); green: grown since t28.
 \textbf{(E)} One trail on each of the other plates: PNF072 t37 Middle (26 segments, 92\% within a factor 2), LPD025 t50 Middle (32, 94\%) and STR112 t60 LeftMiddle (21, 86\%).}\label{fig:fig6_examples}
+% NOTE (2 Nov, plate labels): "PNF072 t37 Middle / LPD025 t50 Middle / STR112 t60 LeftMiddle" -> "plate 1, session 1 / plate 4, day 12 / plate 3, session 4"; trail names internal (drop, or trail 1).
 \end{figure}
 
     
@@ -402,10 +404,12 @@ The diameter ratio alone gives $\rho = 0.28$, the conductance ratio $\rho = 0.17
 
 The third is the temporal change in rootward speed along a trail as the network grows.
 On EPY088 Main, the stretch that existed at t28 speeds up from t28 to t55 by 1.51-fold in the model and 1.71-fold measured (medians 4.17 to 6.29 and 3.01 to 5.14~$\mu$m/s; 16 and 15 segments); at t55, 90\% of the 30 measured segments are within a factor of 2 of the model (Fig.~\ref{fig:fig6_examples}C-D).
+% NOTE (2 Nov, plate labels): "EPY088 Main ... from t28 to t55" -> "the plate 5 trail ... from session 1 to session 2"; "at t55" -> "at session 2".
 The mechanism is the one of Fig.~\ref{fig:schematic_model}G\@: demand rose 3.3-fold, the extra lipid thickens the condensate layer, and the return rises although the hypha also widened.
 
 We also show other examples of the model's predictions on other plates (Fig.~\ref{fig:fig6_examples}E).
 One trail on each of the other plates: PNF072 t37 Middle (26 segments, 92\% within a factor of 2), LPD025 t50 Middle (32, 94\%), STR112 t60 LeftMiddle (21, 86\%).
+% NOTE (2 Nov, plate labels): as the Fig 6E caption: plate 1, session 1; plate 4, day 12; plate 3, session 4.
 Over the 30 trails with $\geq$5 segments, the model ranks the trails by their median rootward speed ($\rho = 0.50$, $p = 0.005$), but orders segments within a trail only weakly (median within-trail $\rho = 0.15$).
 
 % NOTE (16 Oct, summarized 17 Oct, Fig 4F, other tests): Side branches along the trunks (62 filmed junctions, junction_side_branches.py): the model ranks the side / through speed ratio (rho +0.35, +0.30 beyond width), but its sign (46/62) does not beat the rule 'the side branch is slower' (49/62). Null: the trail's share of local conductance over 1 mm (rho -0.07 after tip distance and demand); 19 junctions with two rootward legs (9-10 of 19 right).
