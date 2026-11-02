@@ -1,0 +1,176 @@
+<title>Root-Cut Mode Explorer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an instrument panel — two parameter dials on top, the scatter as the working surface, a compact readout beside it */
+:root {
+  --bg: #f6f7f5; --panel: #ffffff; --fg: #1d2421; --muted: #5d6b65; --line: #d8ddd9;
+  --accent: #2f6f5e; --w-before: #1d2421; --w-plus5: #d2591a; --w-plus30: #149279; --tip: #2a6db0; --root: #b0477f;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141917; --panel: #1b211f; --fg: #e4ebe7; --muted: #9aa8a1; --line: #2e3833;
+  --accent: #6cc3a8; --w-before: #e4ebe7; --w-plus5: #f08a4f; --w-plus30: #3cc6a5; --tip: #6aa7e6; --root: #e07bb4; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141917; --panel: #1b211f; --fg: #e4ebe7; --muted: #9aa8a1; --line: #2e3833;
+  --accent: #6cc3a8; --w-before: #e4ebe7; --w-plus5: #f08a4f; --w-plus30: #3cc6a5; --tip: #6aa7e6; --root: #e07bb4; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 24px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 18px; }
+h1 { font-size: 1.45rem; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+.sub { color: var(--muted); margin: 4px 0 0; max-width: 70ch; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.dial { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 6px; min-width: 0; }
+.dial label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.dial .val { font-family: var(--font-mono); font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.dial .hint { font-size: 0.85rem; color: var(--muted); }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+input[type=range]:focus-visible, input[type=checkbox]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 14px; align-items: start; }
+@media (max-width: 760px) { .main { grid-template-columns: minmax(0, 1fr); } }
+.plot { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px; min-width: 0; position: relative; }
+svg { display: block; width: 100%; height: auto; }
+.axis text { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
+.axis line, .axis path { stroke: var(--line); }
+.zero { stroke: var(--muted); stroke-width: 0.6; }
+.side-lab { font-family: var(--font-body); font-size: 12px; font-weight: 600; }
+.readout { display: grid; gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.card h2 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0; font-weight: 600; }
+.big { font-family: var(--font-mono); font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.bars { display: grid; gap: 4px; font-family: var(--font-mono); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.bar { display: grid; grid-template-columns: 2.6em 1fr 2.4em; align-items: center; gap: 6px; }
+.bar i { display: block; height: 10px; background: var(--accent); border-radius: 2px; }
+.win { display: grid; gap: 6px; }
+.win label { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.sw { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px;
+  font-family: var(--font-mono); font-size: 11.5px; line-height: 1.4; color: var(--fg); box-shadow: 0 2px 10px rgba(0,0,0,0.12); max-width: 300px; }
+.note { color: var(--muted); font-size: 0.85rem; max-width: 80ch; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Root-cut speed modes, LPD2412A022_t95</h1>
+    <p class="sub">Modes of the streak-speed distribution per kymograph and direction (KDE on log speed, streaks weighted by length), oriented from the trail annotation. Move the bandwidth to set how close two modes may be before they merge, and the minimum mass to drop small ones.</p>
+  </header>
+
+  <section class="controls" aria-label="Parameters">
+    <div class="dial">
+      <label for="h">Bandwidth h (log speed)</label>
+      <div class="val" id="hval">0.10</div>
+      <input type="range" id="h" min="0" max="39" step="1" value="20">
+      <div class="hint" id="hhint">modes closer than about 10 % in speed merge</div>
+    </div>
+    <div class="dial">
+      <label for="m">Minimum mode mass</label>
+      <div class="val" id="mval">0.10</div>
+      <input type="range" id="m" min="0" max="0.6" step="0.01" value="0.1">
+      <div class="hint">share of that direction's streak length a mode must hold</div>
+    </div>
+  </section>
+
+  <section class="main">
+    <div class="plot" id="plot">
+      <svg id="svg" viewBox="0 0 760 470" role="img" aria-label="Mode speed against distance to the tip"></svg>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <aside class="readout">
+      <div class="card">
+        <h2>Modes shown</h2>
+        <div class="big" id="nmodes">0</div>
+        <div class="note" id="ndirs"></div>
+      </div>
+      <div class="card">
+        <h2>Modes per kymograph direction</h2>
+        <div class="bars" id="bars"></div>
+      </div>
+      <div class="card">
+        <h2>Time from cut</h2>
+        <div class="win" id="wins"></div>
+      </div>
+    </aside>
+  </section>
+  <p class="note">Point area is the mode's mass. Positive speeds run to the tip, negative to the root. 60 kymographs (9 placed without the registrator; 3 re-extracted with the walls_v4 segmenter); motors sit near +3.1 µm/s, the to-root stream at −4 to −8 µm/s. Data: rootcut_families.py --modetree, 40 bandwidths from 0.02 to 0.8.</p>
+</div>
+
+<script>
+const D = __DATA__;
+const WINS = [["-5 min", "--w-before"], ["+5 min", "--w-plus5"], ["+30 min", "--w-plus30"]];
+const OFF = {"-5 min": -0.25, "+5 min": 0, "+30 min": 0.25};
+const shown = {"-5 min": true, "+5 min": true, "+30 min": true};
+const W = 760, H = 470, L = 58, R = 16, T = 18, B = 44;
+const X0 = 0, X1 = 29, Y0 = -8.6, Y1 = 4.6;
+const sx = x => L + (x - X0) / (X1 - X0) * (W - L - R);
+const sy = y => T + (Y1 - y) / (Y1 - Y0) * (H - T - B);
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const svg = document.getElementById("svg"), tip = document.getElementById("tip");
+const NS = "http://www.w3.org/2000/svg";
+const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+function axes(g) {
+  const ax = el("g", {class: "axis"});
+  for (let x = 0; x <= 25; x += 5) { ax.append(el("line", {x1: sx(x), x2: sx(x), y1: H - B, y2: H - B + 4}));
+    const t = el("text", {x: sx(x), y: H - B + 17, "text-anchor": "middle"}); t.textContent = x; ax.append(t); }
+  for (let y = -8; y <= 4; y += 2) { ax.append(el("line", {x1: L - 4, x2: W - R, y1: sy(y), y2: sy(y), "stroke-opacity": y === 0 ? 0 : 0.5}));
+    const t = el("text", {x: L - 8, y: sy(y) + 4, "text-anchor": "end"}); t.textContent = y; ax.append(t); }
+  const xl = el("text", {x: (L + W - R) / 2, y: H - 6, "text-anchor": "middle"}); xl.textContent = "distance to the tip (mm)"; ax.append(xl);
+  const yl = el("text", {x: 14, y: (T + H - B) / 2, "text-anchor": "middle", transform: `rotate(-90 14 ${(T + H - B) / 2})`});
+  yl.textContent = "mode speed (µm/s)"; ax.append(yl);
+  g.append(ax);
+  g.append(el("line", {class: "zero", x1: L, x2: W - R, y1: sy(0), y2: sy(0)}));
+  const a = el("text", {class: "side-lab", x: W - R - 4, y: sy(Y1) + 14, "text-anchor": "end", fill: css("--tip")}); a.textContent = "to tip ↑"; g.append(a);
+  const b = el("text", {class: "side-lab", x: W - R - 4, y: sy(Y0) - 6, "text-anchor": "end", fill: css("--root")}); b.textContent = "to root ↓"; g.append(b);
+}
+
+function render() {
+  const hi = +document.getElementById("h").value, mm = +document.getElementById("m").value, h = D.hs[hi];
+  document.getElementById("hval").textContent = h.toFixed(3);
+  document.getElementById("hhint").textContent = `modes closer than about ${Math.round((Math.exp(h) - 1) * 100)} % in speed merge`;
+  document.getElementById("mval").textContent = mm.toFixed(2);
+  svg.replaceChildren(); axes(svg);
+  const rows = D.rows.filter(r => r[1] === hi && r[4] >= mm && shown[D.kymos[r[0]][0]]);
+  const g = el("g", {});
+  const col = Object.fromEntries(WINS.map(([w, v]) => [w, css(v)]));
+  for (const r of rows.sort((a, b) => b[4] - a[4])) {
+    const [k, , side, mode, mass] = r, [win, d, key] = D.kymos[k];
+    const c = el("circle", {cx: sx(d + OFF[win]), cy: sy(mode), r: Math.sqrt(4 + 110 * mass), fill: col[win], "fill-opacity": 0.78, stroke: "none", tabindex: -1});
+    c.addEventListener("mouseenter", ev => {
+      tip.hidden = false;
+      tip.textContent = `${key}\n${win}, ${d.toFixed(1)} mm from tip\n${side > 0 ? "to tip" : "to root"} ${Math.abs(mode).toFixed(2)} µm/s, mass ${mass.toFixed(2)}`;
+      tip.style.whiteSpace = "pre"; const b = document.getElementById("plot").getBoundingClientRect(), p = ev.target.getBoundingClientRect();
+      tip.style.left = Math.min(p.left - b.left + 12, b.width - 240) + "px"; tip.style.top = (p.top - b.top - 8) + "px";
+    });
+    c.addEventListener("mouseleave", () => { tip.hidden = true; });
+    g.append(c);
+  }
+  svg.append(g);
+  const per = {};
+  for (const r of rows) { const id = r[0] + ":" + r[2]; per[id] = (per[id] || 0) + 1; }
+  const counts = Object.values(per), hist = [1, 2, 3, 4].map(n => counts.filter(c => n < 4 ? c === n : c >= 4).length);
+  document.getElementById("nmodes").textContent = rows.length;
+  document.getElementById("ndirs").textContent = `on ${counts.length} kymograph directions`;
+  const mx = Math.max(1, ...hist);
+  document.getElementById("bars").replaceChildren(...hist.map((n, i) => {
+    const d = document.createElement("div"); d.className = "bar";
+    d.innerHTML = `<span>${i < 3 ? i + 1 : "4+"}</span><span><i style="width:${(n / mx) * 100}%"></i></span><span>${n}</span>`; return d; }));
+}
+
+const wins = document.getElementById("wins");
+for (const [w, v] of WINS) {
+  const id = "w" + w.replace(/[^0-9a-z]/gi, "");
+  const lab = document.createElement("label"); lab.htmlFor = id;
+  lab.innerHTML = `<input type="checkbox" id="${id}" checked><span class="sw" style="background:var(${v})"></span>${w}`;
+  lab.querySelector("input").addEventListener("change", e => { shown[w] = e.target.checked; render(); });
+  wins.append(lab);
+}
+document.getElementById("h").addEventListener("input", render);
+document.getElementById("m").addEventListener("input", render);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+new MutationObserver(render).observe(document.documentElement, {attributes: true, attributeFilter: ["data-theme"]});
+(() => { const i = D.hs.reduce((b, h, j) => Math.abs(h - 0.3) < Math.abs(D.hs[b] - 0.3) ? j : b, 0); document.getElementById("h").value = i; })();
+render();
+</script>
