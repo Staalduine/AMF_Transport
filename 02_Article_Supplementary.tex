@@ -580,8 +580,45 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 % NOTE (20 Oct): Section text to be written; cited from Methods (The transport model, force-balance motor model). Source: Typst supplement (manuscript/09_supplement.typ, "Motors as a force", L736-809; force_motor_model.py, lane_drag.py). Uses the old to-tip / to-root terms and the conveyor-era comparisons; rewrite on the final model or shorten to the specification Methods points to.
 
 \section{The model against the measurements}\label{sec:si_model_data}
+% NOTE (moved from main text 2 Nov; 15 Oct, summarized 17 Oct, Fig 6D): On the session 1 stretch of the plate 5 trail, demand rose 3.3-fold, the lumen area b^2 1.36-fold and the core area a^2 1.06-fold, so the extra cross-section went mostly to the condensate layer and the return rose 1.56-fold. Caveat: our data do not show widening following demand (lagged demand-width correlation ~0 at every lag; demand_rise.py, demand_widening.py). one plate 4 trail is the only other trail with enough segments in several sessions (7-10 each).
+
+\namedsubsection{Model accuracy}{subsec:si_model_accuracy}
+% NOTE (2 Nov): section text to be written by Simon; the numbers moved here from the main text (Sajitha: keep only the important claims there). Fig 5 model (global solve) against the per-video bright-field measurements (no slow-streak cut; transport_paper fig/fig5-per-video fa2bbd7).
+% NOTE (2 Nov): kappa / betweenness split recomputed (median kappa_mean from flow_regime/tree_loop_si.csv, edge betweenness at the session): the main-text values (3.0 vs 3.8 and 4.5 vs 3.5 um/s) do not reproduce on the Fig 5 model even per edge (2.92 vs 3.58, n 263; 4.78 vs 3.95, n 328).
+\begin{table}[htbp]
+\centering
+{\small
+\begin{tabular}{lll}
+\hline
+\textbf{quantity} & \textbf{set} & \textbf{value} \\
+\hline
+rootward speed measurements & every measured edge and video & 1,616 (15 sessions, 5 plates) \\
+within a factor of 2 & every measurement & 76.4\% \\
+median ratio, modelled / measured & every measurement & 1.05 \\
+median fold error & every measurement & 1.46 \\
+KS distance (log speeds) & every measurement & 0.061 \\
+trail segments within 10~mm of the tip & medians over $\pm$0.5~mm & 281 \\
+\quad within a factor of 2 & & 88\% \\
+\quad median ratio & & 1.16 \\
+trail medians, Spearman $\rho$ & 35 trails with $\geq$5 segments & 0.43 ($p = 0.011$) \\
+within-trail Spearman $\rho$ (median) & same trails & 0.19 \\
+rise with tip distance, same sign & trails with $\geq$10 segments & 19 of 24 \\
+trail medians, $\geq$3 segments & 36 trails & $\rho = 0.45$ ($p = 0.006$) \\
+trail medians, $\geq$8 segments & 29 trails & $\rho = 0.34$ ($p = 0.067$) \\
+modelled / measured median, high $\kappa$, low betweenness & 285 measurements & 2.92 / 3.58~$\mu$m/s \\
+modelled / measured median, low $\kappa$, high betweenness & 333 measurements & 4.79 / 3.98~$\mu$m/s \\
+\hline
+\end{tabular}
+}
+\caption{}\label{tab:si_model_accuracy}
+% NOTE (2 Nov): caption to be written by Simon: Fig 5 model (global solve) against the per-video bright-field rootward speeds (no slow-streak cut); within 2x = |log(model/measured)| <= log 2; fold error = exp(median |log ratio|); trail segments as Fig 5C (medians over +-0.5 mm); kappa / betweenness split at their medians over the measured edges.
+\end{table}
+
 
 \namedsubsection{Tree and loop edges and network robustness}{subsec:si_tree_loop}
+% NOTE (moved from main text 2 Nov; 17 Oct, facts behind this subsection not in the prose): (A) 94 % of the 111 tree edges are within a factor of 2 (rank correlation 0.65); at fixed demand no width effect is detectable on tree edges (measured +0.21 [-0.42, 0.84], model -0.05), but over all filmed edges the video lumen keeps a width effect at fixed demand (within-plate rho 0.43 measured, 0.16 model). (B) The model exaggerates the arm difference (SD of the log ratio 0.89 against 0.53), mostly from width noise (network widths agree with the video lumen at rho 0.49); a lower conductance exponent does not fix it (K ~ a^3/L: 0.77, loop rho 0.37; a^2/L: 0.73, rho 0.29, KS 0.105), so Poiseuille stays; SI figures for the loop density plot and the side branches are built, not yet placed. (C-D) 70 % of the session 2 network (plate 5) length grew after session 1. (F) With the betweenness/kappa split at the medians, the model is low on high-kappa, low-betweenness edges (log2 model/measured -0.35; 2.97 against 3.80 um/s, 364 edges) and high on low-kappa, high-betweenness edges (+0.31; 4.47 against 3.53, 427 edges). (G) Sparse-flow edges: median lumen 6.2 against 8.4 um for full flow.
+% NOTE (moved from main text 2 Nov; 16 Oct, summarized 17 Oct, Fig 4F, other tests): Side branches along the trunks (62 filmed junctions, junction_side_branches.py): the model ranks the side / through speed ratio (rho +0.35, +0.30 beyond width), but its sign (46/62) does not beat the rule 'the side branch is slower' (49/62). Null: the trail's share of local conductance over 1 mm (rho -0.07 after tip distance and demand); 19 junctions with two rootward legs (9-10 of 19 right).
+% NOTE (moved from main text 2 Nov; 16 Oct, summarized 17 Oct, Fig 4F and circulation): In the 2x toy loop a third of the motor flux circulates (up the long arm, down the short one), while the long arm's core still flows rootward; the core reverses only from ~4x. In the real networks (main model) the core flows tipward on 0.5-2.6 % of edge length, although loop arms carry a median net flux of 30 % of their motor flux. No data in the paper show loop circulation itself; the circulation point is for the Discussion (note there).
 % NOTE (16 Oct): The section text is to be written by Simon; new section on Simon's request (measured and modelled quantities on tree and loop edges against tip distance, and a robustness measure). Analysis: transport_paper feat/flow-regime tree_loop_si.py (0e6085d, b650104), figures manuscript_figures/figS_tree_loop_kappa.py; main model unchanged.
 % NOTE (1, tree vs loop, figure 'tree_loop', 1,544 filmed edges: 213 tree (bridge), 1,331 loop): Median tree / loop within 4 mm of a tip and beyond 4 mm. Measured rootward speed 2.74 / 3.18 and 3.50 / 4.09 um/s (both p < 0.03). Model rootward speed 2.97 / 3.30 (n.s.) and 3.09 / 3.91 um/s. Measured tipward speed 2.42 / 2.86 near tips, 3.08 / 3.08 beyond. Lumen width does not differ (8.8 / 8.9 and 9.2 / 9.4 um). Routed lipid demand is 0 on tree edges beyond 4 mm (median), against 1.45 on loop edges: in the model these tree branches carry no lipid (a = b) and return their motor flux only. The net (circulating) flux on loop edges is 25-29 % of the motor flux, and 0 on tree edges by construction.
 % NOTE (2, robustness kappa, definition): kappa is the fewest hyphae that must be cut to disconnect a section of the network (every node within 500 um along the network of an edge) from the root; by Menger's theorem it is the number of hypha-disjoint routes from the section to the root. Cuts count per arc (junction to junction), computed as a maximum flow on the arc graph. A tree section has kappa 1. The imaged network continues below the bottom edge of the image towards the root compartment, so every node within 1 mm of the bottom edge counts as connected to the root (open bottom); with the solver's 13 or so root nodes alone, kappa is 1 lower in median and its relation to speed is inconsistent between plates.
