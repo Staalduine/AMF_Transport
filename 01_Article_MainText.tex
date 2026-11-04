@@ -112,7 +112,7 @@ The tipward speeds slow down near the tip, but stay close to 3~$\mu m / s$ furth
 Rootward speeds generally increase with distance from the tip (Fig.~\ref{fig:hyphal_profiling}D), and have a wide range: the median interquartile range of a hypha's speeds is 1.6~$\mu m / s$ rootward, against 0.6~$\mu m / s$ tipward (SI Fig.~\ref{fig:speed_iqr}).
 This result was confirmed by repeating a similar experiment on various plates imaging 15 sessions over 5 plates showing a consistent phenomenology (Fig.~\ref{fig:asymmetries} A, B). 
 
-\begin{figure}2
+\begin{figure}
  \centering
  \includegraphics[width=\textwidth]{figures/Figure_2_v5.pdf}
  \caption{\textbf{Tipward and rootward flows differ in speed and in cargo: the tipward flow is concentrated around $3 ~\mu m /s$, the rootward flow is more variable, both flows carry lipids.}
@@ -157,8 +157,8 @@ In the past, pressure gradients and molecular motors have been suggested to be p
 It is also important to discuss other potential mechanisms that could drive flows in fungal hyphae, and to evaluate whether our data support or contradict each of them. 
 Diffusion as a mechanism could be present close to the tips, as that is where we observe the most random movement of particles (SI Fig.~\ref{fig:kymograph_examples}, kymograph 4), but the directed, unbroken flow in the rest of the network is not consistent with diffusion alone. 
 Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_2010,lew_mass_2005,lew_how_2011}, is also unlikely to be the main driver of flows in our system, as it cannot explain the presence of two opposing streams at similar speeds in the same hypha (SI, \nameref{subsec:si_mass_flow}). 
-Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}). {\color{blue} is it helpful to remark that periodic radial variations are observed in 
-\textit{Physarum}, but at the resolution we can image we do not observe such radial oscillations?}
+Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}).
+% NOTE (4 Nov, reviewer question): is it helpful to remark that periodic radial variations are observed in \textit{Physarum}, but at the resolution we can image we do not observe such radial oscillations?
 
 The difference in flow behavior, both within an edge and along an edge, with distance to tip suggests that flow in each direction could be associated with a different mechanism.
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
@@ -246,7 +246,7 @@ Could it explain the observed variation of speed in space and time?
 Because fluid movement happens at low Reynolds numbers in our system and the entrance length in each individual hyphal pipe is close to its diameter, the approximation of an infinite length cylinder we used to derive the flow profile in a single pipe is still justified in the network context (SI, \nameref{subsec:si_poiseuille_plug}).
 A network of connected pipes is then analogous to a network of these individual circuit elements. The pressure at each node in the network is determined by the flow through each edge, and the flow through each edge is determined by the pressure difference between its two nodes. Flux is then analogous to current, and pressure difference to voltage.
 
-Such an electrical circuit equivalent of the network can be solved with linear algebra using Kirchhoff's law at each intersection, and requiring that the sum of pressure drops around loops in the network be zero (Methods). 
+Such an electrical circuit equivalent of the network can be solved with linear algebra using Kirchhoff's current law at each intersection, and requiring that the sum of pressure drops around loops in the network be zero (Methods). 
 As in the case of growth-induced mass flow (SI, \nameref{subsec:si_mass_flow}), we set the sink magnitude at each node $k$ to correspond to newly created volume $\Delta V_k$ and added a global reservoir, connected to manually annotated nodes which are strongly suspected to be connected to roots.
 Using lipid dry mass measurements, we can estimate the volume amount of lipid $J_l$ that needs to be transported to the tips to sustain growth, as a fixed share of $\Delta V_k$ (SI, \nameref{subsec:si_theta_choice}).
 Additionally, we assume that the flows are routed to minimize the total power dissipation in the network.
@@ -474,7 +474,7 @@ The growth might then simply occur at a rate limited by the network-determined s
 
 However, some abrupt topological changes, such as anastomosis or the colony abandoning growth in a specific region of space, could require a reorganization of the cytoskeletal filaments.
 It is unclear how that reorganization is modulated in a way that allows one to maintain a flux of carbon that is consistent with the general fungal growth strategy.
-Depending on the timing of the reorganization, it is also likely that the flux of lipids moving on microtubules will not always follow the Kirchhoff law at some intersection.
+Depending on the timing of the reorganization, it is also likely that the flux of lipids moving on microtubules will not always follow Kirchhoff's current law at some intersection.
 Because lipids are incompressible and cannot accumulate in a node, this means that they will be recirculated in the internal cytoplasmic flow.
 This phenomenon could explain the observation that lipids can also move in two directions in fungal hyphae.
 In \textit{Filoreta}, Guest and Dawson infer antiparallel microtubule arrays where branches growing from opposite directions fused~\cite{guest_multiple_2026}, another lineage in which anastomosis would leave tracks pointing both ways in one branch.
