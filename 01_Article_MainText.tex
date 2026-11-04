@@ -204,7 +204,7 @@ This suggests that the mechanism driving these flows is different from the mecha
 
 We synthesize the above results into a minimal model that explains the observed bidirectional transport of resources in the network and its modulation over space and time.
 Namely that motors carry a condensate of lipid droplets in water towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC).
-This model is consistent with the observed flows in both directions, and with the perturbation experiments that we performed.
+This model is consistent with the observed flows in both directions, and with the section cut and osmotic shock perturbation experiments that we performed.
 
 % \subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
 % Although the above results elucidate the mechanism for lipid translocation across the network, they do not provide a predictive framework for how lipid flux is distributed.
@@ -225,14 +225,12 @@ Top row: network schematics; bottom row: rootward speed $v$ ($\mu$m/s) from the 
 
 % SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): check the single-pipe and network-model derivations here (eq:speed_profile_main, eq:net_inner_flow, eq:max_speed) against Methods notation. Open contradiction: the network paragraph says growth volume is a sink with a global source; Methods says growth volume is not a sink in the pressure solve.
 % SUGGESTED (4 Nov, Simon): Filipe: closed pipe = zero net WATER flux (net tipward lipid flux pi b^2 Theta v_m remains), not zero total volume flux; the network solve uses q_w. OK? On tree (bridge) edges q_w = 0 then holds exactly, growth volume neglected (below measurement noise).
-As this condensate moves towards the tips throughout the aseptate mycelium, it could drag cytoplasmic fluid along by viscous friction and, because no water can leave the hyphae, push an equal volume back towards the root.
+As this condensate moves towards the tips throughout the aseptate mycelium, it could drag cytoplasmic fluid along by viscous friction and, because no water can leave the hyphae, push an equal volume of water back towards the root.
 As such, the condensate, a water-oil-like emulsion of lipid droplets of higher viscosity, forms a layer that uniformly coats the internal surface of the hyphal pipe.
-We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae. An estimation based on the local viscosity and the thickness of the hypha, suggests a poiseuille flow profile needs a speed spread  of 1.8--2.3, while the observed speed spread is 1.23 (SI, \nameref{subsec:si_poiseuille_plug}). A pure plug flow profile is therefore a reasonable assumption, and the condensate moves nearly as a whole.
+We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae. An estimation based on two possible observation scenarios, suggests a poiseuille flow profile needs a speed spread  of 1.8--2.3, while the observed speed spread is 1.23 (SI, \nameref{subsec:si_poiseuille_plug}). A flow profile close to plug flow is therefore a reasonable assumption, and the condensate moves nearly as a whole.
 The condensate layer has a volumetric proportion $\theta$ of lipids and $(1-\theta)$ of water, and moves at a speed $v_m$.
-In this model, we also imagine that the condensate layer is coating the walls, and that the water in the core of the hyphae is free to flow at a rate of $q_{w,r<a}$, with a radius $a$ smaller than the hyphal radius $b$.
+In this model, we also imagine that the condensate layer is coating the walls, and that the water in the core of the hyphae is free to flow at a rate of $q_{w,r<a}$, with a radius $a$ smaller than the hyphal radius $b$ (Fig. \ref{fig:schematic_model}C). In this model, we assume that all lipids are consumed at the tips, but it is easy to imagine that some lipids which are not part of $\theta$ are recirculated back to the root.
 The volumetric proportion of lipids in the whole pipe is $\Theta$, which is related to $\theta$ by $\Theta = \theta (b^2 - a^2) / b^2$.
-
-% NOTE (4 Nov, Sajitha: moved to SI subsec:si_poiseuille_plug): the Poiseuille speed profile eq:speed_profile_main u(r) with its lead-in sentence; eq:net_inner_flow stays here.
 
 The flow of water through the inner pipe can be written as
 
@@ -241,12 +239,14 @@ The flow of water through the inner pipe can be written as
 q_{w,r<a} = q_w - \pi b^2 \Theta \frac{1-\theta}{\theta} v_m,
 \end{equation}
 
-where $q_w$ is the net flow of water through the whole pipe.
+where $q_w$ is the net flow of water through the whole pipe. 
 % NOTE (4 Nov, Sajitha: moved to SI subsec:si_poiseuille_plug): eq:max_speed u(0) with its lead-in and the two sentences interpreting it. The next sentences ('It also suggests ...') still refer to it: bridge in the rewrite.
 % NOTE (4 Nov, rewrite D4): u(r) and u(0) moved to SI subsec:si_poiseuille_plug; main text keeps the water balance. Bidirectional argument to restate with q_c: with q_w = 0, q_c is opposite to v_m and grows with Theta (see model_rewrite_discussion_2026-11-04.md D2/D4).
 % NOTE (4 Nov, decided 3): restate the bidirectional argument on q_c (q_w = 0: q_c opposite to v_m, grows with Theta) and keep the two Theta sentences below, rephrased on q_c.
 It also suggests a possible explanation for the spatial and temporal variation of speeds.
-The spatial variation of $\Theta$~\cite{bago_tracking_2002} (SI Fig.~\ref{fig:theta_spatial}) indeed directly contributes to the magnitude of the rootward speed.
+The spatial variation of $\Theta$~\cite{bago_tracking_2002} (SI Fig.~\ref{fig:theta_spatial}) indeed directly contributes to the magnitude of the rootward speed. In the case of $q_w = 0$, the net water flow is zero, which corresponds to the case of a tree-like section of the network. In that case, all the water that is dragged by the condensate layer is returned through the core, and the rootward speed is opposite to the tipward speed and grows with $\Theta$, and $v_m$ alone.
+
+In looped sections of the network, $q_w$ is non-zero, and the rootward speed is routed into high-betweenness edges, making those higher in speed than low-betweenness edges, which is consistent with our observations (SI, \nameref{subsec:si_betweenness}, Fig \ref{fig:schematic_model}F). 
 
 Our conceptual model seemed to be supported by the data at the individual pipe level.
 Cutting a segment out of the network brings the nearest tip closer, which in the model lowers the motor speed and with it the backflow, as observed after section cuts, where both streams slowed by about a fifth (Fig.~\ref{fig:perturbations}C).
