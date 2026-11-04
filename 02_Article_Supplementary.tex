@@ -567,6 +567,7 @@ Centerline speed $u(0)$ would be the speed at the center of the pipe, which we d
 % NOTE (1, set-up): The model of this comparison (the main model before 14 Oct: weakly coupled return, junction 10 mm, motors along the growth graph, a >= 0.8 b, theta 0.05, no return-width exponent) is run on 15 sessions and scored against the bright-field rootward speed (224 tree edges, 1,366 loop edges). A tip's demand passes back up the growth graph; where hyphae merge it is divided by conductance b^4/L of each parent hypha, by area b^2, or equally. Tree edges have one path, so the rule cannot act there.
 % NOTE (2, source): The source is transport_paper branch feat/demand-split-compare (commits 1173217, f89b893): fig_outputs/model_grid/run_grid_junction.sh split, and Working_notebooks/demand_split_compare.py, which writes fig_outputs/model_grid/junction/split_compare.csv (run 12 Oct).
 % NOTE (3, beyond the table): where the model puts lipid has no relation to the moving NileRed signal under any split (within-plate Spearman rho 0.00-0.01, 1,678 fluorescence edges, ~30 % of them get no model lipid); 53-56 % of the growth demand reaches a root under all three (the rest is stranded at non-root growth sources, set by the motor direction, not the split).
+% NOTE (4 Nov): table rerun at theta 0.10 with the Bayesian motor profile (same variant model otherwise; transport_paper fig_outputs/calib_dryrun/split_th010, demand_split_compare.py). Unchanged: lipid current changed vs area 44 % / 26 %, motor direction 93.3 %; the split rule still changes no score.
 % NOTE (14 Oct): The final main model routes the lipid by the GIMF solve (lipid current = 0.256 times the GIMF flux) with GIMF-oriented motors, so this split comparison (growth-graph routing, junction coupling) is now about a variant. Its point stands: the split rule does not change the scores.
 \begin{table}
 \centering
@@ -575,11 +576,11 @@ Centerline speed $u(0)$ would be the speed at the center of the pipe, which we d
  & conductance ($b^4/L$) & area ($b^2$) & even \\
 \midrule
 lipid current changed vs area ($>10\%$) & 44\% & --- & 26\% \\
-tree edges within $2\times$ & 87.9\% & 87.9\% & 87.9\% \\
-tree edges, Spearman $\rho$ & 0.41 & 0.41 & 0.41 \\
-loop edges within $2\times$ & 85.4\% & 85.9\% & 86.3\% \\
-loop edges within $1.5\times$ & 62.6\% & 63.0\% & 63.3\% \\
-loop edges, Spearman $\rho$ & 0.29 & 0.29 & 0.29 \\
+tree edges within $2\times$ & 84.7\% & 84.7\% & 84.7\% \\
+tree edges, Spearman $\rho$ & 0.49 & 0.49 & 0.49 \\
+loop edges within $2\times$ & 85.0\% & 85.1\% & 85.1\% \\
+loop edges within $1.5\times$ & 60.1\% & 60.3\% & 60.2\% \\
+loop edges, Spearman $\rho$ & 0.32 & 0.32 & 0.33 \\
 motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \bottomrule
 \end{tabular}
