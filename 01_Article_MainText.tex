@@ -203,7 +203,7 @@ The flows towards the root are also more variable in speed.
 This suggests that the mechanism driving these flows is different from the mechanism driving the tipward flows and is likely pressure driven.
 
 We synthesize the above results into a minimal model that explains the observed bidirectional transport of resources in the network and its modulation over space and time.
-Namely that motors carry a condensate of lipid droplets in water towards the tips, and that this movement of volume creates a local pressure gradient that drives a return flow towards the root (Fig.~\ref{fig:schematic_model}ABC).
+Namely that motors carry a condensate of lipid droplets in water towards the tips, and that this movement of volume creates a local pressure gradient that drives a backflow towards the root (Fig.~\ref{fig:schematic_model}ABC).
 This model is consistent with the observed flows in both directions, and with the section cut and osmotic shock perturbation experiments that we performed.
 
 % \subsubsection*{Motors toward the tip are ambiguous in a looped network with many tips}
@@ -243,27 +243,25 @@ where $q_w$ is the net flow of water through the whole pipe.
 % NOTE (4 Nov, Sajitha: moved to SI subsec:si_poiseuille_plug): eq:max_speed u(0) with its lead-in and the two sentences interpreting it. The next sentences ('It also suggests ...') still refer to it: bridge in the rewrite.
 % NOTE (4 Nov, rewrite D4): u(r) and u(0) moved to SI subsec:si_poiseuille_plug; main text keeps the water balance. Bidirectional argument to restate with q_c: with q_w = 0, q_c is opposite to v_m and grows with Theta (see model_rewrite_discussion_2026-11-04.md D2/D4).
 % NOTE (4 Nov, decided 3): restate the bidirectional argument on q_c (q_w = 0: q_c opposite to v_m, grows with Theta) and keep the two Theta sentences below, rephrased on q_c.
+In the case of $q_w = 0$, the net water flow is zero, which corresponds to the case of a tree-like section of the network. In that case, all the water that is dragged by the condensate layer is returned through the core, and the rootward speed is opposite to the tipward speed and grows with $\Theta$, and $v_m$ alone, at fixed $\theta$.
 It also suggests a possible explanation for the spatial and temporal variation of speeds.
-The spatial variation of $\Theta$~\cite{bago_tracking_2002} (SI Fig.~\ref{fig:theta_spatial}) indeed directly contributes to the magnitude of the rootward speed. In the case of $q_w = 0$, the net water flow is zero, which corresponds to the case of a tree-like section of the network. In that case, all the water that is dragged by the condensate layer is returned through the core, and the rootward speed is opposite to the tipward speed and grows with $\Theta$, and $v_m$ alone.
+The spatial variation of $\Theta$~\cite{bago_tracking_2002} (SI Fig.~\ref{fig:theta_spatial}) indeed directly contributes to the magnitude of the core flow.
 
-In looped sections of the network, $q_w$ is non-zero, and the rootward speed is routed into high-betweenness edges, making those higher in speed than low-betweenness edges, which is consistent with our observations (SI, \nameref{subsec:si_betweenness}, Fig \ref{fig:schematic_model}F). 
+In looped sections of the network, $q_w$ is non-zero, and the backflow is routed into high-betweenness edges, making those higher in speed than low-betweenness edges (Fig.~\ref{fig:schematic_model}F).
 
 Our conceptual model seemed to be supported by the data at the individual pipe level.
 Cutting a segment out of the network brings the nearest tip closer, which in the model lowers the motor speed and with it the backflow, as observed after section cuts, where both streams slowed by about a fifth (Fig.~\ref{fig:perturbations}C).
 However, we wanted to know what its consequences would be at the network level.
 Could it explain the observed variation of speed in space and time?
-When establishing the speed profile through the pipe, we were also able to derive the pressure gradient along the idealized hyphal pipe.
 Because fluid movement happens at low Reynolds numbers in our system and the entrance length in each individual hyphal pipe is close to its diameter, the approximation of an infinite length cylinder we used to derive flow profile in a single pipe is still justified in the network context.
-A network of connected pipes is then analogous to a network of these individual circuit elements.
+A network of connected pipes is then analogous to a network of these individual circuit elements. The pressure at each node in the network is determined by the flow through each edge, and the flow through each edge is determined by the pressure difference between its two nodes. Flux is then analogous to current, and pressure difference to voltage. We calculate conductance based on the core radius $a$ (hyphal radius minus the condensate annulus) and length of each edge. The motors are then a current source in parallel with the hydraulic conductance of the core.
 
 Such an electrical circuit equivalent of the network can be solved with linear algebra using Kirchhoff's law at each intersection, and requiring that the sum of pressure drops around loops in the network be zero (Methods). 
 As in the case of growth-induced mass flow (SI, \nameref{subsec:si_mass_flow}), we set the sink magnitude at each node $k$ to correspond to newly created volume $\Delta V_k$ and added a global reservoir, connected to manually annotated nodes which are strongly suspected to be connected to roots.
-This volume can be thought of as the minimal volume which needs to be transported to the tips to have sustained growth.
-% NOTE (4 Nov, reviewer #84 Filipe, later): clarify 'minimal volume' (lower bound in the energy-minimisation sense?)
 Using lipid dry mass measurements, we can estimate the volume amount of lipid $J_l$ that needs to be transported to the tips to sustain growth (Methods, \nameref{subsec:si_theta_choice}).
 This allows us to set the sink magnitude at each node in the network.
-Additionally, we assume that the network is interested in the energy minimization of the flow, which is equivalent to minimizing the total power dissipation in the network.
-This allows us to solve for the pressure at each node in the network, and therefore the demand $J_l$ through each edge.
+Additionally, we assume that the flows are routed to minimize the total power dissipation in the network.
+This allows us to solve for the pressure at each node in the network, and therefore the demand $J_l$ through each edge. This is the first step of the solver, which is then used to calculate the backflow through each edge.
 
 In each edge the lipid current fixes the size of the motor-driven condensate: with a lipid share $\theta$ of the condensate (set to 0.10) moving at the motor speed $v_m$, $J_l = \pi(b^2 - a^2)\theta v_m$, so the core radius follows from $a^2 = b^2 - J_l/(\pi v_m \theta)$, so an edge that carries more lipid has a thicker condensate and a narrower core.
 The sign of $J_l$ determines the direction of motor flow.
@@ -277,8 +275,8 @@ towards the tips.
 % SUGGESTED (4 Nov, Simon): Filipe: the conductance is Poiseuille, but the measured core is blunted / close to a plug (SI subsec:si_poiseuille_plug). Can we say a blunted core changes the speed read-out (motor frame, |q_c|/(pi a^2)) but not the flux balance? And confirm the read-out relative to the motor layer is the right comparison with lab-frame streak speeds.
 Each edge then acts as a source of flux $q_s$ in parallel with the hydraulic conductance of its core, $K = \pi a^4/(8\mu L)$, so that its net water flux is $q_w = q_s - K\Delta p$ (Methods), where $\Delta p = p_j - p_i$ is the pressure difference along the edge from node $i$ to node $j$, the direction in which $q_s$ and $q_w$ are counted. 
 These values are all derived from the previously solved $J_l$, and we use them in a second solver to find the backflow.
-Solving these elements together for the pressures, with no water entering or leaving the network except at the roots, which are tied to a common reservoir (growth is neglected here, as it moves far less volume than the motors), gives $q_w$ on every edge, and with it the pressure-driven return through the core, $q_c = q_s - q_w$. 
-We compare the mean speed of this return, $|q_c|/(\pi a^2)$, with the measured rootward speed.
+Solving these elements together for the pressures, with no water entering or leaving the network except at the roots, which are tied to a common reservoir (growth is neglected here, as it moves far less volume than the motors), gives $q_w$ on every edge, and with it the pressure-driven backflow through the core, $q_c = q_s - q_w$. 
+We compare the mean speed of this backflow, $|q_c|/(\pi a^2)$, with the measured rootward speed.
 % NOTE (4 Nov): 'Centerline speed u(0) ...' sentence moved to SI subsec:si_poiseuille_plug with eq:max_speed.
 % SUGGESTED (4 Nov, Simon): Coco: OK to claim that no parameter is fitted to the rootward speeds? theta = 0.10 comes from the growth-data lower bound plus the literature ceiling; scores flat in theta; floor is a guard (SI subsec:si_theta_choice).
 The model uses only measured or physical inputs besides the estimated lipid concentration $\theta$: the network and its growth from the time-lapse, hyphal diameters from the network images recalibrated on the filmed hyphae, the measured tipward speed, and $\theta = 0.10$ with $a \geq 0.8\,b$.
@@ -330,7 +328,8 @@ The network structure is a key determinant of the rootward speed, with the model
 We also define a measure of edge network density or robustness $\kappa$ as the number of cuts needed to disconnect the network section within 0.25 to 1~mm of an edge from the root, averaged over these section sizes.
 The model does not reproduce the observed rise of the rootward speed with $\kappa$.
 Splitting the filmed edges at the median $\kappa$ and edge betweenness, the model under-predicts on well-connected edges of low betweenness (2.6 against 3.6~$\mu$m/s measured) and over-predicts on poorly connected edges of high betweenness (4.1 against 4.0~$\mu$m/s).
-The model concentrates the return on the main routes to the root, whereas the measured rootward speed is also high in well-connected parts of the network that lie off these routes (SI Figs.~\ref{fig:tree_loop},~\ref{fig:kappa}).
+The model concentrates the backflow on the main routes to the root, whereas the measured rootward speed is also high in well-connected parts of the network that lie off these routes (SI Figs.~\ref{fig:tree_loop},~\ref{fig:kappa}).
+High-betweenness edges are also along direct routes to the roots, and have a higher diameter, which is consistent with the observation that rootward speeds are higher in thicker hyphae (SI, \nameref{subsec:si_forward_flow}).
 
 Some other shortcomings are that the model assumes a uniform flow within hyphae, and does not account for the existence of observed sparse flows (SI, \nameref{subsec:si_flow_regimes}).
 These are edges where only sparse particles are seen moving in either direction.
@@ -377,7 +376,7 @@ The diameter ratio alone gives $\rho = 0.30$, the conductance ratio $\rho = 0.20
 
 The third is the temporal change in rootward speed along a trail as the network grows.
 On the plate 5 trail, the stretch that existed at session 1 speeds up from session 1 to session 2 by 1.42-fold in the model and 1.71-fold measured (medians 3.83 to 5.44 and 3.01 to 5.14~$\mu$m/s; 16 and 15 segments); at session 2, 93\% of the 30 measured segments are within a factor of 2 of the model (Fig.~\ref{fig:fig6_examples}C-D).
-The mechanism is the one of Fig.~\ref{fig:schematic_model}G\@: demand rose 3.3-fold, the extra lipid thickens the condensate layer, and the return rises although the hypha also widened.
+The mechanism is the one of Fig.~\ref{fig:schematic_model}G\@: demand rose 3.3-fold, the extra lipid thickens the condensate layer, and the backflow rises although the hypha also widened.
 
 We also show other examples of the model's predictions on other plates (Fig.~\ref{fig:fig6_examples}E).
 One trail on each of the other plates: plate 1, session 1 (26 segments, 92\% within a factor of 2), plate 4, session 3 (32, 94\%), plate 3, session 4 (22, 82\%).
@@ -508,7 +507,7 @@ In plants, the sugar loaded phloem generates an influx of water from the xylem.
 This in turn generates a net flux of water through the phloem.
 Any kind of osmolyte that would be produced inside the fungal network could very well drive a similar osmotic pump by changing the overall flow distribution in the network.
 Kikuchi et al.\ found that suppressing host transpiration slowed the translocation of polyphosphate through AM hyphae towards the host, and proposed transpiration-driven hyphal water flow as its driver~\cite{kikuchi_aquaporin-mediated_2016}.
-In our root-organ cultures there is no transpiration, yet both streams continue, also after the root is cut (Fig.~\ref{fig:perturbations}B); the motor-driven return proposed here would act without a shoot, alongside transpiration where there is one.
+In our root-organ cultures there is no transpiration, yet both streams continue, also after the root is cut (Fig.~\ref{fig:perturbations}B); the motor-driven circulation proposed here would act without a shoot, alongside transpiration where there is one.
 
 Such effects may play a role in the transport of resources within the AM colony; they would add to the mechanism of bidirectional flow described here rather than replace it.
 Regardless of the contribution of other mechanisms, our results indicate that lipid movement results in some fluid flow in the opposite direction.
