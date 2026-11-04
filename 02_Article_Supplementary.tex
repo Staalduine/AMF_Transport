@@ -538,6 +538,14 @@ u(0) = -v_m\left(1+2\frac{\Theta(1-\theta)}{\theta-\Theta}\right) .
 This result suggests a possible explanation for the bidirectional movement that we observe.
 For all values of $\Theta$ and $\theta$, we have $u(0)$ which is of opposite sign compared to $v_m$.
 Centerline speed $u(0)$ would be the speed at the center of the pipe, which we do not expect to measure reliably.
+% NOTE (4 Nov, outline for Simon): What would a plug conductance look like?
+% - A plug in a no-slip pipe moves only by shearing a thin layer of thickness delta at its edge (here between core and condensate); cf. cell-free layer in blood flow.
+% - Force balance: Delta p * pi a^2 = tau * 2 pi a L, U = tau delta / mu_l  ->  K_plug = pi a^3 delta / (2 mu_l L), vs K_Pois = pi a^4/(8 mu L).
+% - Ratio K_plug/K_Pois = 4 (delta/a)(mu/mu_l): smaller for a thin layer of the same viscosity, comparable or larger if a watery layer lubricates a crowded core.
+% - Intermediate cases: power-law (shear-thinning) core with index n gives K ~ a^(3+1/n), from a^4 (Newtonian) to a^3 (plug); Bingham (yield-stress) core = Buckingham-Reiner, K = pi a^4/(8 mu L) [1 - 4/3 (r_p/a) + 1/3 (r_p/a)^4], depends on Delta p, so the network solve becomes nonlinear.
+% - Consequence for the model: on tree edges q_w = 0 and q_c = q_s whatever K is; an overall scale on K (mu, delta) changes pressures only, not fluxes; only the a-exponent changes the split in loops (a^3 shifts less backflow into the wider arm than a^4).
+% - Earlier test (before theta 0.10; SI tree-and-loop notes, loop arm ratios): K ~ a^3/L gave an SD of the log arm-speed ratio of 0.77 (Poiseuille 0.89, measured 0.53) and loop rho 0.37 (Poiseuille 0.40); a^2/L: SD 0.73, rho 0.29, KS 0.105. So a lower exponent narrows the exaggerated arm contrast a little but ranks loops worse; Poiseuille kept. Rerun at theta 0.10 pending (--core-conductance-exponent 3). Filipe to confirm.
+% - Read-out: mean core speed |q_c|/(pi a^2) holds for any profile; equals the particle speed if the core is a plug.
 
 \begin{figure}[htbp]
 \centering
