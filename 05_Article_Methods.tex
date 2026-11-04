@@ -10,12 +10,12 @@
 %          STUB = heading or a few lines only, needs text;
 %          TO WRITE = only a candidate, not in this file yet)
 % 1.  Resource availability / data and code availability -- DRAFTED (typst "Resource availability"); missing: repository DOI, Zenodo DOIs.
-% 2.  Key resources table -- DRAFTED (typst "Key resources table"); missing: Nile Red and Phytagel supplier/cat. no., Petri dish cat. no., dataset DOI.
+% 2.  Key resources table -- DRAFTED (typst "Key resources table"); missing: NileRed and Phytagel supplier/cat. no., Petri dish cat. no., dataset DOI.
 % 3.  Fungal strains, root-organ cultures and plates -- DRAFTED (typst "Experimental model and study participant details"); missing: protocol unchanged for all plates?, days after crossing for 4 plates, section-cut plates.
 % 4.  Network time-lapse imaging -- DRAFTED (typst "Network imaging"); missing: which station imaged each plate (Aretha at 1.37 um/px).
 % 5.  Stitching, segmentation, network extraction -- DRAFTED (typst "Stitching, segmentation and network extraction"; amftrack, segmenter, orchestrator); missing: segmenter checkpoint, SI figures (stitching, segmenter, graph repair) have no LaTeX labels.
 % 6.  Dated / growth graph -- DRAFTED (typst "The dated network graph"; STHype); missing: SI section "Motor direction" not in the LaTeX SI.
-% 7.  Flow video acquisition (lid on/off, bright-field 20 fps, Nile Red fluorescence 1-2 fps, ~15 s apart) -- DRAFTED (typst "Flow videos"); missing: objective model, lid on for all sessions?, Nile Red concentration/staining time, who filmed.
+% 7.  Flow video acquisition (lid on/off, bright-field 20 fps, NileRed fluorescence 1-2 fps, ~15 s apart) -- DRAFTED (typst "Flow videos"); missing: objective model, lid on for all sessions?, NileRed concentration/staining time, who filmed.
 % 8.  Kymograph and streak analysis (PolyFlow, flow_analysis_comps) -- DRAFTED (typst "From video to speeds"); fluorescence minimum streak length is now 5 frames (re-run 7 Oct 2026, was 8); Quantification recounted on the 5-frame tables (registration_census.py --streaks-root fig_outputs/streaks_fl_minframes5_merged, 7 Oct 2026).
 % 9.  Registration of videos onto the graph (registrator) -- DRAFTED (typst "Videos on the network"); missing: SI registration figure label.
 % 10. Tipward / rootward direction assignment from the growth graph -- DRAFTED (inside "Videos on the network", paragraph "Direction"); could become its own subsection.
@@ -55,7 +55,7 @@ The raw network images and flow videos are available from the lead contact on re
 \textbf{REAGENT or RESOURCE} & \textbf{SOURCE} & \textbf{IDENTIFIER} \\
 \hline
 \multicolumn{3}{l}{\textbf{Chemicals, peptides, and recombinant proteins}} \\
-Nile Red & \todo{supplier} & \todo{cat. no.} \\
+NileRed & \todo{supplier} & \todo{cat. no.} \\
 Phytagel & \todo{supplier} & \todo{cat. no.} \\
 \multicolumn{3}{l}{\textbf{Deposited data}} \\
 Per-hypha flow and network dataset & This paper & \todo{DOI} \\
@@ -188,10 +188,10 @@ Local loop density is the cycle rank per mm of hypha within 500~$\mu$m of the ed
 Flow videos were recorded on a second microscope with the same imaging path (tube lens and Basler acA4112 camera, 3.45~$\mu$m pixels) behind a 50$\times$ objective \todo{objective model}, at 2~$\times$~2 binning: 0.138~$\mu$m per pixel.
 Its motorised stage records each video's position on the plate.
 At each session, positions were chosen on the latest stitched image along hand-picked routes from the root to growing tips (the trails) and on the side hyphae around them, and filmed with the lid on \todo{confirm lid on for all sessions}.
-Bright-field videos were recorded at 20 frames per second for 20--60~s; fluorescence videos of lipids stained with Nile Red~\cite{kleinCytoplasmicFlowDynamics2026} at 1--2 frames per second \todo{Nile Red concentration and staining time; who filmed}.
+Bright-field videos were recorded at 20 frames per second for 20--60~s; fluorescence videos of lipids stained with NileRed~\cite{kleinCytoplasmicFlowDynamics2026} at 1--2 frames per second \todo{NileRed concentration and staining time; who filmed}.
 The exposure time was 45~ms in bright-field at 20 frames per second, and 0.45~s at 2 and 0.9~s at 1 frame per second in fluorescence, about 90\% of the frame period in each case (read from the acquisition record of the 2 frames per second videos; the 1 frame per second value is inferred from the same ratio \todo{confirm on the raw acquisition files of the 1 frame per second sessions}).
-At most positions a bright-field video was followed, about 15~s later, by a Nile Red video of the same position (recorded one after the other, not simultaneously).
-In total 1,683 videos were recorded over 15 sessions: 839 in bright-field, 704 in Nile Red fluorescence, and 140 without a recorded imaging mode (SI Fig.~\ref{fig:video_positions}).
+At most positions a bright-field video was followed, about 15~s later, by a NileRed video of the same position (recorded one after the other, not simultaneously).
+In total 1,683 videos were recorded over 15 sessions: 839 in bright-field, 704 in NileRed fluorescence, and 140 without a recorded imaging mode (SI Fig.~\ref{fig:video_positions}).
 
 \namedsubsection{From video to speeds}{subsec:video_to_speeds}
 
@@ -245,19 +245,19 @@ In the streak analysis the fluorescence shortfall at speed is therefore explaine
 % "SI [Lipid bias SI section]" points here: Methods, \nameref{subsec:fl_detection_limit}.
 % Outline points only (2 Nov); numbers from transport_paper fig/lipid-bias-slow-only,
 % fig_outputs/lipid_bias_slow_only/{summary.md, stats.csv, sensitivity.csv, representativeness.md}.
-% 1. Why a subset: Nile Red at 1-2 fps finds streaks to ~5 um/s (half detection 4.9 / 4.7-5.1 um/s, above);
+% 1. Why a subset: NileRed at 1-2 fps finds streaks to ~5 um/s (half detection 4.9 / 4.7-5.1 um/s, above);
 %    the bright-field rootward stream is a slow (~3.1 um/s) or a fast (~6.4 um/s) family (dominant KDE mode per
-%    video, split at 5 um/s). Where a fast rootward stream exists, Nile Red misses it and its tip share is inflated.
-% 2. Pairing: each Nile Red video edge to the bright-field video of the same position and STG edge, nearest in time
+%    video, split at 5 um/s). Where a fast rootward stream exists, NileRed misses it and its tip share is inflated.
+% 2. Pairing: each NileRed video edge to the bright-field video of the same position and STG edge, nearest in time
 %    (<= 30 min; Fig 2C pair 14 s); 1,513 pairs on the lid-on plates (LPD2412A009, a cut plate, left out).
 % 3. Slow-only rule (on the bright-field twin): both directions a single slow stream, AND < 5 % of the bright-field
-%    C(v) weight over 1-12 um/s lies above 4.5 um/s. 160 pairs / 140 Nile Red videos / 5 plates (83 at 2 fps,
+%    C(v) weight over 1-12 um/s lies above 4.5 um/s. 160 pairs / 140 NileRed videos / 5 plates (83 at 2 fps,
 %    77 at 1 fps). Has-fast (rootward single fast or slow+fast): 200 pairs.
 % 4. Result: per-video NR - BF difference +0.07 [0.04, 0.12] (two-level plate/video bootstrap), Wilcoxon p < 0.001;
-%    per-video medians 0.57 (Nile Red) vs 0.49 (bright-field). Has-fast edges: +0.25 [0.19, 0.36], so about three
+%    per-video medians 0.57 (NileRed) vs 0.49 (bright-field). Has-fast edges: +0.25 [0.19, 0.36], so about three
 %    quarters of the full-sample gap is the fast-stream blind spot.
 % 5. Robustness: fast-share threshold 2-20 % gives +0.07 to +0.08; labels alone +0.07; bright-field emulated at the
-%    Nile Red frame rate (C(v) tip share) +0.06 [0.01, 0.12], restricted to 1-4.5 um/s +0.08 [-0.01, 0.14];
+%    NileRed frame rate (C(v) tip share) +0.06 [0.01, 0.12], restricted to 1-4.5 um/s +0.08 [-0.01, 0.14];
 %    positive on all 5 plates (+0.01 to +0.20). Caveat: edges classified by spectrum alone (no labels) show no
 %    excess in the C(v) measures.
 % 6. Representativeness (vs all 1,513 pairs): EPY088 over-represented (18 vs 10 %), PNF080/STR112 under; 14 of the
@@ -312,25 +312,25 @@ The direction bias of an edge in a video is
 which is 0 when all the signal goes to the root, 0.5 when the two directions are balanced and 1 when all of it goes to the tip.
 The bias of a video is the median over its edges.
 Edges with too little directed signal to call a direction were left out: edges with a bias of exactly 0.5, edges with a signal in one direction only (0 or 1), and edges whose summed signal was below a fixed threshold.
-The same index was computed for the bright-field and for the Nile Red fluorescence videos (Fig.~\ref{fig:asymmetries}D).
+The same index was computed for the bright-field and for the NileRed fluorescence videos (Fig.~\ref{fig:asymmetries}D).
 The index is based on the orientation of all moving pixels, and not on the detected streaks used for the speeds.
 
 \namedsubsection{Perturbations}{subsec:perturbations}
 
-Achille Joliot placed a 5~$\mu$l droplet \todo{confirm $\mu$l; one of 10} of NaCl (50--200~mM), sucrose (5--50~mM) or growth medium at the base of the network, by the divider to the root compartment, while filming a hypha near the network's edge in bright-field (July 2025 and March 2026) or with Nile Red (July 2025).
-The July 2025 movies were recorded on an Andor iXon camera at 50$\times$ (0.32~$\mu$m per pixel), bright-field and Nile Red together through an image splitter \todo{confirm; this applies to the droplet movies only, the static-flow bright-field and Nile Red videos were recorded about 15~s apart}; the March 2026 movies on a Hamamatsu ORCA Flash behind a Nikon LPlan 20$\times$ objective (NA 0.3; 0.325~$\mu$m per pixel before binning), with frame rates taken from the timestamps.
+Achille Joliot placed a 5~$\mu$l droplet \todo{confirm $\mu$l; one of 10} of NaCl (50--200~mM), sucrose (5--50~mM) or growth medium at the base of the network, by the divider to the root compartment, while filming a hypha near the network's edge in bright-field (July 2025 and March 2026) or with NileRed (July 2025).
+The July 2025 movies were recorded on an Andor iXon camera at 50$\times$ (0.32~$\mu$m per pixel), bright-field and NileRed together through an image splitter \todo{confirm; this applies to the droplet movies only, the static-flow bright-field and NileRed videos were recorded about 15~s apart}; the March 2026 movies on a Hamamatsu ORCA Flash behind a Nikon LPlan 20$\times$ objective (NA 0.3; 0.325~$\mu$m per pixel before binning), with frame rates taken from the timestamps.
 A rush is a smeared band of moving material rather than sharp tracks, so these movies were read by the kymograph's motion energy instead of streaks: in each 2~s window, stepped by 0.5~s, each position's mean is removed, the window is sheared at every trial speed up to $\pm$60~$\mu$m/s, and the energy of the time-averaged result peaks at the speed at which the pattern moves coherently.
 The two stream speeds are the energy ridges above 1~$\mu$m/s followed through time on either side.
 The droplet's time is the onset of the change, placed on the kymograph and refined on the traces (the first 0.5~s bin after which the mean speed along the motor direction stays more than 3 noise widths from its baseline for 2~s), then moved to the steepest rise of the rootward speed within 8~s of it where that rise is at least 1~$\mu$m/s per s.
 Each stream's response is its mean speed 4--15~s after the droplet over its mean 10 to 1~s before.
 The movies are not registered on the network, so the stream at motor speed is taken as the tipward one.
-Every kymograph was inspected; 17 bright-field movies on 9 plates and 2 Nile Red movies were kept.
-% NOTE (3 Nov, recounted with salt_shock_me DATASETS = ('2025',)): 9 bright-field movies (NaCl 100 mM / 200 mOsm: 6; MSR controls: 3) on 4 plates and 2 Nile Red movies (NaCl 100 mM) -> prose: '9 bright-field movies on 4 plates and 2 Nile Red movies were kept' (was 17 on 9). Per plate (bright-field + Nile Red): plate 10 CER2506A058 2+0, plate 11 SAL2506A063 4+1, plate 12 SAL2506A071 1+1, plate 13 SAL2506A073 2+0. The 7 Oct note below (50-400 mOsm, sucrose, by year) describes the 2025+2026 set and is out of date.
+Every kymograph was inspected; 17 bright-field movies on 9 plates and 2 NileRed movies were kept.
+% NOTE (3 Nov, recounted with salt_shock_me DATASETS = ('2025',)): 9 bright-field movies (NaCl 100 mM / 200 mOsm: 6; MSR controls: 3) on 4 plates and 2 NileRed movies (NaCl 100 mM) -> prose: '9 bright-field movies on 4 plates and 2 NileRed movies were kept' (was 17 on 9). Per plate (bright-field + NileRed): plate 10 CER2506A058 2+0, plate 11 SAL2506A063 4+1, plate 12 SAL2506A071 1+1, plate 13 SAL2506A073 2+0. The 7 Oct note below (50-400 mOsm, sucrose, by year) describes the 2025+2026 set and is out of date.
 % NOTE (7 Oct, Simon: the droplet details from the main-text osmotic paragraph (L81) belong here). The droplet movies
 % in Fig 3A after review (transport_paper figure3/salt_shock_me.load, artefact movies excluded): 17 bright-field +
-% 2 Nile Red. Solute (14): NaCl 50 mM (100 mOsm) x2, 100 mM (200 mOsm) x7, 200 mM (400 mOsm) x3, sucrose 50 mM
+% 2 NileRed. Solute (14): NaCl 50 mM (100 mOsm) x2, 100 mM (200 mOsm) x7, 200 mM (400 mOsm) x3, sucrose 50 mM
 % (50 mOsm) x2. Medium-like controls (MSR, 0 mOsm beyond the medium): 3. By year: 2025 = 6 NaCl + 3 MSR, 2026 = 6 NaCl
-% + 2 sucrose. Nile Red: 2 movies, NaCl 100 mM (2025, twins of bright-field movies). So the solute range is 50-400 mOsm,
+% + 2 sucrose. NileRed: 2 movies, NaCl 100 mM (2025, twins of bright-field movies). So the solute range is 50-400 mOsm,
 % not 100-400 as in the main text and the Fig 3 caption (the two sucrose droplets are 50 mOsm); 'sucrose 5-50 mM' here
 % includes a 5 mM movie that is excluded as a read-out artefact. Correction to my 2 Oct note: two sucrose droplets, not one.
 
@@ -345,7 +345,7 @@ Their streams are told apart by the direction rule above (\nameref{subsec:videos
 Held out one at a time, the registered videos are placed this way within a median 116~$\mu$m of their registered position, and the rule gives their registered direction on 39 of the 41 hyphae it decides, reversing none.
 % NOTE (3 Nov, root_cut_unregistered.py --validate on fig/fig3-rootcut bd58825): 11 unregistered runs, 9 placed with measurements (the 'nine' holds). Held-out check on the registered trail runs: 44 runs, 59 video edges; the direction rule decides 40, gives the registered direction on 38, reverses none; placement error in tip distance median 33 um (p90 72 um). The text's '116 um ... 39 of the 41' were from the earlier four placed videos (and a position distance, not tip distance) -> prose: 'within a median 33 um in distance to the tip ... 38 of the 40 hyphae it decides'. Neighbouring edges can share a kymograph, so the Wilcoxon p-values are somewhat optimistic. A slower rootward family at 2.3-2.9 um/s is left out on purpose (Simon).
 
-Cuts round a patch of network isolated it from both its source and its sinks; 4 positions were filmed before and after, in bright-field and with Nile Red.
+Cuts round a patch of network isolated it from both its source and its sinks; 4 positions were filmed before and after, in bright-field and with NileRed.
 
 \namedsubsection{The transport model}{subsec:transport_model}
 % SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): write out the single-pipe derivation (moving annulus, q_s, K = pi a^4 / 8 mu L, read-out |q_c| / (pi a^2) as the cross-section mean of the Poiseuille part), the network assembly (Kirchhoff, root reservoir) and the solver algorithm (GIMF routing solve, then the pressure solve; backflow_model.py). The circuit derivation is in the NOTE at the motor stream step. Fitted constants and theta stay as they are.
@@ -375,16 +375,15 @@ Refitted on all 15 sessions (1,495 edges) the fit gives 3.09~$\mu$m/s, 1.85~$\mu
 Those fits use the medians of the detected streaks.
 Refitted on the per-pixel tipward speeds (2,039 bright-field edges with at least 100 pixels per direction, current tip distances; \texttt{pixel\_tip\_distance\_fit.py}), the offset form gives $v_\infty = 2.93$ (95\% interval 2.81 to 3.21)~$\mu$m/s, $v_{\mathrm{tip}} = 1.18$ (0.10 to 1.60)~$\mu$m/s and $\ell = 1.35$~mm (0.74 to 2.14), preferred over a constant speed in leave-one-session-out and leave-one-plate-out comparisons (held-out error lower by 0.016, intervals $-0.036$ to $-0.003$ and $-0.037$ to $-0.002$); fluorescence at 2 frames per second (776 edges) gives 3.05 (2.89 to 3.59)~$\mu$m/s, 1.02 (0.75 to 2.24)~$\mu$m/s and 2.17~mm (1.62 to 7.86), with the near-tip speed 0.63 of the far one in both channels.
 The speed near the tips is therefore lower than in the streak fit, but it is poorly constrained (15 bright-field edges lie within 250~$\mu$m of a tip).
-Rerunning the transport model with the per-pixel profile, refitted without each held-out session, leaves its scores within their session-bootstrap intervals: for the global solve, 76\% of edges lie within 2-fold of the measured rootward streak median, against 77\% with the constants above (loop edges 74 against 75\%, tree edges 89 against 88\%; median fold error 1.43 against 1.45), and 67 against 65\% when scored against the per-pixel rootward speeds (\texttt{model\_pixel\_motor\_speed.py}).
-It changes the prediction only near the tips: within 1~mm of a tip (87 edges) the rootward speed is over-predicted by a median factor of 1.24 with the constants and under-predicted by 1.15 with the per-pixel profile.
+% NOTE (4 Nov): removed the per-pixel-profile rerun comparison (two sentences, scored against the old model); text kept in the session scratchpad, methods_removed_perpixel.txt, and in git HEAD.
 A constant motor speed scores worse in both comparisons.
 The scores reported use the constants above.
   \item \textbf{Motor annulus.}
-In a hypha of radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v_m = \hat{v}_m(d)$, whose lipid share $\theta = 0.05$ carries $J_l$: $a^2 = b^2 - J_l/(\pi v_m \theta)$, with $a \geq 0.8\, b$.
+In a hypha of radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v_m = \hat{v}_m(d)$, whose lipid share $\theta = 0.10$ carries $J_l$: $a^2 = b^2 - J_l/(\pi v_m \theta)$, with $a \geq 0.8\, b$.
   \item \textbf{Motor stream.}
 % NOTE (15 Oct, the circuit element the main text points to; notation aligned with the main text on Simon's request): In a pipe of length L whose annulus (a < r < b) moves at v_m, the core is Poiseuille flow with the wall speed v_m at r = a, so the water flux through the core is q_{w,r<a} = pi a^2 v_m - K Delta p, with the core conductance K = pi a^4 / (8 mu L) and Delta p = p_j - p_i along the edge. Adding the water carried in the annulus, pi (b^2 - a^2)(1 - theta) v_m, gives the net water flux q_w = q_s - K Delta p, with the motor stream q_s = pi v_m [(1 - theta)(b^2 - a^2) + a^2]. Each pipe is therefore a flux source q_s in parallel with the conductance K, and the network is solved with Kirchhoff's law at the nodes. The pressure-driven part of the core flux, q_c = q_s - q_w = K Delta p, is the return the model reads out as |q_c| / (pi a^2). This derivation is still to be written into the Methods text.
 The volume carried towards the tip is $q_s = \pi v_m \left[(1-\theta)(b^2 - a^2) + a^2\right]$: the annulus and the core dragged along at its edge.
-  \item \textbf{Backflow.}
+  \item \textbf{Rootward speed.}
 The volume returns by a pressure-driven flow in the cores.
 The pressure is solved on the graph with Poiseuille conductances $K = \pi a^4 / (8 \mu L)$ of the cores and the divergence of $q_s$ as sources.
 Every annotated root is tied to one common reservoir at zero pressure through a conductance equal to about 10~mm of core of radius 4~$\mu$m (\texttt{testing\_new\_model.g\_res}), so volume can pass between roots through the reservoir.
@@ -392,7 +391,7 @@ The hyphal walls pass no water: volume enters and leaves the network only at the
 The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (on the 1,684 filmed edges the growth demand routed through an edge is a median 2.6\% of its $q_s$, interquartile range 0.9--6.7\%, and 12\% at the 90th percentile; SI, \nameref{subsec:si_volume_budget}).
 Flow passes between hyphae at junctions at no cost: one global pressure solve over the whole network; a resistance for switching hyphae at junctions, and the conveyor limit in which every edge carries back its own motor stream, are SI variants (\nameref{subsec:si_model_variants}).
   \item \textbf{Read-out.}
-The backflow is what is measured: the distribution of rootward streak speeds on an edge, summarised by its median where one value is needed.
+The rootward speed is what is measured: the distribution of rootward streak speeds on an edge, summarised by its median where one value is needed.
 The model's counterpart is the core flux over the core area, $|q_c| / (\pi a^2)$.
 \end{enumerate}
 It is scored against that median.
@@ -404,7 +403,7 @@ The force-balance motor model, in which the motors pull against the drag of thei
 An edge is a junction-to-junction run of the session's graph with at least one registered video; a session is one plate at one frame; the five plates are the independent biological replicates. $n$ in the text and captions counts edges unless stated.
 Of 1,683 videos over 15 sessions, 1,404 were registered onto the graph (279 not, 126 of them on PNF2307A080 t81).
 % NOTE (2 Nov, plate labels): "PNF2307A080 t81" -> "plate 2, session 2".
-They give 7,906 measurements, one per video, hypha and direction, of which 5,975 keep at least 5 moving streaks: 3,587 of 4,400 in bright-field and 2,388 of 3,506 in Nile Red fluorescence.
+They give 7,906 measurements, one per video, hypha and direction, of which 5,975 keep at least 5 moving streaks: 3,587 of 4,400 in bright-field and 2,388 of 3,506 in NileRed fluorescence.
 % NOTE (3 Nov): stream counts 3,587 / 2,388 -> 3,583 / 2,385 after removing duplicate entries (SI speed_iqr caption already uses these). The 7,906 / 5,975 / 4,400 / 3,506 totals come from registration_census.py and were not rerun per video.
 Bright-field streaks give 1,600 edges with a rootward stream and 1,513 with both streams (\texttt{registration\_census.py}), and fluorescence streaks 879 edges with both streams (\texttt{figS\_video\_positions.py}).
 % NOTE (3 Nov, per-video no-cut main tables, bright-field, after the swap rule): 1,626 measurements (1,517 edges) with a rootward stream and 1,572 measurements (1,469 edges, 671 videos) with both streams -> prose: replace '1,600 edges with a rootward stream and 1,513 with both' by these (or edges 1,517 / 1,469). The 879 fluorescence edges come from figS_video_positions.py (separate streak tables) and stand.
