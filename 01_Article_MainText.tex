@@ -39,7 +39,7 @@ Our model provides an intuitive understanding for the observed proportionality i
 The symbiosis between arbuscular mycorrhizal (AM) fungi and their host plants has existed for 400 million years~\cite{remy_four_1994,brundrett_evolutionary_2018}.
 For the symbiosis to endure this long, robust mechanisms must be in place to ensure its stability.
 Indeed, symbiosis can be a many to many relationship, which means that the plant can interact with multiple independent fungal colonies and one fungal network can interact with multiple plant hosts~\cite{kiers_reciprocal_2011,walder_mycorrhizal_2012}.
-Without selective orientation of nutrients towards partners that engage in a proportional effort to provide nutrients, "free ride" plant or fungal phenotypes can emerge that reap the benefits of symbiosis while avoiding costs~\cite{kiers_reciprocal_2011,bever_preferential_2009,walder_regulation_2015,noe_mycorrhizal_2018,kiers_misconceptions_2016}. 
+Without selective orientation of nutrients towards partners that engage in a proportional effort to provide nutrients, ``free ride'' plant or fungal phenotypes can emerge that reap the benefits of symbiosis while avoiding costs~\cite{kiers_reciprocal_2011,bever_preferential_2009,walder_regulation_2015,noe_mycorrhizal_2018,kiers_misconceptions_2016}. 
 
 The fungal partner forms a network in the soil using plant derived carbon.
 It absorbs phosphorus from the soil, which is then transported back to the plant.
@@ -58,7 +58,7 @@ The role of microtubule tracks in this movement has been proposed, and microtubu
 
 Flow speeds along the hyphae are modulated with time and location within the network~\cite{oyarte_galvez_travelling-wave_2025}.
 This can be interpreted through a traffic analogy inspired by the observed correlation between betweenness centrality, a typical transport network metric, and flow speeds.
-The betweenness centrality is the sum of times a shortest path between arbitrary nodes in a network crosses a particular network edge.
+The betweenness centrality is the number of shortest paths between pairs of nodes in a network that cross a particular network edge.
 Here, we set the root and tip nodes as the set of source and target nodes.
 However, this correlation lacks a direct physical basis that explains how such a relationship between global metrics and flows could emerge mechanically.
 Because AM fungi are coenocytic, the colony can be represented as a hydraulic network of connected pipes with varying radii.
@@ -95,46 +95,47 @@ Dots indicate locations where videos were taken, white dot shows panel C.
 \textbf{(C)} Example video frame of one recording, with edge indicated which is shown in E (Movie~\ref{movie:s1}).
 \textbf{(D)} Velocity profile along the trail shown in A, relative to the distance from the tip at the time of measurement.
 Each point is one video: the median of its extracted tipward (blue) or rootward (pink) speeds, error bars show the interquartile range.
-Marker shape gives the day, with the number of videos tipward/rootward in the key; dashed lines mark $\pm 3~\mu m/s$.
-\textbf{(E)} Top: kymograph from highlighted edge in panel C, x-axis is the along-trail position, y-axis is the time. Pixels are colored by the extracted velocity mode. Bottom: Histogram of the extracted velocities. Positive velocities are shown in blue, negative in pink. Kernel density estimate (KDE) mode extraction is shown, as well as the position of the maxima.}\label{fig:hyphal_profiling}
+Marker shape gives the day, with the number of videos tipward/rootward in the key; dashed lines mark $\pm 3$~$\mu$m/s.
+\textbf{(E)} Top: kymograph from highlighted edge in panel C, x-axis is the along-trail position, y-axis is the time. Pixels are coloured by the extracted velocity mode. Bottom: Histogram of the extracted velocities. Positive velocities are shown in blue, negative in pink. Kernel density estimate (KDE) mode extraction is shown, as well as the position of the maxima.}\label{fig:hyphal_profiling}
 \end{figure}
 
 We asked how this change in topological context affected the speeds of the flows in the two directions along a hypha: towards the growing tip (tipward) and towards the root (rootward), as defined by the growth direction of the network.
 We imaged flows at high resolution in 731 bright-field videos along the hyphae of five colonies (SI Fig.~\ref{fig:video_positions}) and, mostly at the same positions, in 625 videos of NileRed fluorescence; for the example network of Fig.~\ref{fig:hyphal_profiling}A--C, the videos were taken over three consecutive days.
+A measurement is the analysis of a single edge at one point in time.
 We chose runner hyphae, the main routes to the root and the edges of high betweenness centrality~\cite{kirkley_betweenness_2018}, where the tipward and rootward flows could be distinguished by eye (SI, \nameref{subsec:si_video_selection}; SI Fig.~\ref{fig:bc_selection}). 
 
-In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}E;\@SI Fig.~\ref{fig:kymograph_examples}).
+In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video and move in straight lines at nearly constant speed, so that in a kymograph every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}E; SI Fig.~\ref{fig:kymograph_examples}).
 In the field of view, the directed movement exceeds diffusion by one to  two orders of magnitude, so the slope of a streak is its speed (SI, \nameref{subsec:si_peclet}).
 Each streak gives one speed, and each kymograph was reduced to a set of tipward and rootward speeds (SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
 In the histogram of the extracted velocities from a video, the tipward velocities (positive) and the rootward velocities (negative) each form a peak.
 We took the median of each of the two groups as the speed of that direction in that video (Fig.~\ref{fig:hyphal_profiling}E). 
-The tipward speeds slow down near the tip, but stay close to 3~$\mu m / s$ further away (Fig.~\ref{fig:hyphal_profiling}D).
-Rootward speeds generally increase with distance from the tip (Fig.~\ref{fig:hyphal_profiling}D), and have a wide range: the median interquartile range of a hypha's speeds is 1.6~$\mu m / s$ rootward, against 0.6~$\mu m / s$ tipward (SI Fig.~\ref{fig:speed_iqr}).
+The tipward speeds slow down near the tip, but stay close to 3~$\mu$m/s further away (Fig.~\ref{fig:hyphal_profiling}D).
+Rootward speeds generally increase with distance from the tip (Fig.~\ref{fig:hyphal_profiling}D), and have a wide range: the median interquartile range of a hypha's speeds is 1.6~$\mu$m/s rootward, against 0.6~$\mu$m/s tipward (SI Fig.~\ref{fig:speed_iqr}).
 This result was confirmed by repeating a similar experiment on various plates imaging 15 sessions over 5 plates showing a consistent phenomenology (Fig.~\ref{fig:asymmetries} A, B). 
 
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{figures/Figure_2_v5.pdf}
- \caption{\textbf{Tipward and rootward flows differ in speed and in cargo: the tipward flow is concentrated around $3 ~\mu m /s$, the rootward flow is more variable, both flows carry lipids.}
+ \caption{\textbf{Tipward and rootward flows differ in speed and in cargo: the tipward flow is concentrated around 3~$\mu$m/s, the rootward flow is more variable, both flows carry lipids.}
 \textbf{(A)} Density of the absolute tipward speed against the absolute rootward speed at the same location, in bright-field (n = 1,572 measurements from 671 videos).
 Marginal histograms along the edges.
 Hexagons are coloured by their ratio to 1:1 within a factor 1.3: rootward faster (black), similar (green) or tipward faster (orange); percentages give the share of the data in each class.
-\textbf{(B)} Density of the measured velocities against the distance to the nearest growing tip (n = 1,555 edges): tipward (blue) and rootward (pink), with $\pm 3 ~\mu m/s$ (dotted). Tipward: binned medians with 25th--75th percentile (black) and a hierarchical Bayesian fit of $v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell}$ on the tipward streaks of 1,481 edges (posterior median and 95\% credible band, blue): $v_{\mathrm{tip}} = 2.18$ [1.92, 2.39]~$\mu$m/s, $v_\infty = 2.93$ [2.86, 3.03]~$\mu$m/s, $\ell = 1.85$ [1.11, 3.52]~mm (SI, \nameref{subsec:si_forward_flow}). Rootward: the median per column (dashed).
+\textbf{(B)} Density of the measured velocities against the distance to the nearest growing tip (n = 1,555 edges): tipward (blue) and rootward (pink), with $\pm 3$~$\mu$m/s (dotted). Tipward: binned medians with 25th--75th percentile (black) and a hierarchical Bayesian fit of $v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell}$ on the tipward streaks of 1,481 edges (posterior median and 95\% credible band, blue): $v_{\mathrm{tip}} = 2.18$ [1.92, 2.39]~$\mu$m/s, $v_\infty = 2.93$ [2.86, 3.03]~$\mu$m/s, $\ell = 1.85$ [1.11, 3.52]~mm (SI, \nameref{subsec:si_forward_flow}). Rootward: the median per column (dashed).
 \textbf{(C)} The same position imaged in bright-field (left) and NileRed fluorescence (right), 15 seconds apart; bars give the share of the speed-weighted moving signal going to the tip (blue) and to the root (pink).
-\textbf{(D)} Direction bias per video, the share of the speed-weighted moving signal going to the tip (median over the edges of the video; videos with too little directed signal left out), from bright-field (grey, median 0.49) and NileRed fluorescence (yellow, median 0.57). Due to weak signal in videos, frame rate in fluorescence videos is lower than in bright-field videos, limiting the upper bound on the observed speeds. Therefore, only a subset of the data (n = 160 edge pairs; 140 NileRed and 139 bright-field videos; median paired difference NileRed $-$ bright-field per video +0.07, 95\% CI 0.04--0.12) is shown where the brightfield video carried no fast rootward flows $> 5 \mu m / s$ (Methods, \nameref{subsec:fl_detection_limit}).
+\textbf{(D)} Direction bias per video, the share of the speed-weighted moving signal going to the tip (median over the edges of the video; videos with too little directed signal left out), from bright-field (grey, median 0.49) and NileRed fluorescence (yellow, median 0.57). Due to weak signal in videos, frame rate in fluorescence videos is lower than in bright-field videos, limiting the upper bound on the observed speeds. Therefore, only a subset of the data (n = 160 edge pairs; 140 NileRed and 139 bright-field videos; median paired difference NileRed $-$ bright-field per video +0.07, 95\% CI 0.04--0.12) is shown where the bright-field video carried no fast rootward flows $>5$~$\mu$m/s (Methods, \nameref{subsec:fl_detection_limit}).
 Dashed lines: medians; triangles: the example shown in C.}\label{fig:asymmetries}
 \end{figure}
 
 We asked if the asymmetry in the directional speeds could be due to the difference in cell components that would be moving in the two directions, which could inform the mechanism of movement.
 Lipids are an integral part of growth within the network, as they are the main form of carbon that the plant provides to the fungus~\cite{luginbuehl_fatty_2017}. 
-We imaged these lipids with NileRed fluorescent dye~\cite{bago_tracking_2002} and compared the fluorescence videos to bright-field videos of the same positions. At the resolution of the fluorescence videos (0.14~$\mu$m per pixel, 0.5 or 1~s per frame, 10 to 20~s per video), we saw no evidence of lipid particles randomly switching direction, as they would in the random walk underlying diffusive motion (Fig.~\ref{fig:asymmetries}C). Overall, it is clear that lipids form a subset of the observed flows in these videos (Fig.~\ref{fig:asymmetries}C), where the brightfield video shows a balanced distribution of tipward and rootward flows, and the lipid video can have a different distribution. In edges where both tipward and rootward flows were detected, the direction bias of detected elements was calculated as the share of the speed-weighted moving signal going to the tip (Methods, \nameref{subsec:direction_bias}). Most bright-field videos show a balanced distribution of tipward and rootward flows, with a median direction bias of 0.49 (Fig.~\ref{fig:asymmetries}D). Lipid videos also mostly show a balanced distribution of tipward and rootward flows, with a broader tail towards tipward flows. From this we can state that lipids appear in both flows, but are more likely to be found in the tipward flow than in the rootward flow (Fig.~\ref{fig:asymmetries}D). Due to speed ceiling limits, this had to be done on a subset of slower-moving positions in the network. 
+We imaged these lipids with NileRed fluorescent dye~\cite{bago_tracking_2002} and compared the fluorescence videos to bright-field videos of the same positions. At the resolution of the fluorescence videos (0.14~$\mu$m per pixel, 0.5 or 1~s per frame, 10 to 20~s per video), we saw no evidence of lipid particles randomly switching direction, as they would in the random walk underlying diffusive motion (Fig.~\ref{fig:asymmetries}C). Overall, it is clear that lipids form a subset of the observed flows in these videos (Fig.~\ref{fig:asymmetries}C), where the bright-field video shows a balanced distribution of tipward and rootward flows, and the lipid video can have a different distribution. In edges where both tipward and rootward flows were detected, the direction bias of detected elements was calculated as the share of the speed-weighted moving signal going to the tip (Methods, \nameref{subsec:direction_bias}). Most bright-field videos show a balanced distribution of tipward and rootward flows, with a median direction bias of 0.49 (Fig.~\ref{fig:asymmetries}D). Lipid videos also mostly show a balanced distribution of tipward and rootward flows, with a broader tail towards tipward flows. From this we can state that lipids appear in both flows, but are more likely to be found in the tipward flow than in the rootward flow (Fig.~\ref{fig:asymmetries}D). Due to speed ceiling limits, this had to be done on a subset of slower-moving positions in the network. 
 
 \namedsubsection{Perturbations show that cytoplasmic flow towards the root is pressure driven while tipward flows are likely locally driven and pressure-insensitive}{subsec:res_perturbations}
 \begin{figure} 
 \centering
 \includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{figures/Figure_3_v6.pdf} 
 \caption{\textbf{Flows are driven by local elements, with limited whole-network influence.}
-\textbf{(A)} Osmotic shock: a drop of solute solution (~200 mOsm) placed on the substrate at the base of the network, a few centimeters behind the growing front, while a hypha near the growth edge is imaged.
+\textbf{(A)} Osmotic shock: a drop of solute solution ($\sim$200 mOsm) placed on the substrate at the base of the network, a few centimeters behind the growing front, while a hypha near the growth edge is imaged.
 Speed divided by its mean before the steepest rise, tipward (blue) and rootward (pink): thin lines are single droplets, thick lines the median of the 6 solute droplets; the black dashed line is the median rootward speed of 3 medium-like control drops. Dotted line: onset of the response.
 \textbf{(B)} Root cut: the network is severed from the root along its whole bottom.
 Left: speed along a runner hypha against the distance to the tip, about 20 min before ($-$20 min, black), 20 min after (+20 min, orange) and 50 min after (+50 min, green) the cut.
@@ -146,7 +147,7 @@ Videos were made at 15:18--15:43 (before), 16:01--16:29 and 16:37--16:54 (after)
 \textbf{(C)} Section cut: a sub-graph of the network is isolated by cutting its connections (red circle in the icon) (4 hyphae on 3 plates; bright-field 24 videos before and 45 after, NileRed 17 and 39; hierarchical model with partial pooling over hyphae). Posterior median after/before [95\% CI]: bright-field tipward 0.81 [0.66, 0.96], rootward 0.78 [0.57, 1.16]; NileRed tipward 0.83 [0.67, 1.06], rootward 0.77 [0.56, 1.04].
 Speed before and after the cut in bright-field and in NileRed fluorescence, tipward (blue) and rootward (pink).
 Each dot shape is one edge which can be compared pre- and post-cut.
-Significance of the posterior median ratio after/before is indicated by stars: P (direction) >= 0.95 *.
+Significance of the posterior median ratio after/before is indicated by stars: P(direction) $\geq 0.95$ *.
 Pre-cut data were acquired up to 40 minutes before the cut, post-cut data from 4 minutes to 2 hours after.}\label{fig:perturbations}
 \end{figure}
 
@@ -155,45 +156,41 @@ It is also important to discuss other potential mechanisms that could drive flow
 Diffusion as a mechanism could be present close to the tips, as that is where we observe the most random movement of particles (SI Fig.~\ref{fig:kymograph_examples}, kymograph 4), but the directed, unbroken flow in the rest of the network is not consistent with diffusion alone. 
 Singular mass flow, as suggested by previous work~\cite{heaton_growth-induced_2010,lew_mass_2005,lew_how_2011}, is also unlikely to be the main driver of flows in our system, as it cannot explain the presence of two opposing streams at similar speeds in the same hypha (SI, \nameref{subsec:si_mass_flow}). 
 Peristaltic flow has been observed and studied in \textit{Physarum}~\cite{alim_mechanism_2017}, but involves flow reversals that are not observed in our system when atmospheric pressure and moisture are kept constant (SI, \nameref{subsec:si_lid}).
-% NOTE (4 Nov, reviewer question): is it helpful to remark that periodic radial variations are observed in \textit{Physarum}, but at the resolution we can image we do not observe such radial oscillations?
 
-The difference in flow behavior, both within an edge and along an edge, with distance to tip suggests that flow in each direction could be associated with a different mechanism.
+The difference in flow behaviour, both within an edge and along an edge, with distance to tip suggests that flow in each direction could be associated with a different mechanism.
 An ideal experiment to distinguish these two potential drivers would be to modify the pressure gradient across the network and see how it affects flows.
 This experiment has been performed in the past by creating an extracellular osmotic gradient~\cite{lew_mass_2005}.
-Following a similar approach, we added a drop of either dissolved  NaCl solution (200 mOsm) (Methods, \nameref{subsec:perturbations}) to the base of the network a few centimeters behind the growing front and imaged near the growth edge (Fig.~\ref{fig:perturbations}A).
+Following a similar approach, we added a drop of dissolved NaCl solution (200 mOsm) (Methods, \nameref{subsec:perturbations}) to the base of the network a few centimeters behind the growing front and imaged near the growth edge (Fig.~\ref{fig:perturbations}A).
 We expected that this would create a low turgor pressure within the hyphae at the location of the drop, shifting the pressure gradient within the network, and therefore changing flows internal to the hyphae.
 We observed that the flow speed in the tip direction was almost unaffected by the addition of the salt solution  (Fig.~\ref{fig:perturbations}A);  fluorescence imaging of the lipids showed that their movement in the tip direction was also unaffected (SI Fig.~\ref{fig:salt_shock}D).
 By contrast, the flow speed in the root direction was approximately increased 4.3 times and relaxed in half a minute.
-Medium-sized drops resulted in what looked like light hypo-osmotic shocks, pushing the flow towards the tips.
 
 Past work proposed that plant host transpiration could be the driving force explaining the flow of resources towards the root~\cite{kikuchi_aquaporin-mediated_2016}.
 Although the plant in our root-organ culture does not produce leaves and, therefore, does not evapotranspirate, we tested whether the connection to the plant was necessary for the flows in the two directions to be maintained.
 In one network, we imaged a runner hypha at multiple positions from root to tip to measure the velocity profile along its length.
 We then severed the network from the root with a scalpel by cutting along its entire bottom (Fig.~\ref{fig:perturbations}B) and recorded the same positions again, in the first half hour after the cut and then again in the second half hour.
 Flows continued in both directions.
-Within 5~min of the cut the rootward stream slowed by about a fifth (median ratio 0.78 per trail edge), while the tipward speed stayed at about 3~$\mu m/s$ (ratio 0.96; Fig.~\ref{fig:perturbations}B).
-By 30~min the rootward stream had recovered near the tip (ratios of 1.06--1.11 at about 5~mm from the tip) but not far from it (0.52--0.56 at 23--28~mm), and the asymmetry between the two directions remained throughout.
+About 20~min after the cut the rootward stream slowed by about a fifth (median ratio 0.78 per trail edge), while the tipward speed stayed at about 3~$\mu$m/s (ratio 0.96; Fig.~\ref{fig:perturbations}B).
+By 50~min the rootward stream had recovered near the tip but not far from it (SI, \nameref{sec:si_perturbations}), and the asymmetry between the two directions remained throughout.
 This matches earlier work showing that flows can still be active for a year without a plant host~\cite{kleinCytoplasmicFlowDynamics2026}.
 A connection to the root is therefore not needed for either flow, which rules out transpiration by the plant as their driver.
-How far a driving force can reach is a separate question, and we asked it by further shrinking the connected network.
 
 To further focus on the range of a potential driving force, we wanted to know what the minimal size of the subgraph was that was necessary to conserve flows in the two directions.
 We made targeted cuts to isolate small segments from the network and image flows at sufficient distance from the cut-induced stress (Fig.~\ref{fig:perturbations}C).
 In patches of network as small as only a few millimeters in total length, we still observed flows in the two directions (Fig.~\ref{fig:perturbations}C).
-We observed that the flow speed of the lipids in both directions was affected, slowing down about 20\%, but the flow never stopped (Fig.~\ref{fig:perturbations}C).
-In none of the experiments did the flow stop.
+We observed that the flow speed in both directions was affected, slowing down a bit, but the flow never stopped (Fig.~\ref{fig:perturbations}C).
 These experiments demonstrate that the mechanical origin of flows in the two directions does not require long range connectivity of the network to operate (SI, \nameref{subsec:si_segment_size}). 
 
-\namedsubsection{Our hypothesis on the flow mechanics, given the evidence}{subsec:res_hypothesis}
+\namedsubsection{Flow model}{subsec:res_hypothesis}
 
 For tipward flows, evidence points to a mechanism that is insensitive to pressure gradients and capable of maintaining a speed that is modulated by both hyphal diameter and distance to tip, but is otherwise robust to perturbations (SI, \nameref{subsec:si_forward_flow}).
 The lack of response to osmotic shocks, the lack of response to root cuts, and little response to segment isolation all suggest that the mechanism is not pressure driven and that there is something local to the hypha that is responsible for the tipward flows.
 We have ruled out diffusion, mass flow, and peristaltic streaming in the previous section as drivers of network-wide flows, and the evidence is consistent with cargo carried by molecular motors along microtubules, which are present throughout AM fungal hyphae~\cite{timonen_microtubules_2001}.
 
-This hypothesis is supported by the characteristics of its likely cargo, lipid droplets.
-In some way, these lipid droplets have to arrive at the tips to facilitate growth.
-These lipid droplets are believed to be transported by molecular motors in AM fungi~\cite{bago_translocation_2002}, it has been shown that other fungal species transport lipids along microtubules~\cite{guimaraes_peroxisomes_2015, lin_active_2016}, and the speed of the tipward flows is consistent with the range of speeds of molecular motors~\cite{steinberg_cell_2017}.
-They move at a steady speed, in a straight line. 
+This hypothesis is supported by the characteristics of its likely cargo, a lipid-containing condensate.
+In some way, the lipid droplets in it have to arrive at the tips to facilitate growth.
+Lipid droplets are believed to be transported by molecular motors in AM fungi~\cite{bago_translocation_2002}, it has been shown that other fungal species transport lipids along microtubules~\cite{guimaraes_peroxisomes_2015, lin_active_2016}, and the speed of the tipward flows is consistent with the range of speeds of molecular motors~\cite{steinberg_cell_2017}.
+The tipward flows move at a steady speed, in a straight line. 
 However, flows towards the root are sensitive to pressure changes from osmotic shocks (Fig.~\ref{fig:perturbations}A).
 While they are affected by segment isolation, they are still able to flow, indicating that whatever is driving the flows in this direction is not dependent on long range connectivity of the network.
 The flows towards the root are also more variable in speed.
@@ -207,20 +204,19 @@ This model is consistent with the observed flows in both directions, and with th
  \centering
  \includegraphics[width=\textwidth]{figures/Figure_4_v7.pdf}
  \caption{\textbf{Our model: motors carry a lipid-containing condensate towards the tip, and the displaced cytoplasm returns as a pressure-driven flow.
-Model qualities are shown in the second row.}
+Model motifs are shown in panels D-G.}
 \textbf{(A)} Schematic of the model: tipward flow (blue) returns as rootward flow (pink).
 \textbf{(B)} The motor-driven condensate layer (light blue) along the hyphal wall, lipid droplets (yellow) in water, moves as a whole at speed $v_m$ (blue arrows), with a backflow of cytoplasm (pink) in the core, which can also carry some lipid. 
 \textbf{(C)} At the tip, the condensate layer turns back, and the hypha grows at a rate $\Delta V/\Delta t$, calculated with a cylindrical volume.
-\textbf{(D-G)} Various model qualities: (D) Demand accumulation along a uniform backbone with side tips; (E) Diameter tapering from 9 to 4~$\mu$m along a single path, with fixed demand; (F) Loop between two junctions, with two arms of equal diameter, one twice as long as the other; (G) Growth step, with three more tips grown.
-Top row: network schematics; bottom row: backflow speed $v_\mathrm{b}$ ($\mu$m/s) from the root to the tip; in (G) the network at $t_1$, with the hyphae grown since $t_0$ marked by a green halo, and the profile at $t_0$ and $t_1$ with the growth in between shaded.}\label{fig:schematic_model}
+\textbf{(D-G)} Model motifs: (D) Demand accumulation along a uniform backbone with side tips; (E) Diameter tapering from 9 to 4~$\mu$m along a single path, with fixed demand; (F) Loop between two junctions, with two arms of equal diameter, one twice as long as the other; (G) Growth step, with three more tips grown.
+In each panel, top: network schematic; bottom: backflow speed $v_\mathrm{b}$ ($\mu$m/s) from the root to the tip; in (G) the network at $t_1$, with the hyphae grown since $t_0$ marked by a green halo, and the profile at $t_0$ and $t_1$ with the growth in between shaded.}\label{fig:schematic_model}
 \end{figure}
 
 As this condensate moves towards the tips throughout the aseptate mycelium, it could drag cytoplasmic fluid along by viscous friction and, because no water can leave the hyphae, push an equal volume of water back towards the root.
 As such, the condensate, a water-oil-like emulsion of lipid droplets of higher viscosity, forms a layer that uniformly coats the internal surface of the hyphal pipe.
-We assume that the lipid condensate is an emulsion of lipid droplets, phase-separated from the bulk cytoplasm (see Discussion).
-We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae. An estimation based on two possible observation scenarios suggests a Poiseuille flow profile needs a speed spread of 1.8--2.3, while the observed speed spread is 1.23 (SI, \nameref{subsec:si_poiseuille_plug}). A flow profile close to plug flow is therefore a reasonable assumption, and the condensate moves nearly as a whole.
+We assume the speed profile of the condensate layer in its cross-section is uniform, which can be explained by the effective viscosity, and the drag of the condensate layer on the water in the core of the hyphae. An estimation based on two possible observation scenarios suggests a Poiseuille flow profile needs a speed spread of 1.8--2.3, while the observed speed spread of the tipward stream is 1.23 (SI, \nameref{subsec:si_poiseuille_plug}). A flow profile close to plug flow is therefore a reasonable assumption, and the condensate moves nearly as a whole.
 The condensate layer has a volumetric proportion $\theta$ of lipids and $(1-\theta)$ of water, and moves at a speed $v_m$.
-In this model, we also imagine that the condensate layer is coating the walls, and that the water in the core of the hyphae is free to flow at a rate of $q_{w,r<a}$, with a radius $a$ smaller than the hyphal radius $b$ (Fig. \ref{fig:schematic_model}C). In this model, we assume that all lipids are consumed at the tips, but it is easy to imagine that some lipids which are not part of $\theta$ are recirculated back to the root.
+In this model, we also imagine that the condensate layer is coating the walls, and that the water in the core of the hyphae is free to flow at a rate of $q_{w,r<a}$, with a radius $a$ smaller than the hyphal radius $b$ (Fig.~\ref{fig:schematic_model}B). In this model, we assume that all lipids are consumed at the tips, but it is easy to imagine that some lipids which are not part of $\theta$ are recirculated back to the root.
 The volumetric proportion of lipids in the whole pipe is $\Theta$, which is related to $\theta$ by $\Theta = \theta (b^2 - a^2) / b^2$.
 
 The flow of water through the inner pipe can be written as
@@ -231,20 +227,27 @@ q_{w,r<a} = q_w - \pi b^2 \Theta \frac{1-\theta}{\theta} v_m,
 \end{equation}
 
 where $q_w$ is the net flow of water through the whole pipe. 
+The condensate and the core it drags along carry a volume 
+
+\begin{equation}
+\label{eq:motor_stream}
+q_s = \pi v_m\left[(1-\theta)(b^2-a^2) + a^2\right]
+\end{equation}
+
+towards the tips.
 The core is dragged tipward at $v_m$ at its edge $r = a$ (no slip with the condensate), so the pressure-driven core flux, counted rootward, is
 \begin{equation}
 \label{eq:core_flux}
-q_c = \pi a^2 v_m - q_{w,r<a} = q_s - q_w,
+q_c = \pi a^2 v_m - q_{w,r<a} = q_s - q_w.
 \end{equation}
-with $q_s$ from Eq.~\eqref{eq:motor_stream}.
-In the case of $q_w = 0$, the net water flow is zero, which corresponds to the case of a tree-like section of the network. In that case, the backflow carries the whole motor stream back through the core ($q_c = q_s$), and the rootward speed is opposite to the tipward speed and grows with $\Theta$, and $v_m$ alone, at fixed $\theta$.
+In the case of $q_w = 0$, the net water flow is zero, which corresponds to the case of a tree-like section of the network. In that case, the backflow carries the whole motor stream back through the core ($q_c = q_s$), and the rootward flow is opposite to the tipward flow and grows with $\Theta$, and $v_m$ alone, at fixed $\theta$.
 It also suggests a possible explanation for the spatial and temporal variation of speeds.
 The spatial variation of $\Theta$~\cite{bago_tracking_2002} (SI Fig.~\ref{fig:theta_spatial}) indeed directly contributes to the magnitude of the core flow.
 
 In looped sections of the network, $q_w$ is non-zero, and the backflow is routed into high-betweenness edges, making those higher in speed than low-betweenness edges (Fig.~\ref{fig:schematic_model}F).
 
-Our conceptual model seemed to be supported by the data at the individual pipe level.
-Cutting a segment out of the network brings the nearest tip closer, which in the model lowers the motor speed and with it the backflow, as observed after section cuts, where both streams slowed by about a fifth (Fig.~\ref{fig:perturbations}C).
+Our conceptual model is supported by the data at the individual pipe level.
+Cutting a segment out of the network brings the nearest tip closer, which in the model lowers the motor speed and with it the backflow, as observed after section cuts, where both streams slowed down a bit (Fig.~\ref{fig:perturbations}C).
 However, we wanted to know what its consequences would be at the network level.
 Could it explain the observed variation of speed in space and time?
 Because fluid movement happens at low Reynolds numbers in our system and the entrance length in each individual hyphal pipe is close to its diameter, the approximation of an infinite length cylinder we used to derive the flow profile in a single pipe is still justified in the network context (SI, \nameref{subsec:si_poiseuille_plug}).
@@ -256,29 +259,20 @@ Using lipid dry mass measurements, we can estimate the volume amount of lipid $J
 Additionally, we assume that the flows are routed to minimize the total power dissipation in the network.
 This allows us to solve for the pressure at each node in the network, and therefore the demand $J_l$ through each edge. This is the first step of the solver, which is then used in the second step to calculate the backflow through each edge.
 
-In each edge the lipid current fixes the size of the motor-driven condensate: with a lipid share $\theta$ of the condensate (set to 0.10) moving at the motor speed $v_m$,
+In each edge the lipid current fixes the size of the motor-driven condensate: with a lipid share $\theta$ of the condensate moving at the motor speed $v_m$,
 \begin{equation}
 \label{eq:lipid_current}
 J_l = \pi(b^2 - a^2)\theta v_m,
 \end{equation}
 so the core radius follows from $a^2 = b^2 - J_l/(\pi v_m \theta)$. An edge that carries more lipid has a thicker condensate and a narrower core. In order to limit the condensate to a physically reasonable size, we set a lower bound on the core radius $a \geq 0.8 b$ (SI, \nameref{subsec:si_theta_choice}).
+The growth data show that the condensate layer must be at least around $10\%$ lipid to supply the tips with growth-sustaining lipids without the core narrowing below its floor $a = 0.8\,b$. Literature reports total lipid fractions near the root~\cite{bago_translocation_2002, bago_tracking_2002} well above the corresponding whole-lumen lipid fraction in the model, $\Theta$, because $\theta$ is the lipid share of the thin condensate only. Following this lower bound, we take $\theta = 0.10$, a lower estimate among a wide possible range; the model's accuracy is flat over a wide range of $\theta$, so the exact value is partly arbitrary (SI, \nameref{subsec:si_theta_choice}).
 The sign of $J_l$ determines the direction of motor flow.
-The condensate and the core it drags along carry a volume 
-
-\begin{equation}
-\label{eq:motor_stream}
-q_s = \pi v_m\left[(1-\theta)(b^2-a^2) + a^2\right]
-\end{equation}
-
-towards the tips.
-Each edge then acts as a source of flux $q_s$ in parallel with the hydraulic conductance of its core (hyphal radius minus the condensate annulus), $K = \pi a^4/(8\mu L)$, so that its net water flux is $q_w = q_s - K\Delta p$ (Methods), where $\Delta p = p_j - p_i$ is the pressure difference along the edge from node $i$ to node $j$, the direction in which $q_s$ and $q_w$ are counted. 
+Each edge then acts as a source of flux $q_s$ (Eq.~\eqref{eq:motor_stream}) in parallel with the hydraulic conductance of its core (hyphal radius minus the condensate annulus), $K = \pi a^4/(8\mu L)$, so that its net water flux is $q_w = q_s - K\Delta p$ (Methods), where $\Delta p = p_j - p_i$ is the pressure difference along the edge from node $i$ to node $j$, the direction in which $q_s$ and $q_w$ are counted. 
 These values are all derived from the previously solved $J_l$, and we use them in a second solver to find the backflow.
 Solving these elements together for the pressures, with no water entering or leaving the network except at the roots, which are tied to a common reservoir (growth is neglected here, as it moves far less volume than the motors), gives $q_w$ on every edge, and with it the pressure-driven backflow through the core, $q_c = q_s - q_w$. 
 From the calculated flow, we read out the backflow speed as $v_\mathrm{b} = |q_c|/(\pi a^2)$, the mean speed of the pressure-driven core flow relative to the moving condensate edge.
 This is a read-out choice that reproduces the measured level of rootward speeds (SI, \nameref{subsec:si_poiseuille_plug}).
-% SUGGESTED (4 Nov, Simon): Coco: OK to claim that no parameter is fitted to the rootward speeds? theta = 0.10 comes from the growth-data lower bound plus the literature ceiling; scores flat in theta; floor is a guard (SI subsec:si_theta_choice).
 The model uses only measured or physical inputs besides the lipid share $\theta$ of the condensate: the network and its growth from the time-lapse, hyphal diameters from the network images recalibrated on the filmed hyphae, the measured tipward speed (Fig.~\ref{fig:asymmetries}B), and $\theta = 0.10$ with $a \geq 0.8\,b$; no parameter is fitted to the rootward speeds.
-The growth data show that the condensate layer must be at least around $10\%$ lipid to supply the tips with growth-sustaining lipids without the core narrowing below its floor $a = 0.8\,b$. Literature reports total lipid fractions of up to about $24\%$ of the hyphal volume near the root~\cite{bago_translocation_2002, bago_tracking_2002}, whereas the corresponding whole-lumen lipid fraction in the model, $\Theta$, stays at or below $3.6\%$ (median $0.7\%$) because $\theta$ is the lipid share of the thin condensate only. Following this lower bound, we take $\theta = 0.10$, a lower estimate among a wide possible range; the model's accuracy is flat over $\theta = 0.02$--$0.3$, so the exact value is partly arbitrary (SI, \nameref{subsec:si_theta_choice}).
 In the model, $v_m$ is given by a calibrated function of the network distance $d$ to the nearest growing tip, fitted to the measured tipward speeds (Fig.~\ref{fig:asymmetries}B; Methods).
 
 To illustrate the model's characteristics, we first applied it to toy networks (Fig.~\ref{fig:schematic_model} D-G). These were constructed with typical measured values of hyphal diameter, tipward speed and tip distance. A number of motifs regarding backflow speeds can be identified, which will be shown to be present in the real network as well.
@@ -299,13 +293,15 @@ This holds for both diameter and length differences, as the conductance of a hyp
 In the case that the imbalance gets larger, the backflow in the lower conductance arm can in principle even reverse direction, and flow towards the tip instead of towards the root.
 Finally, as tips multiply, they increase their demand for lipid, which increases the motor streaming and with it the backflow (Fig.~\ref{fig:schematic_model}G).
 
+\namedsubsection{Model against measured rootward speeds}{subsec:res_model_fit}
+
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{figures/fig_plug_model.png}
     \caption{\textbf{The network model reproduces the distribution of rootward speeds and their rise away from the growing tips.}
 Measured bright-field speeds (grey, black) against the model (blue): global pressure solve with motors at the tipward speed profile of Fig.~\ref{fig:asymmetries}B, physical inputs only, apart from $\theta$, set from the growth-data lower bound (SI, \nameref{subsec:si_theta_choice}).
-\textbf{(A)} Distribution of the rootward speed over every measured edge, measured (grey bars) and modelled (blue line), counts on a log axis (1,616 edges in 15 sessions on 5 plates); speeds of 10~$\mu$m/s and above fall in the last bin.
-\textbf{(B)} Measured against modelled rootward speed on the 283 trail segments within 10~mm of the trail tip, each as the median over the trail's segments within $\pm$0.5~mm (measured: of the measured segments only): 89\% within a factor 2, median ratio of modelled to measured 0.99.
+\textbf{(A)} Distribution of the rootward speed over every measured edge, measured (grey bars) and modelled (blue line), counts on a log axis (1,616 measurements in 15 sessions on 5 plates); speeds of 10~$\mu$m/s and above fall in the last bin.
+\textbf{(B)} Measured against modelled rootward speed on 283 trail-segment measurements within 10~mm of the trail tip, each as the median over the trail's segments within $\pm$0.5~mm (measured: of the measured segments only): 89\% within a factor 2, median ratio of modelled to measured 0.99.
 Paler points have a larger uncertainty (the measured interquartile range and the range of the model within $\pm$0.5~mm along the trail, combined); grey wedge: within a factor 2; line: identity.
 \textbf{(C)} Rootward speed on trail segments against the distance to the trail's tip at the session, in bins of 0--1, 1--2, 2--3, 3--5, 5--7.5, 7.5--10, 10--15 and 15--20~mm holding 3, 14, 19, 65, 76, 104, 141 and 93 measured segments; line: bin median, band: 25th--75th percentile (grey: measured, blue: model).}\label{fig:fig5_plug}
 \end{figure}
@@ -314,52 +310,49 @@ The model allows us to predict on each edge what the net volumetric rate of flui
 We found that our model captures salient features of the bidirectionality of flow observed across all edges, specifically in ranking the relative speeds. This was achieved with no parameter fitted to the rootward speeds, and only using physical inputs and the measured tipward speeds.
 
 We can compare the distribution of the measured rootward speeds with the modelled speeds per edge (Fig.~\ref{fig:fig5_plug}A), and find that the model captures the overall distribution reasonably well.
-Direct per trail segment comparisons show a good correlation between the modelled and measured speeds (Spearman $\rho = 0.33$, 283 trail segments, $p = 1.3 \cdot 10^{-8}$; Fig.~\ref{fig:fig5_plug}B).
+Direct per trail segment comparisons show a correlation between the modelled and measured speeds (Spearman $\rho = 0.33$, 283 measurements, $p = 1.3 \cdot 10^{-8}$; Fig.~\ref{fig:fig5_plug}B).
 A null model that assumes a uniform backflow speed across the network cannot provide this ranking, as a constant speed cannot rank edges at all.
-The model also ranks the speed ratio between the two arms of loops (Spearman $\rho = 0.41$, 411 loops; Fig.~\ref{fig:fig6_examples}B).
 Another result of the model is that it captures the rise in rootward speed with distance from the nearest growing tip (Fig.~\ref{fig:fig5_plug}C; Spearman $\rho$ with tip distance $+0.43$ modelled against $+0.41$ measured, 576 trail segments), along with a rise in the spread of the rootward speeds, which is a key feature of the observed flows (Fig.~\ref{fig:asymmetries}B).
 
 One of the aspects of this model is the global pressure solve, which lets the pressure field couple all hyphae, so that the backflow is routed through the network.
-We also tested a local pressure solve, where each edge is solved independently, and the backflow is not routed through the network.
+We also tested a local pressure solve, where each edge is solved independently.
 This would be the case if switching hyphae at junctions carried a resistance penalty.
 This local pressure solve fails to reach the range of the measured rootward speeds, in particular the fast rootward speeds on high edge-betweenness edges (SI, \nameref{subsec:si_model_variants}). 
 
 A number of other correlations also emerge from the model (SI, \nameref{subsec:si_tree_loop}; SI Fig.~\ref{fig:relations}). 
-The network structure is a key determinant of the rootward speed, with the model predicting that edges with a higher betweenness centrality have a faster backflow, which matches the measured speeds on high-betweenness edges, while low-betweenness edges are under-predicted (median $\log_2$ of modelled over measured speed $-0.05$ against $-0.37$ by betweenness tercile; SI, \nameref{subsec:si_model_accuracy}).
+The network structure is a key determinant of the rootward speed, with the model predicting that edges with a higher betweenness centrality have a faster backflow, which matches the measured speeds on high-betweenness edges, while low-betweenness edges are under-predicted (SI, \nameref{subsec:si_model_accuracy}).
 We also define a measure of edge network density or robustness $\kappa$ as the number of cuts needed to disconnect the network section within 0.25 to 1~mm of an edge from the root, averaged over these section sizes.
 The model does not reproduce the observed rise of the rootward speed with $\kappa$.
 Splitting the filmed edges at the median $\kappa$ and edge betweenness, the model under-predicts on well-connected edges of low betweenness (2.6 against 3.6~$\mu$m/s measured).
-By $\kappa$ class, the model is unbiased up to $\kappa = 4$ (median $\log_2$ of modelled over measured speed $+0.04$) and under-predicts above it ($-0.34$ at $\kappa$ 4--6, $-0.38$ above 6; SI, \nameref{subsec:si_model_accuracy}).
+By $\kappa$ class, the model is unbiased up to $\kappa = 4$ and under-predicts above it (SI, \nameref{subsec:si_model_accuracy}).
 The model concentrates the backflow on the main routes to the root, whereas the measured rootward speed is also high in well-connected parts of the network that lie off these routes (SI Figs.~\ref{fig:tree_loop},~\ref{fig:kappa}).
 High-betweenness edges are also along direct routes to the roots, and have a higher diameter, which is consistent with the observation that rootward speeds are higher in thicker hyphae (SI, \nameref{subsec:si_forward_flow}).
 
 Hyphal diameter is also a key determinant of the rootward speed, with the model predicting that edges with a larger diameter carry more routed demand, and therefore have a faster backflow, even though at the same demand a wider hypha is slower (Fig.~\ref{fig:schematic_model}E).
 Rootward speeds rise with the video-extracted diameter about twice as steeply as tipward speeds (SI, \nameref{subsec:si_widths}).
-This is consistent with the observed correlation between hyphal diameter and rootward speed (Spearman $\rho = 0.54$ within plates, 0.52 after accounting for tip distance) (SI, \nameref{subsec:si_widths}; SI Fig.~\ref{fig:relations}).
-This result was obtained with the video-extracted diameters, which are more accurate than the diameters from the 2x network images.
+The model prediction is consistent with the observed correlation between hyphal diameter and rootward speed (Spearman $\rho = 0.54$ within plates, 0.52 after accounting for tip distance) (SI, \nameref{subsec:si_widths}; SI Fig.~\ref{fig:relations}).
+This result was obtained with the video-extracted diameters, which are more accurate than the diameters from the 2$\times$ network images.
 
-\namedsubsection{Lipid generated backflow}{subsec:res_backflow}
+\namedsubsection{Network-level tests of the model}{subsec:res_backflow}
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth,height=0.64\textheight,keepaspectratio]{figures/fig6_model_examples.png}
     \caption{\textbf{Network-level tests of the model's predictions (Fig.~\ref{fig:schematic_model}D-G).}
 Model as in Fig.~\ref{fig:fig5_plug} (blue); measured bright-field rootward speed per trail segment, median with 25th--75th percentile (black).
-\textbf{(A)} Tree-like hyphae: rootward speed against the routed lipid demand (lipid volume per second routed through the hypha, $\mu$m$^3$/s), medians of the five demand quintiles with 25th--75th percentile, measured (black) and model (blue); the model is within a factor 2 of the measurement on 95\% of these edges.
+\textbf{(A)} Tree-like hyphae: rootward speed against the routed lipid demand (lipid volume per second routed through the hypha, $\mu$m$^3$/s), medians of the five demand quintiles with 25th--75th percentile, measured (black) and model (blue); the model is within a factor 2 of the measurement on 95\% of these measurements.
 \textbf{(B)} Loops with both arms filmed (n=411): rank correlation with the measured rootward speed ratio of the two arms, for the model, for the model with the arms' diameter ratio removed from both ratios (partial correlation), and for the diameter, conductance and length ratios of the two arms, with bootstrap 95\% intervals.
-\textbf{(C)} Network of Plate 5 at session 2, every hypha coloured by whether it was present at session 1 (grey) or grew since (green), with measured trail in bold and its tip (star).
+\textbf{(C)} Network of plate 5 at session 2, every hypha coloured by whether it was present at session 1 (grey) or grew since (green), with measured trail in bold and its tip (star).
 \textbf{(D)} Rootward speed along measured trail against the distance from the root, model at session 1 (light blue) and session 2 (blue; running median over 5 segments), measured at session 1 (open) and session 2 (filled); green: grown since session 1.
-\textbf{(E)} One trail on each of the other plates: plate 1, session 1 (26 segments, 92\% within a factor 2), plate 4, session 3 (32, 94\%) and plate 3, session 4 (22, 82\%).}\label{fig:fig6_examples}
+\textbf{(E)} One trail on each of the other plates: plate 1, session 1; plate 4, session 3; plate 3, session 4.}\label{fig:fig6_examples}
 \end{figure}
-
-    
 
 We compare the model's characteristics, listed in Fig.~\ref{fig:schematic_model}D-G, with the measured flows in the network (Fig.~\ref{fig:fig6_examples}A-E).
 The first is the claim that in tree-like parts of the network, lipid demand accumulates towards the root, and that this accumulation increases the backflow speed.
-We find that in the 113 tree-like edges (on no loop) that carry routed lipid demand, the measured rootward speed rises with the demand as the model predicts: effect of log demand on log speed 0.11 [0.05, 0.17] measured against 0.09 [0.07, 0.11] in the model (Fig.~\ref{fig:fig6_examples}A).  
+We find that in the 113 measurements on tree-like edges (on no loop) that carry routed lipid demand, the measured rootward speed rises with the demand as the model predicts: effect of log demand on log speed 0.11 [0.05, 0.17] measured against 0.09 [0.07, 0.11] in the model (Fig.~\ref{fig:fig6_examples}A).  
 
 The second is the claim that in loops, the model predicts which arm carries the faster rootward flow.
-We find that in 411 small loops with both arms filmed, the model predicts which arm carries the faster rootward flow (Spearman $\rho = 0.41$ [0.32, 0.50] between modeled and measured arm speed ratios), also beyond the arms' diameter ratio (partial $\rho = 0.32$) and when the filmed arms are more than 150~$\mu$m apart ($\rho = 0.51$, 140 loops).
+We find that in 411 small loops with both arms filmed, the model predicts which arm carries the faster rootward flow (Spearman $\rho = 0.41$ [0.32, 0.50] between modelled and measured arm speed ratios), also beyond the arms' diameter ratio and when the filmed arms are far apart (SI, \nameref{subsec:si_tree_loop}).
 The diameter ratio alone gives $\rho = 0.30$, the conductance ratio $\rho = 0.20$ and the length ratio $\rho = -0.02$: the routing of the network solve, not arm length, sets which arm is faster (Fig.~\ref{fig:fig6_examples}B).
 
 The third is the temporal change in rootward speed along a trail as the network grows.
@@ -369,20 +362,16 @@ The mechanism is the one of Fig.~\ref{fig:schematic_model}G\@: demand rose 3.3-f
 We also show other examples of the model's predictions on other plates (Fig.~\ref{fig:fig6_examples}E).
 One trail on each of the other plates: plate 1, session 1 (26 segments, 92\% within a factor of 2), plate 4, session 3 (32, 94\%), plate 3, session 4 (22, 82\%).
 
-Finally, one state of flows that is not representable by the model is sparse flow (13\% of edges, thin, $\sim$1.8~$\mu$m/s both ways); the model over-predicts these edges (bias 1.60; SI, \nameref{subsec:si_flow_regimes}; SI Fig.~\ref{fig:full_vs_sparse}).
-In the kymographs, these sparse flows largely show long straight trajectories of single particles, not part of a condensate.
-This violates the model's assumption of particles moving together in tight flows. 
-
-
 Our simple physical model can therefore explain a wide variety of our experimental observations.
 At the single hypha level, it provides an explanation for bidirectional fluid flow.
 At the growing network level, it is compatible with the observed non-trivial spatio-temporal variations in flow speeds.
 Such a physical explanation of bidirectional transport in AM fungal networks has direct consequences on symbiotic trade by construction.
 Because the movement of lipids generates fluid flow in the reverse direction, the proportionality of resource exchange could emerge directly from this physical coupling. 
 
+% NOTE (6 Nov, C:P trade paragraph, to discuss with Coco; Sajitha: P is carried in ALL backflow water; numbers in review-notes/cp_exchange_theta010_2026-11-06.md and SI % NOTE in subsec:si_cp_exchange): the theta-times-motor-stream ratio below does not follow from Eqs. lipid_current/motor_stream. Since q_s = pi b^2 v_m - J_l, carbon out / backflow water = Theta/(1-Theta) at the root edges, so C:P = (c_lipid/[P]) Theta_root/(1-Theta_root): rises with lipid demand, not network-independent. Current model (theta 0.10): Theta_root median 1.2% (0.25-3.5%); backflow vs carbon slope 0.54 +- 0.33 over 15 sessions (strict proportionality 1), 14-fold spread; [P] for 3.5 ug C per ug P ~80 mmol/L (16-235) vs plant-cell Pi 5-20 mmol/L. Outline: move to the Discussion trade paragraph (~Bisot comparison); soften strict proportionality also in the abstract (l.34), the paragraph above, 'proportionality embedded in physical properties' (Discussion) and 'linear relationship' (Conclusion); give the [P] number before the polyphosphate sentence.
 Our model is by design a closed hydraulic circuit, where the volume returning into the roots equals the motor stream leaving them.
 If phosphorus is taken up at the tips, where the condensate turns back, at a concentration [P], the phosphorus delivered to the plant is [P] times the motor volume stream and the carbon carried out is $\theta$ times the motor stream times the carbon density of lipid.
-The exchange ratio $C : P = \theta c_{lipid} / [P]$ is then set by two local quantities and does not depend on network size, shape or growth rate: proportional trade follows from the transport itself, without regulation. This is however, by construction, a model assumption, and we have not measured the phosphorus concentration in the condensate.
+The exchange ratio $C : P = \theta c_{lipid} / [P]$ is then set by two local quantities and does not depend on network size, shape or growth rate: proportional trade follows from the transport itself, without regulation. This is, however, by construction, a model assumption, and we have not measured the phosphorus concentration in the condensate.
 
 \section*{Discussion}
 
@@ -394,31 +383,30 @@ This backflow is pressure-driven, and will thus concentrate into central hyphae,
 
 \subsection*{Measured flows and how far they can be trusted}
 In this work, we have shown extensive analysis of flows in the hyphal network of AM fungi.
-We show that in most hyphae, there are at least two opposing streams: a tipward stream narrowly around 3~$\mu$m/s, slower near the tips, and a rootward stream that is more variable and rises with distance from the tip (1,616 bright-field edges in 15 sessions on 5 plates).
+We show that in most hyphae, there are at least two opposing streams: a tipward stream narrowly around 3~$\mu$m/s, slower near the tips, and a rootward stream that is more variable and rises with distance from the tip (1,616 bright-field measurements in 15 sessions on 5 plates).
 We also imaged lipid movement using NileRed staining, and found that the lipid moves in both flows, but is more likely to be found on the tipward stream, which is also more uniform in speed.
 
 In trying to differentiate the mechanisms behind these two streams, we found that an osmotic shock changes only the rootward stream, which is therefore pressure-driven.
 The tipward stream is insensitive to the shock. We interpret it as a lipid-containing condensate carried by molecular motors, but we did not test the motors directly; blocking microtubules or motors and checking whether the tipward stream stops, and the rootward stream with it, would be the decisive experiment.
 After a root cut both streams continue, so neither needs the plant.
-Isolated segments of a few millimeters keep both streams, about a fifth slower, so both are driven locally. 
+Isolated segments of a few millimeters keep both streams, slightly slower, so both are driven locally. 
 
-For most of the analysis, we rely on bright-field imaging, where the 20 Hz framerate allowed adequate sampling space to capture all the flows.
+For most of the analysis, we rely on bright-field imaging, where the 20 Hz frame rate allowed adequate sampling space to capture the flows.
 Because the lid had to stay on during imaging to avoid flows reacting to air flow (SI, \nameref{subsec:si_lid}), a lot of optical resolution was lost between the hyphae and the objective.
 This is exacerbated in fluorescence imaging, where the exposure requirements forced us to image most of those videos at 2 or 1 Hz.
 This put limits on the speed range (SI, \nameref{subsec:si_forward_choices}; Methods, \nameref{subsec:fl_detection_limit}), so a thorough bright-field to fluorescence comparison had to be done on a subset of the videos.
 
 We also have to be careful about extrapolating the model results to the entirety of the network graph, as there were biases in how the videos were made (SI, \nameref{subsec:si_video_selection}).
 High edge-betweenness edges were favoured to be filmed as opposed to low edge-betweenness edges.
-The model itself also does not account for the sparse flow regime that was observed, where single particles are seen to be moving, not a large co-moving amount.
 Finally, the hyphal diameter extraction, while effective in aggregate, is noisy and brought a lot of noise into the model.
-Extracting hyphal diameter from the 2x network images requires us to guess at a diameter of a sub-optical resolution object under varying focus qualities (SI, \nameref{subsec:si_widths}).
+Extracting hyphal diameter from the 2$\times$ network images requires us to guess at a diameter of a sub-optical resolution object under varying focus qualities (SI, \nameref{subsec:si_widths}).
 While some aspects of the model were validated with the more accurate diameters extracted from videos, full network diameter data cannot be extracted in such a way, and therefore that limits the analysis. 
 
 \subsection*{The model: what it explains and where it falls short}
 
 With these data, we were able to present a model in which motors carry a lipid-containing condensate along the hyphal wall towards the tips, and the displaced fluid returns through the network as a pressure-driven flow.
 Both the insensitivity to pressure of the motor-carried stream and the whole pressure field are important to capture the breadth of tipward and rootward measurements.
-Key model characteristics like demand dependence (Fig.~\ref{fig:schematic_model}D), to a lesser extent diameter dependence (Fig.~\ref{fig:schematic_model}E), concentration of backflow into the better-conducting arm of a loop (Fig.~\ref{fig:schematic_model}F) and backflow increases due to growth (Fig.~\ref{fig:schematic_model}G) were captured in the measured data as well. 
+Key model characteristics like demand dependence (Fig.~\ref{fig:schematic_model}D), to a lesser extent diameter dependence (Fig.~\ref{fig:schematic_model}E), the ranking of the backflow between the two arms of a loop by the network solve (Fig.~\ref{fig:fig6_examples}B) and backflow increases due to growth (Fig.~\ref{fig:schematic_model}G) were captured in the measured data as well. 
 
 Even our estimate of $\theta = 10\%$ lipid in the moving condensate, up to $3.6\%$ of the whole hyphal volume, suggests that a significant proportion of the volume of the hyphae is filled with lipids.
 Such a proportion could easily lead to clogging if all of the lipids coalesce into a single phase.
@@ -427,19 +415,19 @@ The minimal unit of lipid packaging is generally thought to be membrane bound li
 Such lipid droplets are generally kept from coalescing by coating~\cite{thiam_why_2017}.
 In AM fungal hyphae, the lipid droplets keep a consistent diameter of about 1~$\mu$m, with no sign of coalescence~\cite{sister_lipid_droplets_inprep}.
 The ensemble of those lipid droplets can then form an emulsion with a set lipid volume fraction.
-The emulsion phase, due to the repulsive strength between the different lipid droplets, can have different rheological properties than the rest of the cytoplasm~\cite{jeffrey_rheological_1976}.
-We assume that this emulsion is phase-separated from the bulk cytoplasm.
+The condensate, due to the repulsive strength between the different lipid droplets, can have different rheological properties than the rest of the cytoplasm~\cite{jeffrey_rheological_1976}.
+We assume that this condensate is phase-separated from the bulk cytoplasm.
 
 The perturbation experiments are also explained by the broader implications of the model.
 An osmotic shock induces a sharp negative osmotic pressure at its application, causing a rush that dies down after a while.
 The model has a root component, which merely serves as a large passive reservoir, replicating the idea that a root connection can take in the backflow without having to return it, but the severance of the root does not stop flows.
 It does have implications for a rootless organism in the sense that the entire model bases itself on this tipward and rootward axis.
 If there is no root, then on a large time-scale, the network could lose this orientation.
-It has been shown AM fungal networks can still survive with myristate~\cite{kleinCytoplasmicFlowDynamics2026} in the medium, but the broader model implications are not explored here or there.
+It has been shown AM fungal networks can still survive with myristate~\cite{kleinCytoplasmicFlowDynamics2026} in the medium, but the broader model implications are not explored here.
 A series of cuts isolating a small segment also brings the flows down, because the tip is suddenly moved much closer to the point of measurement, leading to lower motor movement, leading to lower rootward movement.
 This is assuming that tip slowdown is a combination of friction and bunching near a network terminus, and not connected to local anatomy that actively sets motor speed. 
 
-In broader context, AM fungi trade with their plant hosts for carbon, and have been shown to have preference for favorable exchange rates~\cite{kiers_reciprocal_2011,bisot_carbon-phosphorous_2025}.
+In broader context, AM fungi trade with their plant hosts for carbon, and have been shown to have preference for favourable exchange rates~\cite{kiers_reciprocal_2011,bisot_carbon-phosphorous_2025}.
 The model in this work as shown, could be a starting point to think of this preference not as an active process, but a result of physical processes in a flow network.
 We can recreate the proportionality by thinking of P as being harvested by fungal tips as the network grows into the soil.
 If this proportionality is to match the measured exchange rate of Bisot et al.~\cite{bisot_carbon-phosphorous_2025} (3--4 $\mu$g C per $\mu$g P by mass), it is important to note that the model predicts phosphorus in proportion to transported carbon, not to the carbon used for growth (SI, \nameref{subsec:si_cp_exchange}).
@@ -454,25 +442,13 @@ Radial adaptation could constitute a flow control mechanism.
 However, we never observed hyphal external radii diminishing.
 Full control would probably require an additional ingredient of radial shrinkage. 
 
-Where the model does fall short is its underprediction on low edge-betweenness edges which are deep inside the network.
+Where the model does fall short is its under-prediction on low edge-betweenness edges which are deep inside the network.
 Some high edge-betweenness hyphae are also under-predicted, which we attribute to faults in the network extraction: because the pressure is solved over the whole network, a wrongly connected or missing hypha lets the solve pool the backflow in neighbouring edges rather than in the hypha that carries it (SI, \nameref{subsec:si_rerouting}).
-Additionally, with enough of a conductance imbalance, we can see pressure flows move in the same direction of the motor flows due to recirculation.
+Additionally, with enough of a conductance imbalance, the backflow can move in the same direction as the motor flows due to recirculation.
 We have seen no clear case of this.
-Only a pressure field spanning the whole network concentrates backflow into central hyphae and reproduces the high measured rootward speeds. 
-
-Finally, the model is hampered by its noisy diameter measurements.
-Every comparison with video-extracted diameters shows that much stronger correlations can be found if diameters were extracted with more precision and accuracy.
-Future work has to see how this can be done while also imaging the growth of an entire network (SI, \nameref{subsec:si_widths}; SI, \nameref{subsec:si_model_variants}). 
-
-One element that the model does not take into account is the observed phenomenon of sparse flows.
-These are regions with sparse particles moving through the hyphae, without evidence of being moved by back-to-back traffic.
-These occur mostly in poorly connected (low-$\kappa$), low edge-betweenness regions of the network, and are likely the result of both low demand and routing for motors, and low pressure differences.
-This points to the idea that the cytoplasm could be a yield stress fluid, which would have a different rheology than the condensate layer.
-Sparse particles could still be moving with motors along microtubules, just not as much as in central hyphae. 
 
 \subsection*{Relation to other systems and to the symbiosis}
 
-% SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): review and extend (with references) this subsection and "Growth may follow supply": the oriented track graph, Kirchhoff violations, supply-driven growth and the information bottleneck.
 Our results suggest that the lipids preferentially move in a direction informed by fungal growth.
 Taking the steady $\sim$3~$\mu$m/s tipward stream as the motor-carried condensate, on loop edges, where the direction is not fixed by the tree structure, its direction matches the growth direction on 86\% of 677 edges.
 It is likely that part of the network of transport filaments simply orients in the direction of tip growth at the moment of its creation and persists in that direction over longer timescales.
@@ -482,7 +458,7 @@ It is unclear how this oriented network organizes to maintain a coherent intensi
 
 Two network solutions to long-distance transport have been described in other eukaryotes: pressure-driven peristaltic streaming in \textit{Physarum}~\cite{alim_mechanism_2017} and motor transport on microtubules in the reticulate amoeba \textit{Filoreta ramosa}~\cite{guest_multiple_2026}.
 In \textit{Filoreta}, nuclei, lysosomes and mitochondria move in both directions along microtubules at 5--8~$\mu$m/s, and their speed rises with branch diameter, which the authors link to wider branches holding more microtubules~\cite{guest_multiple_2026}.
-Our tipward stream likewise rises with diameter (as $D^{0.48}$; SI, \nameref{subsec:si_forward_flow}), whereas the rootward stream rises about twice as steeply (as $D^{1.04}$).
+Our tipward stream likewise rises with diameter (SI, \nameref{subsec:si_forward_flow}), whereas the rootward stream rises about twice as steeply.
 AM fungi would thus combine both solutions, motors in one direction and pressure in the other.
 The comparison has limits: \textit{Filoreta} is a wall-less amoeba without turgor, and it moves single organelles rather than a lipid condensate.
 
@@ -521,7 +497,7 @@ The framework developed here can also be flexibly expanded to include the effect
 By adding sources and sinks of water where aquaporins exchange it with the surroundings, it is also possible to account for additional transport mechanisms.
 
 \section*{Conclusion}
-In short, we have shown that within AM fungi, a minimal model in which motors carry a lipid-containing condensate towards the tips and a pressure-driven backflow returns cytoplasm to the root recreates the range and dynamics of measured flows. Its limitations are in the noise of the measured parameters, and certain unrepresented flow regimes. One consequence of this model is its physical result of carbon-phosphorus exchange, which in the model can be described as a linear relationship. In the future, phosphorus packing and the role of water in AM fungal transport should be investigated to see further effects. Microtubule dynamics in AM fungi are also an open field to investigate, as they have not been widely imaged in vivo before. 
+In short, we have shown that within AM fungi, a minimal model in which motors carry a lipid-containing condensate towards the tips and a pressure-driven backflow returns cytoplasm to the root recreates the range and dynamics of measured flows. Its limitations are in the noise of the measured parameters. One consequence of this model is its physical result of carbon-phosphorus exchange, which in the model can be described as a linear relationship. In the future, phosphorus packing and the role of water in AM fungal transport should be investigated to see further effects. Microtubule dynamics in AM fungi are also an open field to investigate, as they have not been widely imaged in vivo before. 
 
 \section*{Bibliography}
 \bibliographystyle{bxv_abbrvnat}
