@@ -83,8 +83,7 @@ Cellophane sheets & Hoefer & TE73 \\
 
 \namedsubsection{Fungal strains, root-organ cultures and plates}{subsec:strains}
 
-Colonies of \textit{Rhizophagus irregularis} strain C2 (DAOM 664346; four plates) and strain A5 (DAOM 664344; plate STR2307A112) were grown with Ri T-DNA transformed carrot roots (\textit{Daucus carota}, clone DC1) in two-compartment split Petri dishes (94~mm), as described~\cite{oyarte_galvez_travelling-wave_2025}.
-% NOTE (2 Nov, plate labels): "plate STR2307A112" -> "plate 3".
+Colonies of \textit{Rhizophagus irregularis} strain C2 (DAOM 664346; four plates) and strain A5 (DAOM 664344; plate 3) were grown with Ri T-DNA transformed carrot roots (\textit{Daucus carota}, clone DC1) in two-compartment split Petri dishes (94~mm), as described~\cite{oyarte_galvez_travelling-wave_2025}.
 Briefly, fungal stocks were cultivated on modified Strullu--Romand (MSR) medium with transformed carrot roots for 2--6 months, and a plug of mycelium and spores from a stock was placed on 2--3~cm of fresh root in one compartment.
 That compartment held MSR with phosphate reduced to 1\%; the other, the fungal compartment, held regular MSR under a sheet of cellophane.
 Both media carried 10~g\,l$^{-1}$ sucrose and 3~g\,l$^{-1}$ Phytagel.
@@ -137,9 +136,8 @@ Five plates were imaged, each in one or more sessions of flow videos at a frame 
 %   13    | SAL2506A073 | todo   | osmotic droplet              | 24 Jul 2025                                | todo                | todo
 %   (plate 4 is the same colony, cut after its flow sessions; droplets: the July 2025 movies only, the March 2026 SAL2601 plates are out (Simon, 28 Oct); "9 plates" in the droplet paragraph needs checking against this)
 
-The perturbation experiments used further plates prepared the same way: the root cut on LPD2412A022 (session t95), the section cut on \todo{plates}, and the droplets on 9 plates (SAL series).
+The perturbation experiments used further plates prepared the same way: the root cut on plate 6, the section cuts on plates 4, 7, 8 and 9, and the droplets on plates 10--13.
 % NOTE (2 Nov, plate table): with plates 6-13 in the table this sentence is redundant or must use the numbers (root cut plate 6; section cut plates 4, 7, 8, 9; droplets plates 10-13).
-% NOTE (2 Nov, plate labels): "LPD2412A022 (session t95)" -> "plate 6"; section cut on plates 4, 7, 8 and 9; droplets on plates 10-13 (July 2025 only; the text says 9 plates).
 
 \namedsubsection{Network imaging}{subsec:network_imaging}
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): review and correct the pipeline text (this subsection, Stitching/segmentation/network extraction, The dated network graph) and resolve its \todo items (station per plate, segmenter checkpoint, Fig 1A inset bins).
@@ -278,8 +276,7 @@ With these rules the per-pixel tipward against rootward comparison on 595 fluore
 % NOTE (3 Nov): the per-pixel fluorescence vs bright-field comparison in the paragraph above was not rerun: it falls under the 13 Oct decision to drop speed comparisons with fluorescence (note below), so cut it rather than update it. For reference, Fig 2A now has 1,572 bright-field measurements (1,469 edges, 671 videos) with both streams; rootward faster 46 %, tipward faster 11 %.
 % NOTE (13 Oct): The sentence above compares fluorescence and bright-field per-pixel speeds (2.42 / 2.20 um/s; rootward faster on 20 % against 42 %). It falls under Simon's 13 Oct decision to drop speed comparisons with fluorescence.
 The pixel median in the fluorescence regime (100 to 1,000 pixels) was within 0.1~$\mu$m/s of the true speed from 1 to 6~$\mu$m/s and 0.2 to 0.5~$\mu$m/s low at 7 to 8~$\mu$m/s in the synthetic test; the third quartile ran 0.2 to 0.7~$\mu$m/s high, so the median is used.
-Where the per-direction pixel statistics were empty in the stored plate tables (LPD2412A025, PNF2307A072 and most of STR2307A112 bright-field, stored with an undefined filter value), the pixel counts, medians and quartiles carried by the mapping entries of each store were used instead; they agree with the plate tables where both exist (Spearman 0.95 in bright-field and 0.80 in fluorescence).
-% NOTE (2 Nov, plate labels): "LPD2412A025, PNF2307A072 and most of STR2307A112" -> "plates 4 and 1 and most of plate 3".
+Where the per-direction pixel statistics were empty in the stored plate tables (plates 1 and 4 and most of the plate 3 bright-field, stored with an undefined filter value), the pixel counts, medians and quartiles carried by the mapping entries of each store were used instead; they agree with the plate tables where both exist (Spearman 0.95 in bright-field and 0.80 in fluorescence).
 
 Fluorescence streak speeds above about 5~$\mu$m/s are therefore censored, not absent, and fluorescence streak speed distributions are compared with bright-field below that speed only.
 The per-pixel speeds at 2 frames per second extend the comparison above it, and still show a smaller rootward branch in fluorescence than in bright-field.
@@ -297,8 +294,7 @@ Where the stream labelled rootward is motor-like (within 25\% of 3.06~$\mu$m/s, 
 
 % NOTE (3 Nov, checked on the per-video no-cut tables, motor_orientation.orient): the swap rule swaps 99 bright-field video measurements on 91 edges (C14's 61 was on an older table) -> prose: '(99 video measurements on 91 edges)' instead of '(58 edges)'.
 
-Trails were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); STR2307A112 t73 LeftMiddle was dropped whole.
-% NOTE (2 Nov, plate labels): "STR2307A112 t73 LeftMiddle" -> "one trail of plate 3 (session 5)"; trail names are internal.
+Trails were drawn by hand as paths through the graph from a root towards growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); one trail of plate 3 (session 5) was dropped whole.
 Along a trail, each measured edge is placed at its distance from the trail's root end.
 
 \namedsubsection{Direction bias}{subsec:direction_bias}
@@ -400,8 +396,7 @@ The force-balance motor model, in which the motors pull against the drag of thei
 \namedsubsection{Quantification and statistical analysis}{subsec:statistics}
 
 An edge is a junction-to-junction run of the session's graph with at least one registered video; a session is one plate at one frame; the five plates are the independent biological replicates. $n$ in the text and captions counts edges unless stated.
-Of 1,683 videos over 15 sessions, 1,404 were registered onto the graph (279 not, 126 of them on PNF2307A080 t81).
-% NOTE (2 Nov, plate labels): "PNF2307A080 t81" -> "plate 2, session 2".
+Of 1,683 videos over 15 sessions, 1,404 were registered onto the graph (279 not, 126 of them on plate 2, session 2).
 They give 7,906 measurements, one per video, hypha and direction, of which 5,975 keep at least 5 moving streaks: 3,587 of 4,400 in bright-field and 2,388 of 3,506 in NileRed fluorescence.
 % NOTE (3 Nov): stream counts 3,587 / 2,388 -> 3,583 / 2,385 after removing duplicate entries (SI speed_iqr caption already uses these). The 7,906 / 5,975 / 4,400 / 3,506 totals come from registration_census.py and were not rerun per video.
 Bright-field streaks give 1,600 edges with a rootward stream and 1,513 with both streams (\texttt{registration\_census.py}), and fluorescence streaks 879 edges with both streams (\texttt{figS\_video\_positions.py}).
