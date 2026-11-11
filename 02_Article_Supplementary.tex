@@ -34,31 +34,40 @@
 \begin{table}[htbp]
 \centering
 {\small
-\begin{tabular}{p{4.2cm}p{2.6cm}p{4.4cm}p{4.2cm}}
-\hline
-\textbf{group} & \textbf{plates} & \textbf{size} & \textbf{used for} \\
-\hline
-all recorded flow videos & 1--5 (15 sessions) & 1,683 videos at 804 positions (839 bright-field, 704 NileRed, 140 without recorded mode) & recording totals (Methods) \\
-registered on the network & 1--5 & 1,404 videos & assigning videos to edges (Methods) \\
-bright-field speed set (static flow, $\geq$5 streaks per direction) & 1--5 & 731 videos; 3,583 hypha-direction streams & Fig.~\ref{fig:hyphal_profiling}D, speed spread (SI Fig.~\ref{fig:speed_iqr}) \\
-\quad tipward--rootward pairs & 1--5 & 1,572 measurements, 671 videos & Fig.~\ref{fig:asymmetries}A \\
-\quad speed against tip distance & 1--5 & 1,555 edges (tipward fit: 1,481) & Fig.~\ref{fig:asymmetries}B, tipward speed model (SI \ref{subsec:si_forward_flow}) \\
-NileRed speed set & 1--5 & 625 videos & Fig.~\ref{fig:asymmetries}C; with the bright-field set: 723 positions (SI Fig.~\ref{fig:video_positions}) \\
-lipid direction bias, slow positions & 1--5 & 160 edge pairs (140 NileRed, 139 bright-field videos) & Fig.~\ref{fig:asymmetries}D \\
-model comparison & 1--5 & 1,616 measurements on 1,507 edges & Figs.~\ref{fig:fig5_plug}, \ref{fig:fig6_examples}; SI \ref{sec:si_model_data} \\
-\quad trail segments within 10~mm of the tip & 1--5 & 283 measurements & Fig.~\ref{fig:fig5_plug}B \\
-\quad tree-like edges with routed demand & 1--5 & 113 measurements & Fig.~\ref{fig:fig6_examples}A \\
-\quad loops with both arms filmed & 1--5 & 411 loops & Fig.~\ref{fig:fig6_examples}B \\
-filmed edges in the network & 1--5 & 1,590 edges (tree-like share); 1,972 edges with a video (selection bias) & SI \ref{subsec:si_tree_tip}, \ref{subsec:si_video_selection} \\
-root cut & 6 & 53 bright-field videos & Fig.~\ref{fig:perturbations}B \\
-section cut & 7, 8, 9 (4 also cut) & bright-field 24 before, 45 after; NileRed 17 before, 39 after & Fig.~\ref{fig:perturbations}C \\
-% NOTE (11 Nov, checked on transport_paper figure_panels/python_out/fig3_panels/segment_cut_bayes/videos.csv): Fig 3C has 4 hyphae on 3 plates: plate 7 (1), plate 8 (2), plate 9 (1). Plate 4 was cut too, but its cut position has no usable Fig 3C videos; it enters only the registered cut analyses (SI perturbations). Plate 6 is the root cut.
-osmotic droplets (July 2025) & 10--13 & 9 bright-field movies (6 NaCl, 3 medium controls), 2 NileRed & Fig.~\ref{fig:perturbations}A, SI \ref{subsec:si_osmotic} \\
-\hline
-\end{tabular}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{5.4cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{4.0cm}@{}}
+\toprule
+\textbf{Set} & \textbf{Size} & \textbf{Used in} \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Flow survey, plates 1--5 (15 sessions)}} \\
+\addlinespace[2pt]
+All recorded flow videos & 1,683 videos at 804 positions (839 bright-field, 704 NileRed, 140 without recorded mode) & recording totals (Methods) \\
+Registered on the network & 1,404 videos & assigning videos to edges (Methods) \\
+Bright-field speed set (static flow, $\geq$5 streaks per direction) & 731 videos; 3,583 hypha--direction streams & Fig.~\ref{fig:hyphal_profiling}D; SI Fig.~\ref{fig:speed_iqr} \\
+\quad with both streams & 1,572 measurements in 671 videos & Fig.~\ref{fig:asymmetries}A \\
+\quad against tip distance & 1,555 edges (tipward fit: 1,481) & Fig.~\ref{fig:asymmetries}B; SI \ref{subsec:si_forward_flow} \\
+NileRed speed set & 625 videos (723 positions together with the bright-field set) & Fig.~\ref{fig:asymmetries}C; SI Fig.~\ref{fig:video_positions} \\
+Lipid direction bias, slow positions & 160 edge pairs (140 NileRed, 139 bright-field videos) & Fig.~\ref{fig:asymmetries}D \\
+Filmed edges in the network & 1,590 edges (tree-like share); 1,972 edges with a video (selection bias) & SI \ref{subsec:si_tree_tip}, \ref{subsec:si_video_selection} \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Model comparison, plates 1--5}} \\
+\addlinespace[2pt]
+All compared measurements & 1,616 measurements on 1,507 edges & Figs.~\ref{fig:fig5_plug}, \ref{fig:fig6_examples}; SI \ref{sec:si_model_data} \\
+\quad trail segments within 10~mm of a tip & 283 measurements & Fig.~\ref{fig:fig5_plug}B \\
+\quad tree-like edges with routed demand & 113 measurements & Fig.~\ref{fig:fig6_examples}A \\
+\quad loops with both arms filmed & 411 loops & Fig.~\ref{fig:fig6_examples}B \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Perturbations}} \\
+\addlinespace[2pt]
+Root cut (plate 6) & 53 bright-field videos & Fig.~\ref{fig:perturbations}B \\
+Section cut (plates 7--9; plate 4 also cut) & 4 hyphae; bright-field 24 videos before and 45 after, NileRed 17 and 39 & Fig.~\ref{fig:perturbations}C \\
+Osmotic droplets (plates 10--13, July 2025) & 9 bright-field movies (6 NaCl, 3 medium controls), 2 NileRed movies & Fig.~\ref{fig:perturbations}A; SI \ref{subsec:si_osmotic} \\
+\bottomrule
+\end{tabularx}
 }
 \caption{[Caption to be written.]}\label{tab:si_video_sets}
 \end{table}
+% NOTE (11 Nov, checked on transport_paper figure_panels/python_out/fig3_panels/segment_cut_bayes/videos.csv): Fig 3C has 4 hyphae on 3 plates: plate 7 (1), plate 8 (2), plate 9 (1). Plate 4 was cut too, but its cut position has no usable Fig 3C videos; it enters only the registered cut analyses (SI perturbations). Plate 6 is the root cut.
 
 
 \namedsubsection{Tree-like edges and distance to the growing tips}{subsec:si_tree_tip}
