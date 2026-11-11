@@ -28,55 +28,62 @@
 
 \section{The filmed hyphae}\label{sec:si_network}
 
-% NOTES (11 Nov). TABLE of every video and measurement set in the paper and what it is used for. CAPTION: to write.
-% SOURCES: Methods (recorded, registered counts); SI fig:speed_iqr caption (731 BF videos, 3,583 streams); main text (625 NileRed); Fig 2A/B/D captions; SI tab:si_model_accuracy (1,616 / 1,507); Figs 5B, 6A, 6B; S1.1 and S1.2 notes (1,590 / 1,972 edges); Fig 3 captions and the Methods colony table (perturbations; droplets recounted 3 Nov, July 2025 only).
+% NOTES (11 Nov). TABLE of the STATIC-FLOW videos and measurements (flow survey, plates 1-5) and what each set is used for; the perturbation sets are in tab:si_perturbation_sets (S4). CAPTION: to write.
+% SOURCES: Methods (recorded, registered counts); SI fig:speed_iqr caption (731 BF videos, 3,583 streams); main text (625 NileRed); Fig 2A/B/D captions; SI tab:si_model_accuracy (1,654 / 1,544); Figs 5B, 6A, 6B; S1.1 and S1.2 notes (1,778 / 1,740 edges); Fig 3 captions and the Methods colony table (perturbations; droplets recounted 3 Nov, July 2025 only).
+% FUNNEL COUNTS (11 Nov): counts from AMF_Transport scratch/funnel/funnel_counts.py (.txt/.csv). A measurement there is a (store edge, video, video edge) row, the model tables' key; counted per (edge, video) every measurement count from step 3 on is 1 lower (one video crosses one store edge twice). Steps 4-5 (updated 11 Nov, no swap rule) are the core set of transport_paper Working_notebooks/utils/static_sets.py (speed set: steps 1-3): its 1,898 rows are the 1,967 step-3 bright-field measurements less 58 on a video edge < 20 um and 11 on store edges without a network diameter (STR2307A112_t73 6, _t60 4, _t38 1); every core row is a step-3 row (key check, 11 Nov). Videos per subset: core 720, rootward 683, tipward 706, both 665. The earlier step 4 (1,626 / 1,572 after the swap rule, 51 rows not oriented by the growth graph) and step 5 (1,616 / 1,507) are superseded. Streams are per video edge and direction (as in fig:speed_iqr).
 % WHY THE COUNTS DIFFER: each analysis has its own filter (registered; >= 5 streaks per direction; imaging mode known; both streams present; model set). The caption should say so and point to Methods.
 \begin{table}[htbp]
 \centering
 {\small
 \renewcommand{\arraystretch}{1.15}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{5.4cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{4.0cm}@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{6.0cm}@{}}
 \toprule
+\textbf{Unit} & \textbf{Definition} & \textbf{Total, static flow (plates 1--5)} \\
+\midrule
+Position & One stage position (one field of view on a hypha), filmed in one session. Can contain multiple videos, typically a bright-field video and then a NileRed video & 804 positions \\
+Video & One recording at one position, bright-field (usually 10~s at 20 frames per second) or NileRed fluorescence at 1--2 frames per second & 1,683 videos (979 bright-field, 704 NileRed) \\
+Edge & One stretch of hypha between two nodes of the network graph of a session; one video can cover several edges & 2,227 edges with a registered video \\
+Measurement & The analysis of one edge in one video, i.e.\ one edge at one point in time & 3,466 measurements (1,967 bright-field, 1,499 NileRed) \\
+Stream & One direction (tipward or rootward) of one measurement, with its streaks & 5,968 streams (3,583 bright-field, 2,385 NileRed) \\
+\midrule[\heavyrulewidth]
+\textbf{Step} & \textbf{Kept} & \textbf{Left out, and why} \\
+\midrule
+1. Recorded & 804 positions; 1,683 videos (979 bright-field, 704 NileRed) & --- \\
+2. Registered on the network graph & 730 positions; 1,404 videos (754 bright-field, 650 NileRed); 2,227 edges; 3,951 measurements & 279 videos (225 bright-field, among them all 140 without a recorded mode; 54 NileRed) that could not be placed on the graph, 126 of them in plate 2, session 2 \\
+3. Speed analysis ($\geq$5 streaks in a direction) & 723 positions; 1,356 videos (731 bright-field, 625 NileRed); 2,100 edges; 3,466 measurements (1,967 bright-field, 1,499 NileRed); 5,968 streams (3,583 bright-field, 2,385 NileRed) & 48 videos (23 bright-field, 25 NileRed): 16 with no moving streak, 32 with fewer than 5 streaks in every direction \\
+4. Core set (bright-field, video edge $\geq$20~$\mu$m, network diameter known, at least one stream) & 1,898 measurements on 1,778 edges (720 videos): rootward 1,654 on 1,544 edges; tipward 1,806 on 1,693 edges; both streams 1,562 on 1,459 edges (665 videos) & 1,499 NileRed measurements; 58 on a video edge shorter than 20~$\mu$m; 11 on edges without a network diameter (plate 3, sessions 2, 4 and 5) \\
+5. Model comparison (rootward subset of the core set) & 1,654 measurements on 1,544 edges (683 videos) & 244 measurements with a tipward stream only \\
+\midrule[\heavyrulewidth]
 \textbf{Set} & \textbf{Size} & \textbf{Used in} \\
 \midrule
-\multicolumn{3}{@{}l}{\textit{Flow survey, plates 1--5 (15 sessions)}} \\
+\multicolumn{3}{@{}l}{\textit{Sets used in the figures, plates 1--5 (15 sessions)}} \\
 \addlinespace[2pt]
-All recorded flow videos & 1,683 videos at 804 positions (839 bright-field, 704 NileRed, 140 without recorded mode) & recording totals (Methods) \\
-Registered on the network & 1,404 videos & assigning videos to edges (Methods) \\
-Bright-field speed set (static flow, $\geq$5 streaks per direction) & 731 videos; 3,583 hypha--direction streams & Fig.~\ref{fig:hyphal_profiling}D; SI Fig.~\ref{fig:speed_iqr} \\
-\quad with both streams & 1,572 measurements in 671 videos & Fig.~\ref{fig:asymmetries}A \\
-\quad against tip distance & 1,555 edges (tipward fit: 1,481) & Fig.~\ref{fig:asymmetries}B; SI \ref{subsec:si_forward_flow} \\
-NileRed speed set & 625 videos (723 positions together with the bright-field set) & Fig.~\ref{fig:asymmetries}C; SI Fig.~\ref{fig:video_positions} \\
+Speed set (step 3, both modes) & 1,356 videos (731 bright-field, 625 NileRed) at 723 positions; 3,466 measurements; 3,583 bright-field streams & Fig.~\ref{fig:hyphal_profiling}D; Fig.~\ref{fig:asymmetries}C; SI Figs.~\ref{fig:video_positions}, \ref{fig:speed_iqr} \\
+Core set (step 4) & 1,898 measurements on 1,778 edges (tree-like share); 1,740 of the edges with a betweenness (selection bias) & SI \ref{subsec:si_tree_tip}, \ref{subsec:si_video_selection} \\
+\quad with both streams & 1,562 measurements in 665 videos & Fig.~\ref{fig:asymmetries}A \\
+\quad against tip distance & 1,806 tipward and 1,654 rootward measurements (tipward fit: 1,693 edges) & Fig.~\ref{fig:asymmetries}B; SI \ref{subsec:si_forward_flow} \\
 Lipid direction bias, slow positions & 160 edge pairs (140 NileRed, 139 bright-field videos) & Fig.~\ref{fig:asymmetries}D \\
-Filmed edges in the network & 1,590 edges (tree-like share); 1,972 edges with a video (selection bias) & SI \ref{subsec:si_tree_tip}, \ref{subsec:si_video_selection} \\
 \midrule
-\multicolumn{3}{@{}l}{\textit{Model comparison, plates 1--5}} \\
+\multicolumn{3}{@{}l}{\textit{Model comparison, plates 1--5 (15 sessions)}} \\
 \addlinespace[2pt]
-All compared measurements & 1,616 measurements on 1,507 edges & Figs.~\ref{fig:fig5_plug}, \ref{fig:fig6_examples}; SI \ref{sec:si_model_data} \\
+All compared measurements (step 5) & 1,654 measurements on 1,544 edges & Figs.~\ref{fig:fig5_plug}, \ref{fig:fig6_examples}; SI \ref{sec:si_model_data} \\
 \quad trail segments within 10~mm of a tip & 283 measurements & Fig.~\ref{fig:fig5_plug}B \\
-\quad tree-like edges with routed demand & 113 measurements & Fig.~\ref{fig:fig6_examples}A \\
-\quad loops with both arms filmed & 411 loops & Fig.~\ref{fig:fig6_examples}B \\
-\midrule
-\multicolumn{3}{@{}l}{\textit{Perturbations}} \\
-\addlinespace[2pt]
-Root cut (plate 6) & 53 bright-field videos & Fig.~\ref{fig:perturbations}B \\
-Section cut (plates 7--9; plate 4 also cut) & 4 hyphae; bright-field 24 videos before and 45 after, NileRed 17 and 39 & Fig.~\ref{fig:perturbations}C \\
-Osmotic droplets (plates 10--13, July 2025) & 9 bright-field movies (6 NaCl, 3 medium controls), 2 NileRed movies & Fig.~\ref{fig:perturbations}A; SI \ref{subsec:si_osmotic} \\
+\quad tree-like edges with routed demand & 115 measurements & Fig.~\ref{fig:fig6_examples}A \\
+\quad loops with both arms filmed & 421 loops & Fig.~\ref{fig:fig6_examples}B \\
 \bottomrule
 \end{tabularx}
 }
-\caption{[Caption to be written.]}\label{tab:si_video_sets}
+\caption{Overview of the static flow video sets, used in figures 1, 2, 5 and 6. }\label{tab:static_video_sets}
 \end{table}
-% NOTE (11 Nov, checked on transport_paper figure_panels/python_out/fig3_panels/segment_cut_bayes/videos.csv): Fig 3C has 4 hyphae on 3 plates: plate 7 (1), plate 8 (2), plate 9 (1). Plate 4 was cut too, but its cut position has no usable Fig 3C videos; it enters only the registered cut analyses (SI perturbations). Plate 6 is the root cut.
 
 
 \namedsubsection{Tree-like edges and distance to the growing tips}{subsec:si_tree_tip}
 % NOTES (updated 11 Nov). TEXT: to write (Coco could help: graph extraction). CITED FROM: main text Fig 1A (inset, "about 40% within 1 mm against 10-14% beyond 2 mm"), Methods "Tree and loop edges" (\todo for the bins).
 % SOURCE: transport_paper Working_notebooks/manuscript_figures/fig1.py, bridge_share_by_tip(); numbers from the 29 Oct rebuild of Figs 1-2 on the current main model (split_even_j10000, 20 um minimum video edge; AMF_Transport PR #12).
 % 1 DEFINITION: an edge is tree-like when it is a bridge of the network graph (removing it disconnects the network; networkx bridges on the simple graph, degree-2 nodes dissolved), computed on the network as it was at each session (model tables' `bridge` column); otherwise it lies on a loop.
-% 2 EDGE SET: the filmed edges of the main tables, 15 sessions on plates 1-5: 1,590 edges, 1,579 with a tip distance (network distance to the nearest growing tip, d_tip). This is not the 1,507-edge model set; name the set in the text (see tab:si_video_sets).
-% 3 RESULT (bins by tip distance: edges, % tree-like): <1 mm 85, 38.8%; 1-2 mm 199, 20.6%; 2-4 mm 436, 10.6%; 4-8 mm 562, 10.7%; >8 mm 282, 13.8%. Main text "about 40%" and "10-14%" match.
-% 4 CONTEXT: over all edges of the same networks 36% are tree-like, against 15% of the filmed edges, so the filmed set under-samples tree-like edges (lead into \nameref{subsec:si_video_selection}).
+% 2 EDGE SET: the filmed edges of the main tables, 15 sessions on plates 1-5: 1,778 edges, 1,778 with a tip distance (network distance to the nearest growing tip, d_tip). This is not the 1,544-edge model set; name the set in the text (see tab:static_video_sets).
+% 3 RESULT (bins by tip distance: edges, % tree-like): <1 mm 100, 45.0%; 1-2 mm 209, 21.1%; 2-4 mm 499, 10.6%; 4-8 mm 650, 10.6%; >8 mm 320, 12.5%. Main text "about 45%" and "10-13%" match.
+% 4 CONTEXT: over all edges of the same networks 36% are tree-like, against 14% of the filmed edges, so the filmed set under-samples tree-like edges (lead into \nameref{subsec:si_video_selection}).
 % OPEN: caption; whether to add all edges to the figure and the per-session spread; fill the Methods \todo with these bins.
 
 \begin{figure}[htbp]
@@ -105,10 +112,10 @@ The plate 4 sessions are days 10--12 of Fig.~\ref{fig:hyphal_profiling}B. All pa
 % NOTES (updated 11 Nov). TEXT: to write. CITED FROM: main text Results (filmed hyphae, l.~105) and Discussion limitations (l.~399). SOURCE: transport_paper feat/bc-selection-bias d2054b7, manuscript/bc_selection_bias.md, #130.
 % 1 WHY: the flow videos were taken by eye on runner hyphae where the two streams could be told apart, so the speed statistics describe the filmed hyphae, not the whole network. This subsection measures how different the filmed edges are, so the reader can judge how far the results generalise.
 % 2 MEASURE: root-directed betweenness centrality (BC) as in Oyarte Galvez et al. 2025 (oyarte_galvez_travelling-wave_2025, after freeman_set_1977): per edge, the share of the network's nodes whose shortest path (by length) to the root compartment crosses the edge (roots joined in one super-node; equal-length paths share 1/sigma). Edges with BC = 0 are left out (62,469 of 1,139,071; 42 filmed). Variant: growing tips only as sources.
-% 3 GROUPS: filmed edges = store edges with a video mapping, 1,972 with BC > 0 (15 sessions, plates 1-5; a different set from the 1,590 of S1.1, see tab:si_video_sets). References: all edges of the same networks (1,076,602) and, to separate selection from where the plates were filmed, the edges inside the convex hull of the filmed positions (310,967).
-% 4 RESULT: filmed edges sit at a median 82nd BC percentile of their own network (IQR 54-95); every session's median is above 50 (73-96; Wilcoxon over sessions p = 6e-5). Median log10 BC: -2.40 filmed, -3.80 all, -3.83 inside the hull, so the shift is selection, not spatial extent. Per session P(filmed > other) 0.63-0.89. Tips-only BC: 80th percentile (IQR 61-92), session medians 64-95; rank correlation of the two variants 0.78.
-% 5 WHAT ELSE DIFFERS: filmed edges are thicker (store diameter 10.0 against 7.8 um), slightly closer to a growing tip (4.3 against 4.8 mm) and less often tree-like (15% against 36%; 33% inside the hull). BC and diameter covary, so the diameter difference is not a separate selection.
-% 6 CONSEQUENCE (panel C): among filmed edges the bright-field median speed rises only weakly with log BC: Spearman 0.18 tipward (n 1,706) and 0.18 rootward (n 1,555), unchanged with tip distance partialled out, positive in 12/15 and 14/15 sessions; same direction as Oyarte Galvez. Tips-only BC: 0.39 / 0.36 raw, 0.21 / 0.25 after tip distance. So the results describe high-BC hyphae.
+% 3 GROUPS: filmed edges = store edges with a video mapping, 1,740 with BC > 0 (15 sessions, plates 1-5; a different set from the 1,778 of S1.1, see tab:static_video_sets). References: all edges of the same networks (1,076,602) and, to separate selection from where the plates were filmed, the edges inside the convex hull of the filmed positions (310,967).
+% 4 RESULT: filmed edges sit at a median 83rd BC percentile of their own network (IQR 55-95); every session's median is above 50 (73-96; Wilcoxon over sessions p = 6e-5). Median log10 BC: -2.40 filmed, -3.80 all, -3.83 inside the hull, so the shift is selection, not spatial extent. Per session P(filmed > other) 0.63-0.89. Tips-only BC: 80th percentile (IQR 61-92), session medians 64-95; rank correlation of the two variants 0.78.
+% 5 WHAT ELSE DIFFERS: filmed edges are thicker (store diameter 10.2 against 7.8 um), slightly closer to a growing tip (4.3 against 4.8 mm) and less often tree-like (14% against 36%; 33% inside the hull). BC and diameter covary, so the diameter difference is not a separate selection.
+% 6 CONSEQUENCE (panel C): among filmed edges the bright-field median speed rises only weakly with log BC: Spearman 0.18 tipward (n 1,656) and 0.18 rootward (n 1,510), unchanged with tip distance partialled out, positive in 12/15 and 14/15 sessions; same direction as Oyarte Galvez. Tips-only BC: 0.39 / 0.36 raw, 0.21 / 0.25 after tip distance. So the results describe high-BC hyphae.
 % 7 CAVEATS: edges along one hypha share nearly the same BC, so pooled p-values overstate independence (the per-network percentiles are the robust statistic). Edges are counted, not length-weighted (Oyarte's Extended Data Fig 7a is length-weighted). Store diameters for both groups (no lumen diameters network-wide).
 % OPEN: caption of fig:bc_selection (panels in the note below).
 
@@ -257,6 +264,25 @@ In B the pipeline normalisation was applied to the 20~fps video before averaging
 \end{figure}
 
 \section{Perturbations}\label{sec:si_perturbations}
+% NOTES (11 Nov). TABLE of the perturbation videos and how each experiment is compared; the static-flow sets are in tab:static_video_sets (S1). CAPTION: to write. Fig 3A uses the 6 NaCl movies (solutes n 6); controls removed from Fig 3A on 10 Nov. Check the root-cut video count (53) against Fig 3B, and whether the plate-4 cut site has any before/after pairs in the registered analysis (EPY104 2, EPY084 15, LPD009 17, LPD025 19 videos with a pre-cut reference, 10 Oct note below).
+% NOTE (11 Nov, checked on transport_paper figure_panels/python_out/fig3_panels/segment_cut_bayes/videos.csv): Fig 3C has 4 hyphae on 3 plates: plate 7 (1), plate 8 (2), plate 9 (1). Plate 4 was cut too, but its cut position has no usable Fig 3C videos; it enters only the registered cut analyses (SI perturbations). Plate 6 is the root cut.
+\begin{table}[htbp]
+\centering
+{\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.2cm}@{}}
+\toprule
+\textbf{Experiment} & \textbf{Plates} & \textbf{Videos and unit of comparison} & \textbf{Used in} \\
+\midrule
+Root cut & 6 & 53 bright-field videos on one trail, about 20~min before and 20 and 50~min after the cut; compared per trail edge, each pairing of a kymograph before with one after & Fig.~\ref{fig:perturbations}B \\
+Section cut & 7, 8 (two hyphae), 9 & 4 hyphae; bright-field 24 videos before and 45 after, NileRed 17 and 39; compared per hypha (partial pooling) & Fig.~\ref{fig:perturbations}C \\
+\quad registered cut sites & 4, 7, 8, 9 & after/before ratios on the same network edges, against distance to the cut and time after it & SI Figs.~\ref{fig:section_cut_distance_time}, \ref{fig:section_cut_timecourse} \\
+Osmotic droplets (July 2025) & 10--13 & 9 bright-field movies (6 NaCl 100~mM, 3 medium controls) and 2 NileRed movies; compared per movie, before against after the droplet onset & Fig.~\ref{fig:perturbations}A; SI \ref{subsec:si_osmotic} \\
+\bottomrule
+\end{tabularx}
+}
+\caption{[Caption to be written.]}\label{tab:si_perturbation_sets}
+\end{table}
 % NOTE (6 Nov, moved from main text root-cut paragraph): by +50 min the rootward stream had recovered near the tip (ratios 1.06-1.11 at about 5 mm from the tip) but not far from it (0.52-0.56 at 23-28 mm).
 
 \namedsubsection{Growth-induced mass flow}{subsec:si_mass_flow}
@@ -301,7 +327,7 @@ This hypothesis is further motivated by the qualitative observation that the mov
 % FIGURE: growth-induced mass flow against the measured speeds (replaces the wrong-file FigS2, 20 Oct)
 % Generated by transport_paper Working_notebooks/manuscript_figures/figS_mass_flow.py (feat/flow-regime), main-model tables
 % (global_gimf_gimf_minedge20_keras_ratio_fb): the GIMF flux of each edge over its lumen area, |q_g| / (pi b^2).
-% NOTE (20 Oct, numbers): 1,684 filmed edges, 15 sessions: mass-flow speed median 0.075 um/s (IQR 0.025-0.192, 90th percentile 0.34; 3 edges above 1 um/s), against measured tipward 2.93 and rootward 3.25 um/s; per edge the tipward speed is a median 31 times the mass-flow speed. The figure has no direction panel (the old caption's B and C); the text's 'expected direction' now points at the map (A), which shows the speed only.
+% NOTE (20 Oct, numbers; updated 11 Nov to the figure as rebuilt, figS_mass_flow.py on the per-video tables): 2,239 filmed edges, 15 sessions: mass-flow speed median 0.073 um/s (IQR 0.024-0.183, 90th percentile 0.32; 3 edges above 1 um/s), against measured tipward 2.86 and rootward 2.97 um/s; per edge the tipward speed is a median 31 times the mass-flow speed. The figure has no direction panel (the old caption's B and C); the text's 'expected direction' now points at the map (A), which shows the speed only.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_mass_flow.pdf}
@@ -309,7 +335,7 @@ This hypothesis is further motivated by the qualitative observation that the mov
 The flow needed to supply the volume added by the growing tips, routed through the network from the roots with minimal dissipation (Methods), divided by the lumen area of each edge.
 \textbf{(A)} Plate 5 at session 2, every edge coloured by this mass-flow speed (colour scale capped at 0.3~$\mu$m/s).
 % NOTE (2 Nov, plate labels): "EPY2412A088 at t55" -> "plate 5, session 2".
-\textbf{(B)} Distributions over the 1,684 filmed edges (15 sessions) of the measured tipward (blue) and rootward (pink) speeds and of the mass-flow speed (orange; median 0.075~$\mu$m/s).
+\textbf{(B)} Distributions over the 2,239 filmed edges (15 sessions) of the measured tipward (blue) and rootward (pink) speeds and of the mass-flow speed (orange; median 0.073~$\mu$m/s).
 \textbf{(C)} Measured tipward speed against the mass-flow speed on the same edge; grey: identity. The measured speed is a median 31 times the mass-flow speed.}\label{fig:carbonflow}
 \end{figure}
 
@@ -394,7 +420,7 @@ The lipids, like the bright-field flow, keep their tipward speed while the rootw
 % NOTE (15 Oct): The text below was drafted by Claude on Simon's request (fill out the forward model SI section), from the notes of this section and the current fits (transport_paper feat/flow-regime: forward_speed_bayes.py, edges.csv / posterior.csv / width_compare.csv; width_feasibility_stats.csv). The width numbers marked 873 edges are from the walls_v4 rebuild (note of 11 Oct below); the force-balance sentence needs Simon's check of the model's form.
 The transport model needs the tipward (motor) speed on every edge of the network (Methods), so we asked which properties of a hypha predict it.
 We used the bright-field videos only (\nameref{subsec:si_forward_choices}).
-For each edge we pooled the moving tipward streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,481 edges with 299,584 streaks in 15 sessions on 5 plates.
+For each edge we pooled the moving tipward streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,693 edges with 311,149 streaks in 15 sessions on 5 plates.
 
 % NOTE C15 (30 Oct, per-video measurements, transport_paper PR #167): question. This to-tip fit (forward_speed_bayes) still pools the streaks of all videos on an edge, which the model tables no longer do. Switch it to one value per video as well?
 
@@ -406,9 +432,9 @@ v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
 with $d$ the network distance to the nearest growing tip at the session.
 We fitted it with a hierarchical Bayesian model on the log median streak speed of each edge, $y_i = \log v(d_i) + w_p + u_i + \epsilon_i$, with an edge effect $u_i \sim N(0, \sigma_{\mathrm{edge}})$, a plate effect $w_p$ (summing to zero over plates) and a sampling error $\epsilon_i$ whose standard deviation was bootstrapped from the edge's own streaks, so that edges with few or scattered streaks count less.
 Priors were uniform on $v_\infty$ and $v_{\mathrm{tip}}$ (0.05 to 10~$\mu$m/s) and on $\log \ell$ (10~$\mu$m to 50~mm), half-normal on the standard deviations, and the posterior was sampled with adaptive Metropolis (4 chains, $\hat{R} \leq 1.01$).
-The posterior medians [95\% intervals] were $v_{\mathrm{tip}} = 2.18$ [1.92, 2.39]~$\mu$m/s, $v_\infty = 2.93$ [2.86, 3.03]~$\mu$m/s and $\ell = 1.85$ [1.11, 3.52]~mm.
-Edges scatter around the curve by 0.22 on the log scale (about 25\%), and the plates differ by $-6$ to $+7$\%.
-The speed at the tip rests on few edges: 82 lie within 1~mm of a tip and 7 within 250~$\mu$m.
+The posterior medians [95\% intervals] were $v_{\mathrm{tip}} = 2.30$ [2.08, 2.49]~$\mu$m/s, $v_\infty = 3.10$ [2.99, 3.31]~$\mu$m/s and $\ell = 2.98$ [1.70, 6.32]~mm.
+Edges scatter around the curve by 0.24 on the log scale (about 27\%), and the plates differ by $-6$ to $+8$\%.
+The speed at the tip rests on few edges: 97 lie within 1~mm of a tip and 9 within 250~$\mu$m.
 In least-squares fits on the edge medians, fitted on four plates and scored on the fifth, the offset form predicted the held-out edges better than a constant speed or an exponential rise from zero (median fold error 1.14, against 1.17 and 1.16), and a step at a fixed distance did worst.
 The transport model uses these posterior medians (Methods).
 
@@ -433,10 +459,10 @@ The fits use the bright-field videos (20 frames per second) only.
 The NileRed videos (1 or 2 frames per second) lose fast streaks: relative to 1--3~$\mu$m/s, the number of streaks found per bright-field streak drops to 0.22 at 4--5~$\mu$m/s and 0.11 at 6--7~$\mu$m/s at 2 frames per second, and to 0.07--0.08 at 6--8~$\mu$m/s at 1 frame per second, and the per-pixel medians at 1 frame per second level off at 4.4--4.5~$\mu$m/s (Methods, \nameref{subsec:fl_detection_limit}).
 Fluorescence speeds are therefore censored near 5~$\mu$m/s, and we do not compare them with the bright-field speeds.
 
-A falloff to zero at the tip, $v(d) = v_\infty (1 - e^{-d/\ell})$, fitted with the same hierarchical Bayesian model, gave $v_\infty = 2.79$ [2.75, 2.83]~$\mu$m/s and $\ell = 194$ [145, 241]~$\mu$m (SI Fig.~\ref{fig:tip_falloff_zero}).
-To reach zero at the tip and still pass the edges nearest to it, its falloff length shrinks to about 200~$\mu$m, after which the curve is flat: it reaches 2.0~$\mu$m/s at 250~$\mu$m and 2.8~$\mu$m/s from about 1~mm onwards.
+A falloff to zero at the tip, $v(d) = v_\infty (1 - e^{-d/\ell})$, fitted with the same hierarchical Bayesian model, gave $v_\infty = 2.86$ [2.82, 2.90]~$\mu$m/s and $\ell = 219$ [171, 266]~$\mu$m (SI Fig.~\ref{fig:tip_falloff_zero}).
+To reach zero at the tip and still pass the edges nearest to it, its falloff length shrinks to about 200~$\mu$m, after which the curve is flat: it reaches 1.9~$\mu$m/s at 250~$\mu$m and 2.8~$\mu$m/s from about 1~mm onwards.
 It therefore misses the gradual rise over 1--3~mm and lies about 10\% below the edges beyond 4~mm, while within 500~$\mu$m of a tip it fits as well as the offset form.
-By the widely applicable information criterion the offset form predicts better (expected log predictive density higher by 25.5 $\pm$ 7.3), with 10.6 of the difference from the 82 edges within 1~mm of a tip and 12.7 from those beyond 3~mm.
+By the widely applicable information criterion the offset form predicts better (expected log predictive density higher by 31.3 $\pm$ 8.4), with 8.0 of the difference from the 97 edges within 1~mm of a tip and 19.2 from those beyond 3~mm.
 A drop to near zero over the last tens of micrometres, as seen in the hand-traced tip kymographs (\nameref{subsec:si_tips}), is below what the edge data resolve and is not excluded.
 
 Diameter predicts the tipward speed better than tip distance (\nameref{subsec:si_forward_flow}), but the transport model needs a speed on every edge of the network, and there only the network-image diameters are available.
@@ -448,7 +474,7 @@ A constant motor speed scores worse in the transport model (Methods).
 % NOTE (2, what leaving it out removes): Leaving it out removes the fluorescence fits of the tipward section (offset fit v_tip 1.3-1.7, v_inf 2.5-2.7 um/s, lambda 1.5-3.3 mm; NileRed diameter slope 0.54 [0.39, 0.69], walls_v4), which agreed in direction with bright-field. It also removes two SI figures, now commented out (figS_fl_forward_backward_density, fluorescence against bright-field density; figS_tip_root_scatter, tipward against rootward), and the fluorescence panels of the speed IQR figure (fig:speed_iqr).
 % NOTE (3, transport model link): the transport model keeps v0 constant with only the tip-distance term; a diameter-dependent v0(D) was under test (#134). The main model uses physical inputs only, with no fitted width exponent (Simon, 12 Oct). The diameter source and the walls_v4 ranking are in the notes of \nameref{subsec:si_forward_flow}.
 
-% NOTE (15 Oct, 4, falloff to zero vs offset, Simon: SI only): This is the same hierarchical Bayesian fit as Fig 5b with v_tip fixed at 0, v(d) = v_inf (1 - e^(-d/ell)), on 1,481 bright-field edges: v_inf 2.79 [2.75, 2.83] um/s, ell 194 [145, 241] um. The offset fit gives v_tip 2.18 [1.92, 2.39], v_inf 2.93 [2.86, 3.03] um/s, ell 1.85 [1.11, 3.52] mm. The zero curve reaches 2.0 um/s at 250 um and is flat at 2.8 um/s beyond ~1 mm, so it misses the rise over 1-3 mm and sits ~10 % below the edges beyond 4 mm; within 500 um it fits slightly better (median log residual -0.006 against -0.066). WAIC is higher for the offset fit by 25.5 +- 7.3 (10.6 from the 82 edges within 1 mm of a tip, 12.7 from those beyond 3 mm). Only 7 edges lie within 250 um of a tip, so a drop on the ~20 um scale of the tip kymographs (\nameref{subsec:si_tips}) is below what the edge data resolve. The source is transport_paper feat/flow-regime, forward_speed_bayes.py --zero (c2a9ca9).
+% NOTE (15 Oct, 4, falloff to zero vs offset, Simon: SI only): This is the same hierarchical Bayesian fit as Fig 5b with v_tip fixed at 0, v(d) = v_inf (1 - e^(-d/ell)), on 1,693 bright-field edges (core set, 11 Nov): v_inf 2.86 [2.82, 2.90] um/s, ell 219 [171, 266] um. The offset fit gives v_tip 2.30 [2.08, 2.49], v_inf 3.10 [2.99, 3.31] um/s, ell 2.98 [1.70, 6.32] mm. The zero curve reaches 1.9 um/s at 250 um and is flat at 2.8 um/s beyond ~1 mm, so it misses the rise over 1-3 mm and sits ~10 % below the edges beyond 4 mm; within 500 um it fits slightly better (median log residual within 500 um 0.071 against -0.087). WAIC is higher for the offset fit by 31.3 +- 8.4 (8.0 from the 97 edges within 1 mm of a tip, 19.2 from those beyond 3 mm). Only 9 edges lie within 250 um of a tip, so a drop on the ~20 um scale of the tip kymographs (\nameref{subsec:si_tips}) is below what the edge data resolve. The source is transport_paper feat/flow-regime, forward_speed_bayes.py --zero (c2a9ca9).
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth,keepaspectratio]{suppfig/figS_tip_falloff_zero.png}
@@ -555,6 +581,7 @@ u(r) = v_m + \frac{2(q_{w,r<a} - \pi a^2 v_m)(a^2 - r^2)}{\pi a^4}.
 
 Interestingly, when one assumes $q_w = 0$ as would be the case in a closed pipe system, we have:
 \begin{equation}
+% NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): write without Theta: u(0) = -v_m [1 + 2 (1-theta)(b^2 - a^2)/a^2]; the sentence 'For all values of Theta and theta' below becomes 'For all theta and a < b'.
 \label{eq:max_speed}
 u(0) = -v_m\left(1+2\frac{\Theta(1-\theta)}{\theta-\Theta}\right) .
 \end{equation}
@@ -648,7 +675,7 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 % NOTE (6 Nov, moved from main text): median log2(modelled/measured) by betweenness tercile -0.05 (top) against -0.37 (bottom); by kappa class +0.04 up to kappa 4, -0.34 at kappa 4-6, -0.38 above 6.
 % NOTE (2 Nov): section text to be written by Simon; the numbers moved here from the main text (Sajitha: keep only the important claims there). Fig 5 model (global solve) against the per-video bright-field measurements (no slow-streak cut; transport_paper fig/fig5-per-video fa2bbd7).
 % NOTE (2 Nov): kappa / betweenness split recomputed (median kappa_mean from flow_regime/tree_loop_si.csv, edge betweenness at the session): the main-text values (3.0 vs 3.8 and 4.5 vs 3.5 um/s) do not reproduce on the Fig 5 model even per edge (2.92 vs 3.58, n 263; 4.78 vs 3.95, n 328).
-% NOTE (5 Nov, where the residual lies; for a table later; transport_paper Working_notebooks/residual_breakdown.py, uncommitted; /tmp/residual_breakdown.csv): Fig 5 model (theta 0.10), 1,616 per-video rows on 1,507 edges, 15 sessions; r = log2(model / measured), median -0.14, IQR -0.74 to +0.37, variance 1.17. Ranking: pooled Spearman 0.32 (0.32 after removing plate medians), per plate EPY088 0.51, LPD025 0.43, STR112 0.39, PNF072 0.27, PNF080 0.26 (mean 0.37); trail medians 0.38 (35 trails), loop arm ratios 0.41 (411). Share of the residual variance (eta^2, one-way, session-bootstrap 95 %) and median r per class: plate 0.048 [0.021, 0.078] (EPY088 +0.02, STR112 +0.08, LPD025 -0.17, PNF072 -0.27, PNF080 -0.33); kappa class 0.044 [0.028, 0.071] (<=2 +0.05, 2-4 +0.04, 4-6 -0.32, >6 -0.37; n 1,515); betweenness tercile 0.026 [0.009, 0.049] (low -0.37, mid -0.06, high -0.05); floor binding 0.026 [0.008, 0.048] (at the floor +0.34, n 126; free -0.19); diameter tercile, video-extracted 0.022 [0.008, 0.044] (thin +0.04, mid -0.19, thick -0.32; n 868); tip-distance bin 0.011 [0.002, 0.035] (<1 mm +0.19 ... >8 mm -0.38); tree vs loop 0.008 [0.002, 0.020] (tree -0.03, loop -0.15). Joint R^2 of all these factors 0.15. Repeat videos: 90 edges filmed more than once (199 rows), between-video variance of log2 measured 0.22 = 19 % of the residual variance; about 65 % stays unexplained (per-edge variation the model's inputs do not carry). No boundary effect (distance to the image edge or root band: rho -0.03 / +0.05, eta^2 < 0.01). Thick hyphae: video/network width ratio 1.11 in the thickest third against 0.92 in the thinnest, a possible defocus inflation (caveat, main text limitations).
+% NOTE (5 Nov, where the residual lies; for a table later; transport_paper Working_notebooks/residual_breakdown.py, uncommitted; /tmp/residual_breakdown.csv): Fig 5 model (theta 0.10), 1,654 per-video rows on 1,544 edges, 15 sessions; r = log2(model / measured), median -0.10, IQR -0.64 to +0.38, variance 1.17. Ranking: pooled Spearman 0.33 (0.33 after removing plate medians), per plate EPY088 0.50, LPD025 0.42, STR112 0.35, PNF072 0.28, PNF080 0.29 (mean 0.37); trail medians 0.37 (35 trails), loop arm ratios 0.40 (421). Share of the residual variance (eta^2, one-way, session-bootstrap 95 %) and median r per class: plate 0.039 [0.018, 0.065] (EPY088 +0.04, STR112 +0.10, LPD025 -0.14, PNF072 -0.22, PNF080 -0.23); kappa class 0.040 [0.025, 0.062] (<=2 +0.06, 2-4 +0.08, 4-6 -0.26, >6 -0.30; n 1,516); betweenness tercile 0.023 [0.008, 0.045] (low -0.27, mid -0.01, high -0.01); floor binding 0.024 [0.007, 0.045] (at the floor +0.37, n 125; free -0.14); diameter tercile, video-extracted 0.021 [0.008, 0.042] (thin +0.09, mid -0.09, thick -0.26; n 868); tip-distance bin 0.006 [0.002, 0.025] (<1 mm +0.25 ... >8 mm -0.23); tree vs loop 0.010 [0.004, 0.020] (tree +0.00, loop -0.12). Joint R^2 of all these factors 0.12. Repeat videos: 91 edges filmed more than once (201 rows), between-video variance of log2 measured 0.22 = 19 % of the residual variance; about 69 % stays unexplained (per-edge variation the model's inputs do not carry). No boundary effect (distance to the image edge or root band: rho -0.03 / +0.05, eta^2 < 0.01). Thick hyphae: video/network width ratio 1.11 in the thickest third against 0.92 in the thinnest, a possible defocus inflation (caveat, main text limitations).
 \begin{table}[htbp]
 \centering
 {\small
@@ -656,15 +683,15 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \hline
 \textbf{quantity} & \textbf{set} & \textbf{value} \\
 \hline
-rootward speed measurements & every measured edge and video & 1,616 (15 sessions, 5 plates) \\
-within a factor of 2 & every measurement & 75.7\% \\
-median ratio, modelled / measured & every measurement & 0.91 \\
-median fold error & every measurement & 1.44 \\
-KS distance (log speeds) & every measurement & 0.149 \\
+rootward speed measurements & every measured edge and video & 1,654 (15 sessions, 5 plates) \\
+within a factor of 2 & every measurement & 77.3\% \\
+median ratio, modelled / measured & every measurement & 0.93 \\
+median fold error & every measurement & 1.42 \\
+KS distance (log speeds) & every measurement & 0.109 \\
 trail segments within 10~mm of the tip & medians over $\pm$0.5~mm & 283 \\
 \quad within a factor of 2 & & 89\% \\
-\quad median ratio & & 0.99 \\
-trail medians, Spearman $\rho$ & 35 trails with $\geq$5 segments & 0.38 ($p = 0.024$) \\
+\quad median ratio & & 1.00 \\
+trail medians, Spearman $\rho$ & 35 trails with $\geq$5 segments & 0.37 ($p = 0.030$) \\
 within-trail Spearman $\rho$ (median) & same trails & 0.18 \\
 rise with tip distance, same sign & trails with $\geq$10 segments & 17 of 25 \\
 trail medians, $\geq$3 segments & 36 trails & $\rho = 0.41$ ($p = 0.013$) \\
@@ -681,10 +708,11 @@ modelled / measured median, low $\kappa$, high betweenness & 333 measurements & 
 
 \namedsubsection{Choice of the condensate lipid share}{subsec:si_theta_choice}
 % NOTE (6 Nov, moved from main text theta paragraph): Bago reports total lipid up to ~24% of the hyphal volume near the root; the model's whole-lumen Theta stays at or below 3.6% (median 0.7%); model accuracy flat over theta 0.02-0.3.
-% NOTE (4 Nov): first block moved verbatim from subsec:si_lipid_fraction (old analysis at v0 = 3 um/s). New values for the rewrite: required Theta median 0.7 %, IQR 0.2-1.8 %, p95 4.2 %, max 11 %, flat with tip distance (bin medians 0.6-0.9 %), above the theta 0.10 cap (3.6 %) on 7.7 % of filmed edges.
+% NOTE (4 Nov): first block moved verbatim from subsec:si_lipid_fraction (old analysis at v0 = 3 um/s). New values for the rewrite: required Theta median 0.7 %, IQR 0.2-1.8 %, p95 4.1 %, max 11 %, flat with tip distance (bin medians 0.6-0.9 %), above the theta 0.10 cap (3.6 %) on 7.6 % of filmed edges.
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): resolve the blue comments and finish.
 % NOTE (12 Oct): This section was moved from the main text (Results, after the mass-flow test) as it stood, with the outline headings dropped (Simon: not central to the paper; mention in the Discussion). Its lipid fluxes come from the dissipation-minimisation model of the section above (subsec:si_mass_flow), so it reads after that one; the numbers are from the old analysis (see the notes).
 Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
+% NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): Theta_{i,j} here is the old analysis (all lipid moving at v_0), a different quantity from the model's; rename it or say it in words.
 To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
 We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
 % NOTE (12 Oct, 'why mm?'): 'by 10mm' means 'over 10 mm', and the fraction is the lipid volume fraction Theta of the old analysis. The numbers to reconcile are '4 %' here, '5 %' at the emulsion paragraph, theta 0.05 in the main model, and the measured moving lipid share of 2.4 % (< 2 mm from a tip) to 4.6 % (> 4 mm) (transport_paper#94; see \nameref{subsec:si_theta_spatial}). The next sentence says 'decrease away from the tip', against 'increased' here.
@@ -756,7 +784,7 @@ $\theta$ & floor $f$ & within 2$\times$ & ratio & KS & trail $\rho$ & loop $\rho
 \end{table}
 
 \namedsubsection{Tree and loop edges and network robustness}{subsec:si_tree_loop}
-% NOTE (6 Nov, moved from main text loop paragraph): 411 loops, model vs measured arm ratio rho 0.41 [0.32, 0.50]; partial rho beyond diameter ratio 0.32; filmed arms > 150 um apart rho 0.51 (140 loops). Core conductance (L/a^4) alone rho 0.15 [0.06, 0.25], better-core arm faster in 207/411 (transport_paper Working_notebooks/scratch_cp/loop_core_conductance.py, uncommitted).
+% NOTE (6 Nov, moved from main text loop paragraph): 421 loops, model vs measured arm ratio rho 0.40 [0.31, 0.48]; partial rho beyond diameter ratio 0.32; filmed arms > 150 um apart rho 0.45 (140 loops). Core conductance (L/a^4) alone rho 0.17 [0.08, 0.26], better-core arm faster in 213/421 (transport_paper Working_notebooks/scratch_cp/loop_core_conductance.py, uncommitted).
 % NOTE (moved from main text 2 Nov; 17 Oct, facts behind this subsection not in the prose): (A) 95 % of the 109 tree edges are within a factor of 2 (rank correlation 0.68); at fixed demand no width effect is detectable on tree edges (measured +0.21 [-0.42, 0.84], model -0.05), but over all filmed edges the video lumen keeps a width effect at fixed demand (within-plate rho 0.43 measured, 0.16 model). (B) The model exaggerates the arm difference (SD of the log ratio 0.89 against 0.53), mostly from width noise (network widths agree with the video lumen at rho 0.49); a lower conductance exponent does not fix it (K ~ a^3/L: 0.77, loop rho 0.37; a^2/L: 0.73, rho 0.29, KS 0.105), so Poiseuille stays; SI figures for the loop density plot and the side branches are built, not yet placed. (C-D) 70 % of the session 2 network (plate 5) length grew after session 1. (F) With the betweenness/kappa split at the medians, the model is low on high-kappa, low-betweenness edges (log2 model/measured -0.35; 2.97 against 3.80 um/s, 364 edges) and high on low-kappa, high-betweenness edges (+0.31; 4.47 against 3.53, 427 edges). (G) Sparse-flow edges: median lumen 6.2 against 8.4 um for full flow.
 % NOTE (moved from main text 2 Nov; 16 Oct, summarized 17 Oct, Fig 4F, other tests): Side branches along the trunks (62 filmed junctions, junction_side_branches.py): the model ranks the side / through speed ratio (rho +0.35, +0.30 beyond width), but its sign (46/62) does not beat the rule 'the side branch is slower' (49/62). Null: the trail's share of local conductance over 1 mm (rho -0.07 after tip distance and demand); 19 junctions with two rootward legs (9-10 of 19 right).
 % NOTE (moved from main text 2 Nov; 16 Oct, summarized 17 Oct, Fig 4F and circulation): In the 2x toy loop a third of the motor flux circulates (up the long arm, down the short one), while the long arm's core still flows rootward; the core reverses only from ~4x. In the real networks (main model) the core flows tipward on 0.5-2.6 % of edge length, although loop arms carry a median net flux of 30 % of their motor flux. No data in the paper show loop circulation itself; the circulation point is for the Discussion (note there).
@@ -808,7 +836,7 @@ The difference is not explained by growth nearby; routing past demand raises the
 \namedsubsection{Phosphorus concentration needed for the exchange rate}{subsec:si_cp_exchange}
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): possibly: builds on the Bisot C/P result.
 % NOTE (18 Oct): New section on Simon's request (moved from the main-text C/P subsection); text to be written by Simon.
-% NOTE (6 Nov, C/P on the current model, theta 0.10; replaces the 18 Oct note; Sajitha: P is carried in ALL backflow water; transport_paper Working_notebooks/scratch_cp/cp_theta010_carried.py, uncommitted, on the Fig 5 dumps global_gimf_gimf_minedge20_keras_ratio_fb; review-notes/cp_exchange_theta010_2026-11-06.md): Per edge q_s = pi b^2 v_m - J_l exactly, so carbon out / backflow volume = c_lipid Theta/(1-Theta), with Theta = theta (1 - a^2/b^2) the whole-lumen lipid fraction; C:P = (c_lipid/[P]) Theta_root/(1-Theta_root), set by Theta on the root edges and rising with lipid demand. Carbon = lipid carried by the condensate on the root edges (theta pi (b^2-a^2) v_m; where the floor binds this is below the demand, by up to two thirds at the roots in late sessions). Roots = nodes where water meets the reservoir (4-42 per session). Backflow into the roots equals q_s at the roots in all 15 sessions. Theta_root median 1.2 % (0.25-3.5 %). log backflow on log carbon over 15 sessions: slope 0.54 +- 0.33 (s.e.), R2 0.17 (strict proportionality would be 1); carbon per unit backflow varies 14-fold between sessions; on STR2307A112 over 5 sessions carbon 2.3-fold, backflow 1.6-fold. [P] needed in the backflow for 3.5 ug C per ug P: median 79 mmol/L (16-235 mmol/L), against plant-cell Pi 5-20 mmol/L (bieleski_phosphate_1973, range not re-checked). For comparison only: if P rode in the condensate water alone, trade would be proportional by construction at 0.73 mol/L (the old 0.76 mol/L at theta 0.10 was this case). Constants: TAG density 0.915 g/cm3 and C mass fraction 0.773 (triolein; density not re-checked). Bisot et al. (full text checked, PMC12891005): the exchange rate is by mass, ~3-4 ug C per ug P, set by host genotype; their carbon is expended carbon (carbon use efficiency 50 %, twice the carbon built into biomass, spores included), a growth-based quantity; >= 85 % of absorbed P reaches the root within ~100 h (absorbed P would be ~30 % of fungal dry mass if none were transferred, against <= 4-5 % P measured in hyphae).
+% NOTE (6 Nov, C/P on the current model, theta 0.10; replaces the 18 Oct note; Sajitha: P is carried in ALL backflow water; transport_paper Working_notebooks/scratch_cp/cp_theta010_carried.py, uncommitted, on the Fig 5 dumps global_gimf_gimf_minedge20_keras_ratio_fb_corefit; review-notes/cp_exchange_theta010_2026-11-06.md): Per edge q_s = pi b^2 v_m - J_l exactly, so carbon out / backflow volume = c_lipid Theta/(1-Theta), with Theta = theta (1 - a^2/b^2) the whole-lumen lipid fraction; C:P = (c_lipid/[P]) Theta_root/(1-Theta_root), set by Theta on the root edges and rising with lipid demand. Carbon = lipid carried by the condensate on the root edges (theta pi (b^2-a^2) v_m; where the floor binds this is below the demand, by up to two thirds at the roots in late sessions). Roots = nodes where water meets the reservoir (4-42 per session). Backflow into the roots equals q_s at the roots in all 15 sessions. Theta_root median 1.1 % (0.24-3.4 %). log backflow on log carbon over 15 sessions: slope 0.52 +- 0.33 (s.e.), R2 0.17 (strict proportionality would be 1); carbon per unit backflow varies 15-fold between sessions; on STR2307A112 over 5 sessions carbon 2.3-fold, backflow 1.6-fold. [P] needed in the backflow for 3.5 ug C per ug P: median 76 mmol/L (16-232 mmol/L), against plant-cell Pi 5-20 mmol/L (bieleski_phosphate_1973, range not re-checked). For comparison only: if P rode in the condensate water alone, trade would be proportional by construction at 0.73 mol/L (the old 0.76 mol/L at theta 0.10 was this case). Constants: TAG density 0.915 g/cm3 and C mass fraction 0.773 (triolein; density not re-checked). Bisot et al. (full text checked, PMC12891005): the exchange rate is by mass, ~3-4 ug C per ug P, set by host genotype; their carbon is expended carbon (carbon use efficiency 50 %, twice the carbon built into biomass, spores included), a growth-based quantity; >= 85 % of absorbed P reaches the root within ~100 h (absorbed P would be ~30 % of fungal dry mass if none were transferred, against <= 4-5 % P measured in hyphae).
 
 % chapterbib gives every \include'd file its own reference list; the SI needs its own since it cites (12 Oct, mass-flow section).
 \subsection*{Supplementary references}
