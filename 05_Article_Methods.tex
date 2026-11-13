@@ -177,8 +177,9 @@ With these rules 97.6\% of the network traces its growth back to a root.
 Growing tips are degree-1 nodes of the session's graph, other than roots, from which the network extends within the next four frames (8~h).
 The distance to the nearest growing tip is measured along the network.
 
-An edge is a tree edge (tree-like) when removing it disconnects the network (a bridge), and a loop edge when it lies on a cycle.
-Bridges are taken on the simple graph of each session, with chains of degree-two nodes dissolved, on the network as it stood at that session.
+An edge is a tree edge (tree-like) when removing it disconnects the network (a bridge) and no root lies beyond it, and a loop edge otherwise.
+Bridges are taken on the simple graph of each session, with chains of degree-two nodes dissolved, on the network as it stood at that session; the root condition is tested by joining every root of the session to one super-node, which leaves a bridge with roots on both sides lying on a cycle.
+It excludes 1.6\% of bridges.
 Local loop density is the cycle rank per mm of hypha within 500~$\mu$m of the edge.
 \todo{bins and script for the share of bridges by distance to the nearest growing tip (SI Fig.~\ref{fig:tree_like_share})}
 

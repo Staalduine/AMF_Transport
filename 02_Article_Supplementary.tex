@@ -89,11 +89,10 @@ Static-flow recordings of plates 1--5 (15 sessions); the perturbation videos are
 % 4 CONTEXT: over all edges of the same networks 36% are tree-like, against 14% of the filmed edges, so the filmed set under-samples tree-like edges (lead into \nameref{subsec:si_video_selection}).
 % OPEN: whether to add all edges to the figure and the per-session spread; fill the Methods \todo with these bins.
 
-An edge is \emph{tree-like} when it is a bridge of the network graph: cutting it splits the network in two, and everything beyond it hangs from that one hypha.
+An edge is \emph{tree-like} when it is a bridge of the network graph with no root of its own beyond it: cutting it splits the network in two, and everything beyond it hangs from that one hypha and draws its water through it.
 Everything else lies on a loop, with at least two routes back to the root.
-For the comparison with the model (Fig.~\ref{fig:fig6_examples}A), a tree-like edge must also have no root of its own beyond it.
-The section it feeds then draws water through that one hypha, no net water crosses the edge, and the model's tree case applies exactly.
-Ten of the 214 filmed bridges have a root on both sides and are left out.
+The second half of the condition matters only rarely, in that 98.4\% of the 408,574 bridges of the 15 session networks already satisfy it, but it is what makes the section a tree hydraulically as well as topologically: no net water crosses such an edge, so the model's tree case applies to it exactly (Fig.~\ref{fig:fig6_examples}A).
+A bridge with roots on both sides fails it, because the root compartment joins the two sides and water crosses the edge; 10 of the 214 filmed bridges are of that kind.
 
 Tree-like hyphae are a feature of the growing front rather than of the network behind it (Fig.~\ref{fig:tree_like_share}).
 Of the filmed edges within 1~mm of a growing tip, 45\% are tree-like.
@@ -105,10 +104,10 @@ This matches a colony that grows by extending and branching hyphae and closes lo
 \centering
 \includegraphics[width=0.6\textwidth,keepaspectratio]{suppfig/figS_tree_like_share.pdf}
 \caption{\textbf{Tree-like hyphae are concentrated at the growing front, and the filmed hyphae are not a sample of them.}
-An edge is tree-like when it is a bridge of its session's network graph; distance is measured along the network to the nearest growing tip (15 sessions, plates 1--5; all 1,076,957 edges within 16~mm of a tip, of which 1,770 were filmed).
+An edge is tree-like when it is a bridge of its session's network graph with no root beyond it; distance is measured along the network to the nearest growing tip (15 sessions, plates 1--5; all 1,076,957 edges within 16~mm of a tip, of which 1,770 were filmed).
 \textbf{(A)} Where the edges lie. The filmed set covers the same range but not in the same proportions, falling short within 1~mm of a tip and over-representing 2 to 6~mm.
 \textbf{(B)} Tree-like share against that distance, in 1~mm bins, with the band giving the interquartile range over the 15 sessions of the per-session curve.
-Both sets fall over the first two millimetres, from 57 to about 32\% over the whole network and from 45 to 11\% among the filmed edges, and both are flat beyond.
+Both sets fall over the first two millimetres, from 57 to about 31\% over the whole network and from 45 to 10\% among the filmed edges, and both are flat beyond.
 The filmed edges therefore follow the same gradient about 20 percentage points lower, which is the selection measured in \nameref{subsec:si_video_selection}.}\label{fig:tree_like_share}
 \end{figure}
 
