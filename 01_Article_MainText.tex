@@ -286,6 +286,19 @@ Each outgoing branch from a junction carries the condensate demand of its downst
 The more tips downstream, the more demand, and the thicker the condensate layer, which narrows the core (Eq.~\eqref{eq:lipid_current}) and increases the backflow speed, and the more asymmetric the flow profile is across the network. 
 
 The increase in backflow speed with demand can be mitigated by a larger hyphal diameter, which increases the core radius and reduces the backflow speed at fixed demand. This is illustrated in Fig.~\ref{fig:schematic_model}E, where a single path with a tapering diameter is shown. The backflow speed is higher in the narrower sections of the hypha, and lower in the wider sections.
+% NOTE (13 Nov, MUST REWRITE with the two-lane model; Simon deferred the new wording): the two paragraphs above
+% describe the dragged-core mechanism, in which demand sets the core radius. The two-lane model fixes a/b, so
+% panels D, E and G of Fig 4 (rebuilt 13 Nov from the same toys) are now FLAT. On a tree the two-lane model gives
+% v_b = (1 - theta) v_m ((b/a)^2 - 1) with a/b fixed, so the backflow speed depends on the motor speed ALONE: more
+% tips downstream do not thicken the condensate (D), a tapering diameter does not raise the speed (E), and the
+% growth step does not change the profile (G). Only F (loop) still has structure, through the conductance a^4/L.
+% So the paragraph above on diameter is wrong for a tree path. It still holds in the network at large, where most
+% edges lie on loops: there the model's rootward speed rises steeply with width (log-log slope +1.4 within session,
+% measured +0.7), which is what carries the diameter claim later in this section.
+% What survives of the demand story is network-level, not local: demand routed through a hypha still sets how much
+% return the solve sends through it, which is what drives the rise towards the root in Fig 5C and the loop result in
+% Fig 6B. Rewrite D and G in those terms, and see the Fig 6A note below -- on real tree-like edges the measured speed
+% does rise with demand (+0.10) while the model is flat (+0.02), so do not claim the toys reproduce it.
 
 Together, the increase of the motor speed $v_m$ with distance to tip (Fig.~\ref{fig:asymmetries}B), and the increase in demand with the number of tips, create a rise in backflow speed with distance to tip (Fig.~\ref{fig:schematic_model}D,E).
 This is somewhat mitigated by the tapering of hyphal diameters.
@@ -303,18 +316,22 @@ Finally, as tips multiply, they increase their demand for lipid, which increases
     \centering
     \includegraphics[width=\linewidth]{figures/fig_plug_model.png}
     \caption{\textbf{The network model reproduces the distribution of rootward speeds and their rise away from the growing tips.}
-Measured bright-field speeds (grey, black) against the model (blue): global pressure solve with motors at the tipward speed profile of Fig.~\ref{fig:asymmetries}B, physical inputs only, apart from $\theta$, set from the growth-data lower bound (SI, \nameref{subsec:si_theta_choice}).
+Measured bright-field speeds (grey, black) against the model (blue): global pressure solve with motors at the tipward speed profile of Fig.~\ref{fig:asymmetries}B, physical inputs only apart from the share of the lumen the condensate occupies, $a/b = 0.69$, which is the one quantity calibrated on the rootward speeds; the lipid share $\theta = 0.013$ then follows from the lipid current (SI, \nameref{subsec:si_theta_choice}).
 \textbf{(A)} Distribution of the rootward speed over every measured edge, measured (grey bars) and modelled (blue line), counts on a log axis (1,654 measurements in 15 sessions on 5 plates); speeds of 10~$\mu$m/s and above fall in the last bin.
-\textbf{(B)} Measured against modelled rootward speed on 283 trail-segment measurements within 10~mm of the trail tip, each as the median over the trail's segments within $\pm$0.5~mm (measured: of the measured segments only): 89\% within a factor 2, median ratio of modelled to measured 1.00.
+\textbf{(B)} Measured against modelled rootward speed on 283 trail-segment measurements within 10~mm of the trail tip, each as the median over the trail's segments within $\pm$0.5~mm (measured: of the measured segments only): 87\% within a factor 2, median ratio of modelled to measured 0.94.
 Paler points have a larger uncertainty (the measured interquartile range and the range of the model within $\pm$0.5~mm along the trail, combined); grey wedge: within a factor 2; line: identity.
-\textbf{(C)} Rootward speed on trail segments against the distance to the trail's tip at the session, in bins of 0--1, 1--2, 2--3, 3--5, 5--7.5, 7.5--10, 10--15 and 15--20~mm holding 3, 14, 19, 65, 76, 104, 141 and 93 measured segments; line: bin median, band: 25th--75th percentile (grey: measured, blue: model).}\label{fig:fig5_plug}
+\textbf{(C)} Rootward speed on trail segments against the distance to the trail's tip at the session, in bins of 0--1, 1--2, 2--3, 3--5, 5--7.5, 7.5--10, 10--15 and 15--20~mm holding 3, 14, 19, 67, 76, 104, 142 and 94 measured segments; line: bin median, band: 25th--75th percentile (grey: measured, blue: model).}\label{fig:fig5_plug}
 \end{figure}
 
 The model allows us to predict on each edge what the net volumetric rate of fluid movement $q_w$ would be and then the direction and magnitude of the flow speed in the core of each edge of the network (Fig.~\ref{fig:fig5_plug}).
 We found that our model captures salient features of the bidirectionality of flow observed across all edges, specifically in ranking the relative speeds. This was achieved with no parameter fitted to the rootward speeds, and only using physical inputs and the measured tipward speeds.
 
 We can compare the distribution of the measured rootward speeds with the modelled speeds per edge (Fig.~\ref{fig:fig5_plug}A), and find that the model captures the overall distribution reasonably well.
-Direct per trail segment comparisons show a correlation between the modelled and measured speeds (Spearman $\rho = 0.33$, 283 measurements, $p = 1.3 \cdot 10^{-8}$; Fig.~\ref{fig:fig5_plug}B).
+Direct per trail segment comparisons show a correlation between the modelled and measured speeds (Spearman $\rho = 0.26$, 283 measurements, $p = 8.5 \cdot 10^{-6}$; Fig.~\ref{fig:fig5_plug}B).
+% NOTE (13 Nov): rho recomputed for the two-lane model; it was 0.33 (p 1.3e-8) under the dragged-core model, which
+% the same script reproduces exactly, so the basis is unchanged. The tip-distance sentence below is left as it stands:
+% the model's rho there moves only from +0.48 to +0.47 (measured +0.45 on 577 trail segments), but the stated
+% +0.44 / +0.41 come from a slightly different filter that was not reproduced here -- check before submission.
 A null model that assumes a uniform backflow speed across the network cannot provide this ranking, as a constant speed cannot rank edges at all.
 Another result of the model is that it captures the rise in rootward speed with distance from the nearest growing tip (Fig.~\ref{fig:fig5_plug}C; Spearman $\rho$ with tip distance $+0.44$ modelled against $+0.41$ measured, 577 trail segments), along with a rise in the spread of the rootward speeds, which is a key feature of the observed flows (Fig.~\ref{fig:asymmetries}B).
 
@@ -344,7 +361,7 @@ This result was obtained with the video-extracted diameters, which are more accu
     \includegraphics[width=\linewidth,height=0.64\textheight,keepaspectratio]{figures/fig6_model_examples.png}
     \caption{\textbf{Network-level tests of the model's predictions (Fig.~\ref{fig:schematic_model}D-G).}
 Model as in Fig.~\ref{fig:fig5_plug} (blue); measured bright-field rootward speed per trail segment, median with 25th--75th percentile (black).
-\textbf{(A)} Tree-like hyphae: rootward speed against the routed lipid demand (lipid volume per second routed through the hypha, $\mu$m$^3$/s), medians of the five demand quintiles with 25th--75th percentile, measured (black) and model (blue); the model is within a factor 2 of the measurement on 95\% of these measurements.
+\textbf{(A)} Tree-like hyphae, that is bridges with no water source below them (104 measurements on 101 edges): rootward speed against the routed lipid demand (lipid volume per second routed through the hypha, $\mu$m$^3$/s), medians of the five demand quintiles with 25th--75th percentile, measured (black) and model (blue); the model is within a factor 2 of the measurement on 93\% of these measurements, but does not reproduce the rise with demand.
 \textbf{(B)} Loops with both arms filmed (n=421): rank correlation with the measured rootward speed ratio of the two arms, for the model, for the model with the arms' diameter ratio removed from both ratios (partial correlation), and for the diameter, conductance and length ratios of the two arms, with bootstrap 95\% intervals.
 \textbf{(C)} Network of plate 5 at session 2, every hypha coloured by whether it was present at session 1 (grey) or grew since (green), with measured trail in bold and its tip (star).
 \textbf{(D)} Rootward speed along measured trail against the distance from the root, model at session 1 (light blue) and session 2 (blue; running median over 5 segments), measured at session 1 (open) and session 2 (filled); green: grown since session 1.
