@@ -277,6 +277,22 @@ The synthetic data are idealised: white pixel-independent noise, constant-speed 
 In B the pipeline normalisation was applied to the 20~fps video before averaging and decimation, and the emulation was not checked against raw videos.}\label{fig:fl_detection_limit}
 \end{figure}
 
+% RULE (Simon, 13 Nov 2026, settled -- do not reopen; to be written up here or in the Methods, beside the speed
+% limit above): THE LOW-FRAME-RATE FLUORESCENCE VIDEOS CANNOT CARRY ANY INTENSITY-BASED ANALYSIS. Measured on the
+% raw frames, upstream of the pipeline: within one session, at identical exposure, gain and binning, the background
+% level varies 2.2x between videos while the moving-streak contrast is only about 2 % of that background, so the
+% absolute brightness of a video follows illumination, focus and how deep the hypha sits, not its lipid content.
+% The pipeline then normalises every per-edge volume before writing the kymograph (flow_analysis_comps
+% new_kymographer.normalize_volumes: subtract the time mean, divide by the std, rescale to [0,1], CLAHE), so each
+% stored kymograph has the same mean by construction -- over 92 of them, spanning a 320x range of routed lipid
+% demand, the per-image mean is 0.4987 +- 0.0025.
+% RULED OUT: brightness against demand, lipid concentration, theta, any comparison of intensity between videos.
+% STILL VALID: ratios taken inside a single image, where illumination cancels -- the direction bias is one, so
+% Fig 2D and the direction-bias panels of figS_lipid_intensity stand, while its brightness-versus-demand panel is
+% dropped. Future intensity work needs a brightness fiducial across videos, or a comparison within one field of
+% view. Evidence: transport_paper HANDOVER section 2 and Working_notebooks/scratch_rawint/; picture in the vault,
+% Transport Paper with Coco/Figures/kymographs_unnormalised_EPY_t55_2026-11-13.png.
+
 \namedsubsection{Stitching and graph repair}{subsec:si_stitching}
 % NOTES (updated 11 Nov). CAPTIONS: to write (Coco: graph extraction). No SI text (S3 is figures only). CITED FROM: Methods (Stitching, segmentation and network extraction). Figures from transport_paper feat/flow-regime manuscript/figures (S_stitching.png: stitch_shear_by_station.py; S_graph_repair.png: graph_repair_figure.py; both 21 Sep), captions in the Typst supplement (manuscript/09_supplement.typ, "Acquisition and network").
 
