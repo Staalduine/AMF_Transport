@@ -137,7 +137,9 @@ The flow videos were not taken at random positions.
 They were taken by eye, on runner hyphae where the tipward and rootward streams could be told apart, so the speeds in this paper describe the hyphae we filmed rather than the network as a whole.
 This subsection measures how far the filmed hyphae differ from the rest, so that the reader can judge how widely the results carry.
 
-We rank hyphae by root-directed betweenness centrality, as in Oyarte Galvez et al.~\cite{oyarte_galvez_travelling-wave_2025} after Freeman~\cite{freeman_set_1977}: the share of the network's nodes whose shortest route to the root compartment runs through an edge, with the roots joined into one node and ties shared equally.
+We rank hyphae by root-directed betweenness centrality, as in Oyarte Galvez et al.~\cite{oyarte_galvez_travelling-wave_2025} after Freeman~\cite{freeman_set_1977}.
+For each edge it is the share of source nodes whose shortest route to the root node subset runs through that edge, with the roots taken as one subset and equal-length routes sharing the count.
+Every node of the network is a source; a second version takes only the growing tips.
 It is a measure of how much of the colony a hypha serves.
 Edges with no traffic at all are left out (62,469 of 1,139,071 edges, 42 of them filmed).
 The filmed edges (1,740 with a non-zero value) are compared against all edges of the same networks (1,076,602) and against the edges inside the convex hull of the filmed positions (310,967), the second comparison separating the choice of hypha from the choice of where on the plate to look.
