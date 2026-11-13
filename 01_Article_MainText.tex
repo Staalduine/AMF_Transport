@@ -353,7 +353,19 @@ Model as in Fig.~\ref{fig:fig5_plug} (blue); measured bright-field rootward spee
 
 We compare the model's characteristics, listed in Fig.~\ref{fig:schematic_model}D-G, with the measured flows in the network (Fig.~\ref{fig:fig6_examples}A-E).
 The first is the claim that in tree-like parts of the network, lipid demand accumulates towards the root, and that this accumulation increases the backflow speed.
-We find that in the 115 measurements on tree-like edges (on no loop) that carry routed lipid demand, the measured rootward speed rises with the demand as the model predicts: effect of log demand on log speed 0.11 [0.05, 0.17] measured against 0.08 [0.07, 0.10] in the model (Fig.~\ref{fig:fig6_examples}A).  
+We find that in the 115 measurements on tree-like edges (on no loop) that carry routed lipid demand, the measured rootward speed rises with the demand as the model predicts: effect of log demand on log speed 0.11 [0.05, 0.17] measured against 0.08 [0.07, 0.10] in the model (Fig.~\ref{fig:fig6_examples}A).
+% NOTE (13 Nov, MUST REWRITE with the two-lane model): this sentence no longer holds. Two things changed.
+% (1) The set: tree-like now means a bridge with no water source below it (|q_w| < 1 % of q_s, the condition that makes
+%     the tree equation exact), which is 204 of the 214 filmed bridges -> 104 measurements on 101 edges, not 115. Ten
+%     bridges carry a root on both sides (the LPD025 cases) and are out. See SI subsec:si_tree_tip.
+% (2) The result: with a fixed a/b the model NO LONGER produces the demand effect. Measured +0.10 (log-log, width
+%     partialled out; raw +0.12, Spearman +0.56, p 6e-10) against +0.02 in the model, which is only its motor profile.
+%     The old 0.08 came from the demand-set core radius of the dragged-core model, which the two-lane model drops.
+%     Fig 6A now shows this gap (measured 2.1 -> 4.3 um/s across the demand range, model flat near 2.7-3.1).
+% Half the measured rise is in the motor speed itself (measured tipward +0.053 against +0.021 in the model's
+% tip-distance profile) and half in the geometry ratio rootward/tipward (+0.046). Setting the core radius from the
+% local lipid current instead (theta fixed, a solved -- the circuit note's choice) overshoots sevenfold (+0.73) and
+% drops the overall fit to 42 % within 2x, so it is not the fix. transport_paper Working_notebooks/scratch_tree_demand.py.
 
 The second is the claim that in loops, the model predicts which arm carries the faster rootward flow.
 We find that in 421 small loops with both arms filmed, the model predicts which arm carries the faster rootward flow (Spearman $\rho = 0.40$ [0.31, 0.48] between modelled and measured arm speed ratios), also beyond the arms' diameter ratio and when the filmed arms are far apart (SI, \nameref{subsec:si_tree_loop}).

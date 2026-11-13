@@ -28,14 +28,14 @@
 
 \section{The filmed hyphae}\label{sec:si_network}
 
-% NOTES (11 Nov). TABLE of the STATIC-FLOW videos and measurements (flow survey, plates 1-5) and what each set is used for; the perturbation sets are in tab:si_perturbation_sets (S4). CAPTION: to write.
+% NOTES (11 Nov; caption written 13 Nov). TABLE of the STATIC-FLOW videos and measurements (flow survey, plates 1-5) and what each set is used for; the perturbation sets are in tab:si_perturbation_sets (S4).
 % SOURCES: Methods (recorded, registered counts); SI fig:speed_iqr caption (731 BF videos, 3,583 streams); main text (625 NileRed); Fig 2A/B/D captions; SI tab:si_model_accuracy (1,654 / 1,544); Figs 5B, 6A, 6B; S1.1 and S1.2 notes (1,778 / 1,740 edges); Fig 3 captions and the Methods colony table (perturbations; droplets recounted 3 Nov, July 2025 only).
 % FUNNEL COUNTS (11 Nov): counts from AMF_Transport scratch/funnel/funnel_counts.py (.txt/.csv). A measurement there is a (store edge, video, video edge) row, the model tables' key; counted per (edge, video) every measurement count from step 3 on is 1 lower (one video crosses one store edge twice). Steps 4-5 (updated 11 Nov, no swap rule) are the core set of transport_paper Working_notebooks/utils/static_sets.py (speed set: steps 1-3): its 1,898 rows are the 1,967 step-3 bright-field measurements less 58 on a video edge < 20 um and 11 on store edges without a network diameter (STR2307A112_t73 6, _t60 4, _t38 1); every core row is a step-3 row (key check, 11 Nov). Videos per subset: core 720, rootward 683, tipward 706, both 665. The earlier step 4 (1,626 / 1,572 after the swap rule, 51 rows not oriented by the growth graph) and step 5 (1,616 / 1,507) are superseded. Streams are per video edge and direction (as in fig:speed_iqr).
 % WHY THE COUNTS DIFFER: each analysis has its own filter (registered; >= 5 streaks per direction; imaging mode known; both streams present; model set). The caption should say so and point to Methods.
 \begin{table}[htbp]
 \centering
-{\small
-\renewcommand{\arraystretch}{1.15}
+{\footnotesize
+\renewcommand{\arraystretch}{1.05}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{6.0cm}@{}}
 \toprule
 \textbf{Unit} & \textbf{Definition} & \textbf{Total, static flow (plates 1--5)} \\
@@ -68,28 +68,44 @@ Lipid direction bias, slow positions & 160 edge pairs (140 NileRed, 139 bright-f
 \addlinespace[2pt]
 All compared measurements (step 5) & 1,654 measurements on 1,544 edges & Figs.~\ref{fig:fig5_plug}, \ref{fig:fig6_examples}; SI \ref{sec:si_model_data} \\
 \quad trail segments within 10~mm of a tip & 283 measurements & Fig.~\ref{fig:fig5_plug}B \\
-\quad tree-like edges with routed demand & 115 measurements & Fig.~\ref{fig:fig6_examples}A \\
+\quad tree-like edges with routed demand & 104 measurements on 101 edges & Fig.~\ref{fig:fig6_examples}A \\
 \quad loops with both arms filmed & 421 loops & Fig.~\ref{fig:fig6_examples}B \\
 \bottomrule
 \end{tabularx}
 }
-\caption{Overview of the static flow video sets, used in figures 1, 2, 5 and 6. }\label{tab:static_video_sets}
+\caption{\textbf{The static-flow videos and the sets drawn from them.}
+A measurement is one edge in one video, so a video crossing three edges gives three measurements, each with a tipward and a rootward stream.
+The counts fall at every step because each analysis needs more of the data than the one before, which is also why the sets used in the figures differ in size; the Methods give the filters in full.
+Static-flow recordings of plates 1--5 (15 sessions); the perturbation videos are in Table~\ref{tab:si_perturbation_sets}.}\label{tab:static_video_sets}
 \end{table}
 
 
 \namedsubsection{Tree-like edges and distance to the growing tips}{subsec:si_tree_tip}
-% NOTES (updated 11 Nov). TEXT: to write (Coco could help: graph extraction). CITED FROM: main text Fig 1A (inset, "about 40% within 1 mm against 10-14% beyond 2 mm"), Methods "Tree and loop edges" (\todo for the bins).
+% NOTES (updated 11 Nov; TEXT and caption written 13 Nov). CITED FROM: main text Fig 1A (inset, "about 40% within 1 mm against 10-14% beyond 2 mm"), Methods "Tree and loop edges" (\todo for the bins).
 % SOURCE: transport_paper Working_notebooks/manuscript_figures/fig1.py, bridge_share_by_tip(); numbers from the 29 Oct rebuild of Figs 1-2 on the current main model (split_even_j10000, 20 um minimum video edge; AMF_Transport PR #12).
 % 1 DEFINITION: an edge is tree-like when it is a bridge of the network graph (removing it disconnects the network; networkx bridges on the simple graph, degree-2 nodes dissolved), computed on the network as it was at each session (model tables' `bridge` column); otherwise it lies on a loop.
 % 2 EDGE SET: the filmed edges of the main tables, 15 sessions on plates 1-5: 1,778 edges, 1,778 with a tip distance (network distance to the nearest growing tip, d_tip). This is not the 1,544-edge model set; name the set in the text (see tab:static_video_sets).
 % 3 RESULT (bins by tip distance: edges, % tree-like): <1 mm 100, 45.0%; 1-2 mm 209, 21.1%; 2-4 mm 499, 10.6%; 4-8 mm 650, 10.6%; >8 mm 320, 12.5%. Main text "about 45%" and "10-13%" match.
 % 4 CONTEXT: over all edges of the same networks 36% are tree-like, against 14% of the filmed edges, so the filmed set under-samples tree-like edges (lead into \nameref{subsec:si_video_selection}).
-% OPEN: caption; whether to add all edges to the figure and the per-session spread; fill the Methods \todo with these bins.
+% OPEN: whether to add all edges to the figure and the per-session spread; fill the Methods \todo with these bins.
+
+An edge is \emph{tree-like} when it is a bridge of the network graph: cutting it splits the network in two, so everything beyond it hangs from that one hypha.
+Everything else lies on a loop, with at least two routes back to the root.
+Bridges are found on the simple graph of each session, with chains of degree-two nodes dissolved, on the network as it stood at that session.
+
+Tree-like hyphae are a feature of the growing front rather than of the network behind it (Fig.~\ref{fig:tree_like_share}).
+Of the filmed edges within 1~mm of a growing tip, 45\% are tree-like; between 1 and 2~mm the share is 21\%, and from 2~mm outwards it settles near an eighth (11\% at 2--4 and 4--8~mm, 13\% beyond 8~mm).
+This is what one expects of a colony that grows by extending and branching hyphae and then closes loops behind the front by fusion.
+
+The filmed edges under-sample tree-like hyphae: 14\% of them are bridges, against 36\% of all edges of the same networks, because the videos were taken on the thicker hyphae where flow is easiest to see (\nameref{subsec:si_video_selection}).
+Where the model is compared against the measurements on tree-like edges (Fig.~\ref{fig:fig6_examples}A), a second condition is added: no water source may lie below the bridge, which is what makes the tree form of the model exact there. Ten of the 214 filmed bridges carry a root on both sides and are excluded.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth,keepaspectratio]{suppfig/figS_tree_like_share.pdf}
-\caption{[Caption to be written.]}\label{fig:tree_like_share}
+\caption{\textbf{Tree-like hyphae are concentrated at the growing front.}
+Share of filmed edges that are tree-like (a bridge of the session's network graph) against the network distance to the nearest growing tip, in bins of 0--1, 1--2, 2--4, 4--8 and more than 8~mm holding 100, 209, 499, 650 and 320 of the 1,778 edges of the core set (Table~\ref{tab:static_video_sets}; 15 sessions, plates 1--5).
+Over all edges of the same networks, filmed or not, 36\% are tree-like.}\label{fig:tree_like_share}
 \end{figure}
 
 \namedsubsection{Selection bias of the filmed hyphae}{subsec:si_video_selection}
@@ -109,7 +125,7 @@ Dots are placed at the hyphae their videos were registered to.
 The plate 4 sessions are days 10--12 of Fig.~\ref{fig:hyphal_profiling}B. All panels share the 10~mm scale bar.}\label{fig:video_positions}
 \end{figure}
 
-% NOTES (updated 11 Nov). TEXT: to write. CITED FROM: main text Results (filmed hyphae, l.~105) and Discussion limitations (l.~399). SOURCE: transport_paper feat/bc-selection-bias d2054b7, manuscript/bc_selection_bias.md, #130.
+% NOTES (updated 11 Nov; TEXT and caption written 13 Nov). CITED FROM: main text Results (filmed hyphae, l.~105) and Discussion limitations (l.~399). SOURCE: transport_paper feat/bc-selection-bias d2054b7, manuscript/bc_selection_bias.md, #130.
 % 1 WHY: the flow videos were taken by eye on runner hyphae where the two streams could be told apart, so the speed statistics describe the filmed hyphae, not the whole network. This subsection measures how different the filmed edges are, so the reader can judge how far the results generalise.
 % 2 MEASURE: root-directed betweenness centrality (BC) as in Oyarte Galvez et al. 2025 (oyarte_galvez_travelling-wave_2025, after freeman_set_1977): per edge, the share of the network's nodes whose shortest path (by length) to the root compartment crosses the edge (roots joined in one super-node; equal-length paths share 1/sigma). Edges with BC = 0 are left out (62,469 of 1,139,071; 42 filmed). Variant: growing tips only as sources.
 % 3 GROUPS: filmed edges = store edges with a video mapping, 1,740 with BC > 0 (15 sessions, plates 1-5; a different set from the 1,778 of S1.1, see tab:static_video_sets). References: all edges of the same networks (1,076,602) and, to separate selection from where the plates were filmed, the edges inside the convex hull of the filmed positions (310,967).
@@ -117,7 +133,30 @@ The plate 4 sessions are days 10--12 of Fig.~\ref{fig:hyphal_profiling}B. All pa
 % 5 WHAT ELSE DIFFERS: filmed edges are thicker (store diameter 10.2 against 7.8 um), slightly closer to a growing tip (4.3 against 4.8 mm) and less often tree-like (14% against 36%; 33% inside the hull). BC and diameter covary, so the diameter difference is not a separate selection.
 % 6 CONSEQUENCE (panel C): among filmed edges the bright-field median speed rises only weakly with log BC: Spearman 0.18 tipward (n 1,656) and 0.18 rootward (n 1,510), unchanged with tip distance partialled out, positive in 12/15 and 14/15 sessions; same direction as Oyarte Galvez. Tips-only BC: 0.39 / 0.36 raw, 0.21 / 0.25 after tip distance. So the results describe high-BC hyphae.
 % 7 CAVEATS: edges along one hypha share nearly the same BC, so pooled p-values overstate independence (the per-network percentiles are the robust statistic). Edges are counted, not length-weighted (Oyarte's Extended Data Fig 7a is length-weighted). Store diameters for both groups (no lumen diameters network-wide).
-% OPEN: caption of fig:bc_selection (panels in the note below).
+The flow videos were not taken at random positions.
+They were taken by eye, on runner hyphae where the tipward and rootward streams could be told apart, so the speeds in this paper describe the hyphae we filmed rather than the network as a whole.
+This subsection measures how far the filmed hyphae differ from the rest, so that the reader can judge how widely the results carry.
+
+We rank hyphae by root-directed betweenness centrality, as in Oyarte Galvez et al.~\cite{oyarte_galvez_travelling-wave_2025} after Freeman~\cite{freeman_set_1977}: the share of the network's nodes whose shortest route to the root compartment runs through an edge, with the roots joined into one node and ties shared equally.
+It is a measure of how much of the colony a hypha serves.
+Edges with no traffic at all are left out (62,469 of 1,139,071 edges, 42 of them filmed).
+The filmed edges (1,740 with a non-zero value) are compared against all edges of the same networks (1,076,602) and against the edges inside the convex hull of the filmed positions (310,967), the second comparison separating the choice of hypha from the choice of where on the plate to look.
+
+The filmed hyphae are among the busiest in their networks (Fig.~\ref{fig:bc_selection}A,B).
+They sit at a median 83rd percentile of their own network (interquartile range 55--95), and every one of the 15 sessions has a median above the 50th.
+The shift is one of selection rather than of location: the median centrality of the filmed edges is more than an order of magnitude above both references, which do not differ from each other.
+Taking only the growing tips as sources, rather than every node, gives the same picture (80th percentile, interquartile range 61--92).
+The filmed hyphae are also thicker (10.2 against 7.8~$\mu$m), a little closer to a growing tip (4.3 against 4.8~mm) and less often tree-like (14\% against 36\%, and 33\% inside the hull); diameter and centrality rise together, so the difference in diameter is not a separate bias.
+
+Within the filmed set itself, speed rises only weakly with centrality (Fig.~\ref{fig:bc_selection}C): the bright-field median speed per edge gives a Spearman correlation of 0.18 in both directions, unchanged when distance to the tip is partialled out, and positive in at least 12 of the 15 sessions.
+The direction agrees with Oyarte Galvez et al.~\cite{oyarte_galvez_travelling-wave_2025}.
+The speeds reported here are therefore those of well-connected hyphae, and the quiet periphery of a colony is not represented.
+
+Two caveats.
+Edges along one hypha share almost the same centrality, so correlations pooled over edges overstate how many independent observations there are; the per-session percentiles are the more robust statistic.
+Edges are counted one each, not weighted by length.
+
+% OPEN: nothing; §1.2 text and caption written 13 Nov.
 
 % -----------------------------------------------------------------------
 % FIGURE: selection bias of the filmed hyphae, root-directed betweenness centrality
@@ -127,12 +166,21 @@ The plate 4 sessions are days 10--12 of Fig.~\ref{fig:hyphal_profiling}B. All pa
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_bc_selection.pdf}
-\caption{[Caption to be written.]}\label{fig:bc_selection}
+\caption{\textbf{The filmed hyphae are among the best-connected in their networks.}
+Root-directed betweenness centrality: the share of the network's nodes whose shortest route to the root compartment runs through an edge (15 sessions, plates 1--5; edges with no traffic omitted).
+\textbf{(A)} Distribution over all edges of the filmed networks (1,076,602), over the edges inside the convex hull of the filmed positions (310,967) and over the filmed edges (1,740). A filmed edge is busier than an unfilmed one in 75\% of random pairs.
+\textbf{(B)} Percentile of each filmed edge within its own network, for the centrality in (A) and for the variant that counts only growing tips as sources. Medians 83 and 80.
+\textbf{(C)} Median bright-field speed per filmed edge against its centrality, tipward and rootward. Within the filmed set the dependence is weak (Spearman 0.18 in both directions).
+The filmed hyphae being busier than average is a property of how the positions were chosen, not of where on the plate they lie: the two reference distributions in (A) coincide.}\label{fig:bc_selection}
 \end{figure}
 
 \namedsubsection{Spread of the speeds}{subsec:si_speed_spread}
-% NOTES (11 Nov). TEXT: optional (one or two sentences); the caption carries the numbers. CITED FROM: main text l.~113 (median IQR 1.6 rootward, 0.6 um/s tipward).
+% NOTES (11 Nov; TEXT written 13 Nov). The caption carries the numbers. CITED FROM: main text l.~113 (median IQR 1.6 rootward, 0.6 um/s tipward).
 % 1 Bright-field only (13 Oct decision: no speed comparison with fluorescence, NileRed streaks stop near 5 um/s, see fig:fl_detection_limit). The NileRed IQRs and the 5 um/s matched-range version (FigS_video_positions_iqr_cap5.pdf) are dropped. Figure from transport_paper feat/si-drop-fl-comparisons 4525b15.
+
+A single hypha does not carry a single speed: the streaks within one video and one direction spread over about 1~$\mu$m/s, and that spread is itself asymmetric (Fig.~\ref{fig:speed_iqr}).
+The rootward stream is the broader of the two almost everywhere along the colony, with a median interquartile range of 1.58 against 0.63~$\mu$m/s tipward.
+Only the bright-field videos are used here, because the NileRed streaks are not detected above about 5~$\mu$m/s (SI Fig.~\ref{fig:fl_detection_limit}) and their spread would be cut by that limit rather than by the flow.
 % -----------------------------------------------------------------------
 % FIGURE: spread (IQR) of the speeds of all static-flow videos
 % Referenced in main text (Results): "SI Fig.~\ref{fig:speed_iqr}"
