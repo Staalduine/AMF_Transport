@@ -138,25 +138,25 @@ They were taken by eye, on runner hyphae where the tipward and rootward streams 
 This subsection measures how far the filmed hyphae differ from the rest, so that the reader can judge how widely the results carry.
 
 We rank hyphae by root-directed betweenness centrality, as in Oyarte Galvez et al.~\cite{oyarte_galvez_travelling-wave_2025} after Freeman~\cite{freeman_set_1977}.
-For each edge it is the share of source nodes whose shortest route to the root node subset runs through that edge, with the roots taken as one subset and equal-length routes sharing the count.
-Every node of the network is a source; a second version takes only the growing tips.
-It is a measure of how much of the colony a hypha serves.
-Edges with no traffic at all are left out (62,469 of 1,139,071 edges, 42 of them filmed).
-The filmed edges (1,740 with a non-zero value) are compared against all edges of the same networks (1,076,602) and against the edges inside the convex hull of the filmed positions (310,967), the second comparison separating the choice of hypha from the choice of where on the plate to look.
+For each edge it is the share of growing tips whose shortest route to the root node subset runs through that edge, with the roots taken as one subset and equal-length routes sharing the count.
+It is a measure of how much of the growing front a hypha serves.
+Edges that carry no such route are left out, which leaves 193,387 of the 1,139,071 edges and 888 of the filmed ones.
+Those filmed edges are compared against the remaining edges of the same networks and against the 55,936 of them inside the convex hull of the filmed positions, the second comparison separating the choice of hypha from the choice of where on the plate to look.
 
 The filmed hyphae are among the busiest in their networks (Fig.~\ref{fig:bc_selection}A,B).
-They sit at a median 83rd percentile of their own network (interquartile range 55--95), and every one of the 15 sessions has a median above the 50th.
-The shift is one of selection rather than of location: the median centrality of the filmed edges is more than an order of magnitude above both references, which do not differ from each other.
-Taking only the growing tips as sources, rather than every node, gives the same picture (80th percentile, interquartile range 61--92).
-The filmed hyphae are also thicker (10.2 against 7.8~$\mu$m), a little closer to a growing tip (4.3 against 4.8~mm) and less often tree-like (14\% against 36\%, and 33\% inside the hull); diameter and centrality rise together, so the difference in diameter is not a separate bias.
+They sit at a median 82nd percentile of their own network (interquartile range 63--92), every one of the 15 sessions has a median above the 50th, and a filmed edge carries more tip routes than an unfilmed one in 76\% of random pairs.
+Against the hull reference the shift is smaller (70\%) and in 6 of the 15 sessions it is not significant, so part of it is where on the plate we looked rather than which hypha we chose there.
+The filmed hyphae are also thicker (10.9 against 9.0~$\mu$m) and less often tree-like (14\% against 36\%, and 26\% inside the hull); diameter and centrality rise together, so the difference in diameter is not a separate bias.
+They sit farther from a growing tip than the reference set (3.6 against 1.8~mm), which reverses under the all-node measure (4.4 against 4.8~mm): counting only tips as sources leaves a reference set concentrated near the front.
 
-Within the filmed set itself, speed rises only weakly with centrality (Fig.~\ref{fig:bc_selection}C): the bright-field median speed per edge gives a Spearman correlation of 0.18 in both directions, unchanged when distance to the tip is partialled out, and positive in at least 12 of the 15 sessions.
+Within the filmed set itself, speed rises with centrality (Fig.~\ref{fig:bc_selection}C): the bright-field median speed per edge gives a Spearman correlation of 0.39 tipward and 0.37 rootward, falling to 0.21 and 0.25 when distance to the tip is partialled out, and positive in 14 of the 15 sessions tipward and 13 of 14 rootward.
 The direction agrees with Oyarte Galvez et al.~\cite{oyarte_galvez_travelling-wave_2025}.
 The speeds reported here are therefore those of well-connected hyphae, and the quiet periphery of a colony is not represented.
 
 Two caveats.
 Edges along one hypha share almost the same centrality, so correlations pooled over edges overstate how many independent observations there are; the per-session percentiles are the more robust statistic.
 Edges are counted one each, not weighted by length.
+Taking every node as a source rather than only the growing tips ranks the edges much the same (Spearman 0.78 between the two) and puts the filmed edges at a median 83rd percentile (interquartile range 55--95), but the speed relation is then weaker, 0.18 in both directions.
 
 % OPEN: nothing; §1.2 text and caption written 13 Nov.
 
@@ -169,11 +169,10 @@ Edges are counted one each, not weighted by length.
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_bc_selection.pdf}
 \caption{\textbf{The filmed hyphae are among the best-connected in their networks.}
-Root-directed betweenness centrality: the share of the network's nodes whose shortest route to the root compartment runs through an edge (15 sessions, plates 1--5; edges with no traffic omitted).
-\textbf{(A)} Distribution over all edges of the filmed networks (1,076,602), over the edges inside the convex hull of the filmed positions (310,967) and over the filmed edges (1,740). A filmed edge is busier than an unfilmed one in 75\% of random pairs.
-\textbf{(B)} Percentile of each filmed edge within its own network, for the centrality in (A) and for the variant that counts only growing tips as sources. Medians 83 and 80.
-\textbf{(C)} Median bright-field speed per filmed edge against its centrality, tipward and rootward. Within the filmed set the dependence is weak (Spearman 0.18 in both directions).
-The filmed hyphae being busier than average is a property of how the positions were chosen, not of where on the plate they lie: the two reference distributions in (A) coincide.}\label{fig:bc_selection}
+Root-directed betweenness centrality: the share of growing tips whose shortest route to the root node subset runs through an edge (15 sessions, plates 1--5; edges carrying no such route omitted).
+\textbf{(A)} Distribution over the remaining edges of the filmed networks (193,387), over those inside the convex hull of the filmed positions (55,936) and over the filmed edges (888). A filmed edge is busier than an unfilmed one in 76\% of random pairs, and than a hull edge in 70\%.
+\textbf{(B)} Percentile of each filmed edge within its own network, for the centrality in (A) and for the variant that counts every node as a source. Medians 82 and 83.
+\textbf{(C)} Median bright-field speed per filmed edge against its centrality, tipward and rootward (Spearman 0.39 and 0.37; 0.21 and 0.25 with distance to the tip partialled out).}\label{fig:bc_selection}
 \end{figure}
 
 \namedsubsection{Spread of the speeds}{subsec:si_speed_spread}
