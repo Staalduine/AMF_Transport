@@ -178,6 +178,7 @@ Growing tips are degree-1 nodes of the session's graph, other than roots, from w
 The distance to the nearest growing tip is measured along the network.
 
 An edge is a tree edge (tree-like) when removing it disconnects the network (a bridge), and a loop edge when it lies on a cycle.
+Bridges are taken on the simple graph of each session, with chains of degree-two nodes dissolved, on the network as it stood at that session.
 Local loop density is the cycle rank per mm of hypha within 500~$\mu$m of the edge.
 \todo{bins and script for the share of bridges by distance to the nearest growing tip (SI Fig.~\ref{fig:tree_like_share})}
 
