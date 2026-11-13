@@ -295,6 +295,12 @@ The increase in backflow speed with demand can be mitigated by a larger hyphal d
 % So the paragraph above on diameter is wrong for a tree path. It still holds in the network at large, where most
 % edges lie on loops: there the model's rootward speed rises steeply with width (log-log slope +1.4 within session,
 % measured +0.7), which is what carries the diameter claim later in this section.
+% DECISION (Simon, 13 Nov): do not patch the prose. If the flat profiles stay -- that is, if the model keeps a fixed
+% a/b -- Fig 4D-G is REDRAWN ENTIRELY, because three of its four motifs then show a straight line. A redrawn version
+% has to be built on loops rather than tree paths, since that is where the two-lane model has anything to say:
+% demand and diameter act through what the network solve routes, not through the local core. Panel F is the one
+% motif that survives as it is. This is tied to the a/b question -- a core radius set by the lipid current brings the
+% tree response back but overshoots sevenfold and halves the overall fit (transport_paper scratch_tree_demand.py).
 % What survives of the demand story is network-level, not local: demand routed through a hypha still sets how much
 % return the solve sends through it, which is what drives the rise towards the root in Fig 5C and the loop result in
 % Fig 6B. Rewrite D and G in those terms, and see the Fig 6A note below -- on real tree-like edges the measured speed
