@@ -41,7 +41,7 @@ This study did not generate new unique reagents.
 The fungal strains are available from the sources listed in the key resources table.
 
 \begin{itemize}
-  \item The per-hypha dataset is deposited at \todo{repository, DOI} and is publicly available as of the date of publication: per edge and session, the network's properties (length, diameter, age, growth downstream, tree or loop, distance to the root and to the nearest growing tip) with the measured tipward and rootward speeds, their quartiles and streak counts, and the model's prediction.
+  \item The per-hypha dataset is deposited at \todo{repository, DOI} and is publicly available as of the date of publication: per edge and imaging day, the network's properties (length, diameter, age, growth downstream, tree or loop, distance to the root and to the nearest growing tip) with the measured tipward and rootward speeds, their quartiles and streak counts, and the model's prediction.
 The raw network images and flow videos are available from the lead contact on request.
   \item All original code is on GitHub (key resources table) and archived at \todo{Zenodo DOIs} as of the date of publication.
   \item Any additional information required to reanalyze the data reported in this paper is available from the lead contact upon request.
@@ -91,14 +91,14 @@ An acrylic frame against the central barrier, covered by a nylon mesh (50~$\mu$m
 Plates were sealed with parafilm and kept in the dark at 25~\textdegree C. The fungus crossed about 5--6 weeks after inoculation, and time-lapse imaging started at the crossing.
 \todo{confirm that the five plates followed this protocol unchanged}
 
-Five plates were imaged, each in one or more sessions of flow videos at a frame of the time-lapse (the session's frame index, tNN):
+Five plates were imaged, each on one or more imaging days of flow videos at a frame of the time-lapse (the imaging day's frame index, tNN):
 % NOTE (2 Nov, plate table): no longer matches the 13-row table below (plates 1-5 flow survey, 6 root cut, 4/7/8/9 section cut, 10-13 droplets).
 
 \begin{center}
 {\small
 \begin{tabular}{llllll}
 \hline
-\textbf{plate} & \textbf{internal ID} & \textbf{strain} & \textbf{purpose} & \textbf{sessions} & \textbf{days after crossing} \\
+\textbf{plate} & \textbf{internal ID} & \textbf{strain} & \textbf{purpose} & \textbf{imaging days} & \textbf{days after crossing} \\
 \hline
 1 & PNF2307A072 & C2 & flow survey & t37, t49 & \todo{} \\
 2 & PNF2307A080 & C2 & flow survey & t74, t81, t91 & \todo{} \\
@@ -163,22 +163,22 @@ Gaps between pieces of network are bridged only where the raw image shows hyphal
 
 \namedsubsection{The dated network graph}{subsec:dated_graph}
 
-The frames of a time-lapse are registered onto one another, and the graph of the session's frame (the anchor) is cut into segments of 34.5~$\mu$m.
+The frames of a time-lapse are registered onto one another, and the graph of the imaging day's frame (the anchor) is cut into segments of 34.5~$\mu$m.
 Each segment is dated by the frame in which it first appears (its activation), which gives a spatio-temporal graph: one network in which every segment carries the time it grew (STHype).
 The edges used throughout are the anchor graph's junction-to-junction runs of segments.
 
 Roots are the places where the network enters the fungal compartment from the root side.
-They were annotated by hand on each plate (registrator) and advanced along their hyphae to the session.
+They were annotated by hand on each plate (registrator) and advanced along their hyphae to the imaging day.
 
 The growth graph orients every segment from the end that appeared first to the end that appeared later, so each hypha points the way it grew.
 Four rules settle what dates alone cannot (SI, \nameref{subsec:si_motor_direction}): a root-free stretch dated older than all its neighbors takes its oldest neighbor's date; a later-dated segment on the best-dated path from a root into such an island is backdated to the island's date; ties are broken by network distance along paths whose dates never decrease; and edges at a root point away from it.
 With these rules 97.6\% of the network traces its growth back to a root.
 
-Growing tips are degree-1 nodes of the session's graph, other than roots, from which the network extends within the next four frames (8~h).
+Growing tips are degree-1 nodes of the imaging day's graph, other than roots, from which the network extends within the next four frames (8~h).
 The distance to the nearest growing tip is measured along the network.
 
 An edge is a tree edge (tree-like) when removing it disconnects the network (a bridge) and no root lies beyond it, and a loop edge otherwise.
-Bridges are taken on the simple graph of each session, with chains of degree-two nodes dissolved, on the network as it stood at that session; the root condition is tested by joining every root of the session to one super-node, which leaves a bridge with roots on both sides lying on a cycle.
+Bridges are taken on the simple graph of each imaging day, with chains of degree-two nodes dissolved, on the network as it stood on that imaging day; the root condition is tested by joining every root of the imaging day to one super-node, which leaves a bridge with roots on both sides lying on a cycle.
 It excludes 1.6\% of bridges.
 Local loop density is the cycle rank per mm of hypha within 500~$\mu$m of the edge.
 \todo{bins and script for the share of bridges by distance to the nearest growing tip (SI Fig.~\ref{fig:tree_like_share})}
@@ -187,11 +187,11 @@ Local loop density is the cycle rank per mm of hypha within 500~$\mu$m of the ed
 
 Flow videos were recorded on a second microscope with the same imaging path (tube lens and Basler acA4112 camera, 3.45~$\mu$m pixels) behind a 50$\times$ objective \todo{objective model}, at 2~$\times$~2 binning: 0.138~$\mu$m per pixel.
 Its motorized stage records each video's position on the plate.
-At each session, positions were chosen on the latest stitched image along hand-picked routes from the root to growing tips (the trails) and on the side hyphae around them, and filmed with the lid on \todo{confirm lid on for all sessions}.
+On each imaging day, positions were chosen on the latest stitched image along hand-picked routes from the root to growing tips (the trails) and on the side hyphae around them, and filmed with the lid on \todo{confirm lid on for all imaging days}.
 Bright-field videos were recorded at 20 frames per second for 20--60~s; fluorescence videos of lipids stained with NileRed~\cite{kleinCytoplasmicFlowDynamics2026} at 1--2 frames per second \todo{NileRed concentration and staining time; who filmed}.
-The exposure time was 45~ms in bright-field at 20 frames per second, and 0.45~s at 2 and 0.9~s at 1 frame per second in fluorescence, about 90\% of the frame period in each case (read from the acquisition record of the 2 frames per second videos; the 1 frame per second value is inferred from the same ratio \todo{confirm on the raw acquisition files of the 1 frame per second sessions}).
+The exposure time was 45~ms in bright-field at 20 frames per second, and 0.45~s at 2 and 0.9~s at 1 frame per second in fluorescence, about 90\% of the frame period in each case (read from the acquisition record of the 2 frames per second videos; the 1 frame per second value is inferred from the same ratio \todo{confirm on the raw acquisition files of the 1 frame per second imaging days}).
 At most positions a bright-field video was followed, about 15~s later, by a NileRed video of the same position (recorded one after the other, not simultaneously).
-In total 1,683 videos were recorded over 15 sessions: 839 in bright-field, 704 in NileRed fluorescence, and 140 without a recorded imaging mode (SI Fig.~\ref{fig:video_positions}).
+In total 1,683 videos were recorded over 15 imaging days: 839 in bright-field, 704 in NileRed fluorescence, and 140 without a recorded imaging mode (SI Fig.~\ref{fig:video_positions}).
 
 \namedsubsection{From video to speeds}{subsec:video_to_speeds}
 
@@ -286,8 +286,8 @@ The direction bias is computed from the orientation of all moving pixels and doe
 
 \namedsubsection{Videos on the network}{subsec:videos_on_network}
 
-Each video is registered onto the edge it shows in the session's graph (registrator; SI Fig.~\ref{fig:registration}).
-A few videos per session are anchored to graph nodes by hand, and a similarity transform fitted to them (rotation, scale and translation, with a reflection check) places every other video from its stage coordinates.
+Each video is registered onto the edge it shows in the imaging day's graph (registrator; SI Fig.~\ref{fig:registration}).
+A few videos per imaging day are anchored to graph nodes by hand, and a similarity transform fitted to them (rotation, scale and translation, with a reflection check) places every other video from its stage coordinates.
 The hyphae in each video are then matched to the edges of the surrounding graph by an optimal assignment on their positions, directions and connectivity, and hand pins overrule the match where it is ambiguous.
 
 A stream runs to the tip when it runs the way its edge grew in the growth graph.
@@ -296,7 +296,7 @@ Where the stream labeled rootward is motor-like (within 25\% of 3.06~$\mu$m/s, w
 
 % NOTE (3 Nov, checked on the per-video no-cut tables, motor_orientation.orient): the swap rule swaps 99 bright-field video measurements on 91 edges (C14's 61 was on an older table) -> prose: '(99 video measurements on 91 edges)' instead of '(58 edges)'.
 
-Trails were drawn by hand as paths through the graph from a root toward growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); one trail of plate 3 (session 5) was dropped whole.
+Trails were drawn by hand as paths through the graph from a root toward growing tips (registrator), and trimmed from the root to leave out the stretches where the direction is reversed (the mirror arm; SI Fig.~\ref{fig:mirror_arm}); one trail of plate 3 (imaging day 5) was dropped whole.
 Along a trail, each measured edge is placed at its distance from the trail's root end.
 
 \namedsubsection{Direction bias}{subsec:direction_bias}
@@ -350,7 +350,7 @@ Cuts round a patch of network isolated it from both its source and its sinks; 4 
 % NOTE (15 Oct, main model, consolidated; moved here from the main-text model section on 16 Oct, Simon): The main model uses a global pressure solve (no junction resistance). Motors run along the sign of the GIMF net flux (the growth-induced mass flow solve of the growth demand, Heaton 2010), and outward from the roots on edges without net flux. The lipid current is 0.256 times the GIMF flux. The annulus follows from the lipid current with theta 0.05 and a >= 0.8 b. The motor speed has a tip falloff (3.10 / 2.14 um/s, 1.71 mm). The read-out is |q_c| / (pi a^2), with no width exponent. Widths are the legacy Keras width times 0.75 (recalibrated on the filmed lumens), with a fallback of 0.83 times the segmenter width. The minimum video-edge length is 20 um. The run is transport_paper junction/global_gimf_gimf_minedge20_keras_ratio_fb (feat/flow-regime). On 1,544 bright-field edges in 15 sessions, 77.5 % are within a factor of 2 (full flow 78.9 %, sparse 65.9 %), the median fold error is 1.45 and KS is 0.056. GIMF motors are used because growth-graph motors, although they match the observed motor direction slightly better on loops (86 against 81 %, 677 edges), cut the upper half of the distribution (95th percentile 4.7 um/s, KS 0.23-0.25; SI variants). The outliers were inspected (the 10 worst each way). The too-slow ones are clean two-way flows to which the global solve gives almost no return (loop circulation); the too-fast ones are mostly one-way videos, a dormant hypha and a junction piece. Only edges shorter than 20 um were removed (Simon). The known limits are these: within 1 mm of a tip the model over-predicts (3.11 against 2.17 um/s), beyond 8 mm it under-predicts (3.50 against 4.22 um/s; this does not come from the width input, see SI widths), and it does not describe sparse flow (13 % of edges; SI, full and sparse flow).
 % NOTE (17 Oct, read-out, Simon): The read-out |q_c| / (pi a^2) is the mean over the circular core cross-section of the pressure-driven (Poiseuille) part of the core flow, measured relative to the moving condensate wall: half its peak, |P| / 2 (the radially rotated integral of the parabola; the 2D integral across a diameter gives 2/3). The text should say which average this is. The alternatives score worse on the 1,564 measured rootward speeds: the 2D mean, 2/3 |P|, gives median 4.55 um/s, 71.1 % within a factor of 2, model / measured 1.41, KS 0.248; two-thirds of the lab-frame centerline speed, 2/3 |v_m - P| (what a depth-projected image shows at the pipe center, and the read-out of the older shipped model), gives 2.65 um/s, 63.4 %, 0.85, KS 0.223; the current read-out gives 3.41 um/s, 77.7 %, 1.06, KS 0.047 (measured median 3.55). Which average the bright-field streaks sample depends on the depth of field against the 8-10 um lumen: particles across the whole lumen give the cross-section mean (1/2), a thin central slice the 2D mean (2/3) of the lab-frame profile.
 
-The model predicts the rootward speed on every edge of a session's graph from the network, its growth and the measured motor speed (\texttt{transport\_paper/compute\_funcs/backflow\_model.py}; step by step in SI Fig.~\ref{fig:model_steps}).
+The model predicts the rootward speed on every edge of an imaging day's graph from the network, its growth and the measured motor speed (\texttt{transport\_paper/compute\_funcs/backflow\_model.py}; step by step in SI Fig.~\ref{fig:model_steps}).
 Below, $D$ is the hyphal diameter of an edge, $L$ its length and $d$ its distance to the nearest growing tip.
 The diameter $D$ comes from an earlier diameter model (a Keras network on cross-sections of the network image), recalibrated on the hyphae measured in the flow videos: its diameter is multiplied by 0.75, the median ratio of the video-extracted diameter to this diameter over 1,969 filmed edges (SI, \nameref{subsec:si_widths}).
 The 8\% of edges without such a diameter take 0.83 times the segmenter's diameter, the same ratio for the segmenter.
@@ -358,7 +358,7 @@ The 8\% of edges without such a diameter take 0.83 times the segmenter's diamete
 \begin{enumerate}
   \item \textbf{Demand.}
 The hypha added over the next four frames is split into connected pieces.
-Each piece's volume per unit time, $\pi (D/2)^2 L / \Delta t$ summed over its edges, is shared between the session nodes it grows from, the growing tips.
+Each piece's volume per unit time, $\pi (D/2)^2 L / \Delta t$ summed over its edges, is shared between the imaging day nodes it grows from, the growing tips.
 Growth needs $\lambda = 0.26$ volumes of lipid per volume grown (dry-mass fraction 0.21, carbon fraction 0.5, carbon-use efficiency 0.5, density 1.1~g\,cm$^{-3}$, over 0.9 \todo{confirm: lipid density}; \texttt{constants.py}).
   \item \textbf{Routing.}
 The demand is routed by the growth-induced mass flow~\cite{heaton_growth-induced_2010}: the volume grown per unit time is a sink at the tips, the annotated roots are the source, and the flow is solved on the graph with Poiseuille conductances; the lipid flow rate on an edge is $\lambda$ times its net flux (routing up the growth graph with other split rules is an SI variant, \nameref{subsec:si_demand_split}).
@@ -368,9 +368,9 @@ Motors run in the direction of the growth-induced flux on each edge (outward fro
   \[
     \hat{v}_m(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
   \]
-  with $v_\infty = 3.10~\mu$m/s, $v_{\mathrm{tip}} = 2.30~\mu$m/s, $\ell = 2.98$~mm, the posterior medians of a hierarchical Bayesian fit to the measured tipward speed (1,693 bright-field edges, 15 sessions; 95\% intervals 2.99--3.31, 2.08--2.49~$\mu$m/s and 1.70--6.32~mm; SI, \nameref{subsec:si_forward_flow}).
+  with $v_\infty = 3.10~\mu$m/s, $v_{\mathrm{tip}} = 2.30~\mu$m/s, $\ell = 2.98$~mm, the posterior medians of a hierarchical Bayesian fit to the measured tipward speed (1,693 bright-field edges, 15 imaging days; 95\% intervals 2.99--3.31, 2.08--2.49~$\mu$m/s and 1.70--6.32~mm; SI, \nameref{subsec:si_forward_flow}).
 Those fits use the medians of the detected streaks.
-Refitted on the per-pixel tipward speeds (2,039 bright-field edges with at least 100 pixels per direction, current tip distances; \texttt{pixel\_tip\_distance\_fit.py}), the offset form gives $v_\infty = 2.93$ (95\% interval 2.81 to 3.21)~$\mu$m/s, $v_{\mathrm{tip}} = 1.18$ (0.10 to 1.60)~$\mu$m/s and $\ell = 1.35$~mm (0.74 to 2.14), preferred over a constant speed in leave-one-session-out and leave-one-plate-out comparisons (held-out error lower by 0.016, intervals $-0.036$ to $-0.003$ and $-0.037$ to $-0.002$); fluorescence at 2 frames per second (776 edges) gives 3.05 (2.89 to 3.59)~$\mu$m/s, 1.02 (0.75 to 2.24)~$\mu$m/s and 2.17~mm (1.62 to 7.86), with the near-tip speed 0.63 of the far one in both channels.
+Refitted on the per-pixel tipward speeds (2,039 bright-field edges with at least 100 pixels per direction, current tip distances; \texttt{pixel\_tip\_distance\_fit.py}), the offset form gives $v_\infty = 2.93$ (95\% interval 2.81 to 3.21)~$\mu$m/s, $v_{\mathrm{tip}} = 1.18$ (0.10 to 1.60)~$\mu$m/s and $\ell = 1.35$~mm (0.74 to 2.14), preferred over a constant speed in leave-one-imaging-day-out and leave-one-plate-out comparisons (held-out error lower by 0.016, intervals $-0.036$ to $-0.003$ and $-0.037$ to $-0.002$); fluorescence at 2 frames per second (776 edges) gives 3.05 (2.89 to 3.59)~$\mu$m/s, 1.02 (0.75 to 2.24)~$\mu$m/s and 2.17~mm (1.62 to 7.86), with the near-tip speed 0.63 of the far one in both channels.
 The speed near the tips is therefore lower than in the streak fit, but it is poorly constrained (15 bright-field edges lie within 250~$\mu$m of a tip).
 % NOTE (4 Nov): removed the per-pixel-profile rerun comparison (two sentences, scored against the old model); text kept in the session scratchpad, methods_removed_perpixel.txt, and in git HEAD.
 A constant motor speed scores worse in both comparisons.
@@ -397,8 +397,8 @@ The force-balance motor model, in which the motors pull against the drag of thei
 
 \namedsubsection{Quantification and statistical analysis}{subsec:statistics}
 
-An edge is a junction-to-junction run of the session's graph with at least one registered video; a session is one plate at one frame; the five plates are the independent biological replicates. $n$ in the text and captions counts edges unless stated.
-Of 1,683 videos over 15 sessions, 1,404 were registered onto the graph (279 not, 126 of them on plate 2, session 2).
+An edge is a junction-to-junction run of the imaging day's graph with at least one registered video; an imaging day is one plate at one frame; the five plates are the independent biological replicates. $n$ in the text and captions counts edges unless stated.
+Of 1,683 videos over 15 imaging days, 1,404 were registered onto the graph (279 not, 126 of them on plate 2, imaging day 2).
 They give 7,906 measurements, one per video, hypha and direction, of which 5,975 keep at least 5 moving streaks: 3,587 of 4,400 in bright-field and 2,388 of 3,506 in NileRed fluorescence.
 % NOTE (3 Nov): stream counts 3,587 / 2,388 -> 3,583 / 2,385 after removing duplicate entries (SI speed_iqr caption already uses these). The 7,906 / 5,975 / 4,400 / 3,506 totals come from registration_census.py and were not rerun per video.
 Bright-field streaks give 1,544 edges with a rootward stream and 1,459 with both streams (\texttt{registration\_census.py}), and fluorescence streaks 879 edges with both streams (\texttt{figS\_video\_positions.py}).
@@ -412,9 +412,9 @@ With $m$ the modeled and $x$ the measured speed on an edge:
   \item the log RMSE, the root-mean-square of $\ln(m/x)$, and the bias, its median;
   \item the spread, the standard deviation of $\ln$ speed over edges, compared between model and measurement.
 \end{itemize}
-The baseline is a constant: the median measured speed of the other sessions, held out one session at a time.
+The baseline is a constant: the median measured speed of the other imaging days, held out one imaging day at a time.
 
-Every parameter fitted on the measured speeds is scored on data it was not fitted on: the tip slowing and the linear terms on the tree-edge residual leave one session out; the core floor and the force-balance motor parameters leave one plate out.
+Every parameter fitted on the measured speeds is scored on data it was not fitted on: the tip slowing and the linear terms on the tree-edge residual leave one imaging day out; the core floor and the force-balance motor parameters leave one plate out.
 
 Groups are compared with two-sided Mann--Whitney U tests and Wilcoxon tests; intervals are 95\% bootstrap intervals, resampled over streaks or edges as stated.
 Analyses used Python 3.11 with NumPy, SciPy, pandas and NetworkX (key resources table); the script behind each number is named in the supplement next to it.
