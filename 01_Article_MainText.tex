@@ -56,29 +56,30 @@ The network's topological context therefore varies along the length of a hypha. 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/Figure_1_v6.pdf} 
+    \includegraphics[width=\textwidth]{figures/Figure_1_v7.pdf} 
     \caption{\textbf{AM fungi produce robust patterns of asymmetric bidirectional flows across time and space.}
-\textbf{(A)} Network graph where a hyphal transect has been highlighted with dots where measurements took place. White dot shows position of panel C.
+\textbf{(A)} Network graph where a hyphal transect has been highlighted with dots where measurements took place. White dot shows position of panel D.
 Green edges are tree-like, gray edges lie on a loop; line weight is exaggerated hyphal diameter.
 \textbf{(B)} Time evolution of network across three days after the network started crossing into the fungal compartment.
-Dots indicate locations where videos were taken, white dot shows panel C.
-\textbf{(C)} Example video frame of one recording, with edge indicated which is shown in E (Movie~\ref{movie:s1}).
-\textbf{(D)} Velocity profile along the trail shown in A, relative to the distance from the tip at the time of measurement.
+Dots indicate locations where videos were taken, white dot shows panel D.
+\textbf{(C)} Velocity profile along the trail shown in A, relative to the distance from the tip at the time of measurement.
 Each point is one video: the median of its extracted tipward (blue) or rootward (pink) speeds, error bars show the interquartile range.
 Marker shape gives the day, with the number of videos tipward/rootward in the key; dashed lines mark $\pm 3$~$\mu$m/s.
-\textbf{(E)} Top: kymograph from highlighted edge in panel C, x-axis is the along-trail position, y-axis is the time. Pixels are colored by the extracted velocity mode. Bottom: Histogram of the extracted velocities. Positive velocities are shown in blue, negative in pink. Kernel density estimate (KDE) mode extraction is shown, as well as the position of the maxima.}\label{fig:hyphal_profiling}
+\textbf{(D)} Example video frame of one recording, with edge indicated which is shown in E (Movie~\ref{movie:s1}).
+\textbf{(E)} Kymograph from highlighted edge in panel D, x-axis is the along-trail position, y-axis is the time. Pixels are colored by the extracted velocity mode.
+\textbf{(F)} Histogram of the extracted velocities. Positive velocities are shown in blue, negative in pink. Kernel density estimate (KDE) mode extraction is shown, as well as the position of the maxima.}\label{fig:hyphal_profiling}
 \end{figure}
 
 We asked how this change in topological context affected the speeds of the flows in the two directions along a hypha: toward the growing tip (tipward) and toward the root (rootward), as defined by the growth direction of the network.
-We imaged flows at high resolution in 731 bright-field videos along the hyphae of five colonies (SI Fig.~\ref{fig:video_positions}) and, mostly at the same positions, in 625 videos influorescence where neutral lipids were stained with NileRed. For the example network of Fig.~\ref{fig:hyphal_profiling}A--C, the videos were taken over three consecutive days.
+We imaged flows at high resolution in 731 bright-field videos along the hyphae of five colonies (SI Fig.~\ref{fig:video_positions}) and, mostly at the same positions, in 625 videos influorescence where neutral lipids were stained with NileRed. For the example network of Fig.~\ref{fig:hyphal_profiling}A--D, the videos were taken over three consecutive days.
 We followed mainly runner hyphae, the main routes to the root that contained the edges of high betweenness centrality~\cite{kirkley_betweenness_2018}. In those hyphae, the tipward and rootward flows could be distinguished by eye (SI, \nameref{subsec:si_video_selection}; SI Fig.~\ref{fig:bc_selection}). 
 
 In undisturbed hyphae (SI, \nameref{subsec:si_lid}), the two flows are superimposed in the video. Particles move in straight lines at nearly constant speed. In a kymograph, a 2d spatiotemporal projection of the video, every moving particle leaves a straight diagonal streak, with no sign of random or back-and-forth movement, except near the tips (Fig.~\ref{fig:hyphal_profiling}E; SI Fig.~\ref{fig:kymograph_examples}).
 In the field of view, the directed movement exceeds diffusion by one to  two orders of magnitude, so the slope of a streak is its speed (SI, \nameref{subsec:si_peclet}).
-Because each detected streak corresponded to one speed, we could reduce each kymograph to  distributions of tipward and rootward speeds (Fig.~\ref{fig:hyphal_profiling}E,SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
-The distribution of tipward speed was generally narrowly peaked around a median value close to 3~$\mu$m/s (Fig.~\ref{fig:hyphal_profiling}D,E,SI Fig.~\ref{fig:speed_iqr}).
+Because each detected streak corresponded to one speed, we could reduce each kymograph to  distributions of tipward and rootward speeds (Fig.~\ref{fig:hyphal_profiling}E,F, SI Fig.~\ref{fig:speed_flux_extraction_real_data}).
+The distribution of tipward speed was generally narrowly peaked around a median value close to 3~$\mu$m/s (Fig.~\ref{fig:hyphal_profiling}C,F, SI Fig.~\ref{fig:speed_iqr}).
 
-Rootward speeds were more broadly distributed and their median value generally increased with distance from the tip (Fig.~\ref{fig:hyphal_profiling}D).
+Rootward speeds were more broadly distributed and their median value generally increased with distance from the tip (Fig.~\ref{fig:hyphal_profiling}C).
 We looked at the distribution of median speed across all videos acquired across 15 imaging days from 5 different growing networks. We observed that the distribution of median tipward speeds was also narrowly peaked around 3~$\mu$m/s and rarely exceeded 4~$\mu$m/s while the distribution of rootward speed was wider with a large portions of speeds above 4~$\mu$m/sFig.~\ref{fig:asymmetries} A. In about half of the edges, the rootward speed was faster than the tipward speed and the rootward speed was only slower in a small portion of the edges Fig.~\ref{fig:asymmetries}A.
 A similar dependence on the distance to the nearest growing tip was observed on the whole dataset of growing tips from all positions across networks. Tipward speed increased only slightly in the first two millimeters and had an otherwise flat and narrow profile. Rootward speeds tended to increase by two fold in the first 5 mm away from a growing tip and then plateaued but the dependence on the nearest growing tip was less tight.(Fig.~\ref{fig:asymmetries}B). 
 
