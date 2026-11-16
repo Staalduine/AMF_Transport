@@ -79,7 +79,7 @@ Because each detected streak corresponded to one speed, we could reduce each kym
 The distribution of tipward speed was generally narrowly peaked around a median value close to 3~$\mu$m/s (Fig.~\ref{fig:hyphal_profiling}D,E,SI Fig.~\ref{fig:speed_iqr}).
 
 Rootward speeds were more broadly distributed and their median value generally increased with distance from the tip (Fig.~\ref{fig:hyphal_profiling}D).
-We looked at the distribution of median speed across all videos acquired across 15 timesteps from 5 different growing networks. We observed that the distribution of median tipward speeds was also narrowly peaked around 3~$\mu$m/s and rarely exceeded 4~$\mu$m/s while the distribution of rootward speed was wider with a large portions of speeds above 4~$\mu$m/sFig.~\ref{fig:asymmetries} A. In about half of the edges, the rootward speed was faster than the tipward speed and the rootward speed was only slower in a small portion of the edges Fig.~\ref{fig:asymmetries}A.
+We looked at the distribution of median speed across all videos acquired across 15 imaging days from 5 different growing networks. We observed that the distribution of median tipward speeds was also narrowly peaked around 3~$\mu$m/s and rarely exceeded 4~$\mu$m/s while the distribution of rootward speed was wider with a large portions of speeds above 4~$\mu$m/sFig.~\ref{fig:asymmetries} A. In about half of the edges, the rootward speed was faster than the tipward speed and the rootward speed was only slower in a small portion of the edges Fig.~\ref{fig:asymmetries}A.
 A similar dependence on the distance to the nearest growing tip was observed on the whole dataset of growing tips from all positions across networks. Tipward speed increased only slightly in the first two millimeters and had an otherwise flat and narrow profile. Rootward speeds tended to increase by two fold in the first 5 mm away from a growing tip and then plateaued but the dependence on the nearest growing tip was less tight.(Fig.~\ref{fig:asymmetries}B). 
 
 \begin{figure}
@@ -284,10 +284,10 @@ Finally, as tips multiply, they increase their demand for lipid, which increases
     \includegraphics[width=\linewidth]{figures/fig_plug_model.png}
     \caption{\textbf{The network model reproduces the distribution of rootward speeds and their rise away from the growing tips.}
 Measured bright-field speeds (gray, black) against the model (blue): global pressure solve with motors at the tipward speed profile of Fig.~\ref{fig:asymmetries}B, physical inputs only apart from the share of the lumen the condensate occupies, $a/b = 0.69$, which is the one quantity calibrated on the rootward speeds; the lipid share $\theta = 0.013$ then follows from the lipid current (SI, \nameref{subsec:si_theta_choice}).
-\textbf{(A)} Distribution of the rootward speed over every measured edge, measured (gray bars) and modeled (blue line), counts on a log axis (1,654 measurements in 15 sessions on 5 plates); speeds of 10~$\mu$m/s and above fall in the last bin.
+\textbf{(A)} Distribution of the rootward speed over every measured edge, measured (gray bars) and modeled (blue line), counts on a log axis (1,654 measurements over 15 imaging days on 5 plates); speeds of 10~$\mu$m/s and above fall in the last bin.
 \textbf{(B)} Measured against modeled rootward speed on 283 trail-segment measurements within 10~mm of the trail tip, each as the median over the trail's segments within $\pm$0.5~mm (measured: of the measured segments only): 87\% within a factor 2, median ratio of modeled to measured 0.94.
 Paler points have a larger uncertainty (the measured interquartile range and the range of the model within $\pm$0.5~mm along the trail, combined); gray wedge: within a factor 2; line: identity.
-\textbf{(C)} Rootward speed on trail segments against the distance to the trail's tip at the session, in bins of 0--1, 1--2, 2--3, 3--5, 5--7.5, 7.5--10, 10--15 and 15--20~mm holding 3, 14, 19, 67, 76, 104, 142 and 94 measured segments; line: bin median, band: 25th--75th percentile (gray: measured, blue: model).}\label{fig:fig5_plug}
+\textbf{(C)} Rootward speed on trail segments against the distance to the trail's tip on the imaging day, in bins of 0--1, 1--2, 2--3, 3--5, 5--7.5, 7.5--10, 10--15 and 15--20~mm holding 3, 14, 19, 67, 76, 104, 142 and 94 measured segments; line: bin median, band: 25th--75th percentile (gray: measured, blue: model).}\label{fig:fig5_plug}
 \end{figure}
 
 The model allows us to predict on each edge what the net volumetric rate of fluid movement $q_w$ would be and then the direction and magnitude of the flow speed in the core of each edge of the network (Fig.~\ref{fig:fig5_plug}).
@@ -330,9 +330,9 @@ This result was obtained with the video-extracted diameters, which are more accu
 Model as in Fig.~\ref{fig:fig5_plug} (blue); measured bright-field rootward speed per trail segment, median with 25th--75th percentile (black).
 \textbf{(A)} Tree-like hyphae, that is bridges with no water source below them (104 measurements on 101 edges): rootward speed against the routed lipid demand (lipid volume per second routed through the hypha, $\mu$m$^3$/s), medians of the five demand quintiles with 25th--75th percentile, measured (black) and model (blue); the model is within a factor 2 of the measurement on 93\% of these measurements, but does not reproduce the rise with demand.
 \textbf{(B)} Loops with both arms filmed (n=421): rank correlation with the measured rootward speed ratio of the two arms, for the model, for the model with the arms' diameter ratio removed from both ratios (partial correlation), and for the diameter, conductance and length ratios of the two arms, with bootstrap 95\% intervals.
-\textbf{(C)} Network of plate 5 at session 2, every hypha colored by whether it was present at session 1 (gray) or grew since (green), with measured trail in bold and its tip (star).
-\textbf{(D)} Rootward speed along measured trail against the distance from the root, model at session 1 (light blue) and session 2 (blue; running median over 5 segments), measured at session 1 (open) and session 2 (filled); green: grown since session 1.
-\textbf{(E)} One trail on each of the other plates: plate 1, session 1; plate 4, session 3; plate 3, session 4.}\label{fig:fig6_examples}
+\textbf{(C)} Network of plate 5 on imaging day 2, every hypha colored by whether it was present on imaging day 1 (gray) or grew since (green), with measured trail in bold and its tip (star).
+\textbf{(D)} Rootward speed along measured trail against the distance from the root, model on imaging day 1 (light blue) and imaging day 2 (blue; running median over 5 segments), measured on imaging day 1 (open) and imaging day 2 (filled); green: grown since imaging day 1.
+\textbf{(E)} One trail on each of the other plates: plate 1, imaging day 1; plate 4, imaging day 3; plate 3, imaging day 4.}\label{fig:fig6_examples}
 \end{figure}
 
 We compare the model's characteristics, listed in Fig.~\ref{fig:schematic_model}D-G, with the measured flows in the network (Fig.~\ref{fig:fig6_examples}A-E).
@@ -356,11 +356,11 @@ We find that in 421 small loops with both arms filmed, the model predicts which 
 The diameter ratio alone gives $\rho = 0.30$, the conductance ratio $\rho = 0.20$ and the length ratio $\rho = -0.02$: the routing of the network solve, not arm length, sets which arm is faster (Fig.~\ref{fig:fig6_examples}B).
 
 The third is the temporal change in rootward speed along a trail as the network grows.
-On the plate 5 trail, the stretch that existed at session 1 speeds up from session 1 to session 2 by 1.43-fold in the model and 1.71-fold measured (medians 3.86 to 5.54 and 3.01 to 5.14~$\mu$m/s; 16 and 15 segments); at session 2, 93\% of the 30 measured segments are within a factor of 2 of the model (Fig.~\ref{fig:fig6_examples}C-D).
+On the plate 5 trail, the stretch that existed on imaging day 1 speeds up from imaging day 1 to imaging day 2 by 1.43-fold in the model and 1.71-fold measured (medians 3.86 to 5.54 and 3.01 to 5.14~$\mu$m/s; 16 and 15 segments); on imaging day 2, 93\% of the 30 measured segments are within a factor of 2 of the model (Fig.~\ref{fig:fig6_examples}C-D).
 The mechanism is the one of Fig.~\ref{fig:schematic_model}G\@: demand rose 3.3-fold, the extra lipid thickens the condensate layer, and the backflow rises although the hypha also widened.
 
 We also show other examples of the model's predictions on other plates (Fig.~\ref{fig:fig6_examples}E).
-One trail on each of the other plates: plate 1, session 1 (26 segments, 92\% within a factor of 2), plate 4, session 3 (32, 97\%), plate 3, session 4 (22, 82\%).
+One trail on each of the other plates: plate 1, imaging day 1 (26 segments, 92\% within a factor of 2), plate 4, imaging day 3 (32, 97\%), plate 3, imaging day 4 (22, 82\%).
 
 Our simple physical model can therefore explain a wide variety of our experimental observations.
 At the single hypha level, it provides an explanation for bidirectional fluid flow.
@@ -383,7 +383,7 @@ This backflow is pressure-driven, and will thus concentrate into central hyphae,
 
 \subsection*{Measured flows and how far they can be trusted}
 In this work, we have shown extensive analysis of flows in the hyphal network of AM fungi.
-We show that in most hyphae, there are at least two opposing streams: a tipward stream narrowly around 3~$\mu$m/s, slower near the tips, and a rootward stream that is more variable and rises with distance from the tip (1,654 bright-field measurements in 15 sessions on 5 plates).
+We show that in most hyphae, there are at least two opposing streams: a tipward stream narrowly around 3~$\mu$m/s, slower near the tips, and a rootward stream that is more variable and rises with distance from the tip (1,654 bright-field measurements over 15 imaging days on 5 plates).
 We also imaged lipid movement using NileRed staining, and found that the lipid moves in both flows, but is more likely to be found on the tipward stream, which is also more uniform in speed.
 
 In trying to differentiate the mechanisms behind these two streams, we found that an osmotic shock changes only the rootward stream, which is therefore pressure-driven.
