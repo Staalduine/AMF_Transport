@@ -40,23 +40,23 @@
 \toprule
 \textbf{Unit} & \textbf{Definition} & \textbf{Total, static flow (plates 1--5)} \\
 \midrule
-Position & One stage position (one field of view on a hypha), filmed in one session. Can contain multiple videos, typically a bright-field video and then a NileRed video & 804 positions \\
+Position & One stage position (one field of view on a hypha), filmed on one imaging day. Can contain multiple videos, typically a bright-field video and then a NileRed video & 804 positions \\
 Video & One recording at one position, bright-field (usually 10~s at 20 frames per second) or NileRed fluorescence at 1--2 frames per second & 1,683 videos (979 bright-field, 704 NileRed) \\
-Edge & One stretch of hypha between two nodes of the network graph of a session; one video can cover several edges & 2,227 edges with a registered video \\
+Edge & One stretch of hypha between two nodes of the network graph of an imaging day; one video can cover several edges & 2,227 edges with a registered video \\
 Measurement & The analysis of one edge in one video, i.e.\ one edge at one point in time & 3,466 measurements (1,967 bright-field, 1,499 NileRed) \\
 Stream & One direction (tipward or rootward) of one measurement, with its streaks & 5,968 streams (3,583 bright-field, 2,385 NileRed) \\
 \midrule[\heavyrulewidth]
 \textbf{Step} & \textbf{Kept} & \textbf{Left out, and why} \\
 \midrule
 1. Recorded & 804 positions; 1,683 videos (979 bright-field, 704 NileRed) & --- \\
-2. Registered on the network graph & 730 positions; 1,404 videos (754 bright-field, 650 NileRed); 2,227 edges; 3,951 measurements & 279 videos (225 bright-field, among them all 140 without a recorded mode; 54 NileRed) that could not be placed on the graph, 126 of them in plate 2, session 2 \\
+2. Registered on the network graph & 730 positions; 1,404 videos (754 bright-field, 650 NileRed); 2,227 edges; 3,951 measurements & 279 videos (225 bright-field, among them all 140 without a recorded mode; 54 NileRed) that could not be placed on the graph, 126 of them in plate 2, imaging day 2 \\
 3. Speed analysis ($\geq$5 streaks in a direction) & 723 positions; 1,356 videos (731 bright-field, 625 NileRed); 2,100 edges; 3,466 measurements (1,967 bright-field, 1,499 NileRed); 5,968 streams (3,583 bright-field, 2,385 NileRed) & 48 videos (23 bright-field, 25 NileRed): 16 with no moving streak, 32 with fewer than 5 streaks in every direction \\
-4. Core set (bright-field, video edge $\geq$20~$\mu$m, network diameter known, at least one stream) & 1,898 measurements on 1,778 edges (720 videos): rootward 1,654 on 1,544 edges; tipward 1,806 on 1,693 edges; both streams 1,562 on 1,459 edges (665 videos) & 1,499 NileRed measurements; 58 on a video edge shorter than 20~$\mu$m; 11 on edges without a network diameter (plate 3, sessions 2, 4 and 5) \\
+4. Core set (bright-field, video edge $\geq$20~$\mu$m, network diameter known, at least one stream) & 1,898 measurements on 1,778 edges (720 videos): rootward 1,654 on 1,544 edges; tipward 1,806 on 1,693 edges; both streams 1,562 on 1,459 edges (665 videos) & 1,499 NileRed measurements; 58 on a video edge shorter than 20~$\mu$m; 11 on edges without a network diameter (plate 3, imaging days 2, 4 and 5) \\
 5. Model comparison (rootward subset of the core set) & 1,654 measurements on 1,544 edges (683 videos) & 244 measurements with a tipward stream only \\
 \midrule[\heavyrulewidth]
 \textbf{Set} & \textbf{Size} & \textbf{Used in} \\
 \midrule
-\multicolumn{3}{@{}l}{\textit{Sets used in the figures, plates 1--5 (15 sessions)}} \\
+\multicolumn{3}{@{}l}{\textit{Sets used in the figures, plates 1--5 (15 imaging days)}} \\
 \addlinespace[2pt]
 Speed set (step 3, both modes) & 1,356 videos (731 bright-field, 625 NileRed) at 723 positions; 3,466 measurements; 3,583 bright-field streams & Fig.~\ref{fig:hyphal_profiling}D; Fig.~\ref{fig:asymmetries}C; SI Figs.~\ref{fig:video_positions}, \ref{fig:speed_iqr} \\
 Core set (step 4) & 1,898 measurements on 1,778 edges (tree-like share); 1,740 of the edges with a betweenness (selection bias) & SI \ref{subsec:si_tree_tip}, \ref{subsec:si_video_selection} \\
@@ -64,7 +64,7 @@ Core set (step 4) & 1,898 measurements on 1,778 edges (tree-like share); 1,740 o
 \quad against tip distance & 1,806 tipward and 1,654 rootward measurements (tipward fit: 1,693 edges) & Fig.~\ref{fig:asymmetries}B; SI \ref{subsec:si_forward_flow} \\
 Lipid direction bias, slow positions & 160 edge pairs (140 NileRed, 139 bright-field videos) & Fig.~\ref{fig:asymmetries}D \\
 \midrule
-\multicolumn{3}{@{}l}{\textit{Model comparison, plates 1--5 (15 sessions)}} \\
+\multicolumn{3}{@{}l}{\textit{Model comparison, plates 1--5 (15 imaging days)}} \\
 \addlinespace[2pt]
 All compared measurements (step 5) & 1,654 measurements on 1,544 edges & Figs.~\ref{fig:fig5_plug}, \ref{fig:fig6_examples}; SI \ref{sec:si_model_data} \\
 \quad trail segments within 10~mm of a tip & 283 measurements & Fig.~\ref{fig:fig5_plug}B \\
@@ -76,7 +76,7 @@ All compared measurements (step 5) & 1,654 measurements on 1,544 edges & Figs.~\
 \caption{\textbf{Video overview.}
 A measurement is one edge in one video, so a video crossing three edges gives three measurements, each with a tipward and a rootward stream.
 The counts fall at every step because each analysis needs more of the data than the one before, which is also why the sets used in the figures differ in size; the Methods give the filters in full.
-Static-flow recordings of plates 1--5 (15 sessions); the perturbation videos are in Table~\ref{tab:si_perturbation_sets}.}\label{tab:static_video_sets}
+Static-flow recordings of plates 1--5 (15 imaging days); the perturbation videos are in Table~\ref{tab:si_perturbation_sets}.}\label{tab:static_video_sets}
 \end{table}
 
 
@@ -102,11 +102,11 @@ This matches a colony that grows by extending and branching hyphae and closes lo
 \centering
 \includegraphics[width=\textwidth]{suppfig/figS_tree_like_share.pdf}
 \caption{\textbf{Tree-like share of all and of the filmed edges against distance to the nearest growing tip.}
-An edge is tree-like when it is a bridge of its session's network graph with no root beyond it; distance is measured along the network to the nearest growing tip (15 sessions, plates 1--5; all 1,076,957 edges within 16~mm of a tip, of which 1,770 were filmed).
+An edge is tree-like when it is a bridge of its imaging day's network graph with no root beyond it; distance is measured along the network to the nearest growing tip (15 imaging days, plates 1--5; all 1,076,957 edges within 16~mm of a tip, of which 1,770 were filmed).
 \textbf{(A)} Where the edges lie. The filmed set covers the same range but not in the same proportions, falling short within 1~mm of a tip and over-representing 2 to 6~mm.
 \textbf{(B)} Tree-like share against that distance, in 1~mm bins, with the band giving the 95\% interval on each share.
 Both sets fall over the first two millimeters, from 57 to about 31\% over the whole network and from 45 to 10\% among the filmed edges, and both are flat beyond.
-Beyond 2~mm the share ranges across the 15 sessions from 22 to 46\% over the whole network, and from 4 to 18\% among the filmed edges.}\label{fig:tree_like_share}
+Beyond 2~mm the share ranges across the 15 imaging days from 22 to 46\% over the whole network, and from 4 to 18\% among the filmed edges.}\label{fig:tree_like_share}
 \end{figure}
 
 \namedsubsection{Selection bias of the filmed hyphae}{subsec:si_video_selection}
@@ -121,10 +121,10 @@ Beyond 2~mm the share ranges across the 15 sessions from 22 to 46\% over the who
 % (--analysed) in a normal A4 float. The caption is defined once below.
 \def\vplayoutathree{a3}\def\vplayoutafourland{a4land}
 \newcommand{\videopositionscaption}{\caption{\textbf{Positions of the analyzed flow videos.}
-Each panel shows the network of one filmed session (5 colonies, 15 sessions, in time order per colony), drawn as in Fig.~\ref{fig:hyphal_profiling}A,B, with color indicating hyphal diameter.
+Each panel shows the network of one filmed imaging day (5 colonies, 15 imaging days, in time order per colony), drawn as in Fig.~\ref{fig:hyphal_profiling}A,B, with color indicating hyphal diameter.
 Dots mark the 723 stage positions of the 1,356 videos that enter the speed analysis (731 bright-field and 625 NileRed; a bright-field video, mostly followed by a NileRed video at the same position).
 Dots are placed at the hyphae their videos were registered to.
-The plate 4 sessions are days 10--12 of Fig.~\ref{fig:hyphal_profiling}B. All panels share the 10~mm scale bar.}}
+The plate 4 imaging days are days 10--12 of Fig.~\ref{fig:hyphal_profiling}B. All panels share the 10~mm scale bar.}}
 \ifx\videopositionslayout\vplayoutathree
 \clearpage
 \paperwidth=420mm \paperheight=297mm \pdfpagewidth=\paperwidth \pdfpageheight=\paperheight
@@ -171,13 +171,7 @@ For each edge it is the share of growing tips whose shortest route to the root n
 Edges that carry no such route are left out, which leaves 193,387 of the 1,139,071 edges and 888 of the filmed ones.
 Those filmed edges are compared against the remaining edges of the same networks.
 
-The filmed hyphae are disproportionately among the high edge BC edges, in every recording session (Fig.~\ref{fig:bc_selection}A,B).
-
-The speeds reported here are therefore those of well-connected hyphae, and the quiet periphery of a colony is not represented.
-
-Two caveats.
-Edges are counted one each, not weighted by length.
-Taking every node as a source rather than only the growing tips ranks the edges much the same (Spearman 0.78 between the two) and puts the filmed edges at a median 83rd percentile (interquartile range 55--95), but the speed relation is then weaker, 0.18 in both directions.
+The filmed hyphae are disproportionately among the high edge BC edges, on every imaging day (Fig.~\ref{fig:bc_selection}A,B). The speeds reported here are therefore those of well-connected hyphae, and the quiet periphery of a colony is not represented. Two caveats: Edges are counted one each, not weighted by length; and taking every node as a source rather than only the growing tips ranks the edges much the same (Spearman 0.78 between the two) and puts the filmed edges at a median 83rd percentile (interquartile range 55--95), but the speed relation is then weaker, 0.18 in both directions.
 
 % OPEN: nothing; S1.2 text and caption written 13 Nov.
 
@@ -190,7 +184,7 @@ Taking every node as a source rather than only the growing tips ranks the edges 
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_bc_selection.pdf}
 \caption{\textbf{The filmed hyphae are among the best-connected in their networks.}
-Root-directed betweenness centrality: the share of growing tips whose shortest route to the root node subset runs through an edge (15 sessions, plates 1--5; edges carrying no such route omitted).
+Root-directed betweenness centrality: the share of growing tips whose shortest route to the root node subset runs through an edge (15 imaging days, plates 1--5; edges carrying no such route omitted).
 \textbf{(A)} Distribution over the remaining edges of the filmed networks (193,387) and over the filmed edges (888). A filmed edge is busier than an unfilmed one in 76\% of random pairs.
 \textbf{(B)} Percentile of each filmed edge within its own network, for the centrality in (A) and for the variant that counts every node as a source. Medians 82 and 83.}\label{fig:bc_selection}
 \end{figure}
@@ -418,9 +412,9 @@ This hypothesis is further motivated by the qualitative observation that the mov
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_mass_flow.pdf}
 \caption{\textbf{Growth-induced mass flow alone is far slower than the measured streams.}
 The flow needed to supply the volume added by the growing tips, routed through the network from the roots with minimal dissipation (Methods), divided by the lumen area of each edge.
-\textbf{(A)} Plate 5 at session 2, every edge colored by this mass-flow speed (color scale capped at 0.3~$\mu$m/s).
+\textbf{(A)} Plate 5 on imaging day 2, every edge colored by this mass-flow speed (color scale capped at 0.3~$\mu$m/s).
 % NOTE (2 Nov, plate labels): "EPY2412A088 at t55" -> "plate 5, session 2".
-\textbf{(B)} Distributions over the 2,239 filmed edges (15 sessions) of the measured tipward (blue) and rootward (pink) speeds and of the mass-flow speed (orange; median 0.073~$\mu$m/s).
+\textbf{(B)} Distributions over the 2,239 filmed edges (15 imaging days) of the measured tipward (blue) and rootward (pink) speeds and of the mass-flow speed (orange; median 0.073~$\mu$m/s).
 \textbf{(C)} Measured tipward speed against the mass-flow speed on the same edge; gray: identity. The measured speed is a median 31 times the mass-flow speed.}\label{fig:carbonflow}
 \end{figure}
 
@@ -505,7 +499,7 @@ The lipids, like the bright-field flow, keep their tipward speed while the rootw
 % NOTE (15 Oct): The text below was drafted by Claude on Simon's request (fill out the forward model SI section), from the notes of this section and the current fits (transport_paper feat/flow-regime: forward_speed_bayes.py, edges.csv / posterior.csv / width_compare.csv; width_feasibility_stats.csv). The width numbers marked 873 edges are from the walls_v4 rebuild (note of 11 Oct below); the force-balance sentence needs Simon's check of the model's form.
 The transport model needs the tipward (motor) speed on every edge of the network (Methods), so we asked which properties of a hypha predict it.
 We used the bright-field videos only (\nameref{subsec:si_forward_choices}).
-For each edge we pooled the moving tipward streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,693 edges with 311,149 streaks in 15 sessions on 5 plates.
+For each edge we pooled the moving tipward streaks of all its videos, leaving out video directions with fewer than 5 streaks and video edges shorter than 20~$\mu$m, which gave 1,693 edges with 311,149 streaks over 15 imaging days on 5 plates.
 
 % NOTE C15 (30 Oct, per-video measurements, transport_paper PR #167): question. This to-tip fit (forward_speed_bayes) still pools the streaks of all videos on an edge, which the model tables no longer do. Switch it to one value per video as well?
 
@@ -514,7 +508,7 @@ We described this with a falloff to an offset,
 \[
 v(d) = v_\infty - (v_\infty - v_{\mathrm{tip}})\, e^{-d/\ell},
 \]
-with $d$ the network distance to the nearest growing tip at the session.
+with $d$ the network distance to the nearest growing tip on the imaging day.
 We fitted it with a hierarchical Bayesian model on the log median streak speed of each edge, $y_i = \log v(d_i) + w_p + u_i + \epsilon_i$, with an edge effect $u_i \sim N(0, \sigma_{\mathrm{edge}})$, a plate effect $w_p$ (summing to zero over plates) and a sampling error $\epsilon_i$ whose standard deviation was bootstrapped from the edge's own streaks, so that edges with few or scattered streaks count less.
 Priors were uniform on $v_\infty$ and $v_{\mathrm{tip}}$ (0.05 to 10~$\mu$m/s) and on $\log \ell$ (10~$\mu$m to 50~mm), half-normal on the standard deviations, and the posterior was sampled with adaptive Metropolis (4 chains, $\hat{R} \leq 1.01$).
 The posterior medians [95\% intervals] were $v_{\mathrm{tip}} = 2.30$ [2.08, 2.49]~$\mu$m/s, $v_\infty = 3.10$ [2.99, 3.31]~$\mu$m/s and $\ell = 2.98$ [1.70, 6.32]~mm.
@@ -603,7 +597,7 @@ A constant motor speed scores worse in the transport model (Methods).
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_width_estimators.png}
 \caption{\textbf{Of the diameters measured in the network images, the legacy Keras diameter follows the video-extracted diameter best; diameters read directly from the image profile are limited by the blur.}
-Each point is a network edge filmed at high magnification, colored by plate; y-axis: the diameter extracted from the bright-field flow videos (U-Net wall segmentation, twice the distance transform), x-axis: the diameter of the same edge in the network image of that session (1.725~$\mu$m per pixel).
+Each point is a network edge filmed at high magnification, colored by plate; y-axis: the diameter extracted from the bright-field flow videos (U-Net wall segmentation, twice the distance transform), x-axis: the diameter of the same edge in the network image of that imaging day (1.725~$\mu$m per pixel).
 Top row: diameters stored with the network graph: the diameter used by the model tables (table; the segmenter diameter where present, else the legacy diameter), the legacy diameter from the earlier Keras diameter model on cross-sections of the network image, since replaced by the segmenter (legacy), and the diameter head of the segmenter (seg; stored in steps of 0.125~$\mu$m, hence the stripes).
 Bottom row: diameters read from cross-sections of the raw network image, median per edge: the full width at half maximum of the dark dip (img\_fwhm), the distance between the steepest falling and rising flanks (img\_grad), and the integral of the fractional darkness across the hypha (img\_area, in $\mu$m).
 Panel titles: Spearman correlation with the video-extracted diameter, the median over the five plates (within) and over all edges (pooled); median absolute error of the video-extracted diameter predicted by a linear calibration fitted on the other four plates (held-out $|$err$|$; 1.52~$\mu$m for a constant); number of edges.
@@ -768,7 +762,7 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \hline
 \textbf{quantity} & \textbf{set} & \textbf{value} \\
 \hline
-rootward speed measurements & every measured edge and video & 1,654 (15 sessions, 5 plates) \\
+rootward speed measurements & every measured edge and video & 1,654 (15 imaging days, 5 plates) \\
 within a factor of 2 & every measurement & 77.3\% \\
 median ratio, modeled / measured & every measurement & 0.93 \\
 median fold error & every measurement & 1.42 \\
@@ -892,9 +886,9 @@ $\theta$ & floor $f$ & within 2$\times$ & ratio & KS & trail $\rho$ & loop $\rho
 % NOTE (updated 16 Nov, γ 0.05) (16 Oct, figure 'kappa' panels; continuous kappa): (a) plate 5, session 2, every arc colored by kappa, the section grown from its ends; dark gray: within the open bottom band at some section size; light gray: not connected to the root at some section size (kappa < 1). (b) distribution over the filmed edges (bins of three 0.2 steps); (c) kappa against tip distance, bin medians with 25th-75th percentile; (d) measured and model rootward speed per kappa class (<= 2: 249, 2-4: 480, 4-6: 515, > 6: 215 edges); (e) log2 model / measured per class, dashed at a factor of 2. UPDATE 16 Nov, γ 0.05: class counts 246 / 465 / 502 / 213 (1,426 edges).
 
 The filmed hyphae are also thicker (10.9 against 9.0~$\mu$m; Fig.~\ref{fig:filmed_relations}B) and less often tree-like (14\% against 36\%; Fig.~\ref{fig:tree_like_share}; Fig.~\ref{fig:filmed_relations}C); diameter and centrality rise together, so the difference in diameter is not a separate bias.
-Within the filmed set itself, speed rises with centrality (Fig.~\ref{fig:filmed_relations}A): the bright-field median speed per edge gives a Spearman correlation of 0.39 tipward and 0.37 rootward, falling to 0.21 and 0.25 when distance to the tip is partialled out, and positive in 14 of the 15 sessions tipward and 13 of 14 rootward.
+Within the filmed set itself, speed rises with centrality (Fig.~\ref{fig:filmed_relations}A): the bright-field median speed per edge gives a Spearman correlation of 0.39 tipward and 0.37 rootward, falling to 0.21 and 0.25 when distance to the tip is partialled out, and positive on 14 of the 15 imaging days tipward and 13 of 14 rootward.
 The direction agrees with Oyarte Galvez et al.~\cite{oyarte_galvez_travelling-wave_2025}.
-Edges along one hypha share almost the same centrality, so correlations pooled over edges overstate how many independent observations there are; the per-session percentiles are the more robust statistic.
+Edges along one hypha share almost the same centrality, so correlations pooled over edges overstate how many independent observations there are; the per-imaging-day percentiles are the more robust statistic.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{suppfig/figS_filmed_relations.pdf}
@@ -910,7 +904,7 @@ Edges along one hypha share almost the same centrality, so correlations pooled o
 \namedsubsection{Rerouted backflow and network extraction faults}{subsec:si_rerouting}
 % NOTE (22 Oct, Simon): moved here from main-text Fig 6F. Point to make: faults in the network extraction let the network-wide pressure solve pool the backflow in the wrong edges, so the model sometimes under-predicts on high-betweenness hyphae. Text below is a first draft; the extraction faults on this stretch are not yet shown (check the graph against the images, and ideally a corrected graph re-solved).
 Because the pressure in the model is solved over the whole network, the backflow of a hypha does not have to return through that hypha: where the extracted network offers parallel routes, the solve can send part of it through neighboring edges.
-On a trail of plate 2, session 3, 8 to 19~mm from the root, the model returns only 0.68 (interquartile range 0.44--0.84) of the trail's motor stream through the trail itself and sends the rest back through side hyphae, giving a rootward speed of 2.0~$\mu$m/s against 6.4~$\mu$m/s measured (20 segments; 3.3~$\mu$m/s measured tipward).
+On a trail of plate 2, imaging day 3, 8 to 19~mm from the root, the model returns only 0.68 (interquartile range 0.44--0.84) of the trail's motor stream through the trail itself and sends the rest back through side hyphae, giving a rootward speed of 2.0~$\mu$m/s against 6.4~$\mu$m/s measured (20 segments; 3.3~$\mu$m/s measured tipward).
 % NOTE (2 Nov, plate labels): "trail LeftMiddle of PNF080 at t91" -> "a trail of plate 2, session 3".
 In the model the trail's net flux points tipward on 9 to 18~mm: volume enters at about 8.8~mm through a side branch and leaves into side hyphae at 17 to 21~mm, a circulation loop of about 10~mm.
 Measured, the rootward speed on this stretch (6.4~$\mu$m/s) exceeds even a full backflow of the trail's own motor stream ($\sim$3.5~$\mu$m/s).
