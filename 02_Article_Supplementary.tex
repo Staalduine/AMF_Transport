@@ -661,6 +661,7 @@ The dark band of a hypha in the network images is 15--20~$\mu$m wide against vid
 % NOTE (4 Nov): moved verbatim from the main text (model section); wording to be adapted to this section. Eq.~(\ref{eq:net_inner_flow}) stays in the main text.
 By solving the Navier-Stokes equation in the inner pipe, setting the boundary conditions to be $v_m$ at the border of the inner pipe, one can determine the radial speed profile $u(r)$ in cylindrical symmetry to be 
 
+% NOTE (18 Nov, after the main-text Flow model rewrite): this u(r) derivation (core dragged at v_m at r = a, Poiseuille core) and Eq. max_speed belong to the old dragged-core model. The main text now treats both flows as uniform (plug) shares f_m and 1 - f_m of an arbitrary cross-section, so a symbol swap does not fix this block: decide whether it stays as a historical/alternative derivation or goes. Not edited.
 \begin{equation}
 \label{eq:speed_profile_main}
 u(r) = v_m + \frac{2(q_{w,r<a} - \pi a^2 v_m)(a^2 - r^2)}{\pi a^4}.
@@ -801,6 +802,7 @@ modeled / measured median, low $\kappa$, high betweenness & 333 measurements & 4
 
 
 \namedsubsection{Choice of the condensate lipid share}{subsec:si_theta_choice}
+% NOTE (18 Nov, after the main-text Flow model rewrite): the main text now cites this section twice: for the lipid sink from growth (dry mass) and for the f_m = 0.53 calibration on tree-like edges (a/b 0.687, leave-one-imaging-day-out 0.52-0.54 in f_m). Title and content need to follow (user's words); per-edge theta means no theta is chosen any more.
 % NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): the theta x floor sweep (figS_theta_choice, table below) is the old dragged-core model. At gamma 0 theta only enters as (1 - theta) and the floor does not exist; this section becomes "Choice of a/b" (figS_ab_gamma_choice.py preview, calibration 0.687 on 101 tree-like edges) plus the condensate-thickness figure. Decide: drop the theta table or keep it as history.
 % NOTE (6 Nov, moved from main text theta paragraph): Bago reports total lipid up to ~24% of the hyphal volume near the root; the model's whole-lumen Theta stays at or below 3.6% (median 0.7%); model accuracy flat over theta 0.02-0.3.
 % NOTE (4 Nov): first block moved verbatim from subsec:si_lipid_fraction (old analysis at v0 = 3 um/s). New values for the rewrite: required Theta median 0.7 %, IQR 0.2-1.8 %, p95 4.1 %, max 11 %, flat with tip distance (bin medians 0.6-0.9 %), above the theta 0.10 cap (3.6 %) on 7.6 % of filmed edges.
