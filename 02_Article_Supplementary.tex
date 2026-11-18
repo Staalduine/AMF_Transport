@@ -665,13 +665,13 @@ u(r) = v_m + \frac{2(q_{w,r<a} - \pi a^2 v_m)(a^2 - r^2)}{\pi a^4}.
 
 Interestingly, when one assumes $q_w = 0$ as would be the case in a closed pipe system, we have:
 \begin{equation}
-% NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): write without Theta: u(0) = -v_m [1 + 2 (1-theta)(b^2 - a^2)/a^2]; the sentence 'For all values of Theta and theta' below becomes 'For all theta and a < b'.
+% NOTE (18 Nov): Theta removed; f_m = 1 - a^2/b^2 as in main Eq. eq:motor_stream, so (1-theta) f_m/(1-f_m) = (1-theta)(b^2-a^2)/a^2. Eq. speed_profile_main above still uses the old dragged-core q_{w,r<a}.
 \label{eq:max_speed}
-u(0) = -v_m\left(1+2\frac{\Theta(1-\theta)}{\theta-\Theta}\right) .
+u(0) = -v_m\left(1+2\frac{(1-\theta) f_m}{1-f_m}\right) .
 \end{equation}
 
 This result suggests a possible explanation for the bidirectional movement that we observe.
-For all values of $\Theta$ and $\theta$, we have $u(0)$ which is of opposite sign compared to $v_m$.
+For all values of $f_m$ and $\theta$, we have $u(0)$ which is of opposite sign compared to $v_m$.
 Centerline speed $u(0)$ would be the speed at the center of the pipe, which we do not expect to measure reliably.
 % NOTE (4 Nov, outline for Simon): What would a plug conductance look like?
 % - A plug in a no-slip pipe moves only by shearing a thin layer of thickness delta at its edge (here between core and condensate); cf. cell-free layer in blood flow.
@@ -805,7 +805,7 @@ modeled / measured median, low $\kappa$, high betweenness & 333 measurements & 4
 % NOTE (12 Oct): This section was moved from the main text (Results, after the mass-flow test) as it stood, with the outline headings dropped (Simon: not central to the paper; mention in the Discussion). Its lipid fluxes come from the dissipation-minimization model of the section above (subsec:si_mass_flow), so it reads after that one; the numbers are from the old analysis (see the notes).
 Is moving lipids at such high speeds necessary to match supply and demand while avoiding saturating hyphae with lipids?
 % NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): Theta_{i,j} here is the old analysis (all lipid moving at v_0), a different quantity from the model's; rename it or say it in words.
-To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\Theta_{i,j} = \frac{\phi_{i,j}}{v_0 \pi b_{i,j}^2}$ in each edge of the network required to explain the observed growth.
+To answer that question, we set the speed of all lipids at $v_0 = 3~\mu m/s$ and used the value of the lipid fluxes that we estimated from the growth data to estimate the lipid volume fraction $\phi_{i,j}/(v_0 \pi b_{i,j}^2)$ in each edge of the network required to explain the observed growth.
 We found that as we moved away from the tip of the hypha, that fraction gradually increased by 10mm {\color{blue} why mm? are you referring to lipid volume fraction?}and reached a value as high as 4\%.
 % NOTE (12 Oct, 'why mm?'): 'by 10mm' means 'over 10 mm', and the fraction is the lipid volume fraction Theta of the old analysis. The numbers to reconcile are '4 %' here, '5 %' at the emulsion paragraph, theta 0.05 in the main model, and the measured moving lipid share of 2.4 % (< 2 mm from a tip) to 4.6 % (> 4 mm) (transport_paper#94; see \nameref{subsec:si_theta_spatial}). The next sentence says 'decrease away from the tip', against 'increased' here.
 The decrease away from the tip was due to a decrease in flux, which itself was due to the multiplication of alternative paths toward the root when moving closer to it.
