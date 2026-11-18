@@ -207,6 +207,15 @@ The core is dragged tipward at $v_m$ at its edge $r = a$ (no slip with the conde
 \label{eq:core_flux}
 q_c = q_s - q_w = K \Delta p, \qquad K = \frac{(1-f_m)^2 A^2}{8 \pi \mu L},
 \end{equation}
+
+% NOTE (18 Nov, user asked: separate Eqs. core_flux and backflow_speed with a discussion of flow vs read-out; OUTLINE ONLY, words are the user's):
+% (1) Eq. core_flux is the physics: q_c is a volume flux, fixed by mass conservation and the network pressure solve through the conductance K of the rootward share of the section. It does not depend on how the water moves inside that share (plug or parabola) beyond K.
+% (2) Eq. backflow_speed is a read-out: turning a flux into a speed that can be compared with streak speeds needs an assumption about the speed profile in the rootward share. Dividing by its area (1 - f_m) A gives the mean speed, which is what tracked particles show if that share moves as a plug (flat speed across the width, SI Poiseuille or plug). A Poiseuille parabola would have the same mean but a centerline twice as fast; dividing by the whole section A instead would lower every speed by 1 - f_m = 0.47.
+% (3) The read-out does not feed back into the solve: it rescales all v_b by one factor, so it changes the level of the predicted rootward speeds, not their ranking (Fig 5B rho, loops, tip distance).
+% (4) a/b enters twice: in the flow (f_m sets q_s, and K through the rootward share) and in the read-out (area); it is calibrated on the tree-like edges, where Eq. backflow_speed reduces to v_m times a constant. So the level is calibrated, the ranking is predicted.
+% (5) The old phrase "relative to the moving condensate edge" (read-out sentence below) is wrong for the lanes model: v_b is the plain mean speed of the rootward share.
+[Flow versus read-out: text to be written.]
+
 % NOTE (18 Nov): new Eq. eq:backflow_speed below = the read-out and the tree case agreed 11 Nov (q_w = 0): v_b = (1 - theta) f_m/(1 - f_m) v_m = 1.12 (1 - theta) v_m, set by the motor speed alone. Needs a lead-in sentence (user's words).
 \begin{equation}
 \label{eq:backflow_speed}
