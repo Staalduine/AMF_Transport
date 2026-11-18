@@ -791,6 +791,7 @@ modeled / measured median, low $\kappa$, high betweenness & 333 measurements & 4
 
 
 \namedsubsection{Choice of the condensate lipid share}{subsec:si_theta_choice}
+% NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): the theta x floor sweep (figS_theta_choice, table below) is the old dragged-core model. At gamma 0 theta only enters as (1 - theta) and the floor does not exist; this section becomes "Choice of a/b" (figS_ab_gamma_choice.py preview, calibration 0.687 on 101 tree-like edges) plus the condensate-thickness figure. Decide: drop the theta table or keep it as history.
 % NOTE (6 Nov, moved from main text theta paragraph): Bago reports total lipid up to ~24% of the hyphal volume near the root; the model's whole-lumen Theta stays at or below 3.6% (median 0.7%); model accuracy flat over theta 0.02-0.3.
 % NOTE (4 Nov): first block moved verbatim from subsec:si_lipid_fraction (old analysis at v0 = 3 um/s). New values for the rewrite: required Theta median 0.7 %, IQR 0.2-1.8 %, p95 4.1 %, max 11 %, flat with tip distance (bin medians 0.6-0.9 %), above the theta 0.10 cap (3.6 %) on 7.6 % of filmed edges.
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): resolve the blue comments and finish.
@@ -820,6 +821,13 @@ This could explain why active transport mechanisms at high speeds are necessary 
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_theta_choice.png}
 \caption{[Caption to be written.]}\label{fig:theta_choice}
 % NOTE (caption facts): (A) required whole-lumen lipid fraction on the 1,544 filmed edges, with the f = 0.8 cap at theta 0.03 (dotted) and 0.10 (solid). (B) routed lipid not carried (% of demand, network length x demand weighted) against theta, per floor. (C) within 2x; (D) KS distance (log speeds); (E) trail-median rho (35 trails); (F) loop arm-ratio rho, all 411 loops (filled) and 140 with arms > 150 um apart (open). Gray band: theta 0.10; dotted: theta_min (95 % of filmed edges, f 0.8) = 0.117.
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_condensate_thickness.png}
+\caption{[Caption to be written.]}\label{fig:condensate_thickness}
+% NOTE (18 Nov, thickness bands in droplet diameters (1 um), share of length, gamma 0): whole network (1,105,939 edges): <0.5x 1.4 %, 0.5-1x 57.9 %, 1-1.5x 34.9 %, >1.5x 5.9 % (93 % between 0.5x and 1.5x), median 0.93 um. Filmed edges (1,684): 0.2 / 14.2 / 57.9 / 27.8 %, median 1.33 um. Top 10 % tip-directed betweenness per session (110,440): 0.8 / 34.5 / 47.8 / 17.0 %, median 1.15 um. Top 1 % (11,067): 0.2 / 14.6 / 36.7 / 48.5 %, median 1.47 um. At gamma 0 b - a = 0.313 b, so this is hypha size: filmed median b 4.2 um, top-1 % BC 4.7 um, network 3.0 um (the selection bias of fig S bc_selection). On the measured hyphae the layer is ~1-1.5 droplets thick and below half a droplet almost nowhere.
+% NOTE (18 Nov, caption facts; text is the user's): condensate thickness b - a on every edge of the paper model's networks (gamma 0, a/b = 0.687, so b - a = 0.313 b), weighted by edge length, 15 sessions. Median 0.93 um; below 1 um on 59 % of network length (b < 3.19 um, diameter < 6.4 um), below 0.5 um on 1.4 % (b < 1.60 um). Dashed line: measured lipid droplet diameter (~1 um): the layer is about one droplet thick. Source: transport_paper manuscript_figures/figS_condensate_thickness.py.
 \end{figure}
 \begin{table}[htbp]
 \centering
