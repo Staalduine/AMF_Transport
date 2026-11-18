@@ -196,9 +196,10 @@ q_w = q_s - q_c,
 where $q_w$ is the net flow of water through the whole pipe, and $q_c$ the flow through the core. 
 The condensate and the core it drags along carry a volume 
 
+% NOTE (18 Nov, Sajitha chose per-edge theta_e): the lipid share of the tipward lane is now per edge, theta_e = J_l / (f_m A v_m) (Eq. lipid_current read as its definition; filmed edges median 0.013, IQR 0.005-0.034, max 0.21), and q_s carries (1 - theta_e) of that lane's volume. No constant theta is set any more. Prose that still says "the lipid share theta", "theta = 0.10" or "at fixed theta" needs the user's rewording; numbers in transport_paper Working_notebooks/scratch_thetae_numbers/results.md.
 \begin{equation}
 \label{eq:motor_stream}
-q_s = (1-\theta)\, f_m A\, v_m = (1-\theta)\, \pi (b^2 - a^2)\, v_m,
+q_s = (1-\theta_e)\, f_m A\, v_m = (1-\theta_e)\, \pi (b^2 - a^2)\, v_m,
 \end{equation}
 
 toward the tips.
@@ -223,7 +224,7 @@ v_\mathrm{b} = \frac{|q_c|}{(1-f_m) A}.
 For tree-like sections of the network, where $q_w = 0$, the backflow carries the whole motor stream back through the core ($q_c = q_s$), and the rootward flow is opposite to the tipward flow and grows with $v_m$ alone, at fixed $\theta$:
 \begin{equation}
 \label{eq:tree_backflow_speed}
-v_\mathrm{b}\big|_{q_w = 0} = (1-\theta)\frac{f_m}{1-f_m}\, v_m.
+v_\mathrm{b}\big|_{q_w = 0} = (1-\theta_e)\frac{f_m}{1-f_m}\, v_m.
 \end{equation}
 % NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): 'grows with Theta and v_m' becomes 'grows with the condensate thickness (b^2 - a^2) and v_m'. Also add the explicit tree equation here, in the main text (agreed 11 Nov), to show that tree-like sections are trivial (q_w = 0, so q_c = q_s): v_b = v_m + (1-theta)/theta * J_l / (pi a^2). The network solve only matters in loops.
 
@@ -248,7 +249,7 @@ In each edge the lipid current fixes the size of the motor-driven condensate: wi
 \begin{equation}
 \label{eq:lipid_current}
 % NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): at gamma 0 J_l no longer sets the core radius: a = 0.687 b on every edge, and J_l sets the lipid concentration of the to-tip lane, theta_eff = J_l / (pi (b^2 - a^2) v_m) (median 0.013, Fig 5 caption). So "so the core radius follows from a^2 = ...", "An edge that carries more lipid has a thicker condensate and a narrower core", the floor a >= 0.8 b (a/b 0.687 is below it) and the whole theta = 0.10 paragraph below go. Replace by: a/b is the one quantity calibrated on the rootward speeds (101 tree-like no-flux edges with demand, one row per edge: 0.687, leave-one-imaging-day-out 0.681-0.690; SI figS_ab_gamma_choice); supporting facts on the effective-partition reading and thickness are in the 18 Nov NOTEs above.
-J_l = \theta f_m A\, v_m,
+J_l = \theta_e f_m A\, v_m,
 \end{equation}
 so the core radius follows from $a^2 = b^2 - J_l/(\pi v_m \theta)$. An edge that carries more lipid has a thicker condensate and a narrower core. In order to limit the condensate to a physically reasonable size, we set a lower bound on the core radius $a \geq 0.8 b$ (SI, \nameref{subsec:si_theta_choice}).
 The growth data show that the condensate layer must be at least around $10\%$ lipid to supply the tips with growth-sustaining lipids without the core narrowing below its floor $a = 0.8\,b$. Literature reports total lipid fractions near the root~\cite{bago_translocation_2002, bago_tracking_2002} well above the corresponding whole-lumen lipid fraction in the model, because $\theta$ is the lipid share of the thin condensate only. Following this lower bound, we take $\theta = 0.10$, a lower estimate among a wide possible range; the model's accuracy is flat over a wide range of $\theta$, so the exact value is partly arbitrary (SI, \nameref{subsec:si_theta_choice}).
