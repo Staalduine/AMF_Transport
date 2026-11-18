@@ -172,7 +172,7 @@ In each panel, top: network schematic; bottom: backflow speed $v_\mathrm{b}$ ($\
 We were also struck by the fact that such pressure driven flow would continue even in small isolated network segments. This indicated that pressure gradient could build up in small segment independent on long range connectivity of the network. This led us to hypothesize that such pressure build up could in fact be driven by the tipward movement of lipids.
 We wanted to know if integrating such a simple idea into a minimal model of network flow could explain the observed bidirectional transport of resources and its modulation over space and time.
 Each edge, including ambiguous ones in loops, was assigned a ``tipward'' direction and an associated flux of lipids in that direction (Fig.~\ref{fig:schematic_model}A).  
-We considered lipid flux was composed of a water-lipid condensate of higher viscosity moved by molecular motors at fixed speed $v_m$ (Fig.~\ref{fig:schematic_model}B).Such movement of the lipid-water condensate created a local pressure gradient that would drive backflow toward the root (Fig.~\ref{fig:schematic_model}C).
+We considered lipid flux was composed of a water-lipid condensate of higher viscosity moved by molecular motors at fixed speed $v_m$ (Fig.~\ref{fig:schematic_model}B). Such movement of the lipid-water condensate created a local pressure gradient that would drive backflow toward the root (Fig.~\ref{fig:schematic_model}C).
 
 More precisely, we assumed the speed profile of the condensate layer in its cross-section was uniform which is compatible with the observed spread of the speed distribution in that direction (SI, \nameref{subsec:si_poiseuille_plug}). 
 The condensate layer has a volumetric proportion $\theta$ of lipids and $(1-\theta)$ of water, and moves at a speed $v_m$.
@@ -193,7 +193,7 @@ The flow of water through the inner pipe can be written as
 q_w = q_s - q_c,
 \end{equation}
 
-where $q_w$ is the net flow of water through the whole pipe, anc $q_c$ the flow through the core. 
+where $q_w$ is the net flow of water through the whole pipe, and $q_c$ the flow through the core. 
 The condensate and the core it drags along carry a volume 
 
 \begin{equation}
@@ -215,15 +215,15 @@ q_c = q_s - q_w = K \Delta p, \qquad K = \frac{(1-f_m)^2 A^2}{8 \pi \mu L}.
 % (4) a/b enters twice: in the flow (f_m sets q_s, and K through the rootward share) and in the read-out (area); it is calibrated on the tree-like edges, where Eq. backflow_speed reduces to v_m times a constant. So the level is calibrated, the ranking is predicted.
 % (5) The old phrase "relative to the moving condensate edge" (read-out sentence below) is wrong for the lanes model: v_b is the plain mean speed of the rootward share.
 
-Here we have explained the model in terms of flows, which are the quantities that are solved for in the network. However, the tracked streaks in the videos are a read-out of those flows, and we need to convert the flow through the core into a speed that can be compared with the streak speeds. For tree-like sections of the network, where $q_w = 0$, the backflow carries the whole motor stream back through the core ($q_c = q_s$), and the rootward flow is opposite to the tipward flow and grows with $v_m$ alone, at fixed $\theta$. For these edges, the backflow speed is given by
+Here we have explained the model in terms of flows, which are the quantities that are solved for in the network. However, the tracked streaks in the videos are a read-out of those flows, and we need to convert the flow through the core into a speed that can be compared with the streak speeds. On every edge, the backflow speed is the mean speed of the rootward share of the section:
+\begin{equation}
+\label{eq:backflow_speed}
+v_\mathrm{b} = \frac{|q_c|}{(1-f_m) A}.
+\end{equation}
+For tree-like sections of the network, where $q_w = 0$, the backflow carries the whole motor stream back through the core ($q_c = q_s$), and the rootward flow is opposite to the tipward flow and grows with $v_m$ alone, at fixed $\theta$:
 \begin{equation}
 \label{eq:tree_backflow_speed}
 v_\mathrm{b}\big|_{q_w = 0} = (1-\theta)\frac{f_m}{1-f_m}\, v_m.
-\end{equation}
-For looped sections of the network, $q_w$ is non-zero, and we use the pressure-driven core flux $q_c$ to calculate the backflow speed, which is the mean speed of the rootward share of the section:
-\begin{equation}
-\label{eq:loop_backflow_speed}
-v_\mathrm{b} = \frac{|q_c|}{(1-f_m) A},
 \end{equation}
 % NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): 'grows with Theta and v_m' becomes 'grows with the condensate thickness (b^2 - a^2) and v_m'. Also add the explicit tree equation here, in the main text (agreed 11 Nov), to show that tree-like sections are trivial (q_w = 0, so q_c = q_s): v_b = v_m + (1-theta)/theta * J_l / (pi a^2). The network solve only matters in loops.
 
