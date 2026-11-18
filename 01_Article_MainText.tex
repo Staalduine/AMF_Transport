@@ -185,12 +185,13 @@ In this model, we also simplified the geometry by stating the condensate layer i
 % NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): delete this definition sentence; Theta = theta (b^2 - a^2) / b^2 always substitutes out. In Eq. eq:net_inner_flow below, pi b^2 Theta (1-theta)/theta v_m = pi (1-theta)(b^2 - a^2) v_m, so write q_{w,r<a} = q_w - pi (1-theta)(b^2 - a^2) v_m (the water carried in the condensate). Also agreed 11 Nov: the main text shows the lab-frame water balance (condensate water + core water pi a^2 v_m - K Delta p = q_w); q_s and q_c move to Methods as solver bookkeeping, noting q_s counts water only (lipid J_l is consumed at the tips).
 The volumetric proportion of lipids in the whole pipe is $\Theta$, which is related to $\theta$ by $\Theta = \theta (b^2 - a^2) / b^2$.
 
-% NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): Eqs. net_inner_flow, motor_stream and core_flux describe the old dragged-core bookkeeping (core dragged at v_m, q_s includes pi a^2 v_m). The paper model (fixed a/b 0.687) is the "lanes" partition of transport_paper compute_funcs/partition.py: two plug lanes side by side, the to-tip lane 1 - (a/b)^2 = 0.53 of the section at v_m and the to-root lane (a/b)^2 = 0.47. Its motor stream is the water of the to-tip lane only, q_s = pi v_m (1 - theta)(b^2 - a^2) (lipid consumed at the tips); q_c = q_s - q_w; read-out v_b = |q_c| / (pi a^2), the plain mean speed of the to-root lane (not relative to a moving edge, so the l.243 sentence on the moving condensate edge goes too). Tree (q_w = 0): v_b = (1 - theta) v_m ((b/a)^2 - 1) = 1.12 (1 - theta) v_m, set by the motor speed alone. Same in Methods (Motor annulus / Motor stream / Read-out) and SI subsec:si_model_steps.
+% NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's; EQUATIONS UPDATED 18 Nov, see NOTE below): Eqs. net_inner_flow, motor_stream and core_flux described the old dragged-core bookkeeping (core dragged at v_m, q_s includes pi a^2 v_m). The paper model (fixed a/b 0.687) is the "lanes" partition of transport_paper compute_funcs/partition.py: two plug lanes side by side, the to-tip lane 1 - (a/b)^2 = 0.53 of the section at v_m and the to-root lane (a/b)^2 = 0.47. Its motor stream is the water of the to-tip lane only, q_s = pi v_m (1 - theta)(b^2 - a^2) (lipid consumed at the tips); q_c = q_s - q_w; read-out v_b = |q_c| / (pi a^2), the plain mean speed of the to-root lane (not relative to a moving edge, so the l.243 sentence on the moving condensate edge goes too). Tree (q_w = 0): v_b = (1 - theta) v_m ((b/a)^2 - 1) = 1.12 (1 - theta) v_m, set by the motor speed alone. Same in Methods (Motor annulus / Motor stream / Read-out) and SI subsec:si_model_steps.
 The flow of water through the inner pipe can be written as
 
+% NOTE (18 Nov, equations reframed on the cross-section fraction, user's request; prose around them still the user's): f_m = 1 - a^2/b^2 is the share of the cross-section A = pi b^2 that moves tipward with the motors (0.53 at a/b = 0.687), 1 - f_m the share left for the rootward flow. q_{w,r<a}, Theta and "the core it drags along" are gone; the sentences at l.179, l.186, "where q_w is ..." and "The condensate and the core it drags along carry a volume" / "The core is dragged tipward ..." need rewording to match.
 \begin{equation}
 \label{eq:net_inner_flow}
-q_{w,r<a} = q_w - \pi b^2 \Theta \frac{1-\theta}{\theta} v_m,
+q_w = q_s - q_c,
 \end{equation}
 
 where $q_w$ is the net flow of water through the whole pipe. 
@@ -198,14 +199,19 @@ The condensate and the core it drags along carry a volume
 
 \begin{equation}
 \label{eq:motor_stream}
-q_s = \pi v_m\left[(1-\theta)(b^2-a^2) + a^2\right]
+q_s = (1-\theta)\, f_m A\, v_m, \qquad f_m = 1 - \frac{a^2}{b^2}, \quad A = \pi b^2,
 \end{equation}
 
 toward the tips.
 The core is dragged tipward at $v_m$ at its edge $r = a$ (no slip with the condensate), so the pressure-driven core flux, counted rootward, is
 \begin{equation}
 \label{eq:core_flux}
-q_c = \pi a^2 v_m - q_{w,r<a} = q_s - q_w.
+q_c = q_s - q_w = K \Delta p, \qquad K = \frac{(1-f_m)^2 A^2}{8 \pi \mu L},
+\end{equation}
+% NOTE (18 Nov): new Eq. eq:backflow_speed below = the read-out and the tree case agreed 11 Nov (q_w = 0): v_b = (1 - theta) f_m/(1 - f_m) v_m = 1.12 (1 - theta) v_m, set by the motor speed alone. Needs a lead-in sentence (user's words).
+\begin{equation}
+\label{eq:backflow_speed}
+v_\mathrm{b} = \frac{|q_c|}{(1-f_m) A}, \qquad v_\mathrm{b}\big|_{q_w = 0} = (1-\theta)\frac{f_m}{1-f_m}\, v_m,
 \end{equation}
 % NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): 'grows with Theta and v_m' becomes 'grows with the condensate thickness (b^2 - a^2) and v_m'. Also add the explicit tree equation here, in the main text (agreed 11 Nov), to show that tree-like sections are trivial (q_w = 0, so q_c = q_s): v_b = v_m + (1-theta)/theta * J_l / (pi a^2). The network solve only matters in loops.
 In the case of $q_w = 0$, the net water flow is zero, which corresponds to the case of a tree-like section of the network. In that case, the backflow carries the whole motor stream back through the core ($q_c = q_s$), and the rootward flow is opposite to the tipward flow and grows with $\Theta$, and $v_m$ alone, at fixed $\theta$.
@@ -232,16 +238,16 @@ In each edge the lipid current fixes the size of the motor-driven condensate: wi
 \begin{equation}
 \label{eq:lipid_current}
 % NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): at gamma 0 J_l no longer sets the core radius: a = 0.687 b on every edge, and J_l sets the lipid concentration of the to-tip lane, theta_eff = J_l / (pi (b^2 - a^2) v_m) (median 0.013, Fig 5 caption). So "so the core radius follows from a^2 = ...", "An edge that carries more lipid has a thicker condensate and a narrower core", the floor a >= 0.8 b (a/b 0.687 is below it) and the whole theta = 0.10 paragraph below go. Replace by: a/b is the one quantity calibrated on the rootward speeds (101 tree-like no-flux edges with demand, one row per edge: 0.687, leave-one-imaging-day-out 0.681-0.690; SI figS_ab_gamma_choice); supporting facts on the effective-partition reading and thickness are in the 18 Nov NOTEs above.
-J_l = \pi(b^2 - a^2)\theta v_m,
+J_l = \theta f_m A\, v_m,
 \end{equation}
 so the core radius follows from $a^2 = b^2 - J_l/(\pi v_m \theta)$. An edge that carries more lipid has a thicker condensate and a narrower core. In order to limit the condensate to a physically reasonable size, we set a lower bound on the core radius $a \geq 0.8 b$ (SI, \nameref{subsec:si_theta_choice}).
 % NOTE (11 Nov, meeting Coco, agreed: remove capital Theta): 'whole-lumen lipid fraction in the model, $\Theta$' -> say it in words, no symbol.
 The growth data show that the condensate layer must be at least around $10\%$ lipid to supply the tips with growth-sustaining lipids without the core narrowing below its floor $a = 0.8\,b$. Literature reports total lipid fractions near the root~\cite{bago_translocation_2002, bago_tracking_2002} well above the corresponding whole-lumen lipid fraction in the model, $\Theta$, because $\theta$ is the lipid share of the thin condensate only. Following this lower bound, we take $\theta = 0.10$, a lower estimate among a wide possible range; the model's accuracy is flat over a wide range of $\theta$, so the exact value is partly arbitrary (SI, \nameref{subsec:si_theta_choice}).
 The sign of $J_l$ determines the direction of motor flow.
-Each edge then acts as a source of flux $q_s$ (Eq.~\eqref{eq:motor_stream}) in parallel with the hydraulic conductance of its core (hyphal radius minus the condensate annulus), $K = \pi a^4/(8\mu L)$, so that its net water flux is $q_w = q_s - K\Delta p$ (Methods), where $\Delta p = p_j - p_i$ is the pressure difference along the edge from node $i$ to node $j$, the direction in which $q_s$ and $q_w$ are counted. 
+Each edge then acts as a source of flux $q_s$ (Eq.~\eqref{eq:motor_stream}) in parallel with the hydraulic conductance of its core (hyphal radius minus the condensate annulus), $K$ (Eq.~\eqref{eq:core_flux}), so that its net water flux is $q_w = q_s - K\Delta p$ (Methods), where $\Delta p = p_j - p_i$ is the pressure difference along the edge from node $i$ to node $j$, the direction in which $q_s$ and $q_w$ are counted. 
 These values are all derived from the previously solved $J_l$, and we use them in a second solver to find the backflow.
 Solving these elements together for the pressures, with no water entering or leaving the network except at the roots, which are tied to a common reservoir (growth is neglected here, as it moves far less volume than the motors), gives $q_w$ on every edge, and with it the pressure-driven backflow through the core, $q_c = q_s - q_w$. 
-From the calculated flow, we read out the backflow speed as $v_\mathrm{b} = |q_c|/(\pi a^2)$, the mean speed of the pressure-driven core flow relative to the moving condensate edge.
+From the calculated flow, we read out the backflow speed as $v_\mathrm{b}$ (Eq.~\eqref{eq:backflow_speed}), the mean speed of the pressure-driven core flow relative to the moving condensate edge.
 This is a read-out choice that reproduces the measured level of rootward speeds (SI, \nameref{subsec:si_poiseuille_plug}).
 The model uses only measured or physical inputs besides the lipid share $\theta$ of the condensate: the network and its growth from the time-lapse, hyphal diameters from the network images recalibrated on the filmed hyphae, the measured tipward speed (Fig.~\ref{fig:asymmetries}B), and $\theta = 0.10$ with $a \geq 0.8\,b$; no parameter is fitted to the rootward speeds.
 % NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): "no parameter is fitted to the rootward speeds" is no longer true: a/b is calibrated on the rootward speeds of the tree-like edges. The Fig 5 caption already says so; the same claim sits at l.~300 ("This was achieved with no parameter fitted to the rootward speeds") and in Methods (statistics paragraph: "the core floor ... leave one plate out" -> a/b leaves one imaging day out). theta and the 0.8 floor drop from the input list.
