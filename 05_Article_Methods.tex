@@ -362,7 +362,7 @@ Each piece's volume per unit time, $\pi (D/2)^2 L / \Delta t$ summed over its ed
 Growth needs $\lambda = 0.26$ volumes of lipid per volume grown (dry-mass fraction 0.21, carbon fraction 0.5, carbon-use efficiency 0.5, density 1.1~g\,cm$^{-3}$, over 0.9 \todo{confirm: lipid density}; \texttt{constants.py}).
   \item \textbf{Routing.}
 The demand is routed by the growth-induced mass flow~\cite{heaton_growth-induced_2010}: the volume grown per unit time is a sink at the tips, the annotated roots are the source, and the flow is solved on the graph with Poiseuille conductances; the lipid flow rate on an edge is $\lambda$ times its net flux (routing up the growth graph with other split rules is an SI variant, \nameref{subsec:si_demand_split}).
-The result is the lipid flow rate $J_l$ on every edge.
+The result is the lipid flow rate $J_{ij}$ on every edge.
   \item \textbf{Motor speed.}
 Motors run in the direction of the growth-induced flux on each edge (outward from the roots, by network distance, where that flux is zero), at
   \[
@@ -376,21 +376,22 @@ The speed near the tips is therefore lower than in the streak fit, but it is poo
 A constant motor speed scores worse in both comparisons.
 The scores reported use the constants above.
   \item \textbf{Motor annulus.}
+% NOTE (18 Nov, symbol swap after the main-text Flow model rewrite; math only, words are the user's): symbols now follow the main text (q_m, q_p, r, A, f_m, J_ij, per-edge theta). Prose still to rewrite in this enumerate: "annulus between the core radius a and the wall" (now two shares of the section, f_m = 0.53, arrangement open), "the cores" (the pressure-driven share), "it enters only through the lipid current that sets the annulus" (now: sets theta), item names Motor annulus / Motor stream. Removed the clause "the annulus and the core dragged along at its edge" (old model). Growth share of q_m: 5.1 %, IQR 1.7-12.9 %, p90 23 % is the gamma 0 lanes value (constant theta 0.013), not rerun with per-edge theta (median theta equal, so expected unchanged). Statistics paragraph: "no parameter fitted" / core floor leave-one-plate-out -> f_m leave-one-imaging-day-out 0.52-0.54.
 % NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): whole enumerate is the old dragged-core model. gamma 0: to-tip lane share 1 - (a/b)^2 with a/b = 0.687 fixed (calibrated, see main-text NOTE), J_l sets theta_eff = J_l/(pi (b^2 - a^2) v_m); q_s = pi v_m (1 - theta)(b^2 - a^2); conductance of the to-root lane K = pi a^4/(8 mu L) (lane_conductance_factor 1); read-out |q_c|/(pi a^2). Growth demand share of q_s (1,684 filmed edges): with the lanes q_s (annulus water only) median 5.1 %, IQR 1.7-12.9 %, p90 23 %; with the old q_s (incl. pi a^2 v_m core) 2.7 %, 0.9-6.8 %, p90 12 % (text 2.6 %, 0.9-6.7 %, 12 %). Number and q_s definition change together: if the Methods q_s becomes the lanes one, use 5.1 %.
-In a hypha of radius $b = D/2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v_m = \hat{v}_m(d)$, whose lipid share $\theta = 0.10$ carries $J_l$: $a^2 = b^2 - J_l/(\pi v_m \theta)$, with $a \geq 0.8\, b$.
+In a hypha of radius $r = D/2$ and cross-section $A = \pi r^2$, the motors carry an annulus between the core radius $a$ and the wall, at speed $v_m = \hat{v}_m(d)$, whose lipid share $\theta$ carries $J_{ij}$: $\theta = J_{ij}/(f_m A\, v_m)$, with $f_m = 0.53$.
   \item \textbf{Motor stream.}
 % NOTE (15 Oct, the circuit element the main text points to; notation aligned with the main text on Simon's request): In a pipe of length L whose annulus (a < r < b) moves at v_m, the core is Poiseuille flow with the wall speed v_m at r = a, so the water flux through the core is q_{w,r<a} = pi a^2 v_m - K Delta p, with the core conductance K = pi a^4 / (8 mu L) and Delta p = p_j - p_i along the edge. Adding the water carried in the annulus, pi (b^2 - a^2)(1 - theta) v_m, gives the net water flux q_w = q_s - K Delta p, with the motor stream q_s = pi v_m [(1 - theta)(b^2 - a^2) + a^2]. Each pipe is therefore a flux source q_s in parallel with the conductance K, and the network is solved with Kirchhoff's law at the nodes. The pressure-driven part of the core flux, q_c = q_s - q_w = K Delta p, is the return the model reads out as |q_c| / (pi a^2). This derivation is still to be written into the Methods text.
-The volume carried toward the tip is $q_s = \pi v_m \left[(1-\theta)(b^2 - a^2) + a^2\right]$: the annulus and the core dragged along at its edge.
+The volume carried toward the tip is $q_m = (1-\theta) f_m A\, v_m$.
   \item \textbf{Rootward speed.}
 The volume returns by a pressure-driven flow in the cores.
-The pressure is solved on the graph with Poiseuille conductances $K = \pi a^4 / (8 \mu L)$ of the cores and the divergence of $q_s$ as sources.
+The pressure is solved on the graph with Poiseuille conductances $K = (1-f_m)^2 A^2 / (8 \pi \mu L)$ of the cores and the divergence of $q_m$ as sources.
 Every annotated root is tied to one common reservoir at zero pressure through a conductance equal to about 10~mm of core of radius 4~$\mu$m (\texttt{testing\_new\_model.g\_res}), so volume can pass between roots through the reservoir.
 The hyphal walls pass no water: volume enters and leaves the network only at the roots.
-The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (on the 1,684 filmed edges the growth demand routed through an edge is a median 2.6\% of its $q_s$, interquartile range 0.9--6.7\%, and 12\% at the 90th percentile; SI, \nameref{subsec:si_volume_budget}).
+The volume that growth consumes is not a sink in this solve; it enters only through the lipid current that sets the annulus, and it is small (on the 1,684 filmed edges the growth demand routed through an edge is a median 5.1\% of its $q_m$, interquartile range 1.7--12.9\%, and 23\% at the 90th percentile; SI, \nameref{subsec:si_volume_budget}).
 Flow passes between hyphae at junctions at no cost: one global pressure solve over the whole network; a resistance for switching hyphae at junctions, and the conveyor limit in which every edge carries back its own motor stream, are SI variants (\nameref{subsec:si_model_variants}).
   \item \textbf{Read-out.}
 The rootward speed is what is measured: the distribution of rootward streak speeds on an edge, summarized by its median where one value is needed.
-The model's counterpart is the core flux over the core area, $|q_c| / (\pi a^2)$.
+The model's counterpart is the pressure-driven flux over its share of the section, $|q_p| / ((1-f_m) A)$.
 \end{enumerate}
 It is scored against that median.
 The variants in the supplement change one of these steps at a time.
