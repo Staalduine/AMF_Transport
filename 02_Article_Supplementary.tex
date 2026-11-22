@@ -758,6 +758,13 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \caption{\textbf{[Title.]} [Caption.]}\label{fig:model_arms}
 \end{figure}
 % NOTE (18 Nov, caption outline for Simon; reviewer comment #3, model analogue of Fig 2A; transport_paper Working_notebooks/manuscript_figures/figS_model_arms.py, gamma 0 paper model): (A) measured, as Fig 2A (1,562 core measurements with both streams); (B) the network model (global pressure solve) on the same edges, tipward = motor speed v_m, rootward = v_b; (C) zero net flux per edge (each edge returns its own motor water, the local variant above), rootward = |q_s|/(pi a^2) = 1.10 v_m on every edge at fixed a/b. Arms 1.3x as in Fig 2A; shares measured 42 / 44 / 13 % (1:1 / rootward faster / tipward faster), network model 42 / 33 / 25 %, zero net flux 100 / 0 / 0 %. Tree-like edges (221): measured 54 / 30 / 16 %, network model 99 / 1 / 0 %; loop edges (1,341): measured 40 / 47 / 13 %, network model 32 / 38 / 29 %. Points: only the network solve leaves the 1:1 band, and only on loop edges; model tipward speeds span only 2.3-3.1 um/s, so the model's spread is all in v_b; the model under-predicts rootward-faster and over-predicts tipward-faster edges. (gamma 0.05: network model 40 / 34 / 27 %, tree-like 93 / 5 / 1 %.)
+% NOTE (midplane 22 Nov, figS_model_arms on the paper model): shares against faster / 1:1 / with faster: measured all 44 / 42 / 13 %, loop 47 / 40 / 13 %, tree 30 / 54 / 16 %; network model all 32 / 52 / 16 %, loop 37 / 44 / 19 %, tree 1 / 99 / 0 %; zero net flux 0 / 100 / 0 % (panel C now at the mid-plane read-out: rootward/tipward 1.15-1.17). Model tipward 2.3-3.1 um/s. Loop v_b/v_m IQR 0.58 (median 1.14) against measured 0.64 (1.17), 1,882 / 1,689 rows.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{suppfig/figS_readout_choice.pdf}
+% NOTE (midplane 22 Nov, caption facts, words are the user's; script transport_paper Working_notebooks/manuscript_figures/figS_readout_choice.py, tables scratch/coco_affine/alpha): read-outs v_b = c0 v_m + c1 u_mean (u_mean = |q_p|/((1-f_m)A)), each with its own constant f_m refitted on the 99 tree rows and its own constant-f_m solve; x = offset c0. Line: c1 = 1 family (c0 0 = Eq. 6 whole core ... 1/2 region); markers: mid-plane (1/3, 4/3; the paper), flux-weighted (2/3, 4/3), centre (1, 2). (A) within 2x, all 1,654 (filled) and Fig 5B segments (open); (B) IQR of v_b/v_m on filmed loop edges, dashed measured 0.64; (C) loop arm shares against faster / 1:1 / with faster, dashed measured 47 / 40 / 13 %. Values (f_m; all / 5B / loop IQR / arms): c0 0 (0.5405) 74.4 / 87.3 % / 0.82 / 41-31-28; 1/8 (0.511) 77.4 / 88.0 / 0.73 / 39-36-25; 1/4 (0.479) 80.5 / 89.8 / 0.64 / 39-40-21 (matches the measured loop IQR); 3/8 (0.442) 83.4 / 91.5 / 0.55 / 37-45-18; 1/2 (0.40) 85.8 / 91.9 / 0.46 / 33-54-13; mid-plane (0.386) 82.6 / 91.2 / 0.58 / 37-44-19; flux-weighted (0.273) 88.5 / 93.3 / 0.34 / 28-66-6; centre (0.064) 89.5 / 95.1 / 0.08 / 1-99-0. Point: within 2x rises with c0 while the loop spread collapses; the mid-plane sits near the measured spread and arm shares.
+\caption{\textbf{[Caption to write.]}}\label{fig:si_readout_choice}
+\end{figure}
 
 \namedsubsection{Motors as a force}{subsec:si_motor_force}
 % SUGGESTED (20 Oct, Simon): Filipe (model derivation and solver): the force-balance specification Methods points to (Typst source in the note uses old terms).
@@ -775,25 +782,26 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \centering
 {\small
 % NOTE (20 Nov, paper model now Bayes tree calibration: f_m = 0.549 (J/2.41 um^3/s)^0.036, f_m0 and gamma posterior medians from a Bayesian Eq. 6 fit on the tree-like edges only (fm_tree_bayes.py); numbers only, words are the user's; source AMF_Transport/scratch/bayes_tree_figs/tex_numbers.md): table rows: within 2x every measurement 76.2 % (gamma 0.05 was 76.2 %; text 77.3 %), median ratio 0.94 (was 0.90; text 0.93); trail +-0.5 mm 89 %, median 0.98 (was 89 %, 0.96); high kappa / low betweenness 2.46 / 3.33 (307 measurements; was 2.30 / 3.33; text 2.59 / 3.58, 285); low kappa / high betweenness 4.03 / 3.96 (329; was 4.00 / 3.96; text 4.12 / 3.98, 333). Median fold error, KS and trail-median rho rows not recomputed.
+% NOTE (midplane 22 Nov, paper model readout_mid_fm0.386): applied within 2x 82.6 %, median ratio 0.95 (0.946), fold error 1.38, KS 0.156 (all 1,654; recomputed with figS_ab_gamma_choice.rows), trail +-0.5 mm 91 % / 0.94, kappa split 2.85 / 3.33 (307) and 3.75 / 3.96 (329). Claim to check: KS is worse than the old 0.109. Per plate within 2x EPY088 85.7, LPD025 89.0, PNF072 83.7, PNF080 75.9, STR112 85.2 %. NOT recomputed (stale): trail-median rho rows (35 / 36 / 30 trails), within-trail rho, 17 of 25.
 \begin{tabular}{lll}
 \hline
 \textbf{quantity} & \textbf{set} & \textbf{value} \\
 \hline
 rootward speed measurements & every measured edge and video & 1,654 (15 imaging days, 5 plates) \\
-within a factor of 2 & every measurement & 77.3\% \\
-median ratio, modeled / measured & every measurement & 0.93 \\
-median fold error & every measurement & 1.42 \\
-KS distance (log speeds) & every measurement & 0.109 \\
+within a factor of 2 & every measurement & 82.6\% \\
+median ratio, modeled / measured & every measurement & 0.95 \\
+median fold error & every measurement & 1.38 \\
+KS distance (log speeds) & every measurement & 0.156 \\
 trail segments within 10~mm of the tip & medians over $\pm$0.5~mm & 283 \\
-\quad within a factor of 2 & & 89\% \\
-\quad median ratio & & 1.00 \\
+\quad within a factor of 2 & & 91\% \\
+\quad median ratio & & 0.94 \\
 trail medians, Spearman $\rho$ & 35 trails with $\geq$5 segments & 0.37 ($p = 0.030$) \\
 within-trail Spearman $\rho$ (median) & same trails & 0.18 \\
 rise with tip distance, same sign & trails with $\geq$10 segments & 17 of 25 \\
 trail medians, $\geq$3 segments & 36 trails & $\rho = 0.41$ ($p = 0.013$) \\
 trail medians, $\geq$8 segments & 30 trails & $\rho = 0.35$ ($p = 0.060$) \\
-modeled / measured median, high $\kappa$, low betweenness & 285 measurements & 2.59 / 3.58~$\mu$m/s \\
-modeled / measured median, low $\kappa$, high betweenness & 333 measurements & 4.12 / 3.98~$\mu$m/s \\
+modeled / measured median, high $\kappa$, low betweenness & 307 measurements & 2.85 / 3.33~$\mu$m/s \\
+modeled / measured median, low $\kappa$, high betweenness & 329 measurements & 3.75 / 3.96~$\mu$m/s \\
 \hline
 \end{tabular}
 }
@@ -838,6 +846,7 @@ This could explain why active transport mechanisms at high speeds are necessary 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_condensate_thickness.png}
+% NOTE (midplane 22 Nov): b - a = 0.217 b (a/b 0.783, f_m 0.386); whole network (1,105,939 edges) median 0.64 um, below 0.5 um on 17.4 % and below 1 um on 92.2 % of length. The 18 Nov NOTEs (0.313 b, 0.93 um) are superseded.
 \caption{[Caption to be written.]}\label{fig:condensate_thickness}
 % NOTE (18 Nov, thickness bands in droplet diameters (1 um), share of length, gamma 0): whole network (1,105,939 edges): <0.5x 1.4 %, 0.5-1x 57.9 %, 1-1.5x 34.9 %, >1.5x 5.9 % (93 % between 0.5x and 1.5x), median 0.93 um. Filmed edges (1,684): 0.2 / 14.2 / 57.9 / 27.8 %, median 1.33 um. Top 10 % tip-directed betweenness per session (110,440): 0.8 / 34.5 / 47.8 / 17.0 %, median 1.15 um. Top 1 % (11,067): 0.2 / 14.6 / 36.7 / 48.5 %, median 1.47 um. At gamma 0 b - a = 0.313 b, so this is hypha size: filmed median b 4.2 um, top-1 % BC 4.7 um, network 3.0 um (the selection bias of fig S bc_selection). On the measured hyphae the layer is ~1-1.5 droplets thick and below half a droplet almost nowhere.
 % NOTE (18 Nov, caption facts; text is the user's): condensate thickness b - a on every edge of the paper model's networks (gamma 0, a/b = 0.687, so b - a = 0.313 b), weighted by edge length, 15 sessions. Median 0.93 um; below 1 um on 59 % of network length (b < 3.19 um, diameter < 6.4 um), below 0.5 um on 1.4 % (b < 1.60 um). Dashed line: measured lipid droplet diameter (~1 um): the layer is about one droplet thick. Source: transport_paper manuscript_figures/figS_condensate_thickness.py.
@@ -847,6 +856,7 @@ This could explain why active transport mechanisms at high speeds are necessary 
 \includegraphics[width=\textwidth]{suppfig/figS_fm_tree_calibration.pdf}
 % NOTE (20 Nov, f_m tree calibration figure; caption facts only, words are the user's): (A) intuition at a typical tree edge (b 4.44 um, A = pi b^2 = 62 um^2, v_m 2.55 um/s): f_m (top) and theta = J/(f_m A v_m) (bottom, log) against J_ij for gamma 0 (f_m flat at 0.549), gamma 0.036 (paper) and gamma 1 (theta flat at theta(J_ref) = 0.028, f_m proportional to J, capped at 0.95); shaded = 5-95 % of the tree-row J (0.042-7.6 um^3/s). (B) implied f_m per tree row, from Eq. 6 with theta_e = J/(f_m A v_m) solved per edge (f = (R + c)/(R + 1), R = measured v_b/v_m, c = J/(A v_m)), against J_ij, coloured by plate; line = posterior median law f_m0 (J/J_ref)^gamma, band = 95 % of posterior draws, dashed = constant f_m0. Implied f_m median 0.540 (IQR 0.492-0.585). (C) posterior of gamma, (D) of f_m0; solid = median, dotted = 95 % CrI. Posterior: f_m0 0.549 [0.529, 0.571], gamma 0.036 [0.015, 0.058], P(gamma > 0) 0.999, corr(f_m0, gamma) +0.20; J_ref 2.41 um^3/s = median J of the tree rows; 99 rows (one per edge and video, both streams), 97 edges, 13 sessions, 5 plates; plate effect sd 0.05 [0.002, 0.31], residual sd 0.35 [0.31, 0.41] on log(v_b/v_m). Likelihood on log(v_b/v_m) with sum-to-zero plate effects; priors f_m0 U(0.05, 0.95), gamma U(-1, 1), half-normal(1) sds; adaptive Metropolis, 4 chains, R-hat <= 1.001 (sampler as the tipward Bayes fit, forward_speed_bayes.py). Scripts: transport_paper Working_notebooks/fm_tree_bayes.py (fit, fig_outputs/fm_tree_bayes/summary.txt), manuscript_figures/figS_fm_tree_calibration.py (figure).
 % NOTE (20 Nov, held-out numbers for the SI text; numbers only, words are the user's; source AMF_Transport/scratch/bayes_tree_figs/nontree_scores.md, heldout/fm_vs_rootward_loops.md): calibrated on the tree-like edges, so score the rest. Non-tree measurements (1,430 of 1,654): 73.8 % within 2x (all 76.2 %), median model/measured 0.90 (all 0.94), rho 0.32 (all 0.32). Fig 5B non-tree trail segments (230 of 283): 87.8 % within 2x, median 0.97, rho 0.21 (p 0.0016) against 0.30 on all segments (the 53 tree segments alone: 0.66). Loop edges (1,341 measurements, 1,256 edges, 15 sessions): model f_m (0.49-0.58, 5-95 %) against measured v_b rho +0.32 [0.21, 0.42] (session bootstrap, 2,000), partial with v_m / tip distance removed +0.30 [0.21, 0.38], against v_m alone +0.23 [0.10, 0.35]; against measured v_b/v_m +0.23 [0.12, 0.33], partial +0.21. Caveat: f_m is a monotone function of J, so this also reads as 'demand predicts rootward speed'.
+% NOTE (midplane 22 Nov): figure rebuilt on the mid-plane form. f_m 0.3872 [0.3585, 0.4205] at gamma 0 (a/b 0.783); implied f_m per tree row median 0.386 (IQR 0.323-0.446); free-gamma comparison now the mid-plane free fit f_m0 0.398 [0.371, 0.426], gamma 0.073 [0.031, 0.119], P(gamma > 0) 1.000; J_ref 2.41; inset unchanged (b 4.44 um, A 62 um^2, v_m 2.55 um/s).
 \caption{\textbf{[Caption to write.]}}\label{fig:si_fm_tree_calibration}
 \end{figure}
 \begin{figure}[htbp]
@@ -860,6 +870,7 @@ This could explain why active transport mechanisms at high speeds are necessary 
 \centering
 \includegraphics[width=\textwidth]{suppfig/figS_eq6_tree_test.pdf}
 % NOTE (20 Nov, paper model now Bayes tree calibration: f_m = 0.549 (J/2.41 um^3/s)^0.036, f_m0 and gamma posterior medians from a Bayesian Eq. 6 fit on the tree-like edges only (fm_tree_bayes.py); numbers only, words are the user's; source AMF_Transport/scratch/bayes_tree_figs/tex_numbers.md): gamma: a figure environment for suppfig/figS_gamma_sweep.pdf (paper model at gamma 0, 0.02, 0.03, 0.05, 0.10 against the measured metrics) would go after this figure, in subsec:si_theta_choice, with the gamma law. The calibration to describe is now the Bayes posterior (fig_outputs/fm_tree_bayes/summary.txt): f_m0 0.549 [0.529, 0.571], gamma 0.036 [0.015, 0.058] (posterior medians, 95 % CrI), P(gamma > 0) 0.999, corr(f_m0, gamma) +0.20; 99 tree rows, 97 edges, 13 sessions, 5 plates; J_ref 2.41 um^3/s = tree-edge median J (gamma 0.05 was set on the tree slope). figS_ab_gamma_choice (the earlier gamma-choice figure) is not rebuilt.
+% NOTE (midplane 22 Nov): prediction is now the mid-plane tree form 1/3 + (4/3)(1 - theta) f_m/(1 - f_m) at f_m 0.386: median ratio 1.141 (measured 1.145), legend 'mid-plane'; OLS v_b = -1.34 + 1.73 v_m; 6 rows beyond J 7. Claim to check: the label says Eq. 6 (whole-core form).
 \caption{\textbf{[Caption to write.]}}\label{fig:si_eq6_tree_test}
 \end{figure}
 \begin{table}[htbp]
@@ -913,6 +924,7 @@ $\theta$ & floor $f$ & within 2$\times$ & ratio & KS & trail $\rho$ & loop $\rho
 \centering
 \includegraphics[width=0.5\textwidth]{suppfig/figS_tree_demand.png}
 % NOTE (20 Nov, old Fig 6A moved here with the Fig 6 motif layout; caption facts only, words are the user's; source AMF_Transport/scratch/fig6_motifs/numbers.txt): tree-like edges (bridges with no water source below, TRUE_TREE_EDGES no_root_below) with routed lipid current: 101 edges; rootward speed against J_ij, medians of the five J quintiles (J medians 0.11, 0.92, 2.41, 3.66, 5.21 um^3/s) with 25th-75th percentile; measured 2.08, 2.37, 2.76, 3.78, 4.26 um/s, model 2.43, 2.72, 3.04, 3.06, 3.38 um/s; model within 2x on 95 % of the edges; slope (log speed on log J, width controlled) model +0.081 [0.065, 0.097], measured +0.104 [0.061, 0.186]. Old main-text caption: \textbf{(A)} Tree-like hyphae, that is bridges with no water source below them (104 measurements on 101 edges): rootward speed against the routed lipid demand (lipid volume per second routed through the hypha, $\mu$m$^3$/s), medians of the five demand quintiles with 25th--75th percentile, measured (black) and model (blue); the model is within a factor 2 of the measurement on 92\% of these edges, but stays flat with demand and does not reproduce the measured rise.
+% NOTE (midplane 22 Nov): 101 tree edges, model within 2x 91 %; quintile J medians 0.11, 0.92, 2.41, 3.66, 5.21 um^3/s; measured 2.08, 2.37, 2.76, 3.78, 4.26; model 2.89, 2.76, 3.01, 2.87, 3.02 um/s; slope model +0.006 [-0.012, +0.021], measured +0.104 [0.061, 0.186] (0.190 with the extra_scores bootstrap). So the model is flat with demand again (the 20 Nov 'rises' note is superseded).
 \caption{\textbf{[Caption to write.]}}\label{fig:si_tree_demand}
 \end{figure}
 
@@ -920,6 +932,7 @@ $\theta$ & floor $f$ & within 2$\times$ & ratio & KS & trail $\rho$ & loop $\rho
 \centering
 \includegraphics[width=\textwidth]{suppfig/figS_trail_examples.png}
 % NOTE (20 Nov, old Fig 6E moved here with the Fig 6 motif layout; caption facts only, words are the user's; source AMF_Transport/scratch/fig6_motifs/numbers.txt): one trail on each of the other plates, rootward speed against distance from the root, model blue (running median over 5 segments), measured black (median with 25th-75th percentile): plate 1 imaging day 1 (PNF072 t37 Middle; 26 segments, 92 % within 2x, Spearman 0.22), plate 4 imaging day 3 (LPD025 t50 Middle; 32, 88 %, 0.39), plate 3 imaging day 4 (STR112 t60 LeftMiddle; 22, 82 %, -0.10). Old main-text caption: \textbf{(E)} One trail on each of the other plates: plate 1, imaging day 1; plate 4, imaging day 3; plate 3, imaging day 4; the model is within a factor 2 on 92\%, 84\% and 77\% of the 26, 32 and 22 measured segments.
+% NOTE (midplane 22 Nov): (n, rho, within 2x) plate 1 day 1 (26, 0.31, 96 %), plate 4 day 3 (32, 0.12, 84 %), plate 3 day 4 (22, -0.07, 82 %).
 \caption{\textbf{[Caption to write.]}}\label{fig:si_trail_examples}
 \end{figure}
 % NOTE (updated 16 Nov, γ 0.05) (6 Nov, moved from main text loop paragraph): 421 loops, model vs measured arm ratio rho 0.40 [0.31, 0.48]; partial rho beyond diameter ratio 0.32; filmed arms > 150 um apart rho 0.45 (140 loops). Core conductance (L/a^4) alone rho 0.17 [0.08, 0.26], better-core arm faster in 213/421 (transport_paper Working_notebooks/scratch_cp/loop_core_conductance.py, uncommitted). UPDATE 16 Nov, γ 0.05: ρ 0.39 [0.30, 0.47]; partial beyond diameter ratio 0.31; filmed arms > 150 um apart 0.44 [0.29, 0.57] (140 loops); core conductance alone 0.15 [0.05, 0.24]; better-core arm faster in 214/421.
@@ -963,11 +976,12 @@ Edges along one hypha share almost the same centrality, so correlations pooled o
 \namedsubsection{Rerouted backflow and network extraction faults}{subsec:si_rerouting}
 % NOTE (22 Oct, Simon): moved here from main-text Fig 6F. Point to make: faults in the network extraction let the network-wide pressure solve pool the backflow in the wrong edges, so the model sometimes under-predicts on high-betweenness hyphae. Text below is a first draft; the extraction faults on this stretch are not yet shown (check the graph against the images, and ideally a corrected graph re-solved).
 Because the pressure in the model is solved over the whole network, the backflow of a hypha does not have to return through that hypha: where the extracted network offers parallel routes, the solve can send part of it through neighboring edges.
-On a trail of plate 2, imaging day 3, 8 to 19~mm from the root, the model returns only 0.68 (interquartile range 0.44--0.84) of the trail's motor stream through the trail itself and sends the rest back through side hyphae, giving a rootward speed of 2.0~$\mu$m/s against 6.4~$\mu$m/s measured (20 segments; 3.3~$\mu$m/s measured tipward).
+On a trail of plate 2, imaging day 3, 8 to 19~mm from the root, the model returns only 0.34 (interquartile range 0.17--0.47) of the trail's motor stream through the trail itself and sends the rest back through side hyphae, giving a rootward speed of 1.6~$\mu$m/s against 6.4~$\mu$m/s measured (20 segments; 3.3~$\mu$m/s measured tipward).
 % NOTE (2 Nov, plate labels): "trail LeftMiddle of PNF080 at t91" -> "a trail of plate 2, session 3".
 In the model the trail's net flux points tipward on 9 to 18~mm: volume enters at about 8.8~mm through a side branch and leaves into side hyphae at 17 to 21~mm, a circulation loop of about 10~mm.
 Measured, the rootward speed on this stretch (6.4~$\mu$m/s) exceeds even a full backflow of the trail's own motor stream ($\sim$3.5~$\mu$m/s).
 The difference is not explained by growth nearby; routing past demand raises the model only to 2.5~$\mu$m/s, splitting the demand at crossings lowers it to 2.1~$\mu$m/s, and idle motors change nothing.
+% NOTE (midplane 22 Nov, rerouting stretch on the paper model, scratch/midplane_paper/figs/log_build.txt): applied model 1.6 um/s (1.61) against 6.4 measured (20 segments, 3.31 tipward); return through the trail 0.34 (IQR 0.17-0.47) of its motor stream. NOT recomputed: the variant values 2.5 / 2.1 um/s and the own-stream backflow ~3.5 um/s (at the mid-plane tree ratio ~1.17 v_m this would be ~3.9).
 % NOTE (updated 16 Nov, γ 0.05) (4 Nov) at theta 0.10 the crossing split gives 2.05 vs main 1.98, a slight rise, not a lowering. Sajitha to reword. Mapping assumed: --past-demand 4, --split-crossings, idle = motors off on zero-flux edges. Rechecked at theta 0.10: net flux tipward on 8.8-18.7 mm (text '9 to 18'), entry at 8.8 mm confirmed (largest net-flux step); the exits are not resolved by the per-segment steps (a cancelling pair at 16.5-16.7 mm, net flux turns rootward again at 18.7 mm). 'This stretch' 6.5 -> 6.4 (same 20 segments). UPDATE 16 Nov, γ 0.05 (20 measured segments, 8-19 mm): main 1.35 um/s against 6.40 measured; past demand 4 frames 1.70, 8 frames 1.60; split crossings 1.59 (a rise, also on γ); idle motors 1.35 (no change); open bottom 1.86; motor width term 1.37; K ~ a^3 1.17, a^2 1.11. q_c / q_s through the trail 0.46 (0.25-0.62); net flux tipward on 8.8-19.5 mm; own-stream backflow |q_s|/(πa²) 3.54 um/s.
 % FIGURE (updated 16 Nov, γ 0.05) (to be built from the old Fig 6F panel): trail LeftMiddle of plate 2, session 3, every edge colored by the modeled rootward speed (line width proportional to hyphal diameter) and the 16 measured segments by the measured speed, on the same scale; ideally with the side branch at ~8.8 mm and the exits at 17-21 mm marked, and the suspected extraction faults shown on the image.
 \begin{figure}[htbp]
