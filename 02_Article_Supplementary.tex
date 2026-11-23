@@ -657,26 +657,6 @@ The dark band of a hypha in the network images is 15--20~$\mu$m wide against vid
 %   - Ramos-Garcia et al. 2009 (ramos-garcia_cytoplasmic_2009); Roper et al. 2013 (roper_nuclear_2013): bulk cytoplasmic flow carries nuclei in Neurospora hyphae (pressure-driven mass flow, not motors).
 %   - van de Meent et al. 2010 (van_de_meent_measurement_2010); Goldstein & van de Meent 2015 (goldstein_physical_2015): Chara streaming measured by MR velocimetry: wall-driven shear transmitted through the tonoplast, i.e. a driven layer dragging the interior (analogue of our motor layer dragging the core).
 % NOTE (6, conclusion to outline): the data fit neither a strict plug nor the parabola: a blunted, plug-like core with ~1 um/s extra spread, as expected for a crowded suspension of ~1 um particles in a ~9 um pipe. For the model this changes the profile and the read-out factor (core mean vs peak), not the flux balance; the a^4 conductance of a blunted profile is lower than Poiseuille's by a factor set by the effective viscosity (open: quantify). Lanes (side-by-side streams) are not in the model and remain open.
-% NOTE (5 Nov, read-out frame and the alternatives; Sajitha: keep v_b): In the single-pipe derivation (Methods % NOTE, circuit element) the core is Poiseuille flow whose edge r = a is dragged tipward at v_m by the condensate, so q_s contains pi a^2 v_m and the read-out v_b = |q_c| / (pi a^2) = a^2 dp / (8 mu L) is the mean speed of the pressure-driven part, relative to the moving condensate edge. In the lab frame the core moves rootward on average at v_b - v_m and at its center at 2 v_b - v_m. Same Fig 5 model (theta 0.10), 1,616 per-video rows (transport_paper readout_compare, 5 Nov): v_b: median model/measured 0.91, fold error 1.44, within 2x 75.7 %, trail rho 0.38, loop rho 0.41, tip trend +0.43 (measured +0.41), diameter exponent 0.79 [0.56, 1.02] (measured 1.04 [0.92, 1.17]); lab center 2 v_b - v_m: 1.11, 1.60, 67.0 %, 0.38, 0.40, +0.41, 1.01 [0.78, 1.25], and 169 rows (10 %) with no rootward-moving core fluid (2 v_b <= v_m); lab mean v_b - v_m: 0.31, 3.29, 27.5 %, 0.37, 0.33, +0.38, 6.5 [2.1, 11.0], positive on only 969 rows. Rankings barely depend on the read-out; level and diameter scaling do. v_b is kept (best level and distribution, Fig 5A) as an empirical read-out; the measured rootward speed is flat across the width (center/wall 1.01, note 3), i.e. not the parabola the lab-frame read-outs assume. Fig 4's toy profiles were switched from the lab center speed to v_b on 5 Nov so all model figures use the same read-out.
-% NOTE (4 Nov): moved verbatim from the main text (model section); wording to be adapted to this section. Eq.~(\ref{eq:net_inner_flow}) stays in the main text.
-By solving the Navier-Stokes equation in the inner pipe, setting the boundary conditions to be $v_m$ at the border of the inner pipe, one can determine the radial speed profile $u(r)$ in cylindrical symmetry to be 
-
-% NOTE (18 Nov, after the main-text Flow model rewrite): this u(r) derivation (core dragged at v_m at r = a, Poiseuille core) and Eq. max_speed belong to the old dragged-core model. The main text now treats both flows as uniform (plug) shares f_m and 1 - f_m of an arbitrary cross-section, so a symbol swap does not fix this block: decide whether it stays as a historical/alternative derivation or goes. Not edited.
-\begin{equation}
-\label{eq:speed_profile_main}
-u(r) = v_m + \frac{2(q_{w,r<a} - \pi a^2 v_m)(a^2 - r^2)}{\pi a^4}.
-\end{equation}
-
-Interestingly, when one assumes $q_w = 0$ as would be the case in a closed pipe system, we have:
-\begin{equation}
-% NOTE (18 Nov): Theta removed; f_m = 1 - a^2/b^2 as in main Eq. eq:motor_stream, so (1-theta) f_m/(1-f_m) = (1-theta)(b^2-a^2)/a^2. Eq. speed_profile_main above still uses the old dragged-core q_{w,r<a}.
-\label{eq:max_speed}
-u(0) = -v_m\left(1+2\frac{(1-\theta) f_m}{1-f_m}\right) .
-\end{equation}
-
-This result suggests a possible explanation for the bidirectional movement that we observe.
-For all values of $f_m$ and $\theta$, we have $u(0)$ which is of opposite sign compared to $v_m$.
-Centerline speed $u(0)$ would be the speed at the center of the pipe, which we do not expect to measure reliably.
 % NOTE (4 Nov, outline for Simon): What would a plug conductance look like?
 % - A plug in a no-slip pipe moves only by shearing a thin layer of thickness delta at its edge (here between core and condensate); cf. cell-free layer in blood flow.
 % - Force balance: Delta p * pi a^2 = tau * 2 pi a L, U = tau delta / mu_l  ->  K_plug = pi a^3 delta / (2 mu_l L), vs K_Pois = pi a^4/(8 mu L).
@@ -691,6 +671,32 @@ Centerline speed $u(0)$ would be the speed at the center of the pipe, which we d
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_poiseuille_plug.png}
 \caption{[Caption to be written.]}\label{fig:poiseuille_plug}
 % NOTE (caption facts): (A) per-edge rootward q75/q25, measured (black, 1,367 edges) against the whole-lumen, central-slice and 2D Poiseuille draws and the synthetic plug (gray). (B) pooled speeds over the edge median, rootward (215,475 streaks) and tipward (263,211). (C) against-growth share and relative speed across the hypha (bright-field blue, 466 profiles; NileRed orange, 251), medians with IQR; dashed gray: projected Poiseuille core at rho0 0.6, 0.8, 0.95.
+\end{figure}
+
+\namedsubsection{The observed backflow speed}{subsec:si_readout}
+% NOTE (23 Nov): derivation written by Claude on the user's request (from the 22 Nov model build-up doc); check wording. Schematic: transport_paper manuscript_figures/figS_readout_schematic.py.
+The motor share of the cross-section moves as a plug at $v_m$ toward the tip. The core, of radius $a$ with $\pi a^2 = (1-f_m)A$, carries the pressure-driven flow. With no slip at its edge, where it meets the motor share, the core is dragged tipward at $v_m$, and the axial Navier--Stokes equation gives a Poiseuille profile offset by that edge speed. Taking the rootward direction as positive,
+\begin{equation}
+u(r) = -v_m + U\left(1 - \frac{r^2}{a^2}\right), \qquad 0 \leq r \leq a.
+\end{equation}
+The area mean of this profile over the core is $\bar{u} = -v_m + U/2$. Setting it equal to the pressure-driven flux over the core area, $\bar{u} = |q_p|/((1-f_m)A)$, fixes $U = 2(\bar{u} + v_m)$, which is main-text Eq.~\eqref{eq:core_profile}.
+
+The microscope does not see the area mean. We follow particles of about 1~$\mu$m in a thin focal plane through the hypha axis, so a kymograph samples the profile uniformly along a diameter of the core (SI Fig.~\ref{fig:si_readout_schematic}). The line average of $1 - r^2/a^2$ over $-a \leq r \leq a$ is $2/3$, so
+\begin{equation}
+v_\mathrm{b} = -v_m + \frac{2}{3}U = \frac{1}{3}\,v_m + \frac{4}{3}\,\bar{u},
+\end{equation}
+which is main-text Eq.~\eqref{eq:backflow_speed}. The same value is the area mean over the central disc of radius $a\sqrt{2/3} \approx 0.82\,a$, so the read-out also describes a blunted core in which the largest particles avoid the region next to the motor share (SI, \nameref{subsec:si_poiseuille_plug}).
+On a tree-like edge, $q_w = 0$ gives $|q_p| = q_m = (1-\theta) f_m A\, v_m$, so $\bar{u} = (1-\theta)\, v_m f_m/(1-f_m)$ and
+\begin{equation}
+\frac{v_\mathrm{b}}{v_m}\bigg|_{q_w = 0} = \frac{1}{3} + \frac{4}{3}(1-\theta)\frac{f_m}{1-f_m},
+\end{equation}
+main-text Eq.~\eqref{eq:tree_backflow_speed}. The drag enters only this read-out: the pressure solve uses the core conductance $K$ without it, because putting the drag into the solve overshoots the spread of the loop-arm speeds. Other read-outs (whole-core mean, centre speed, flux-weighted mean) are compared in SI Fig.~\ref{fig:si_readout_choice}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{suppfig/figS_readout_schematic.pdf}
+\caption{\textbf{[Caption to write.]}}\label{fig:si_readout_schematic}
+% NOTE (23 Nov, caption facts): (A) hyphal cross-section to scale at f_m 0.386 (a/R 0.78): motor share (light blue) with ~1 um lipid droplets, core of radius a, and the thin focal plane through the axis (pink). (B) speed along the focal line, rootward positive, in units of v_m: plug at -v_m in the motor share (blue), dragged Poiseuille core u(r) (pink) for the median tree edge (v_b/v_m 1.14, ubar 0.61 v_m, U 3.21 v_m); dashed: core area mean ubar; solid: line average v_b = v_m/3 + (4/3) ubar.
 \end{figure}
 
 \namedsubsection{The model step by step}{subsec:si_model_steps}
@@ -781,7 +787,6 @@ motor direction as observed (712 edges) & 93.3\% & 93.3\% & 93.3\% \\
 \begin{table}[htbp]
 \centering
 {\small
-% NOTE (20 Nov, paper model now Bayes tree calibration: f_m = 0.549 (J/2.41 um^3/s)^0.036, f_m0 and gamma posterior medians from a Bayesian Eq. 6 fit on the tree-like edges only (fm_tree_bayes.py); numbers only, words are the user's; source AMF_Transport/scratch/bayes_tree_figs/tex_numbers.md): table rows: within 2x every measurement 76.2 % (gamma 0.05 was 76.2 %; text 77.3 %), median ratio 0.94 (was 0.90; text 0.93); trail +-0.5 mm 89 %, median 0.98 (was 89 %, 0.96); high kappa / low betweenness 2.46 / 3.33 (307 measurements; was 2.30 / 3.33; text 2.59 / 3.58, 285); low kappa / high betweenness 4.03 / 3.96 (329; was 4.00 / 3.96; text 4.12 / 3.98, 333). Median fold error, KS and trail-median rho rows not recomputed.
 % NOTE (midplane 22 Nov, paper model readout_mid_fm0.386): applied within 2x 82.6 %, median ratio 0.95 (0.946), fold error 1.38, KS 0.156 (all 1,654; recomputed with figS_ab_gamma_choice.rows), trail +-0.5 mm 91 % / 0.94, kappa split 2.85 / 3.33 (307) and 3.75 / 3.96 (329). Claim to check: KS is worse than the old 0.109. Per plate within 2x EPY088 85.7, LPD025 89.0, PNF072 83.7, PNF080 75.9, STR112 85.2 %. NOT recomputed (stale): trail-median rho rows (35 / 36 / 30 trails), within-trail rho, 17 of 25.
 \begin{tabular}{lll}
 \hline
@@ -812,7 +817,6 @@ modeled / measured median, low $\kappa$, high betweenness & 329 measurements & 3
 
 \namedsubsection{Choice of the condensate lipid share}{subsec:si_theta_choice}
 % NOTE (18 Nov, after the main-text Flow model rewrite): the main text now cites this section twice: for the lipid sink from growth (dry mass) and for the f_m = 0.53 calibration on tree-like edges (a/b 0.687, leave-one-imaging-day-out 0.52-0.54 in f_m). Title and content need to follow (user's words); per-edge theta means no theta is chosen any more.
-% NOTE (18 Nov, gamma 0 manuscript pass; outline only, words are the user's): the theta x floor sweep (figS_theta_choice, table below) is the old dragged-core model. At gamma 0 theta only enters as (1 - theta) and the floor does not exist; this section becomes "Choice of a/b" (figS_ab_gamma_choice.py preview, calibration 0.687 on 101 tree-like edges) plus the condensate-thickness figure. Decide: drop the theta table or keep it as history.
 % NOTE (6 Nov, moved from main text theta paragraph): Bago reports total lipid up to ~24% of the hyphal volume near the root; the model's whole-lumen Theta stays at or below 3.6% (median 0.7%); model accuracy flat over theta 0.02-0.3.
 % NOTE (4 Nov): first block moved verbatim from subsec:si_lipid_fraction (old analysis at v0 = 3 um/s). New values for the rewrite: required Theta median 0.7 %, IQR 0.2-1.8 %, p95 4.1 %, max 11 %, flat with tip distance (bin medians 0.6-0.9 %), above the theta 0.10 cap (3.6 %) on 7.6 % of filmed edges.
 % SUGGESTED (20 Oct, Simon): Coco (ideas; graph extraction pipelines): resolve the blue comments and finish.
@@ -848,8 +852,6 @@ This could explain why active transport mechanisms at high speeds are necessary 
 \includegraphics[width=\textwidth,keepaspectratio]{suppfig/figS_condensate_thickness.png}
 % NOTE (midplane 22 Nov): b - a = 0.217 b (a/b 0.783, f_m 0.386); whole network (1,105,939 edges) median 0.64 um, below 0.5 um on 17.4 % and below 1 um on 92.2 % of length. The 18 Nov NOTEs (0.313 b, 0.93 um) are superseded.
 \caption{[Caption to be written.]}\label{fig:condensate_thickness}
-% NOTE (18 Nov, thickness bands in droplet diameters (1 um), share of length, gamma 0): whole network (1,105,939 edges): <0.5x 1.4 %, 0.5-1x 57.9 %, 1-1.5x 34.9 %, >1.5x 5.9 % (93 % between 0.5x and 1.5x), median 0.93 um. Filmed edges (1,684): 0.2 / 14.2 / 57.9 / 27.8 %, median 1.33 um. Top 10 % tip-directed betweenness per session (110,440): 0.8 / 34.5 / 47.8 / 17.0 %, median 1.15 um. Top 1 % (11,067): 0.2 / 14.6 / 36.7 / 48.5 %, median 1.47 um. At gamma 0 b - a = 0.313 b, so this is hypha size: filmed median b 4.2 um, top-1 % BC 4.7 um, network 3.0 um (the selection bias of fig S bc_selection). On the measured hyphae the layer is ~1-1.5 droplets thick and below half a droplet almost nowhere.
-% NOTE (18 Nov, caption facts; text is the user's): condensate thickness b - a on every edge of the paper model's networks (gamma 0, a/b = 0.687, so b - a = 0.313 b), weighted by edge length, 15 sessions. Median 0.93 um; below 1 um on 59 % of network length (b < 3.19 um, diameter < 6.4 um), below 0.5 um on 1.4 % (b < 1.60 um). Dashed line: measured lipid droplet diameter (~1 um): the layer is about one droplet thick. Source: transport_paper manuscript_figures/figS_condensate_thickness.py.
 \end{figure}
 \begin{figure}[htbp]
 \centering
@@ -859,18 +861,11 @@ This could explain why active transport mechanisms at high speeds are necessary 
 % NOTE (midplane 22 Nov): figure rebuilt on the mid-plane form. f_m 0.3872 [0.3585, 0.4205] at gamma 0 (a/b 0.783); implied f_m per tree row median 0.386 (IQR 0.323-0.446); free-gamma comparison now the mid-plane free fit f_m0 0.398 [0.371, 0.426], gamma 0.073 [0.031, 0.119], P(gamma > 0) 1.000; J_ref 2.41; inset unchanged (b 4.44 um, A 62 um^2, v_m 2.55 um/s).
 \caption{\textbf{[Caption to write.]}}\label{fig:si_fm_tree_calibration}
 \end{figure}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{suppfig/figS_gamma_sweep.pdf}
-% NOTE (20 Nov, gamma sweep on the paper calibration with the constant-theta end marker; caption facts only, words are the user's; source AMF_Transport/scratch/si_paper_figs/gamma_sweep_table.md, script gamma_sweep_fig.py there; runs Snellius 29528422): whole-network scores against the demand exponent gamma, every run on the paper calibration (f_m0 0.549 at J_ref 2.41 um^3/s, theta_e from the current; only gamma varies; gamma 0.036 = the paper model, star, reproduces the paper run exactly). (A) share within a factor 2, all 1,654 measurements (black) and the 283 Fig 5B trail segments (blue); (B) Spearman rho, all measurements, Fig 5B segments, loop arm ratio (421 loops); (C) tree demand slope (log rootward speed on log J, width controlled) against the measured +0.104 [0.061, 0.186] (line, grey band); (D) Fig 5B median model/measured. Shaded band: Bayes tree-edge posterior of gamma, 95 % interval 0.015-0.058, dashed line its median 0.036. Values gamma 0 / 0.02 / 0.036 / 0.05 / 0.10: all within 2x 75.2 / 75.8 / 76.2 / 75.9 / 74.2 %; 5B within 2x 88.3 / 88.7 / 88.7 / 89.4 / 90.1 %; all rho 0.295 / 0.307 / 0.316 / 0.321 / 0.327; 5B rho 0.23 / 0.28 / 0.30 / 0.31 / 0.34; loops rho 0.35 / 0.36 / 0.375 / 0.38 / 0.41; tree slope +0.006 / +0.049 / +0.081 / +0.109 / +0.200; 5B median 1.02 / 1.00 / 0.98 / 0.97 / 0.98; f_m median 0.549 / 0.544 / 0.540 / 0.537 / 0.524, never clipped. Constant theta (open symbols, best of theta 0.005-0.15, theta 0.03): 37.5 % / 51.6 % within 2x, rho 0.17 / 0.27 / 0.33, tree slope +0.90, 5B median 0.82; at theta 0.03, 40 % of edges sit on the a/b limits 0.45-0.95 (65 % at 0.005, 62 % at 0.15), so no single theta works. Reading: the all-measurement within-2x share peaks at the fitted gamma (76.2 %); correlations rise slowly to gamma 0.10; the tree slope crosses the measured value between 0.036 and 0.05.
-\caption{\textbf{[Caption to write.]}}\label{fig:si_gamma_sweep}
-\end{figure}
 % NOTE (19 Nov, Eq. 6 tree-edge test; caption outline only, words are the user's): Eq. 6 (eq:tree_backflow_speed) on tree-like edges, q_w = 0, v_b/v_m = (1 - theta) f_m/(1 - f_m); prediction 1.09 at f_m 0.53 and the median theta_e (0.027). Data: 99 bright-field measurements (one per edge and video, both streams) on 97 tree-like edges, 13 imaging days, 5 plates. (A) v_b against v_m; bars = within-video IQR (25th-75th percentile of the speed distribution whose median is the point); Eq. 6 line with +-50 % band, OLS fit. (B) v_b/v_m against diameter 2r, (C) against J_ij (axis 0-7 um^3/s; 6 points beyond, kept in the statistics); bars = within-video IQRs propagated to the ratio; quintile medians with IQR band. Numbers: median v_b/v_m 1.14 [1.09, 1.21]; through-origin k 1.22 -> f_m 0.556; diameter slope with J fixed, weighted, +0.026 per um [-0.05, 0.09]; J_ij slope with D fixed, weighted, +0.031 per um^3/s [0.008, 0.060]. CIs: imaging-day bootstrap, 2,000 draws. Source: AMF_Transport/scratch/eq6_tests (results.md, weighted_check.txt); figure script transport_paper Working_notebooks/manuscript_figures/figS_eq6_tree_test.py.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{suppfig/figS_eq6_tree_test.pdf}
-% NOTE (20 Nov, paper model now Bayes tree calibration: f_m = 0.549 (J/2.41 um^3/s)^0.036, f_m0 and gamma posterior medians from a Bayesian Eq. 6 fit on the tree-like edges only (fm_tree_bayes.py); numbers only, words are the user's; source AMF_Transport/scratch/bayes_tree_figs/tex_numbers.md): gamma: a figure environment for suppfig/figS_gamma_sweep.pdf (paper model at gamma 0, 0.02, 0.03, 0.05, 0.10 against the measured metrics) would go after this figure, in subsec:si_theta_choice, with the gamma law. The calibration to describe is now the Bayes posterior (fig_outputs/fm_tree_bayes/summary.txt): f_m0 0.549 [0.529, 0.571], gamma 0.036 [0.015, 0.058] (posterior medians, 95 % CrI), P(gamma > 0) 0.999, corr(f_m0, gamma) +0.20; 99 tree rows, 97 edges, 13 sessions, 5 plates; J_ref 2.41 um^3/s = tree-edge median J (gamma 0.05 was set on the tree slope). figS_ab_gamma_choice (the earlier gamma-choice figure) is not rebuilt.
-% NOTE (midplane 22 Nov): prediction is now the mid-plane tree form 1/3 + (4/3)(1 - theta) f_m/(1 - f_m) at f_m 0.386: median ratio 1.141 (measured 1.145), legend 'mid-plane'; OLS v_b = -1.34 + 1.73 v_m; 6 rows beyond J 7. Claim to check: the label says Eq. 6 (whole-core form).
+% NOTE (midplane 22 Nov): prediction is now the mid-plane tree form 1/3 + (4/3)(1 - theta) f_m/(1 - f_m) at f_m 0.386: median ratio 1.141 (measured 1.145), legend 'mid-plane'; OLS v_b = -1.34 + 1.73 v_m; 6 rows beyond J 7. 
 \caption{\textbf{[Caption to write.]}}\label{fig:si_eq6_tree_test}
 \end{figure}
 \begin{table}[htbp]
